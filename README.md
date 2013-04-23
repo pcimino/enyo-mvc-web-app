@@ -9,10 +9,6 @@ Based on the [Enyo MVC Bootplate](https://github.com/enyojs/bootplate-mvc), the 
 - Settings page
 - Database integration
 
-# [Getting Started](https://github.com/pcimino/login-enyo-mvc/wiki) #
-
-[The Project Wiki is here](https://github.com/pcimino/login-enyo-mvc/wiki). Much easier to follow than sticking everything in the README.
-
 # Quick Start
 ## REST Server
 <a href="https://github.com/pcimino/nodejs-restify-mongodb" target="_blank">Download and set up this REST server project</a> which requires Nodejs and MongoDB. This runs on port 3000, you can verify the server is running and test some of the REST APIs by navigating to <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>.
@@ -35,5 +31,5 @@ Clone this repository and go to the home directory.
 6. Navigate to the Enyo app in your browser on port 8080
 6.1 <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>
 
-# Wiki
-[More detailed walk through for this app is here.](https://github.com/pcimino/enyo-mvc-app/wiki)
+# [Project Wiki](https://github.com/pcimino/enyo-mvc-app/wiki)
+[More detailed walk through for this app is here.](https://github.com/pcimino/enyo-mvc-app/wiki). Much easier to follow than sticking everything in the README.
