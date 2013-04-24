@@ -1,6 +1,0 @@
-git submodule add git@github.com/enyojs/enyo.git public/enyo
-
-git submodule add git@github.com/enyojs/onyx.git public/lib/onyx
-
-git submodule add git@github.com/enyojs/layout.git public/lib/layout
-
