@@ -5,5 +5,5 @@ REM Development is the default environment, showing how to do it explicitly
 set NODE_ENV=development
 
 cd %SERVER_HOME%
-git submodules update --recursive
+git submodule update --recursive
 pause
