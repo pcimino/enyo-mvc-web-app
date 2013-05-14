@@ -17,9 +17,9 @@ Based on the [Enyo MVC Bootplate](https://github.com/enyojs/bootplate-mvc), the 
 Clone this repository and go to the home directory.
 
 1. Pull the required submodules  
-1.1 git submodule update --init --recursive 
+1.1 /scripts/update-git-modules[.sh|.bat]
 2. Run the Node setup script
-2.1 (TBD)
+2.1 /scripts/insdtall-npm-modules[.sh|.bat]
 3. Build the Enyo application
 3.1 (TBD)
 4. Start the REST Server
