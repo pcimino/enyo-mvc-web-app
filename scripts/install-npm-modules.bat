@@ -3,4 +3,4 @@ set SERVER_HOME=..
 
 cd %SERVER_HOME%
 
-call npm install node-static
+call npm install 

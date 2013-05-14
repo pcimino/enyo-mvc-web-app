@@ -1,0 +1,14 @@
+{
+    "name": "Enyo-MVC-App"
+  , "description": "An Enyo front end for the Restify demo:  https://github.com/pcimino/nodejs-restify-mongodb"
+  , "version": "1.0.0"
+  , "private": false
+  , "author": "Paul Cimino(https://github.com/pcimino)"
+  , "engines": {
+        "node": "0.8.20"
+      , "npm": "1.2.11"
+    }
+  , "dependencies": {
+      "node-static": "latest"
+  }
+}
