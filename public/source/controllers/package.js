@@ -1,3 +1,5 @@
 enyo.depends(
-	"controllers.js"
+	"LoginController.js"
+  , "UserSignupController.js"
+  , "ForgotPasswordController"
 );
