@@ -1,3 +1,6 @@
 enyo.depends(
-	"main.js"
+  "ParentView.js"
+  , "LoginView.js"
+  , "LoginForm.js"
+  , "FooterView.js"
 );

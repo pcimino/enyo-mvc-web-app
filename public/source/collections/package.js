@@ -1,0 +1,3 @@
+nyo.depends(
+	"TempCollection.js"
+);
