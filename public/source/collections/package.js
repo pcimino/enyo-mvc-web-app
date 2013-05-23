@@ -1,3 +1,3 @@
 nyo.depends(
-	"TempCollection.js"
+
 );

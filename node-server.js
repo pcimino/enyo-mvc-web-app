@@ -1,18 +1,25 @@
 /*
 	http://www.sitepoint.com/serving-static-files-with-node-js/
+    https://npmjs.org/package/grunt-nodestatic
+    http://stackoverflow.com/questions/6084360/node-js-as-a-simple-web-server
+    
 */
 
 var static = require('node-static'),
   http = require('http'),
   util = require('util');
-var webroot = './public',
-  port = 8080;
+var webroot = __dirname + '/public/',
+  port = 8888;
+  
 var file = new(static.Server)(webroot, {
   cache: 600,
   headers: { 'X-Powered-By': 'node-static' }
 });
 http.createServer(function(req, res) {
   req.addListener('end', function() {
+  req.url = __dirname + '/public' + req.url;
+
+  console.log(req.url);
     file.serve(req, res, function(err, result) {
       if (err) {
         console.error('Error serving %s - %s', req.url, err.message);

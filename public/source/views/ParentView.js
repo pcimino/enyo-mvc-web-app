@@ -1,5 +1,6 @@
 enyo.kind({
-  name: 'Bootplate.WindowView',
+  name: 'Bootplate.ParentView',
+  kind: "enyo.FittableRows",
   tag: 'body',
   fit: true
 });

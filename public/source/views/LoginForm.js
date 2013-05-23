@@ -1,6 +1,6 @@
 enyo.ready(function () {
 	enyo.kind({
-		name: "Bootplate.LoginView",
+		name: "Bootplate.LoginForm",
 		kind: "FittableRows",
 		fit: true,
 		bindings: [{
@@ -30,10 +30,6 @@ enyo.ready(function () {
 					name: "password",
 					kind: "onyx.Input",
 					placeholder: "Password"
-				},{
-					name: "password",
-					kind: "onyx.Input",
-					placeholder: "Password"
 				},
         {
           kind: "onyx.Button",
@@ -51,7 +47,7 @@ enyo.ready(function () {
         {
           kind: "enyo.Control",
           content: "New User Signup",
-          styles: "color:blue;text-decoration;underline;"
+          styles: "color:blue;text-decoration;underline;",
           handlers: {
             onclick: 'userSignup'
           },
@@ -64,7 +60,7 @@ enyo.ready(function () {
         {
           kind: "enyo.Control",
           content: "Forgot My Password",
-          styles: "color:blue;text-decoration;underline;"
+          styles: "color:blue;text-decoration;underline;",
           handlers: {
             onclick: 'forgotPassword'
           },
@@ -76,7 +72,6 @@ enyo.ready(function () {
         }
       ]
 			}]
-		}]
 		}]
 	});
 
