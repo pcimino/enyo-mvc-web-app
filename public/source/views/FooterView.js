@@ -1,6 +1,6 @@
 enyo.kind({
   name: 'Bootplate.FooterView',
-  id: 'info',
+  id: 'footerView',
   tag: 'footer',
   components: [
     {
