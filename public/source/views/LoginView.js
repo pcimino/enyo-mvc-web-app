@@ -2,10 +2,10 @@ enyo.ready(function () {
 
 	enyo.kind({
 		name: "Bootplate.LoginView",
-    kind: "enyo.FittableRows",
-    classes: "fittable-sample-box enyo-fit",
-    tag: 'body',
-    fit: true,
+    kind: "Bootplate.ParentView",
+    id: 'loginView',
+    tag: 'body', // give it a specific html tag
+    classes: "onyx enyo-fit",
     bindings: [
       {
 			  from: ".$.username.value",
@@ -18,31 +18,38 @@ enyo.ready(function () {
 		  }
     ],
     controller: 'Bootplate.logincontroller',
-    components: [
-      {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "fittable-sample-box fittable-sample-mtb fittable-sample-o", components: [
-        {name:'headerLeftContent', content: "header-left", classes: "fittable-sample-box fittable-sample-mlr"},
-			  {name:'headerCenterContent', content: "header-center", fit: true, classes: "fittable-sample-box fittable-sample-mlr fittable-sample-o"},
-			  {name:'headerRightContent', content: "header-right", classes: "fittable-sample-box fittable-sample-mlr"}
-		  ]},
-      {name:'bodyContainer', kind: "FittableColumns", fit: true, classes: "fittable-sample-box fittable-sample-mtb enyo-center", components: [
-        {kind: "onyx.InputDecorator", components: [
-          { content: "Username:", allowHtml: true},
+    create: function() {
+      this.inherited(arguments);
+      this.setupHeaderContent();
+      this.setupBodyContent();
+      this.setupFooterContent();
+    },
+    onUserSignup: function() {
+    console.log("onUserSignup");
+      //this.bubble('onUserSignup')
+    },
+    setupBodyContent: function() {
+      this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
+      this.$.bodyContainer.createComponent(
           { name: "username",
 					  kind: "onyx.Input",
-            fit: true,
-            classes: "fittable-sample-box fittable-sample-mlr",
+            classes:"form-input-box form-field-left-margin",
 					  placeholder: "Username"
-				  },
-          { content: "Password:", allowHtml: true},
+				  }
+      );
+      this.$.bodyContainer.createComponent({ tag: "br"});
+      this.$.bodyContainer.createComponent(
           { name: "password",
 					  kind: "onyx.Input",
-            fit: true,
-            classes: "fittable-sample-box fittable-sample-mlr",
+            classes:"form-input-box form-field-left-margin",
 					  placeholder: "Password"
-				  },
+				  }
+      );
+      this.$.bodyContainer.createComponent({ tag: "br"});
+      this.$.bodyContainer.createComponent(
           { kind: "onyx.Button",
             content: "Login",
-            classes: "onyx-blue",
+            classes: "onyx-blue form-field-left-margin",
             handlers: {
               onclick: 'login'
             },
@@ -51,10 +58,20 @@ enyo.ready(function () {
               this.bubble('onLogin');
               return true;
             }
-          },
-          { kind: "enyo.Control",
+          }
+      );
+      this.$.bodyContainer.createComponent({ tag: "br", classes:"form-field-left-margin"});
+
+      this.$.bodyContainer.createComponent({
+      tag: 'p',
+      allowHtml: true,
+      classes:"form-field-left-margin href-link",
+      content: '<a href="#" onclick="this.onUserSignup">New User Signup test</a>'	});
+
+
+      this.$.bodyContainer.createComponent({ kind: "enyo.Control",
             content: "New User Signup",
-            styles: "color:blue;text-decoration;underline;",
+            classes:"form-field-left-margin href-link",
             handlers: {
               onclick: 'userSignup'
             },
@@ -63,11 +80,12 @@ enyo.ready(function () {
               this.bubble('onUserSignup');
               return true;
             }
-          },
-          { content: "<br>", allowHtml: true},
+          }
+      );
+      this.$.bodyContainer.createComponent(
           { kind: "enyo.Control",
             content: "Forgot My Password",
-            styles: "color:blue;text-decoration;underline;",
+            classes:"form-field-left-margin href-link",
             handlers: {
               onclick: 'forgotPassword'
             },
@@ -77,14 +95,7 @@ enyo.ready(function () {
               return true;
             }
           }
-        ]},
-      ]},
-      {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "fittable-sample-box fittable-sample-mtb fittable-sample-o", components: [
-        {name:'footerLeftContent', content: "footer-left", classes: "fittable-sample-box fittable-sample-mlr"},
-			  {name:'footerCenterContent', content: "footer-center", fit: true, classes: "fittable-sample-box fittable-sample-mlr fittable-sample-o"},
-			  {name:'footerRightContent', content: "footer-right", classes: "fittable-sample-box fittable-sample-mlr"},
-        {name: 'Bootplate.footerview',kind: 'Bootplate.FooterView'}
-		  ]}
-	  ]
+        );
+  }
   });
 });
