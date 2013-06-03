@@ -4,7 +4,7 @@
 enyo.kind({
   name: 'Bootplate.ParentView',
   kind: "enyo.FittableRows",
-  classes: "onyx onyx-sample fittable-sample-box enyo-fit",
+  classes: "onyx",
   tag: 'body',
   fit: true,
   setupHeaderContent: function() {

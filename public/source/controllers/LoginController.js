@@ -2,20 +2,12 @@ enyo.ready(function () {
 	enyo.kind({
 		name: "Bootplate.LoginController",
 		kind: "enyo.Controller",
-		data: {},
+    autoLoad: true,
+    data: {},
     handlers: {
       onLogin: 'login',
       onForgotPassword: 'forgotPassword',
       onUserSignup: 'userSignup',
-    },
-    events: {
-      onDispatchEvent: 'dispatchEvent'
-    },
-    // dispatchEvent
-    dispatchEvent: function (inSender, inEvent) {
-      console.log("dispatchEvent");
-      console.log(inSender);
-      console.log(inEvent);
     },
     // Login
     login: function () {
@@ -29,6 +21,5 @@ enyo.ready(function () {
     userSignup: function () {
       console.log("userSignup");
     }
-
 	});
 });

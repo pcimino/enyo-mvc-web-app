@@ -2,6 +2,7 @@ enyo.kind({
   name: 'Bootplate.FooterView',
   id: 'footerView',
   tag: 'footer',
+  classes: "onyx onyx-sample-tools",
   components: [
     {
       tag: 'p',
