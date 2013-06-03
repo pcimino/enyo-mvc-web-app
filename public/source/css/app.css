@@ -25,14 +25,35 @@
   border: 0.2em solid lightblue;
 }
 .body-margin {
-	margin-top: 20% !important;
-  margin-bottom: 20% !important;
+	margin-top: 15% !important;
+  margin-bottom: 15% !important;
 }
 .href-link {
 	color:blue;
   text-decoration:underline;
 }
 
+.clock-box {
+	  border: 2px solid gray;
+    margin: 12px 12px 12px 12px;
+    padding: 12px 0px 12px 12px;
+    background: gray;
+  margin-left:15%;
+  margin-right:15%;
+  font-family:arial;
+  color: white;
+  font-size:80px;
+  font-weight:bold;
+  text-align:center;
+}
+.clock-background {
+	  border: 2px solid black;
+    margin: 12px 12px 12px 12px;
+    padding: 12px 0px 12px 12px;
+    background: black;
+    margin-left:30%;
+    margin-right:30%;
+}
 
 .fittable-sample-box {
 	border: 2px solid lightblue;

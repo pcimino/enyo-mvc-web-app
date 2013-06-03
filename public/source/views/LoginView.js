@@ -5,7 +5,8 @@ enyo.ready(function () {
     kind: "Bootplate.ParentView",
     id: 'loginView',
     tag: 'body', // give it a specific html tag
-    classes: "onyx enyo-fit",
+    classes: "onyx",
+    controller: 'Bootplate.logincontroller',
     bindings: [
       {
 			  from: ".$.username.value",
@@ -17,16 +18,16 @@ enyo.ready(function () {
 			  kind: "enyo.InputBinding"
 		  }
     ],
-    controller: 'Bootplate.logincontroller',
     create: function() {
       this.inherited(arguments);
       this.setupHeaderContent();
       this.setupBodyContent();
       this.setupFooterContent();
     },
-    onUserSignup: function() {
-    console.log("onUserSignup");
-      //this.bubble('onUserSignup')
+    setupBodyContent2: function() {
+      this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
+      this.$.bodyContainer.createComponent({ name: "clockBackground", classes: "clock-background"});
+      this.$.bodyContainer.$.clockBackground.createComponent({ content :"99:99:99.99", classes: "clock-box"});
     },
     setupBodyContent: function() {
       this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
@@ -54,7 +55,6 @@ enyo.ready(function () {
               onclick: 'login'
             },
             login: function () {
-              this.inherited(arguments);
               this.bubble('onLogin');
               return true;
             }
@@ -75,8 +75,7 @@ enyo.ready(function () {
             handlers: {
               onclick: 'userSignup'
             },
-            login: function () {
-              this.inherited(arguments);
+            userSignup: function () {
               this.bubble('onUserSignup');
               return true;
             }
@@ -89,8 +88,7 @@ enyo.ready(function () {
             handlers: {
               onclick: 'forgotPassword'
             },
-            login: function () {
-              this.inherited(arguments);
+            forgotPassword: function () {
               this.bubble('onForgotPassword');
               return true;
             }
