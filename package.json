@@ -9,6 +9,6 @@
       , "npm": "1.2.11"
     }
   , "dependencies": {
-      "node-static": "latest"
+      "express": "latest"
   }
 }
