@@ -1,14 +1,14 @@
 enyo.ready(function () {
 	enyo.kind({
 		name: "Bootplate.ForgotPasswordController",
-		kind: "enyo.Controller",
+		kind: "Bootplate.ParentController",
 		data: {},
     handlers: {
-      onRequestPassword: 'requestPassword',
+      onPasswordReset: 'passwordReset',
       onCancel: 'cancel'
     },
     // requestPassword
-    requestPassword: function () {
+    passwordReset: function () {
     },
     // cancel
     cancel: function () {

@@ -1,7 +1,7 @@
 enyo.ready(function () {
 	enyo.kind({
 		name: "Bootplate.UserSignupController",
-		kind: "enyo.Controller",
+		kind: "Bootplate.ParentController",
 		data: {},
     handlers: {
       onUserSignup: 'userSignup',

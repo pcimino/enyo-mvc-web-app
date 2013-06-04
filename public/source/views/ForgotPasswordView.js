@@ -1,19 +1,15 @@
 enyo.ready(function () {
 
 	enyo.kind({
-		name: "Bootplate.LoginView",
+		name: "Bootplate.ForgotPasswordView",
     kind: "Bootplate.ParentView",
     id: 'loginView',
     tag: 'body', // give it a specific html tag
     classes: "onyx",
-    controller: 'Bootplate.LoginController',
+    controller: 'Bootplate.ForgotPasswordController',
     bindings: [
       {
 			  from: ".$.username.value",
-        to: ".app.controllers.login.data",
-			  kind: "enyo.InputBinding"
-		  },{
-			  from: ".$.password.value",
         to: ".app.controllers.login.data",
 			  kind: "enyo.InputBinding"
 		  }
@@ -35,27 +31,26 @@ enyo.ready(function () {
       );
       this.$.bodyContainer.createComponent({ tag: "br"});
       this.$.bodyContainer.createComponent(
-          { name: "password",
-					  kind: "onyx.Input",
-            classes:"form-input-box form-field-left-margin",
-					  placeholder: "Password"
-				  }
-      );
-      this.$.bodyContainer.createComponent({ tag: "br"});
-      this.$.bodyContainer.createComponent(
           { kind: "onyx.Button",
-            content: "Login",
+            content: "Request Password reset",
             classes: "onyx-blue form-field-left-margin",
             handlers: {
-              onclick: 'login'
+              onclick: 'passwordReset'
             },
-            login: function () {
-              this.bubble('onLogin');
+            passwordReset: function () {
+              this.bubble('onPasswordReset');
               return true;
             }
           }
       );
       this.$.bodyContainer.createComponent({ tag: "br", classes:"form-field-left-margin"});
+
+      this.$.bodyContainer.createComponent({
+      tag: 'p',
+      allowHtml: true,
+      classes:"form-field-left-margin href-link",
+      content: '<a href="#" onclick="this.onUserSignup">New User Signup test</a>'	});
+
 
       this.$.bodyContainer.createComponent({ kind: "enyo.Control",
             content: "New User Signup",
