@@ -1,5 +1,6 @@
 enyo.depends(
-	"LoginController.js"
+	"ParentController.js"
+  , "LoginController.js"
   , "UserSignupController.js"
   , "ForgotPasswordController.js"
 );

@@ -1,3 +1,5 @@
 enyo.depends(
-	"app.js"
+	"loginApp.js"
+  ,"forgotPasswordApp.js"
+  ,"userSignupApp.js"
 );

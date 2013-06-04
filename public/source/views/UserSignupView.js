@@ -1,12 +1,12 @@
 enyo.ready(function () {
 
 	enyo.kind({
-		name: "Bootplate.LoginView",
+		name: "Bootplate.UserSignupView",
     kind: "Bootplate.ParentView",
     id: 'loginView',
     tag: 'body', // give it a specific html tag
     classes: "onyx",
-    controller: 'Bootplate.LoginController',
+    controller: 'Bootplate.UserSignupController',
     bindings: [
       {
 			  from: ".$.username.value",
@@ -58,13 +58,13 @@ enyo.ready(function () {
       this.$.bodyContainer.createComponent({ tag: "br", classes:"form-field-left-margin"});
 
       this.$.bodyContainer.createComponent({ kind: "enyo.Control",
-            content: "New User Signup",
+            content: "Login",
             classes:"form-field-left-margin href-link",
             handlers: {
-              onclick: 'userSignup'
+              onclick: 'login'
             },
-            userSignup: function () {
-              this.bubble('onUserSignup');
+            login: function () {
+              this.bubble('onLogin');
               return true;
             }
           }
