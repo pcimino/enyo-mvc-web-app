@@ -19,3 +19,12 @@ enyo.ready(function () {
     }
 	});
 });
+
+/*
+for modifying username input field when name is available
+.removeClass
+.addClass
+
+form-input-error-box
+form-input-confirm-box
+*/

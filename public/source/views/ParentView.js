@@ -10,7 +10,9 @@ enyo.kind({
   setupHeaderContent: function() {
     if (this.$.headerContainer) this.$.headerContainer.destroy();
     this.createComponent({name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "fittable-sample-box fittable-sample-mtb fittable-sample-o"});
-    this.$.headerContainer.createComponent({name:'headerLeftContent', content: "header-left", classes: "fittable-sample-box fittable-sample-mlr"});
+
+    this.$.headerContainer.createComponent({name:'headerLeftContent', kind: "Image",
+					src: "img/translunar.png", classes: "fittable-sample-box fittable-sample-mlr"});
     this.$.headerContainer.createComponent({name:'headerCenterContent', content: "header-center", fit: true, classes: "fittable-sample-box fittable-sample-mlr fittable-sample-o"});
     this.$.headerContainer.createComponent({name:'headerRightContent', content: "header-right", classes: "fittable-sample-box fittable-sample-mlr"});
   },

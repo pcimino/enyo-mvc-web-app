@@ -4,7 +4,6 @@ enyo.depends(
   , "HomeView.js"
   , "ForgotPasswordView.js"
   , "UserSignupView.js"
-  , "UserSignupView.js"
   , "ReadUserInfoView.js"
   , "ReadUserListView.js"
   , "UpdateUserInfoView.js"
