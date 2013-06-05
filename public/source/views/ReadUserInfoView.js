@@ -1,7 +1,7 @@
 enyo.ready(function () {
 
 	enyo.kind({
-		name: "Bootplate.UserSignupView",
+		name: "Bootplate.ReadUserInfoView",
     kind: "Bootplate.ParentView",
     id: 'loginView',
     tag: 'body', // give it a specific html tag
@@ -26,7 +26,7 @@ enyo.ready(function () {
     },
     setupBodyContent: function() {
       this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
-      this.$.bodyContainer.createComponent({ content: "User Signup view"});
+      this.$.bodyContainer.createComponent({ content: "Read User Info view"});
     }
   });
 });

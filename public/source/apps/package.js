@@ -2,4 +2,8 @@ enyo.depends(
 	"loginApp.js"
   ,"forgotPasswordApp.js"
   ,"userSignupApp.js"
+  ,"updateUserInfoApp.js"
+  ,"readUserListApp.js"
+  ,"readUserInfoApp.js"
+  ,"deleteUserApp.js"
 );

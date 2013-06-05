@@ -26,7 +26,9 @@ enyo.ready(function () {
     },
     setupBodyContent: function() {
       this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
-      this.$.bodyContainer.createComponent({ content: "User Signup view"});
+      this.$.bodyContainer.createComponent(
+          { content: "Home page view" }
+      );
     }
   });
 });
