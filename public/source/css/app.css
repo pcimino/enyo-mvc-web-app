@@ -24,6 +24,18 @@
 	-webkit-box-shadow: -6px 0px 6px lightblue;
   border: 0.2em solid lightblue;
 }
+.form-input-error-box {
+	box-shadow: -6px 0px 6px red;
+	-moz-box-shadow: -6px 0px 6px red;
+	-webkit-box-shadow: -6px 0px 6px red;
+  border: 0.2em solid red;
+}
+.form-input-confirm-box {
+	box-shadow: -6px 0px 6px green;
+	-moz-box-shadow: -6px 0px 6px green;
+	-webkit-box-shadow: -6px 0px 6px green;
+  border: 0.2em solid green;
+}
 .body-margin {
 	margin-top: 15% !important;
   margin-bottom: 15% !important;
@@ -54,6 +66,17 @@
     margin-left:30%;
     margin-right:30%;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .fittable-sample-box {
 	border: 2px solid lightblue;

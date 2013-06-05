@@ -6,6 +6,10 @@ enyo.kind({
   name: "Bootplate.ParentController",
   kind: "enyo.Controller",
   autoLoad: true,
+  published: {
+    ajaxBaseURL: 'http://localhost',
+    ajaxBasePort: '3000'
+	},
   data: {},
   handlers: {
     onLogin: 'login',

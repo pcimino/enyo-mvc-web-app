@@ -1,12 +1,12 @@
 enyo.ready(function () {
 
 	enyo.kind({
-		name: "Bootplate.UserSignupView",
+		name: "Bootplate.HomeView",
     kind: "Bootplate.ParentView",
     id: 'loginView',
     tag: 'body', // give it a specific html tag
     classes: "onyx",
-    controller: 'Bootplate.UserSignupController',
+    controller: 'Bootplate.HomeController',
     bindings: [
       {
 			  from: ".$.username.value",

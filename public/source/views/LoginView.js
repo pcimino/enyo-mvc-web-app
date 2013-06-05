@@ -4,9 +4,14 @@ enyo.ready(function () {
 		name: "Bootplate.LoginView",
     kind: "Bootplate.ParentView",
     id: 'loginView',
+    dbAvailable: '',
     tag: 'body', // give it a specific html tag
     classes: "onyx",
     controller: 'Bootplate.LoginController',
+    handlers: {
+      onDbAvailable : 'dbAvailable',
+      onDbNotAvailable : 'dbNotAvailable',
+    },
     bindings: [
       {
 			  from: ".$.username.value",
@@ -16,13 +21,38 @@ enyo.ready(function () {
 			  from: ".$.password.value",
         to: ".app.controllers.login.data",
 			  kind: "enyo.InputBinding"
-		  }
+		  }, {
+        from: ".loginController.dbAvailable", //.loginApp.controllers.login.dbAvailable
+        to: ".dbAvailable"
+      }
     ],
     create: function() {
       this.inherited(arguments);
       this.setupHeaderContent();
       this.setupBodyContent();
       this.setupFooterContent();
+
+    },
+    rendered: function() {
+      this.inherited(arguments);
+      this.bubble('onCheckDB');
+    },
+    dbAvailableChanged: function() {
+     if (this.dbAvailable) {
+      alert('dbAvailable');
+     } else {
+       alert('dbNotAvailable');
+     }
+    }
+    dbAvailable: function() {
+      console.log('dbAvailable')
+      alert('dbAvailable');
+      return true;
+    },
+    dbNotAvailable: function() {
+      console.log('dbNotAvailable')
+      alert('dbNotAvailable');
+      return true;
     },
     setupBodyContent: function() {
       this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});

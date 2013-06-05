@@ -6,7 +6,7 @@ enyo.ready(function () {
     id: 'loginView',
     tag: 'body', // give it a specific html tag
     classes: "onyx",
-    controller: 'Bootplate.UserSignupController',
+    controller: 'Bootplate.DeleteUserInfoController',
     bindings: [
       {
 			  from: ".$.username.value",

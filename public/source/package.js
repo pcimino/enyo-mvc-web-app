@@ -1,13 +1,13 @@
 enyo.depends(
 	// include support libraries
-	"$lib/layout",
-	"$lib/onyx",
+	"$lib/layout"
+	, "$lib/onyx"
 	// include application sources
-	"css",
-	"models",
-	"controllers",
-	"views",
-	"apps",
+	, "css"
+	, "models"
+	, "controllers"
+	, "views"
+	, "apps"
 	// include our default entry point
-	"start.js"
+	, "start.js"
 );
