@@ -2,7 +2,7 @@ enyo.ready(function () {
 
 	enyo.kind({
 		name: "Bootplate.UpdateUserInfoView",
-    kind: "Bootplate.ParentView",
+    kind: "Bootplate.AuthenticatedParentView",
     id: 'loginView',
     tag: 'body', // give it a specific html tag
     classes: "onyx",

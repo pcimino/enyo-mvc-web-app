@@ -2,7 +2,7 @@ enyo.ready(function () {
 
 	enyo.kind({
 		name: "Bootplate.ForgotPasswordView",
-    kind: "Bootplate.ParentView",
+    kind: "Bootplate.PublicParentView",
     id: 'loginView',
     tag: 'body', // give it a specific html tag
     classes: "onyx",

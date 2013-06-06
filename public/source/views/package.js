@@ -1,6 +1,5 @@
 enyo.depends(
-  "ParentView.js"
-  , "LoginView.js"
+    "LoginView.js"
   , "HomeView.js"
   , "ForgotPasswordView.js"
   , "UserSignupView.js"
@@ -8,6 +7,10 @@ enyo.depends(
   , "ReadUserListView.js"
   , "UpdateUserInfoView.js"
   , "DeleteUserView.js"
-  , "FooterView.js"
-  , "HeaderView.js"
+  , "AuthenticatedParentView.js"
+  , "AuthenticatedHeaderView.js"
+  , "AuthenticatedFooterView.js"
+  , "PublicParentView.js"
+  , "PublicHeaderView.js"
+  , "PublicFooterView.js"
 );
