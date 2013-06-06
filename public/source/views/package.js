@@ -9,4 +9,5 @@ enyo.depends(
   , "UpdateUserInfoView.js"
   , "DeleteUserView.js"
   , "FooterView.js"
+  , "HeaderView.js"
 );

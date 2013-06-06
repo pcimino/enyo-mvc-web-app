@@ -1,24 +1,15 @@
 enyo.kind({
   name: 'Bootplate.FooterView',
+  kind: "enyo.FittableRows",
   id: 'footerView',
-  tag: 'footer',
-  classes: "onyx onyx-sample-tools",
+  tag: 'footer', // give it a specific html tag
+  classes: "onyx",
+  fit: true,
   components: [
-    {
-      tag: 'p',
-      content: 'Double-click to edit a todo'	},
-    {	tag: 'p',
-     components: [
-       {
-         tag: 'span',
-         content: 'Written by: '		},
-       {
-         tag: 'a',
-         attributes: { href: 'http://randomjavascript.blogspot.com/'			},
-         content: 'David Posin'		}]
-    },
-    {
-      tag: 'p',
-      allowHtml: true,
-      content: 'Part of <a href="http://todomvc.com">TodoMVC</a>'	}
-  ]});
+    {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "fittable-sample-box fittable-sample-mtb fittable-sample-o", components: [
+      {name:'footerLeftContent', content: "footer-left", classes: "fittable-sample-box fittable-sample-mlr"},
+      {name:'footerCenterContent', content: "footer-center", fit: true, classes: "fittable-sample-box fittable-sample-mlr fittable-sample-o"},
+      {name:'footerRightContent', content: "footer-right", classes: "fittable-sample-box fittable-sample-mlr"}
+    ]}
+  ]
+});

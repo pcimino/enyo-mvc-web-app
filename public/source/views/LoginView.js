@@ -43,16 +43,6 @@ enyo.ready(function () {
      } else {
        alert('dbNotAvailable');
      }
-    }
-    dbAvailable: function() {
-      console.log('dbAvailable')
-      alert('dbAvailable');
-      return true;
-    },
-    dbNotAvailable: function() {
-      console.log('dbNotAvailable')
-      alert('dbNotAvailable');
-      return true;
     },
     setupBodyContent: function() {
       this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
