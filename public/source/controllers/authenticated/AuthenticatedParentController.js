@@ -3,7 +3,7 @@
 // Enyo 2.x has a Routes class, which is really the way to go, still need to figure that out
 // in the mean time the parent has routing methods
 enyo.kind({
-  name: "Bootplate.ParentController",
+  name: "Bootplate.AuthenticatedParentController",
   kind: "enyo.Controller",
   autoLoad: true,
   published: {
@@ -12,26 +12,16 @@ enyo.kind({
 	},
   data: {},
   handlers: {
-    onLogin: 'login',
-    onForgotPassword: 'forgotPassword',
-    onUserSignup: 'userSignup',
+      onLogin: 'logout'
+    , onReadUserInfo: 'readUserInfo'
+    , onReadUserList: 'readUserList'
+    , onUpdateUserInfo: 'updateUserInfo'
+    , onDeleteUser: 'deleteUser'
   },
-  // Login
-  login: function () {
-    console.log("login");
+  // Logout
+  logout: function () {
+    console.log("logout");
     new Bootplate.LoginApp({name: "loginApp"}).renderInto(document.body);
-    console.log("done");
-  },
-  // ForgotPassword
-  forgotPassword: function () {
-    console.log("forgotPassword");
-    new Bootplate.ForgotPasswordApp({name: "forgotPasswordApp"}).renderInto(document.body);
-    console.log("done");
-  },
-  // UserSignup
-  userSignup: function () {
-    console.log("userSignup");
-    new Bootplate.UserSignupApp({name: "userSignupApp"}).renderInto(document.body);
     console.log("done");
   },
   // ReadUserInfo
