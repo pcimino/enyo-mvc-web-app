@@ -2,7 +2,7 @@ enyo.ready(function () {
 
 	enyo.kind({
 		name: "Bootplate.LoginView",
-    kind: "Bootplate.ParentView",
+    kind: "Bootplate.PublicParentView",
     id: 'loginView',
     dbAvailable: '',
     tag: 'body', // give it a specific html tag
