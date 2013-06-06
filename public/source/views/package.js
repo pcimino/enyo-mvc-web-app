@@ -1,16 +1,4 @@
 enyo.depends(
-    "LoginView.js"
-  , "HomeView.js"
-  , "ForgotPasswordView.js"
-  , "UserSignupView.js"
-  , "ReadUserInfoView.js"
-  , "ReadUserListView.js"
-  , "UpdateUserInfoView.js"
-  , "DeleteUserView.js"
-  , "AuthenticatedParentView.js"
-  , "AuthenticatedHeaderView.js"
-  , "AuthenticatedFooterView.js"
-  , "PublicParentView.js"
-  , "PublicHeaderView.js"
-  , "PublicFooterView.js"
+    "authenticated"
+  , "public"
 );
