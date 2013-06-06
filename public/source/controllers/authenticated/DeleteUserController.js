@@ -1,7 +1,7 @@
 enyo.ready(function () {
 	enyo.kind({
 		name: "Bootplate.DeleteUserController",
-		kind: "Bootplate.ParentController",
+		kind: "Bootplate.AuthenticatedParentController",
 		data: {},
     handlers: {
       onSomething: 'something'

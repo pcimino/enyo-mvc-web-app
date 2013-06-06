@@ -1,7 +1,7 @@
 enyo.ready(function () {
 	enyo.kind({
 		name: "Bootplate.LoginController",
-		kind: "Bootplate.ParentController",
+		kind: "Bootplate.PublicParentController",
     autoLoad: true,
     dbAvailable: '',
     data: {},

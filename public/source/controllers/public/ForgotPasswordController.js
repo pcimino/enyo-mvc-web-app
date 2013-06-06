@@ -1,7 +1,7 @@
 enyo.ready(function () {
 	enyo.kind({
 		name: "Bootplate.ForgotPasswordController",
-		kind: "Bootplate.ParentController",
+		kind: "Bootplate.PublicParentController",
 		data: {},
     handlers: {
       onPasswordReset: 'passwordReset',

@@ -1,7 +1,7 @@
 enyo.ready(function () {
 	enyo.kind({
-		name: "Bootplate.UpdateUserInfoController",
-		kind: "Bootplate.ParentController",
+		name: "Bootplate.ReadUserListController",
+		kind: "Bootplate.AuthenticatedParentController",
 		data: {},
     handlers: {
       onSomething: 'something'
