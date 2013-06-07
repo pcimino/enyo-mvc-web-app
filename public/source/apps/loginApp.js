@@ -9,5 +9,7 @@ enyo.kind({
 		name: "login",
 		kind: "Bootplate.LoginController"
 	}],
-  view: "Bootplate.LoginView"
+  published: {
+    view:'Bootplate.LoginView'
+  }
 });

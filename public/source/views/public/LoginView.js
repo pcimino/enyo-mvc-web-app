@@ -23,18 +23,12 @@ enyo.ready(function () {
         to: ".app.controllers.login.data",
 			  kind: "enyo.InputBinding"
 		  }
-      /* Was tryign to bind and it did appear to work initially, now broken
+      /* Was trying to bind and it did appear to work initially, now broken
       , {
         from: ".loginApp.controllers.login.dbAvailable",
         to: ".dbAvailable"
       }*/
     ]
-    , create: function() {
-        this.inherited(arguments);
-        this.setupHeaderContent();
-        this.setupBodyContent();
-        this.setupFooterContent();
-    }
     , rendered: function() {
         this.inherited(arguments);
         this.bubble('onCheckDB');
