@@ -1,46 +1,38 @@
 enyo.ready(function () {
 	enyo.kind({
-		name: "Bootplate.LoginController",
-		kind: "Bootplate.PublicParentController",
-    autoLoad: true,
-    dbAvailable: '',
-    data: {},
-    handlers: {
+		name: "Bootplate.LoginController"
+		, kind: "Bootplate.PublicParentController"
+    , dbAvailable: false
+    , data: {}
+    , handlers: {
       onCheckDB: 'checkDB'
-    },
+     }
     // check database connection
-    checkDB: function (inSender, inEvent) {
-      var checkDBUrl = this.ajaxBaseURL + ':' + this.ajaxBasePort + '/db';
+    , checkDB: function (inSender, inEvent) {
+        var checkDBUrl = this.ajaxBaseURL + ':' + this.ajaxBasePort + '/db';
 
-      var ajax = new enyo.Ajax({
-        url: checkDBUrl,
-        method: "GET",
-        handleAs: "json",
-        contentType: "application/x-www-form-urlencoded"
-      });
+        var jsonp = new enyo.JsonpRequest({
+          url: checkDBUrl,
+          method: "GET",
+          callbackName: "callback"
+        });
+        // send parameters the remote service using the 'go()' method
+        jsonp.go({});
+        // attach responders to the transaction object
+        jsonp.response(this, "processResponse");
 
-		  // send parameters the remote service using the 'go()' method
-		  ajax.go({});
-
-		  // attach responders to the transaction object
-		  ajax.response(this, "processResponse");
-
-		  // handle error
-		  ajax.error(this, "processError");
-
-	  },
-	  processResponse: function(inSender, inResponse) {
-		  console.log('processResponse');
-		  console.log(JSON.stringify(inResponse, null, 2));
-      //this.waterfallDown('onDbAvailable');
-      //loginApp.view.dbAvailable();
-      this.set("dbAvailable", true);
-	  },
-	  processError: function(inSender, inResponse) {
-      console.log('processError');
-		  console.log(JSON.stringify(inResponse, null, 2));
-      //loginApp.view.dbNotAvailable();
-      this.set("dbAvailable", false);
-	  }
+	    }
+	  , processResponse: function(inSender, inResponse) {
+        console.log('processResponse');
+        if (inResponse && inResponse.documents && inResponse.documents[0] && inResponse.documents[0].ok == '1') {
+          loginApp.view.dbAvailable();
+          // this is the right way: Set the value, which the view should be bound to and looking for changes
+          this.set("dbAvailable", true);
+        } else {
+          loginApp.view.dbNotAvailable();
+          this.set("dbAvailable", false);
+        }
+        //console.log(JSON.stringify(inResponse, null, 2));
+	   }
 	});
 });
