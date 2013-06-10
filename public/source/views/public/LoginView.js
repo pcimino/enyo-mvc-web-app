@@ -34,10 +34,12 @@ enyo.ready(function () {
         this.bubble('onCheckDB');
       }
     , dbAvailable: function() {
-        alert('dbAvailable');
+        // this.$.popupDialog.show();
+        // this.$.popupDialog.setMessage("Database is up.");
       }
     , dbNotAvailable: function() {
-        alert('dbNotAvailable');
+        this.$.popupDialog.show();
+        this.$.popupDialog.setMessage("Database is down.");
       }
     /*, dbAvailableChanged: function() {
      if (this.dbAvailable) {
@@ -47,6 +49,9 @@ enyo.ready(function () {
      }
     }*/
     , setupBodyContent: function() {
+        //this.inherited(arguments);
+        this.createComponent({name:'popupDialog', kind: "PopupDialog"});
+        if (this.$.bodyContainer) this.$.bodyContainer.destroy();
         this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
         this.$.bodyContainer.createComponent(
             { name: "username",

@@ -14,12 +14,6 @@ enyo.ready(function () {
 			  kind: "enyo.InputBinding"
 		  }
     ],
-    create: function() {
-      this.inherited(arguments);
-      this.setupHeaderContent();
-      this.setupBodyContent();
-      this.setupFooterContent();
-    },
     setupBodyContent: function() {
       this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
       this.$.bodyContainer.createComponent(
@@ -45,38 +39,29 @@ enyo.ready(function () {
       );
       this.$.bodyContainer.createComponent({ tag: "br", classes:"form-field-left-margin"});
 
-      this.$.bodyContainer.createComponent({
-      tag: 'p',
-      allowHtml: true,
-      classes:"form-field-left-margin href-link",
-      content: '<a href="#" onclick="this.onUserSignup">New User Signup test</a>'	});
-
-
       this.$.bodyContainer.createComponent({ kind: "enyo.Control",
-            content: "New User Signup",
-            classes:"form-field-left-margin href-link",
-            handlers: {
-              onclick: 'userSignup'
-            },
-            userSignup: function () {
-              this.bubble('onUserSignup');
-              return true;
-            }
-          }
-      );
-      this.$.bodyContainer.createComponent(
-          { kind: "enyo.Control",
-            content: "Forgot My Password",
-            classes:"form-field-left-margin href-link",
-            handlers: {
-              onclick: 'forgotPassword'
-            },
-            forgotPassword: function () {
-              this.bubble('onForgotPassword');
-              return true;
-            }
-          }
-        );
+        content: "Cancel",
+        classes:"form-field-left-margin href-link",
+        handlers: {
+          onclick: 'login'
+        },
+        login: function () {
+        this.bubble('onLogin');
+          return true;
+        }
+      });
+      this.$.bodyContainer.createComponent({ kind: "enyo.Control",
+        content: "New User Signup",
+        classes:"form-field-left-margin href-link",
+        handlers: {
+          onclick: 'userSignup'
+        },
+        userSignup: function () {
+          this.bubble('onUserSignup');
+          return true;
+        }
+      });
+
   }
   });
 });
