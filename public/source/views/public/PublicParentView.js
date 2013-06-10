@@ -17,6 +17,10 @@ enyo.kind({
       if (this.$.headerContainer) this.$.headerContainer.destroy();
       this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
   }
+  , setupBodyContent: function() {
+      if (this.$.bodyContainer) this.$.bodyContainer.destroy();
+      this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
+  }
   , setupFooterContent: function() {
       if (this.$.footerContainer) this.$.footerContainer.destroy();
       this.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView'});
