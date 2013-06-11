@@ -67,8 +67,22 @@
     margin-right:30%;
 }
 
-
-
+.header-width {
+    width:100%;
+}
+.header-left {
+    height:75px;
+    width:75px;
+}
+.header-center {
+    height:75px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.header-right {
+    width:75px;
+    height:75px;
+}
 
 
 
