@@ -6,10 +6,10 @@ enyo.kind({
   classes: "onyx",
   fit: true,
   components: [
-    {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "fittable-sample-box fittable-sample-mtb fittable-sample-o", components: [
-      {name:'footerLeftContent', content: "public footer-left", classes: "fittable-sample-box fittable-sample-mlr"},
-      {name:'footerCenterContent', content: "footer-center", fit: true, classes: "fittable-sample-box fittable-sample-mlr fittable-sample-o"},
-      {name:'footerRightContent', content: "footer-right", classes: "fittable-sample-box fittable-sample-mlr"}
+    {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "footer-width", components: [
+      {name:'footerLeftContent', content: "public footer left", classes: "footer-left"},
+      {name:'footerCenterContent', content: "footer center", fit: true, classes: "footer-center"},
+      {name:'footerRightContent', content: "footer right", classes: "footer-right"}
     ]}
   ]
 });
