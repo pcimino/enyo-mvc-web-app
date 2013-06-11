@@ -3,4 +3,4 @@ export SERVER_HOME=..
 # Development is the default environment, showing how to do it explicitly
 export NODE_ENV=development 
 cd $SERVER_HOME 
-git submodule update --recursive
+git submodule update --init --recursive

@@ -7,3 +7,8 @@
 [submodule "public/lib/onyx"]
 	path = public/lib/onyx
 	url = https://git@github.com/enyojs/onyx.git
+[submodule "public/lib/gravatar"]
+
+	path = public/lib/gravatar
+
+	url = https://github.com/pcimino/Gravatar.git

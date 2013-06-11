@@ -7,11 +7,11 @@ enyo.kind({
   classes: "onyx",
   fit: true,
   components: [
-    {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "fittable-sample-box fittable-sample-mtb fittable-sample-o",
+    {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "header-width",
      components: [
-       {name:'headerLeftContent', kind: "Image", src: "img/translunar.png"},
-       {name:'headerCenterContent', content: "public header-center", fit: true, classes: "fittable-sample-box fittable-sample-mlr fittable-sample-o"},
-       {name:'headerRightContent', content: "header-right", classes: "fittable-sample-box fittable-sample-mlr"}
+       {name:'headerLeftContent', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"},
+       {name:'headerCenterContent', content: "public header-center", fit: true, classes: "header-center"},
+       {name:'headerRightContent', content: "header-right", classes: "header-right", components: []}
      ]}
   ]
 });
