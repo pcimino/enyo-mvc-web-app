@@ -10,7 +10,7 @@ enyo.kind({
     {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "header-width",
      components: [
        {name:'headerLeftContent', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"},
-       {name:'headerCenterContent', content: "public header-center", fit: true, classes: "header-center"},
+       {name:'headerCenterContent', content: "authenticated header-center", fit: true, classes: "header-center"},
        {name:'headerRightContent', classes: "header-right", components: [ {name:"gravatar", kind: "tld.Gravatar", imageSize: 75}]}
      ]}
   ]
