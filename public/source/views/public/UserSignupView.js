@@ -30,8 +30,15 @@ enyo.ready(function () {
 		  }
     ],
     usernameChanged: function() {
+      console.log('onCheckUsername')
       this.bubble('onCheckUsername');
     },
+
+inputChange: function(inSender, inEvent){
+		console.log("inputChange", inSender.getValue(), inEvent);
+
+	},
+
     validUsernameChanged: function() {
       if (this.validUsername) {
         this.$.bodyContainer.$.username.addClass(form-input-confirm-box);
@@ -41,14 +48,14 @@ enyo.ready(function () {
     },
     setupBodyContent: function() {
       this.inherited(arguments);
-      //if (this.$.bodyContainer) this.$.bodyContainer.destroy();
-      //this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
         this.$.bodyContainer.createComponent(
             { name: "username",
               kind: "onyx.Input",
               classes:"form-input-box form-field-left-margin",
               placeholder: "Username",
-              onchange: function() {this.bubble('onCheckUsername');}
+              onchange: 'usernameChanged',
+              onkeypress: 'usernameChanged',
+              ontap: 'usernameChanged'
             }
         );
         this.$.bodyContainer.createComponent({ tag: "br"});
@@ -97,3 +104,49 @@ enyo.ready(function () {
     }
   });
 });
+
+
+/* JSFiddle
+enyo.ready(function () {
+//BACKUP STOP
+	enyo.kind({
+		name: "Bootplate.UserSignupView"
+  , kind: "Bootplate.PublicParentView"
+  , id: 'userSignupView'
+  , classes: "onyx"
+  , tag: 'body'
+  , fit: true
+  , create: function() {
+    this.inherited(arguments);
+    this.setupBodyContent();
+  },
+    components: [{ name: "usernameA",
+              kind: "onyx.Input",
+              classes:"form-input-box form-field-left-margin",
+              placeholder: "Username",
+              onchange: 'usernameChanged',
+              onkeypress: 'usernameChanged',
+              ontap: 'usernameChanged'
+            }],
+
+    usernameChanged: function() {
+      console.log('onCheckUsername')
+      //this.bubble('onCheckUsername');
+    },
+
+    setupBodyContent: function() {
+      this.inherited(arguments);
+        this.$.bodyContainer.createComponent(
+            { name: "usernameB",
+              kind: "onyx.Input",
+              classes:"form-input-box form-field-left-margin",
+              placeholder: "Username",
+              onchange: 'usernameChanged',
+              onkeypress: 'usernameChanged',
+              ontap: 'usernameChanged'
+            }
+        );
+    }
+  });
+});
+*/

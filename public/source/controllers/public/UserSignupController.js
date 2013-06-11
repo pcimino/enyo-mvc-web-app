@@ -37,7 +37,7 @@ enyo.ready(function () {
     processResponse: function(inSender, inResponse) {
         console.log('processResponse');
         if (inResponse && inResponse.documents && inResponse.documents[0] && inResponse.documents[0].ok == '1') {
-          loginApp.view.dbAvailable();
+          //userSignupApp.view.dbAvailable();
           // this is the right way: Set the value, which the view should be bound to and looking for changes
           this.setValidUsername(true);
         } else {

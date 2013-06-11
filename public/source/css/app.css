@@ -68,22 +68,37 @@
 }
 
 .header-width {
-    width:100%;
+  margin-top: 5px;
+  width:100%;
 }
 .header-left {
-    height:75px;
-    width:75px;
+  margin-left: 5px;
+  height:75px;
+  width:75px;
 }
 .header-center {
-    height:75px;
-    margin-left: 5px;
-    margin-right: 5px;
+  height:75px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .header-right {
-    width:75px;
-    height:75px;
+  width:75px;
+  height:75px;
 }
-
+.footer-width {
+  width:100%;
+}
+.footer-left {
+  margin-left: 5px;
+  width:175px;
+}
+.footer-center {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.footer-right {
+  width:175px;
+}
 
 
 
