@@ -57,7 +57,8 @@ enyo.ready(function () {
             { name: "username",
               kind: "onyx.Input",
               classes:"form-input-box form-field-left-margin",
-              placeholder: "Username"
+              placeholder: "Username",
+              owner: this  // http://jsfiddle.net/pcimino/Cxa2U/
             }
         );
         this.$.bodyContainer.createComponent({ tag: "br"});
@@ -65,7 +66,8 @@ enyo.ready(function () {
             { name: "password",
               kind: "onyx.Input",
               classes:"form-input-box form-field-left-margin",
-              placeholder: "Password"
+              placeholder: "Password",
+              owner: this
             }
         );
         this.$.bodyContainer.createComponent({ tag: "br"});
@@ -73,6 +75,7 @@ enyo.ready(function () {
             { kind: "onyx.Button",
               content: "Login",
               classes: "onyx-blue form-field-left-margin",
+              owner: this,
               handlers: {
                 onclick: 'login'
               },
@@ -87,6 +90,7 @@ enyo.ready(function () {
         this.$.bodyContainer.createComponent({ kind: "enyo.Control",
               content: "New User Signup",
               classes:"form-field-left-margin href-link",
+              owner: this,
               handlers: {
                 onclick: 'userSignup'
               },
@@ -100,6 +104,7 @@ enyo.ready(function () {
             { kind: "enyo.Control",
               content: "Forgot My Password",
               classes:"form-field-left-margin href-link",
+              owner: this,
               handlers: {
                 onclick: 'forgotPassword'
               },
