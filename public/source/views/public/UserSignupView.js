@@ -55,7 +55,8 @@ inputChange: function(inSender, inEvent){
               placeholder: "Username",
               onchange: 'usernameChanged',
               onkeypress: 'usernameChanged',
-              ontap: 'usernameChanged'
+              ontap: 'usernameChanged',
+              owner: this
             }
         );
         this.$.bodyContainer.createComponent({ tag: "br"});
@@ -63,7 +64,8 @@ inputChange: function(inSender, inEvent){
             { name: "password",
               kind: "onyx.Input",
               classes:"form-input-box form-field-left-margin",
-              placeholder: "Password"
+              placeholder: "Password",
+              owner: this
             }
         );
         this.$.bodyContainer.createComponent({ tag: "br"});
@@ -71,7 +73,8 @@ inputChange: function(inSender, inEvent){
             { name: "vPassword",
               kind: "onyx.Input",
               classes:"form-input-box form-field-left-margin",
-              placeholder: "Verify Password"
+              placeholder: "Verify Password",
+              owner: this
             }
         );
         this.$.bodyContainer.createComponent({ tag: "br", classes:"form-field-left-margin"});
@@ -79,6 +82,7 @@ inputChange: function(inSender, inEvent){
         this.$.bodyContainer.createComponent({ kind: "enyo.Control",
               content: "Cancel",
               classes:"form-field-left-margin href-link",
+              owner: this,
               handlers: {
                 onclick: 'login'
               },
@@ -92,6 +96,7 @@ inputChange: function(inSender, inEvent){
             { kind: "enyo.Control",
               content: "Forgot My Password",
               classes:"form-field-left-margin href-link",
+              owner: this,
               handlers: {
                 onclick: 'forgotPassword'
               },
