@@ -8,15 +8,12 @@ enyo.kind({
 		handler: 'login'
 	}, {
 		path: '/login',
-		'default': true,
 		handler: 'login'
 	}, {
 		path: '/userSignup',
-		'default': true,
 		handler: 'userSignup'
 	}, {
 		path: '/forgotPassword',
-		'default': true,
 		handler: 'forgotPassword'
 	}],
 	// Set a property on our global controller

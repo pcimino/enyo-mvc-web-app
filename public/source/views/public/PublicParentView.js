@@ -8,10 +8,10 @@ enyo.kind({
   , tag: 'body'
   , fit: true
   , create: function() {
-    this.inherited(arguments);
-    this.setupHeaderContent();
-    this.setupBodyContent();
-    this.setupFooterContent();
+      this.inherited(arguments);
+      this.setupHeaderContent();
+      this.setupBodyContent();
+      this.setupFooterContent();
   }
   , setupHeaderContent: function() {
       if (this.$.headerContainer) this.$.headerContainer.destroy();
