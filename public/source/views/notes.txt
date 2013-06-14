@@ -1,0 +1,29 @@
+App structure
+    PublicApp
+    AuthenticatedApp
+  
+    Still not sure about this, I wanted to make one to one relationship app+controller+view, but contect switching could get messy if I needed sesison data, how to pass session data or make a global
+    
+    The reason I don't like One App + One Controller + multiple views is all the event handling and methods. How will I keep them separate/clean. It was easier having one controller+view have a single responsibility
+    
+Controller structure
+    Routes : Handles navigation, such as between pages and controllers (login logout)
+    PublicController : handles functionality when a user is not logged into the site
+    AuthenticatedController: Handles functionality after authentication (priviledged functionality)
+    
+Views Structure
+    Here things get messy, only because things are broken up. The goal is to organize views and events
+    
+    PublicView : Maps to the PublicController, has a PublicHeader, Context and PublicFooter
+    AuthenticatedView : Maps to the AuthenticatedController, has an AuthenticatedHeader, Context and AuthenticatedFooter
+    
+    Headers & Footers
+        Not really defined at this time, other than recognizing 'Public' will have different content than 'Authenticated'. The only difference at this minor text content and Auth has a Gravatr image.
+    
+    Context : The views each have a 'bodyContainer' component. When a context within the view switches, a the bodyContainer.destroyComponents() is called and a new body/context is instantiated and added
+        LoginContext : Contains forms & events for logging the user into the site
+        UserSignupContext : Allows user to create a new account
+        ForgotPasswordContext : Allows user to reset password
+        
+Routing
+    The Routes controller intercepts 

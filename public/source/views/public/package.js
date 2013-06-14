@@ -5,4 +5,6 @@ enyo.depends(
   , "PublicParentView.js"
   , "PublicHeaderView.js"
   , "PublicFooterView.js"
+  , "PublicView.js"
+  , "body"
 );

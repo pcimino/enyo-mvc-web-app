@@ -5,11 +5,17 @@
 enyo.kind({
 	name: "Bootplate.LoginApp",
 	kind: "enyo.Application",
-	controllers: [{
-		name: "login",
-		kind: "Bootplate.LoginController"
-	}],
-  published: {
-    view:'Bootplate.LoginView'
+	controllers: [
+    {
+		  name: "login",
+		  kind: "Bootplate.PublicController"
+	  }
+    ,  {
+		  name: "routes",
+		  kind: "Bootplate.Routes"
+	  }
+  ]
+  , published: {
+    view:'Bootplate.PublicView'
   }
 });
