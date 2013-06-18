@@ -1,5 +1,5 @@
 enyo.depends(
     "ParentContent.js"
-  , "authenticated"
+  , "auth"
   , "public"
 );

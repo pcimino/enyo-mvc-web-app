@@ -25,6 +25,7 @@ enyo.kind({
   ]
   , rendered: function() {
       this.inherited(arguments);
+      console.log('onCheckDB');
       this.bubble('onCheckDB');
   }
   , dbAvailable: function() {

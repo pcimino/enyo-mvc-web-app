@@ -11,29 +11,21 @@ enyo.kind({
 		  kind: "Bootplate.PublicController"
 	  }
     , {
-		  name: "publicRoutes",
-		  kind: "Bootplate.PublicRoutes"
-	  }
-    , {
-		  name: "authRoutes",
-		  kind: "Bootplate.AuthRoutes"
-	  }
-    , {
-		  name: "adminRoutes",
-		  kind: "Bootplate.AdminRoutes"
+		  name: "routes",
+		  kind: "Bootplate.Routes"
 	  }
   ]
   , view:'Bootplate.PublicView'
   , published: {
-    publicView:''
-    , authenticatedView:''
+      publicView:''
+      , authView:''
   }
   , setView: function(assignedViewObj) {
     mvcApp.view = assignedViewObj;
     mvcApp.render();
   }
   , create: function() {
-    this.setPublicView(new Bootplate.PublicView({name: "PublicView"}));
-    this.setAuthenticatedView(new Bootplate.HomeView({name: "HomeView"}));
+    this.setPublicView(new Bootplate.PublicView({name: "publicView"}));
+    this.setAuthView(new Bootplate.HomeView({name: "homeView"}));
   }
 });

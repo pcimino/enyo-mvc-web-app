@@ -4,16 +4,14 @@ enyo.ready(function () {
     , kind: "Bootplate.ParentContent"
     , id: 'loginContent'
     , bindings: [
-      {
-			  from: ".$.username.value",
-        to: ".app.controllers.login.data",
-			  kind: "enyo.InputBinding"
-		  }
-      , {
-			  from: ".$.password.value",
-        to: ".app.controllers.login.data",
-			  kind: "enyo.InputBinding"
-		  }
+      { from: ".$.username.value"
+        , to: ".app.controllers.login.data"
+        , kind: "enyo.InputBinding"
+      }
+      , { from: ".$.password.value"
+          , to: ".app.controllers.login.data"
+          , kind: "enyo.InputBinding"
+      }
     ]
     , setupBodyContent: function(owner, renderFlag) {
         owner.createComponent(
