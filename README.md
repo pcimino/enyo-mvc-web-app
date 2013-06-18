@@ -33,3 +33,34 @@ Clone this repository and go to the home directory.
 
 # [Project Wiki](https://github.com/pcimino/enyo-mvc-app/wiki)
 [More detailed walk through for this app is here.](https://github.com/pcimino/enyo-mvc-app/wiki). Much easier to follow than sticking everything in the README.
+
+----
+
+App structure
+    MvcApp
+
+Controller structure
+    Routes : Handles navigation, such as between pages and controllers. Originally tried to break up into multiple Routers but only the last one would be recognized. So had to combine everything into one big route.
+
+    PublicController : handles functionality when a user is not logged into the site
+    AuthController: Handles functionality after authentication (priviledged functionality)
+
+Views Structure
+    The goal is to organize views and events. Originally a Controller and View were going to be a pair and used for functionality (i.e. user preference pages). However, the view is really a container for the content, still trying to figure out how/when/where it makes sense to compartmentalize content and functionality. One tricky thing (see below) is routing programatically: to keep the Routes controller from getting out of hand it is also broken up in to multiple pieces; when the programmer wants to re-route programmatically they need to know which router to use.
+
+    PublicView : Maps to the PublicController, has a PublicHeader, PublicContent and PublicFooter. Initial content is the LoginContent.
+    AuthView : Maps to the AuthController, has an AuthHeader, AuthContent and AuthFooter. Initial content is the HomeContent.
+
+    Headers & Footers
+        Not really defined at this time, other than recognizing 'Public' will have different Content than 'Auth'. The differences right now include minor text content and AuthHeader has a Gravatr image.
+
+    Content : The views each have a 'bodyContainer' component. When content within the view switches, a the bodyContainer.destroyComponents() is called and a new body/content is instantiated and added
+        LoginContent : Contains forms & events for logging the user into the site
+        UserSignupContent : Allows user to create a new account
+        ForgotPasswordContent : Allows user to reset password
+
+Routing
+    The Routes controller intercepts links and uses the appropriate handler. Navigation can be handled via linking:
+        &lt;a href="#/logout"&gt;Logout&lt;/a&gt;
+    or programitically:
+        mvcApp.$.publicRoutes.trigger({location:'/login'})

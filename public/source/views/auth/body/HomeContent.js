@@ -4,7 +4,6 @@ enyo.ready(function () {
     , kind: "Bootplate.ParentContent"
     , id: 'homeContent'
     , bindings: [
-
     ]
     , setupBodyContent: function(owner) {
         this.insertBreak(owner);

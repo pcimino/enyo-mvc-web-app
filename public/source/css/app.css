@@ -44,7 +44,18 @@
 	color:blue;
   text-decoration:underline;
 }
-
+.text-input-error-box {
+	box-shadow: -6px 0px 6px red;
+	-moz-box-shadow: -6px 0px 6px red;
+	-webkit-box-shadow: -6px 0px 6px red;
+  border: 0.2em solid red;
+}
+.text-input-confirm-box {
+	box-shadow: -6px 0px 6px green;
+	-moz-box-shadow: -6px 0px 6px green;
+	-webkit-box-shadow: -6px 0px 6px green;
+  border: 0.2em solid green;
+}
 .clock-box {
 	  border: 2px solid gray;
     margin: 12px 12px 12px 12px;

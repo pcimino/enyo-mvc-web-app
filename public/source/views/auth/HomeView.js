@@ -19,7 +19,7 @@ enyo.ready(function () {
     }
     , setupHeaderContent: function() {
       if (this.$.headerContainer) this.$.headerContainer.destroy();
-      this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthenticatedHeaderView'});
+      this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthHeaderView'});
     }
     , setupBodyContent: function() {
         this.createComponent({name:'popupDialog', kind: "PopupDialog"});
@@ -30,7 +30,7 @@ enyo.ready(function () {
     }
     , setupFooterContent: function() {
           if (this.$.footerContainer) this.$.footerContainer.destroy();
-          this.createComponent({name: 'footerContainer', kind: 'Bootplate.AuthenticatedFooterView'});
+          this.createComponent({name: 'footerContainer', kind: 'Bootplate.AuthFooterView'});
     }
   });
 });
