@@ -1,5 +1,5 @@
 enyo.depends(
-    "LoginContext.js"
-  , "ForgotPasswordContext.js"
-  , "UserSignupContext.js"
+    "LoginContent.js"
+  , "ForgotPasswordContent.js"
+  , "UserSignupContent.js"
 );

@@ -1,6 +1,6 @@
 enyo.depends(
-	"Routes.js"
-  , "PopupDialog.js"
+	"PopupDialog.js"
+  , "ParentController.js"
   , "public"
   , "authenticated"
 );

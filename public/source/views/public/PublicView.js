@@ -19,7 +19,7 @@ enyo.kind({
   , bindings: [
       /* Was trying to bind and it did appear to work initially, now broken
       , {
-        from: ".loginApp.controllers.login.dbAvailable",
+        from: ".mvcApp.controllers.login.dbAvailable",
         to: ".dbAvailable"
       }*/
   ]
@@ -50,13 +50,13 @@ enyo.kind({
       this.createComponent({name:'popupDialog', kind: "PopupDialog"});
       this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
 
-    //new Bootplate.LoginContext({name: "bodyContent"}).renderInto(this.$.bodyContainer);
-    this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContext'});
-    this.$.bodyContainer.$.bodyContent.setupBodyContext(this);
+    //new Bootplate.LoginContent({name: "bodyContent"}).renderInto(this.$.bodyContainer);
+    this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
+    this.$.bodyContainer.$.bodyContent.setupBodyContent(this.$.bodyContainer);
 
     /* Alternative
-      var content = new Bootplate.LoginContext({name:'bodyContent'});
-      content.setupBodyContext(this);
+      var content = new Bootplate.LoginContent({name:'bodyContent'});
+      content.setupBodyContent(this);
       content.renderInto(this.$.bodyContainer);
     */
   }

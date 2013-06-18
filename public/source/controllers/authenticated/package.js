@@ -1,8 +1,5 @@
 enyo.depends(
-	"AuthenticatedParentController.js"
-  , "DeleteUserController.js"
-  , "HomeController.js"
-  , "ReadUserInfoController.js"
-  , "ReadUserListController.js"
-  , "UpdateUserInfoController.js"
+	"HomeController.js"
+    , "AuthRoutes.js"
+    , "AdminRoutes.js"
 );

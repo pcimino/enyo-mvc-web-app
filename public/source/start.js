@@ -1,3 +1,3 @@
 enyo.ready(function () {
-	new Bootplate.LoginApp({name: "loginApp"});
+	new Bootplate.MvcApp({name: "mvcApp"});
 });
