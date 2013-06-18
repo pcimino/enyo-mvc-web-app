@@ -4,7 +4,7 @@
 // in the mean time the parent has routing methods
 enyo.kind({
   name: "Bootplate.PublicController",
-  kind: "enyo.Controller",
+  kind: "Bootplate.ParentController",
   autoLoad: true,
   published: {
       ajaxBaseURL: 'http://localhost'
@@ -21,7 +21,7 @@ enyo.kind({
   // Login
   login: function () {
     console.log("login");
-    //new Bootplate.LoginApp({name: "loginApp"}).renderInto(document.body);
+    mvcApp.setView(mvcApp.getAuthenticatedView());
     console.log("done");
   },
   // ForgotPassword
@@ -54,11 +54,11 @@ enyo.kind({
 	  , processResponse: function(inSender, inResponse) {
         console.log('processResponse');
         if (inResponse && inResponse.documents && inResponse.documents[0] && inResponse.documents[0].ok == '1') {
-          loginApp.view.dbAvailable();
+          mvcApp.view.dbAvailable();
           // this is the right way: Set the value, which the view should be bound to and looking for changes
           this.set("dbAvailable", true);
         } else {
-          loginApp.view.dbNotAvailable();
+          mvcApp.view.dbNotAvailable();
           this.set("dbAvailable", false);
         }
         //console.log(JSON.stringify(inResponse, null, 2));

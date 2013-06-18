@@ -1,7 +1,7 @@
 enyo.ready(function () {
 	enyo.kind({
 		name: "Bootplate.HomeController",
-		kind: "Bootplate.AuthenticatedParentController",
+		kind: "Bootplate.ParentController",
 		data: {},
     handlers: {
       onSomething: 'something'

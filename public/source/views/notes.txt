@@ -1,7 +1,6 @@
 App structure
-    PublicApp
-    AuthenticatedApp
-  
+    MvcApp
+
     Still not sure about this, I wanted to make one to one relationship app+controller+view, but contect switching could get messy if I needed sesison data, how to pass session data or make a global
     
     The reason I don't like One App + One Controller + multiple views is all the event handling and methods. How will I keep them separate/clean. It was easier having one controller+view have a single responsibility
@@ -14,16 +13,16 @@ Controller structure
 Views Structure
     Here things get messy, only because things are broken up. The goal is to organize views and events
     
-    PublicView : Maps to the PublicController, has a PublicHeader, Context and PublicFooter
-    AuthenticatedView : Maps to the AuthenticatedController, has an AuthenticatedHeader, Context and AuthenticatedFooter
+    PublicView : Maps to the PublicController, has a PublicHeader, Content and PublicFooter
+    AuthenticatedView : Maps to the AuthenticatedController, has an AuthenticatedHeader, Content and AuthenticatedFooter
     
     Headers & Footers
-        Not really defined at this time, other than recognizing 'Public' will have different content than 'Authenticated'. The only difference at this minor text content and Auth has a Gravatr image.
+        Not really defined at this time, other than recognizing 'Public' will have different Content than 'Authenticated'. The only difference at this minor text content and Auth has a Gravatr image.
     
-    Context : The views each have a 'bodyContainer' component. When a context within the view switches, a the bodyContainer.destroyComponents() is called and a new body/context is instantiated and added
-        LoginContext : Contains forms & events for logging the user into the site
-        UserSignupContext : Allows user to create a new account
-        ForgotPasswordContext : Allows user to reset password
+    Content : The views each have a 'bodyContainer' component. When content within the view switches, a the bodyContainer.destroyComponents() is called and a new body/content is instantiated and added
+        LoginContent : Contains forms & events for logging the user into the site
+        UserSignupContent : Allows user to create a new account
+        ForgotPasswordContent : Allows user to reset password
         
 Routing
     The Routes controller intercepts 

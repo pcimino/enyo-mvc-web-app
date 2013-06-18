@@ -1,8 +1,8 @@
 enyo.ready(function () {
 	enyo.kind({
-	  name: "Bootplate.UserSignupContext"
-    , kind: "enyo.Control"
-    , id: 'userSignupContext'
+	  name: "Bootplate.UserSignupContent"
+    , kind: "Bootplate.ParentContent"
+    , id: 'userSignupContent'
     , published: {
         validUsername: false
     }
@@ -39,9 +39,8 @@ enyo.ready(function () {
           this.$.bodyContainer.$.username.addClass(form-input-error-box);
         }
       }
-    , setupBodyContext: function(owner) {
-        owner.$.bodyContainer.destroyComponents();
-        owner.$.bodyContainer.createComponent(
+    , setupBodyContent: function(owner) {
+        owner.createComponent(
             { name: "username",
               kind: "onyx.Input",
               classes:"form-input-box form-field-left-margin",
@@ -52,8 +51,8 @@ enyo.ready(function () {
               owner: owner
             }
         );
-        owner.$.bodyContainer.createComponent({ tag: "br"});
-        owner.$.bodyContainer.createComponent(
+        this.insertBreak(owner);
+        owner.createComponent(
             { name: "password",
               kind: "onyx.Input",
               classes:"form-input-box form-field-left-margin",
@@ -61,8 +60,8 @@ enyo.ready(function () {
               owner: owner
             }
         );
-        owner.$.bodyContainer.createComponent({ tag: "br"});
-        owner.$.bodyContainer.createComponent(
+        this.insertBreak(owner);
+        owner.createComponent(
             { name: "vPassword",
               kind: "onyx.Input",
               classes:"form-input-box form-field-left-margin",
@@ -70,36 +69,13 @@ enyo.ready(function () {
               owner: owner
             }
         );
-        owner.$.bodyContainer.createComponent({ tag: "br", classes:"form-field-left-margin"});
+        this.insertBreak(owner);
+        this.insertInternalLink(owner, 'login', 'Cancel');
+        this.insertBreak(owner);
+        this.insertInternalLink(owner, 'forgotPassword', 'Reset My Password');
 
-        owner.$.bodyContainer.createComponent({ kind: "enyo.Control",
-              content: "Cancel",
-              classes:"form-field-left-margin href-link",
-              owner: owner,
-              handlers: {
-                onclick: 'login'
-              },
-              login: function () {
-                owner.bubble('onLogin');
-                return true;
-              }
-            }
-        );
-        owner.$.bodyContainer.createComponent(
-            { kind: "enyo.Control",
-              content: "Forgot My Password",
-              classes:"form-field-left-margin href-link",
-              owner: owner,
-              handlers: {
-                onclick: 'forgotPassword'
-              },
-              forgotPassword: function () {
-                owner.bubble('onForgotPassword');
-                return true;
-              }
-            }
-          );
-      } // end setupBodyContext
+        owner.render();
+      } // end setupBodyContent
   });
 });
 
