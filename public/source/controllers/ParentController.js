@@ -18,7 +18,7 @@ enyo.kind({
   logout: function () {
     console.log("logout");
     // TODO end session
-    mvcApp.$.routes.handle('/login')
+    mvcApp.$.routes.handle('/loginNav')
     console.log("done");
   }
 });

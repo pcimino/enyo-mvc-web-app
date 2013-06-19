@@ -38,6 +38,10 @@ enyo.kind({
   }
   // check database connection
   , checkDB: function (inSender, inEvent) {
+    var checkDB = new JSONP.CheckDB({method:'GET', rest:'/db'});
+    checkDB.makeRequest({});
+  }
+  , checkDB2: function (inSender, inEvent) {
       var checkDBUrl = this.ajaxBaseURL + ':' + this.ajaxBasePort + '/db';
       console.log(checkDBUrl);
       var jsonp = new enyo.JsonpRequest(
