@@ -32,83 +32,29 @@ enyo.kind({
         , handler: 'home'
 	  }
   ]
-	,	handle: function (path) {
-      this.inherited(arguments);
-    var stripPath = path;
-    if (path.indexOf('?') > 0) {
-      stripPath = path.slice(0, path.indexOf('?'));
-      console.log(stripPath);
-    }
-
-			// fast track is to check against static routes first
-			if (this._handle_static(stripPath)) {
-				return;
-			}
-			// then we check against dynamic paths in this simple scheme
-			else if (this._handle_dynamic(stripPath)) {
-				/* do nothing */
-			}
-			else {
-				this._handle_default(stripPath);
-			}
-		}
-  // test to see if we're in the correct controller
-  // if not, redirect tot he correct route
-  , verifyRoute: function() {
-    //TODO Need to figure out paths in auth versus public
-    // maybe the contxt in the Routes controller???
-//    if (mvcApp) {
-      // active session
-//    } else
-    {
+	,	loadBodyContent: function (kindByName, renderFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
-        return true;
-      } else {
-//        mvcApp.$.routes.trigger({location:'/login'})
+        var owner = mvcApp.view.$.bodyContainer;
+        owner.destroyClientControls();
+        owner.createComponent({name:'bodyContent', kind: kindByName});
+        owner.$.bodyContent.setupBodyContent(owner, renderFlag);
       }
-    }
-    return false;
   }
   , login: function () {
       console.log("login router");
-      if (this.verifyRoute()) {
-        var owner = mvcApp.view.$.bodyContainer;
-        owner.destroyClientControls();
-        owner.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
-        owner.$.bodyContent.setupBodyContent(owner, false);
-      }
+      this.loadBodyContent('Bootplate.LoginContent', true);
   }
   , loginNav: function () {
       console.log("loginNav router");
-      if (this.verifyRoute()) {
-        var owner = mvcApp.view.$.bodyContainer;
-        owner.destroyClientControls();
-        owner.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
-        owner.$.bodyContent.setupBodyContent(owner, true);
-      }
+      this.loadBodyContent('Bootplate.LoginContent', true);
 	}
   , userSignup: function () {
       console.log("userSignup router");
-      if (this.verifyRoute()) {
-        var owner = mvcApp.view.$.bodyContainer;
-        owner.destroyClientControls();
-        owner.createComponent({name:'bodyContent', kind: 'Bootplate.UserSignupContent'});
-        owner.$.bodyContent.setupBodyContent(owner);
-      } else {
-        mvcApp.$.routes.trigger({location:'/loginNav'})
-      }
+      this.loadBodyContent('Bootplate.UserSignupContent', false);
 	}
   , forgotPassword: function () {
       console.log("forgotPassword router");
-
-      if (this.verifyRoute()) {
-        var owner = mvcApp.view.$.bodyContainer;
-        owner.destroyClientControls();
-        owner.createComponent({name:'bodyContent', kind: 'Bootplate.ForgotPasswordContent'});
-        owner.$.bodyContent.setupBodyContent(owner);
-      } else {
-        mvcApp.$.routes.handle('/login');
-      }
+      this.loadBodyContent('Bootplate.ForgotPasswordContent', false);
   }
   , logout: function () {
       console.log("logout router");
@@ -116,39 +62,19 @@ enyo.kind({
   }
   , systemUnavailable: function () {
       console.log("systemUnavailable router");
-      if (this.verifyRoute()) {
-        var owner = mvcApp.view.$.bodyContainer;
-        owner.destroyClientControls();
-        owner.createComponent({name:'bodyContent', kind: 'Bootplate.SystemUnavailableContent'});
-        owner.$.bodyContent.setupBodyContent(owner, true);
-      }
+      this.loadBodyContent('Bootplate.SystemUnavailableContent', true);
   }
   , deleteUser: function () {
-		// Still need to figure out how this wiring works
-        // BootPlate.LoginController.setRoute(this.current);
-    console.log("deleteUser router");
-    if (this.verifyRoute()) {
-      var owner = mvcApp.view.$.bodyContainer;
-      owner.destroyClientControls();
-      owner.createComponent({name:'bodyContent', kind: 'Bootplate.DeleteUserContent'});
-      owner.$.bodyContent.setupBodyContent(owner, false);
-    }
+      console.log("deleteUser router");
+      this.loadBodyContent('Bootplate.DeleteUserContent', false);
 	}
 	, logout: function () {
-		// Still need to figure out how this wiring works
-        // BootPlate.LoginController.setRoute(this.current);
-        console.log("logout router");
+		    console.log("logout router");
         mvcApp.setView(mvcApp.getPublicView());
+        this.loadBodyContent('Bootplate.LoginContent', true);
 	}
   , home: function () {
-		// Still need to figure out how this wiring works
-        // BootPlate.LoginController.setRoute(this.current);
-       console.log("home router");
-    if (this.verifyRoute()) {
-      var owner = mvcApp.view.$.bodyContainer;
-      owner.destroyClientControls();
-      owner.createComponent({name:'bodyContent', kind: 'Bootplate.HomeContent'});
-      owner.$.bodyContent.setupBodyContent(owner, false);
-    }
+		  console.log("home router");
+      this.loadBodyContent('Bootplate.HomeContent', false);
 	}
 });
