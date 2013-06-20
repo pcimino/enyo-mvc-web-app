@@ -10,7 +10,7 @@ enyo.ready(function () {
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'readUserInfo', 'Read User Info');
         this.insertBreak(owner);
-        this.insertInternalLink(owner, 'readUserList', 'Search For Users');
+        this.insertInternalLink(owner, 'updateUserList', 'Update User');
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'logout', 'Logout');
 

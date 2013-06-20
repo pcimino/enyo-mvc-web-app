@@ -11,11 +11,8 @@ enyo.kind({
 		  kind: "Bootplate.PublicController"
 	  }
     , {
-		  name: "routes",
+		  name: "Routes",
 		  kind: "Bootplate.Routes"
-	  }, {
-		  name: "publicRoutes",
-		  kind: "Bootplate.PublicRoutes"
 	  }
   ]
   , view:'Bootplate.PublicView'
