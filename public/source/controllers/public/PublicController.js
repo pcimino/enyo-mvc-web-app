@@ -17,6 +17,7 @@ enyo.kind({
      , onForgotPassword: 'forgotPassword'
      , onUserSignup: 'userSignup'
      , onCheckDB: 'checkDB'
+     , onCheckDBResult: 'checkDBResult'
   }
   // Login
   , login: function () {
@@ -38,39 +39,13 @@ enyo.kind({
   }
   // check database connection
   , checkDB: function (inSender, inEvent) {
-    var checkDB = new JSONP.CheckDB({method:'GET', rest:'/db'});
+    var checkDB = new JSONP.CheckDB({method:'GET', rest:'/db', owner:this, fireEvent:'onCheckDBResult'});
     checkDB.makeRequest({});
   }
-  , checkDB2: function (inSender, inEvent) {
-      var checkDBUrl = this.ajaxBaseURL + ':' + this.ajaxBasePort + '/db';
-      console.log(checkDBUrl);
-      var jsonp = new enyo.JsonpRequest(
-        { url: checkDBUrl
-          , method: "GET"
-        });
-
-      // attach responders to the transaction object
-      jsonp.response(this, "processResponse");
-      jsonp.error(this, "processError");
-
-      // send parameters the remote service using the 'go()' method
-      jsonp.go({});
-	}
-	, processError: function(inSender, inResponse) {
-      console.log('processError');
-      mvcApp.$.publicRoutes.trigger({location:'/systemUnavailable'});
-	}
-	, processResponse: function(inSender, inResponse) {
-      console.log('processResponse');
-      if (inResponse && inResponse.documents && inResponse.documents[0] && inResponse.documents[0].ok == '1') {
-        mvcApp.view.dbAvailable();
-        // this is the right way: Set the value, which the view should be bound to and looking for changes
-        this.set("dbAvailable", true);
-      } else {
-        mvcApp.view.dbNotAvailable();
-        this.set("dbAvailable", false);
-        mvcApp.$.publicRoutes.trigger({location:'/systemUnavailable'});
+  , checkDBResult: function (inSender, inEvent) {
+      console.log("checkDBResult");
+      if (!inEvent.dbAvailable) {
+        mvcApp.controllers.routes.trigger({location:'/systemUnavailable'});
       }
-      //console.log(JSON.stringify(inResponse, null, 2));
-	}
+  }
 });

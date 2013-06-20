@@ -1,3 +1,4 @@
 enyo.depends(
-	"CheckDB.js"
+	"JSONPParent.js"
+  , "CheckDB.js"
 );
