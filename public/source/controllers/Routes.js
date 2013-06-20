@@ -24,12 +24,18 @@ enyo.kind({
     , { path: '/deleteUser'
         , handler: 'deleteUser'
 	  }
-    , { path: '/logout'
-		    , handler: 'logout'
-	  }
     , { path: '/home'
         , 'default': true
         , handler: 'home'
+	  }
+    , { path: '/readUserInfo'
+        , handler: 'readUserInfo'
+	  }
+    , { path: '/readUserList'
+        , handler: 'readUserList'
+	  }
+    , { path: '/updateUserInfo'
+        , handler: 'updateUserInfo'
 	  }
   ]
 	,	loadBodyContent: function (kindByName, renderFlag) {
@@ -40,6 +46,30 @@ enyo.kind({
         owner.$.bodyContent.setupBodyContent(owner, renderFlag);
       }
   }
+  , logout: function () {
+      console.log("logout router");
+      mvcApp.$.routes.trigger({location:'/login'});
+  }
+  , deleteUser: function () {
+      console.log("deleteUser router");
+      this.loadBodyContent('Bootplate.DeleteUserContent', false);
+	}
+	, readUserInfo: function () {
+		    console.log("readUserInfo router");
+        this.loadBodyContent('Bootplate.ReadUserInfoContent', false);
+	}
+	, readUserList: function () {
+		    console.log("readUserList router");
+        this.loadBodyContent('Bootplate.ReadUserListContent', true);
+	}
+	, updateUserInfo: function () {
+		    console.log("updateUserInfo router");
+        this.loadBodyContent('Bootplate.UpdateUserInfoContent', false);
+	}
+  , home: function () {
+		  console.log("home router");
+      this.loadBodyContent('Bootplate.HomeContent', false);
+	}
   , login: function () {
       console.log("login router");
       this.loadBodyContent('Bootplate.LoginContent', true);
@@ -56,25 +86,9 @@ enyo.kind({
       console.log("forgotPassword router");
       this.loadBodyContent('Bootplate.ForgotPasswordContent', false);
   }
-  , logout: function () {
-      console.log("logout router");
-      mvcApp.$.routes.trigger({location:'/login'});
-  }
   , systemUnavailable: function () {
       console.log("systemUnavailable router");
       this.loadBodyContent('Bootplate.SystemUnavailableContent', true);
   }
-  , deleteUser: function () {
-      console.log("deleteUser router");
-      this.loadBodyContent('Bootplate.DeleteUserContent', false);
-	}
-	, logout: function () {
-		    console.log("logout router");
-        mvcApp.setView(mvcApp.getPublicView());
-        this.loadBodyContent('Bootplate.LoginContent', true);
-	}
-  , home: function () {
-		  console.log("home router");
-      this.loadBodyContent('Bootplate.HomeContent', false);
-	}
+
 });
