@@ -21,11 +21,11 @@ enyo.kind({
     , { path: '/logout',
 		    handler: 'logout'
 	  }
-      , { path: '/deleteUser'
+    , { path: '/deleteUser'
         , handler: 'deleteUser'
-	    }
+	  }
     , { path: '/logout'
-		, handler: 'logout'
+		    , handler: 'logout'
 	  }
     , { path: '/home'
         , 'default': true

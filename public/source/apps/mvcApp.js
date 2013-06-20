@@ -13,6 +13,9 @@ enyo.kind({
     , {
 		  name: "routes",
 		  kind: "Bootplate.Routes"
+	  }, {
+		  name: "publicRoutes",
+		  kind: "Bootplate.PublicRoutes"
 	  }
   ]
   , view:'Bootplate.PublicView'
