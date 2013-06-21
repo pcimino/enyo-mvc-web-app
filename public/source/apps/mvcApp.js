@@ -7,8 +7,12 @@ enyo.kind({
 	kind: "enyo.Application",
 	controllers: [
     {
-		  name: "login",
+		  name: "publicController",
 		  kind: "Bootplate.PublicController"
+	  }
+    , {
+		  name: "authController",
+		  kind: "Bootplate.HomeController"
 	  }
     , {
 		  name: "routes",
@@ -19,7 +23,7 @@ enyo.kind({
   , publicView:''
   , authView:''
   , create: function() {
-    this.publicView =new Bootplate.PublicView({name: "publicView"});
+    this.publicView = new Bootplate.PublicView({name: "publicView"});
     this.authView = new Bootplate.HomeView({name: "homeView"});
   }
   , setPublicView: function() {

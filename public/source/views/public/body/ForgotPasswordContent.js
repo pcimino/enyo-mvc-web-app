@@ -6,7 +6,7 @@ enyo.ready(function () {
     , bindings: [
       {
 			  from: ".$.username.value",
-        to: ".app.controllers.login.data",
+        to: ".mvcApp.controllers.public.data",
 			  kind: "enyo.InputBinding"
 		  }
     ]
