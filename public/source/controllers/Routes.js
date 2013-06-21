@@ -4,10 +4,13 @@ enyo.kind({
   , routes: [
     { path: '/',
 		  'default': true,
-		   handler: 'login'
+		   handler: 'checkLogin', change:'true'
 	  }
     , { path: '/login',
-		    handler: 'loginNav'
+		    handler: 'login', change:'true'
+	  }
+    , { path: '/authenticate',
+		    handler: 'authenticate', change:'true'
 	  }
     , { path: '/systemUnavailable',
 		    handler: 'systemUnavailable'
@@ -25,7 +28,6 @@ enyo.kind({
         , handler: 'deleteUser'
 	  }
     , { path: '/home'
-        , 'default': true
         , handler: 'home'
 	  }
     , { path: '/readUserInfo'
@@ -48,34 +50,35 @@ enyo.kind({
   }
   , logout: function () {
       console.log("logout router");
-      mvcApp.$.routes.trigger({location:'/login'});
+      this.loadBodyContent('Bootplate.LoginContent', true);
   }
   , deleteUser: function () {
       console.log("deleteUser router");
       this.loadBodyContent('Bootplate.DeleteUserContent', false);
 	}
 	, readUserInfo: function () {
-		    console.log("readUserInfo router");
-        this.loadBodyContent('Bootplate.ReadUserInfoContent', false);
+		  console.log("readUserInfo router");
+      this.loadBodyContent('Bootplate.ReadUserInfoContent', false);
 	}
 	, readUserList: function () {
-		    console.log("readUserList router");
-        this.loadBodyContent('Bootplate.ReadUserListContent', true);
+		  console.log("readUserList router");
+      this.loadBodyContent('Bootplate.ReadUserListContent', true);
 	}
 	, updateUserInfo: function () {
-		    console.log("updateUserInfo router");
-        this.loadBodyContent('Bootplate.UpdateUserInfoContent', false);
+		  console.log("updateUserInfo router");
+      this.loadBodyContent('Bootplate.UpdateUserInfoContent', false);
 	}
   , home: function () {
 		  console.log("home router");
       this.loadBodyContent('Bootplate.HomeContent', false);
 	}
-  , login: function () {
-      console.log("login router");
+  , checkLogin: function () {
+      console.log("checkLogin router");
+    // TODO if logged in go to /home, otherwise to /login
       this.loadBodyContent('Bootplate.LoginContent', true);
   }
-  , loginNav: function () {
-      console.log("loginNav router");
+  , login: function () {
+      console.log("login router");
       this.loadBodyContent('Bootplate.LoginContent', true);
 	}
   , userSignup: function () {
@@ -89,6 +92,10 @@ enyo.kind({
   , systemUnavailable: function () {
       console.log("systemUnavailable router");
       this.loadBodyContent('Bootplate.SystemUnavailableContent', true);
+  }
+  , authenticate: function () {
+      console.log("authenticate router");
+      this.loadBodyContent('Bootplate.HomeContent', true);
   }
 
 });

@@ -22,7 +22,7 @@ enyo.kind({
   // Login
   , login: function () {
     console.log("login");
-    mvcApp.setView(mvcApp.getAuthView());
+    mvcApp.setAuthView();
     console.log("done");
   }
   // ForgotPassword

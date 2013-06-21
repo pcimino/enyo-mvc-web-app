@@ -41,11 +41,12 @@ enyo.ready(function () {
                 onclick: 'login'
               },
               login: function () {
-                owner.bubble('onLogin');
+                mvcApp.waterfall('onLogin');
                 return true;
               }
             }
         );
+
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'userSignup', 'New User Signup');
         this.insertBreak(owner);

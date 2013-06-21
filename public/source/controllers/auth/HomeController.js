@@ -4,10 +4,15 @@ enyo.ready(function () {
 		, kind: "Bootplate.ParentController"
 		, data: {}
     , handlers: {
-      onSomething: 'something'
+        onLogin2: 'logout'
     }
-    // signup
-    , something: function () {
+    // Logout
+    , logout: function () {
+      console.log("logout");
+      // TODO end session
+
+      mvcApp.setPublicView();
+      console.log("done");
     }
 	});
 });
