@@ -21,7 +21,7 @@ enyo.kind({
   }
   // Login
   , login: function () {
-    console.log("login");
+    console.log("login " + this.data.username + ":" + this.data.pw);
     mvcApp.setAuthView();
     console.log("done");
   }

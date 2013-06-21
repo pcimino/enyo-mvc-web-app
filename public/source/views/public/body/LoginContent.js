@@ -5,21 +5,29 @@ enyo.ready(function () {
     , id: 'loginContent'
     , bindings: [
       { from: ".$.username.value"
-        , to: ".app.controllers.login.data"
+        , to: "mvcApp.controllers.publicController.test"
         , kind: "enyo.InputBinding"
       }
       , { from: ".$.password.value"
-          , to: ".app.controllers.login.data"
+          , to: ".mvcApp.controllers.public.data"
           , kind: "enyo.InputBinding"
       }
     ]
     , setupBodyContent: function(owner, renderFlag) {
         owner.createComponent(
-            { name: "username",
-              kind: "onyx.Input",
-              classes:"form-input-box form-field-left-margin",
-              placeholder: "Username",
-              owner: owner  // http://jsfiddle.net/pcimino/Cxa2U/
+            { name: "username"
+              , kind: "onyx.Input"
+              , classes:"form-input-box form-field-left-margin"
+              , placeholder: "Username"
+              , owner: owner  // http://jsfiddle.net/pcimino/Cxa2U/
+					    , handlers: {
+						      onblur: 'setData'
+					    }
+					    , setData: function (inSender, inEvent) {
+                //TODO this shouldn't be necessary, need to figure out how the binding has to be wired up
+						      mvcApp.controllers.publicController.data.username = this.value;
+						      return true;
+					    }
             }
         );
         this.insertBreak(owner);
@@ -29,6 +37,14 @@ enyo.ready(function () {
               classes:"form-input-box form-field-left-margin",
               placeholder: "Password",
               owner: owner
+					    , handlers: {
+						      onblur: 'setData'
+					    }
+					    , setData: function (inSender, inEvent) {
+                //TODO this shouldn't be necessary, need to figure out how the binding has to be wired up
+						      mvcApp.controllers.publicController.data.pw = this.value;
+						      return true;
+					    }
             }
         );
         this.insertBreak(owner);
