@@ -11,7 +11,6 @@ enyo.kind({
      , ajaxBasePort: '3000'
   }
   , dbAvailable: false
-  , data: {}
   , handlers: {
      onLogin: 'login'
      , onForgotPassword: 'forgotPassword'
