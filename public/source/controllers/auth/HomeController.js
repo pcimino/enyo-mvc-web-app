@@ -2,7 +2,6 @@ enyo.ready(function () {
 	enyo.kind({
 		name: "Bootplate.HomeController"
 		, kind: "Bootplate.ParentController"
-		, data: {}
     , handlers: {
         onLogin2: 'logout'
     }
