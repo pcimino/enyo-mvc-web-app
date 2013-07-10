@@ -4,6 +4,7 @@
 var port = process.argv[2] || 8888;
 var express = require('express'); 
 var app = express(); 
+
 app.configure(function () {     
     app.use(         
         "/", //the URL throught which you want to access to you static content         

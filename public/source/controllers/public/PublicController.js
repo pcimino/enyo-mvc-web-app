@@ -36,8 +36,8 @@ enyo.kind({
         mvcApp.data.username = '';
         mvcApp.data.password = '';
         // load the user's information
-        // var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
-        // ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
+        var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
+        ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
 
         // display the authenticated home page
         mvcApp.setAuthView();

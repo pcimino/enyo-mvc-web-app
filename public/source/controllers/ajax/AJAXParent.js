@@ -6,7 +6,7 @@ enyo.kind({
   , dataType: "json"
   , contentType:"application/json"
   , url: ''
-  , callback: '?'
+          , callback: '?'
   , cacheBust: false
   , data: {}
   , xhrFields: {
