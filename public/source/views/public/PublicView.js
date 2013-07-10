@@ -1,13 +1,8 @@
 // http://enyojs.com/sampler/debug.html
 // http://enyojs.com/api/#enyo.Control
-
 enyo.kind({
   name: 'Bootplate.PublicView'
-  , kind: "enyo.FittableRows"
-  , classes: "onyx"
-  , tag: 'body'
-  , fit: true
-  , classes: "onyx"
+  , kind: "Bootplate.ParentView"
   , dbAvailable: false
   , controller: 'Bootplate.PublicController'
   , create: function() {
@@ -25,35 +20,16 @@ enyo.kind({
   ]
   , rendered: function() {
       this.inherited(arguments);
-      console.log('onCheckDB');
       this.bubble('onCheckDB');
   }
-  , dbAvailable: function() {
-        // this.$.popupDialog.show();
-        // this.$.popupDialog.setMessage("Database is up.");
-  }
-  , dbNotAvailable: function() {
-      this.$.popupDialog.show();
-      this.$.popupDialog.setMessage("Database is down.");
-  }
-    /*, dbAvailableChanged: function() {
-     if (this.dbAvailable) {
-      alert('dbAvailable bind');
-     } else {
-       alert('dbNotAvailable bind');
-     }
-    }*/
   , setupHeaderContent: function() {
       if (this.$.headerContainer) this.$.headerContainer.destroy();
       this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
   }
   , setupBodyContent: function() {
-      this.createComponent({name:'popupDialog', kind: "PopupDialog"});
-      this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
-
-    //new Bootplate.LoginContent({name: "bodyContent"}).renderInto(this.$.bodyContainer);
-    this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
-    this.$.bodyContainer.$.bodyContent.setupBodyContent(this.$.bodyContainer);
+      this.inherited(arguments);
+      this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
+      this.$.bodyContainer.$.bodyContent.setupBodyContent(this.$.bodyContainer);
 
     /* Alternative
       var content = new Bootplate.LoginContent({name:'bodyContent'});

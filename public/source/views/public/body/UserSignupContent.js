@@ -9,19 +9,19 @@ enyo.ready(function () {
     , bindings: [
         {
           from: ".$.validUsername.value",
-          to: ".mvcApp.controllers.public.data",
+          to: ".mvcApp.data",
           kind: "enyo.InputBinding"
         },{
           from: ".$.username.value",
-          to: ".mvcApp.controllers.public.data",
+          to: ".mvcApp.data",
           kind: "enyo.InputBinding"
         },{
           from: ".$.password.value",
-          to: ".mvcApp.controllers.public.data",
+          to: ".mvcApp.data",
           kind: "enyo.InputBinding"
         },{
           from: ".$.vPassword.value",
-          to: ".mvcApp.controllers.public.data",
+          to: ".mvcApp.data",
           kind: "enyo.InputBinding"
         }
       ]

@@ -15,7 +15,7 @@ It should be, then you would call this.refreshBindings();
         , kind: "enyo.InputBinding"
       }
       , { from: ".$.password.value"
-          , to: "mvcApp.view.$.bodyContainer.owner.controller.data"
+          , to: "mvcApp.data"
           , kind: "enyo.InputBinding"
       }
     ]*/
@@ -46,6 +46,7 @@ enyo.ready(function () {
               classes:"form-input-box form-field-left-margin",
               placeholder: "Password",
               owner: owner
+            }
         );
         this.bindInputData(owner.$.password);
         this.insertBreak(owner);
