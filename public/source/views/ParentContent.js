@@ -26,7 +26,7 @@ enyo.ready(function () {
             var bindOwner = <set to the enyoInput component>;
             var bind = new enyo.Binding({
               from: ".$.username.value"
-              , to: ".mvcApp.controllers.publicController.data.username"
+              , to: ".mvcApp.data.username"
               , owner: bindOwner});
             bindOwner.bindings.push(bind);
             // One of these refresh, first one is preferable
@@ -35,8 +35,8 @@ enyo.ready(function () {
          */
          bindOwner.setData = function (inSender, inEvent) {
            console.log('bindOwner ' + inSender.name);
-           mvcApp.controllers.publicController.data[inSender.name] = this.value;
-           console.log(mvcApp.controllers.publicController.data[inSender.name]);
+           mvcApp.data[inSender.name] = this.value;
+           console.log(mvcApp.data[inSender.name]);
            return true;
          };
          bindOwner.handlers.onblur='setData'  ;

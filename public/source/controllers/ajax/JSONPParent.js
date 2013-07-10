@@ -3,11 +3,7 @@ enyo.kind({
   , kind: 'enyo.JsonpRequest'
   , autoLoad: true
   , published: {
-     ajaxBaseURL: 'http://localhost'
-     , ajaxBasePort: '3000'
-     , method: ''
-     , rest: ''
-     , owner: null
+     owner: null
      , fireEvent: null
      , url: null
   }
@@ -16,19 +12,18 @@ enyo.kind({
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
   }
+  , buildBaseURL: function() {
+    return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
+  }
   // check database connection
   , makeRequest: function (params) {
-      console.log('processError ' + JSON.stringify(this.params));
-      var checkDBUrl = this.ajaxBaseURL + ':' + this.ajaxBasePort + this.rest;
-      this.url = checkDBUrl;
-      console.log(checkDBUrl);
-
+      this.url = this.buildBaseURL() + this.rest;
       // attach responders to the transaction object
       this.response(this, "processResponse");
       this.error(this, "processError");
 
       // send parameters the remote service using the 'go()' method
-      this.go(params);
+      this.go({});
 	}
 	, processError: function(inSender, inResponse) {
       console.log('JSONP.Parent processError');

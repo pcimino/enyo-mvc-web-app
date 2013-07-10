@@ -6,5 +6,4 @@ enyo.kind({
   name: "Bootplate.ParentController"
   , kind: "enyo.Controller"
   , autoLoad: true
-  , data: {}
 });

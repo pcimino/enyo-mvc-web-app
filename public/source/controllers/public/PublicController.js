@@ -1,3 +1,4 @@
+var AAA= {}
 // Put common navigation methods in here
 //
 // Enyo 2.x has a Routes class, which is really the way to go, still need to figure that out
@@ -17,12 +18,38 @@ enyo.kind({
      , onUserSignup: 'userSignup'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
+     , onLoginResult: 'loginResult'
+     , onUserDetails: 'userDetails'
   }
   // Login
   , login: function () {
-    console.log("login " + this.data.username + ":" + this.data.pw);
-    mvcApp.setAuthView();
+    console.log("login " + mvcApp.data.username + ":" + mvcApp.data.password);
+    var ajaxLogin = new AJAX.Login({owner:this, fireEvent:'onLoginResult'});
+    ajaxLogin.makeRequest({username:mvcApp.data.username , password:mvcApp.data.password});
+
     console.log("done");
+  }
+  , loginResult: function (inSender, inEvent) {
+      console.log("loginResult");
+      if (inEvent.authenticated) {
+        mvcApp.data.userData = inEvent.userdata;
+        mvcApp.data.username = '';
+        mvcApp.data.password = '';
+        // load the user's information
+        // var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
+        // ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
+
+        // display the authenticated home page
+        mvcApp.setAuthView();
+      } else {
+        mvcApp.publicView.showMessage(inEvent.message);
+      }
+  }
+  , userDetails: function (inSender, inEvent) {
+      console.log("userDetails ");
+    if (inEvent.userDetails) {
+      mvcApp.data.userDetails = inEvent.userDetails;
+    }
   }
   // ForgotPassword
   , forgotPassword: function () {
@@ -38,13 +65,16 @@ enyo.kind({
   }
   // check database connection
   , checkDB: function (inSender, inEvent) {
-    var checkDB = new JSONP.CheckDB({method:'GET', rest:'/db', owner:this, fireEvent:'onCheckDBResult'});
-    checkDB.makeRequest({});
+      var checkDB = new JSONP.CheckDB({owner:this, fireEvent:'onCheckDBResult'});
+      checkDB.makeRequest({});
   }
   , checkDBResult: function (inSender, inEvent) {
       console.log("checkDBResult");
       if (!inEvent.dbAvailable) {
         mvcApp.controllers.routes.trigger({location:'/systemUnavailable'});
+        mvcApp.publicView.showMessage("Cannot connect to the Database.");
+      } else {
+        mvcApp.publicView.showMessage("Database is up.");
       }
   }
 });

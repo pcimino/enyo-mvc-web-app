@@ -3,9 +3,14 @@
 // Maybe 2.3 will make this a sinlge app with configuration for switching views?
 // http://forums.enyojs.com/discussion/comment/6928/#Comment_6928
 enyo.kind({
-	name: "Bootplate.MvcApp",
-	kind: "enyo.Application",
-	controllers: [
+	name: "Bootplate.MvcApp"
+	, kind: "enyo.Application"
+  , published: {
+     ajaxBaseURL: 'http://localhost'
+     , ajaxBasePort: '3000'
+     , data: {}
+  }
+	, controllers: [
     {
 		  name: "publicController",
 		  kind: "Bootplate.PublicController"

@@ -1,6 +1,7 @@
 enyo.kind({
   name: 'JSONP.CheckDB'
   , kind: 'JSONP.Parent'
+  , rest:'/db'
 	, processError: function(inSender, inResponse) {
       this.inherited(arguments);
       console.log('JSONP.CheckDB processError');
@@ -8,6 +9,9 @@ enyo.kind({
         this.owner.bubble(this.fireEvent, {dbAvailable: false});
       }
 	}
+  , constructor: function (props) {
+      this.inherited(arguments);
+  }
 	, processResponse: function(inSender, inResponse) {
       this.inherited(arguments);
       console.log('JSONP.CheckDB processResponse ');

@@ -4,5 +4,5 @@ enyo.depends(
   , "ParentController.js"
   , "public"
   , "auth"
-  , "jsonp"
+  , "ajax"
 );
