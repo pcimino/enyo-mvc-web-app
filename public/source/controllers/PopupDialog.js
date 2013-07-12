@@ -1,8 +1,10 @@
 enyo.kind({
 	name: "PopupDialog"
   , kind: onyx.Popup
-  , centered: true,
-	float: true
+  , centered: true
+	, floating: true
+  , modal: true
+  , autoDismiss: true
   , style: "text-align: center; color:black;padding: 10px;background: #C9C9C9;"
   , published: {
 		message: ""
@@ -14,8 +16,8 @@ enyo.kind({
 	// because popups are lazily created, initialize properties that effect components
 	// in componentsReady rather than create.
 	, componentsReady: function() {
-		this.inherited(arguments);
-		this.messageChanged();
+		  this.inherited(arguments);
+		  this.messageChanged();
 	}
   , messageChanged: function() {
 		// check to ensure we have this component has been created before updating it.
@@ -28,5 +30,13 @@ enyo.kind({
 	}
   , hidePopup: function() {
 		  this.hide();
+	}
+  , showPopup: function() {
+		  this.show();
+	}
+  , showMessage: function(messageText) {
+      this.message = messageText;
+      this.$.message.setContent(this.message);
+		  this.show();
 	}
 });

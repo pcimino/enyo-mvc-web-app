@@ -3,13 +3,17 @@ enyo.ready(function () {
 	  name: "Bootplate.SystemUnavailableContent"
     , kind: "Bootplate.ParentContent"
     , id: 'systemUnavailableContent'
+    , published: {
+        contentMessage: "The system is currently unavailable. Please try again later."
+    }
     , setupBodyContent: function(owner, renderFlag) {
-      console.log("Bootplate.SystemUnavailableContent");
+        console.log("Bootplate.SystemUnavailableContent");
         this.insertBreak(owner);
+
         owner.createComponent(
-            { content: "The system is currently unavailable. Please try again later."
+            { content: this.contentMessage
               , classes:"form-field-left-margin text-input-error-box"
-             , style:'margin-right:25%;'
+              , style:'margin-right:25%;'
             }
         );
         this.insertBreak(owner);

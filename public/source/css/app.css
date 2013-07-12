@@ -38,7 +38,9 @@
 }
 .body-margin {
 	margin-top: 15% !important;
-  margin-bottom: 15% !important;
+}
+.body-height {
+  height:64%;
 }
 .href-link {
 	color:blue;
@@ -84,18 +86,19 @@
 }
 .header-left {
   margin-left: 5px;
-  height:75px;
   width:75px;
 }
 .header-center {
-  height:75px;
   margin-left: 5px;
   margin-right: 5px;
 }
 .header-right {
   width:75px;
+}
+.header-height  {
   height:75px;
 }
+
 .footer-width {
   width:100%;
 }
@@ -110,7 +113,9 @@
 .footer-right {
   width:175px;
 }
-
+.footer-height  {
+  height:50px;
+}
 
 
 

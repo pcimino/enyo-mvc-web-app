@@ -2,11 +2,7 @@ enyo.ready(function () {
 
 	enyo.kind({
 		name: "Bootplate.HomeView"
-    , kind: "enyo.FittableRows"
-    , classes: "onyx"
-    , tag: 'body'
-    , fit: true
-    , classes: "onyx"
+    , kind: "Bootplate.ParentView"
     , controller: 'Bootplate.HomeController'
     , bindings: [
 
@@ -22,9 +18,7 @@ enyo.ready(function () {
       this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthHeaderView'});
     }
     , setupBodyContent: function() {
-        this.createComponent({name:'popupDialog', kind: "PopupDialog"});
-        this.createComponent({name:'bodyContainer', fit: true, classes: "enyo-center body-margin"});
-
+        this.inherited(arguments);
         this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.HomeContent'});
         this.$.bodyContainer.$.bodyContent.setupBodyContent(this.$.bodyContainer);
     }
