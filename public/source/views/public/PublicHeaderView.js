@@ -7,7 +7,7 @@ enyo.kind({
   classes: "onyx",
   fit: true,
   components: [
-    {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "header-width",
+    {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "header-height header-width",
      components: [
        {name:'headerLeftContent', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"},
        {name:'headerCenterContent', content: "public header-center", fit: true, classes: "header-center"},

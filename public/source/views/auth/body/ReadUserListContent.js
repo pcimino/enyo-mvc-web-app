@@ -9,7 +9,6 @@ enyo.ready(function () {
     , setupBodyContent: function(owner) {
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'readUserInfo', 'Read User Info');
-
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'updateUserInfo', 'Update User');
         this.insertBreak(owner);
