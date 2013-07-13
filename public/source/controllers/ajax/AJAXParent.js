@@ -9,9 +9,7 @@ enyo.kind({
           , callback: '?'
   , cacheBust: false
   , data: {}
-  , xhrFields: {
-      withCredentials: true
-  }
+
   , published: {
      owner: null
      , fireEvent: null
