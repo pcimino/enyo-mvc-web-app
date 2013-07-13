@@ -6,10 +6,10 @@ enyo.kind({
   , dataType: "json"
   , contentType:"application/json"
   , url: ''
-          , callback: '?'
+  , callback: '?'
   , cacheBust: false
   , data: {}
-
+  , headers: [{'Access-Control-Allow-Credentials':true}]
   , published: {
      owner: null
      , fireEvent: null

@@ -4,7 +4,6 @@ enyo.kind({
   , kind: 'AJAX.Parent'
   , method:'POST'
   , rest:'/api/v1/session/login'
-  , headers: [{'Access-Control-Allow-Credentials':true}]
 	, constructor: function (props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
