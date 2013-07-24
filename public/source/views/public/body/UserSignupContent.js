@@ -1,3 +1,4 @@
+var AAA = {}
 enyo.ready(function () {
 	enyo.kind({
 	  name: "Bootplate.UserSignupContent"
@@ -25,32 +26,48 @@ enyo.ready(function () {
           kind: "enyo.InputBinding"
         }
       ]
-    , usernameChanged: function() {
-        console.log('onCheckUsername')
-        this.bubble('onCheckUsername');
-      }
     , inputChange: function(inSender, inEvent){
 		    console.log("inputChange", inSender.getValue(), inEvent);
 	    }
     , validUsernameChanged: function() {
         if (this.validUsername) {
-          this.$.bodyContainer.$.username.addClass(form-input-confirm-box);
+          this.$.bodyContainer.$.username.addClass("text-input-confirm-box");
         } else {
-          this.$.bodyContainer.$.username.addClass(form-input-error-box);
+          this.$.bodyContainer.$.username.addClass("text-input-error-box");
         }
+        return true;
       }
+
     , setupBodyContent: function(owner) {
         owner.createComponent(
-            { name: "username",
-              kind: "onyx.Input",
-              classes:"form-input-box form-field-left-margin",
-              placeholder: "Username",
-              onchange: 'usernameChanged',
-              onkeypress: 'usernameChanged',
-              ontap: 'usernameChanged',
-              owner: owner
+            { name: "username"
+              , kind: "onyx.Input"
+              , classes:"form-input-box form-field-left-margin"
+              , placeholder: "Username"
+              , owner: owner
+              , handlers: {
+                  onblur: 'usernameChanged'
+                , onkeyup: 'usernameChanged'
+              }
+              /**
+              * When the username changes, check the lenght, if short remove any indicator classes
+              * If longer than 3 characters, check availability, bubble the event up to the PublicController
+              */
+              , usernameChanged: function(inSender, inEvent) {
+                console.log('onCheckUsername');
+                  mvcApp.data.username = this.value;
+                  if (!this.value || this.value.length < 4) {
+                    this.removeClass("text-input-confirm-box");
+                    this.removeClass("text-input-error-box");
+                  } else {
+                    // ?? this.bubbleUp('onCheckUsername');
+                    mvcApp.waterfall('onCheckUsername');
+                  }
+                  return true;
+              }
             }
         );
+        // bind taken care of in usernameChanged() : this.bindInputData(owner.$.username);
         this.insertBreak(owner);
         owner.createComponent(
             { name: "password",
@@ -60,6 +77,7 @@ enyo.ready(function () {
               owner: owner
             }
         );
+        this.bindInputData(owner.$.password);
         this.insertBreak(owner);
         owner.createComponent(
             { name: "vPassword",
@@ -69,6 +87,7 @@ enyo.ready(function () {
               owner: owner
             }
         );
+        this.bindInputData(owner.$.vPassword);
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'login2', 'Cancel');
         this.insertBreak(owner);

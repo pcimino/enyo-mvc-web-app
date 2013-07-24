@@ -34,12 +34,11 @@ enyo.ready(function () {
             bindOwner.refreshBindings();
          */
          bindOwner.setData = function (inSender, inEvent) {
-           console.log('bindOwner ' + inSender.name);
+           console.log('bindOwner ' + inSender.name + ":" + mvcApp.data[inSender.name]);
            mvcApp.data[inSender.name] = this.value;
-           console.log(mvcApp.data[inSender.name]);
            return true;
          };
-         bindOwner.handlers.onblur='setData'  ;
+         bindOwner.handlers.onblur='setData';
     }
   });
 });

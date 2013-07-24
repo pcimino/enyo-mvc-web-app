@@ -27,7 +27,9 @@ enyo.kind({
       this.response(this, "processResponse");
       this.error(this, "processError");
       this.data = params;
-      this.postBody = JSON.stringify(params);
+    this.postBody = JSON.stringify(params);
+    console.log(params)
+    console.log(this.postBody)
       // send parameters the remote service using the 'go()' method
       this.go();
 	}

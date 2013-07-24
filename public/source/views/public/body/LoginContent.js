@@ -19,13 +19,11 @@ It should be, then you would call this.refreshBindings();
           , kind: "enyo.InputBinding"
       }
     ]*/
-var aaa= {};
 enyo.ready(function () {
 	enyo.kind({
 	  name: "Bootplate.LoginContent"
     , kind: "Bootplate.ParentContent"
     , id: 'loginContent'
-
     , setupBodyContent: function(owner, renderFlag) {
         owner.createComponent(
             { name: "username"
