@@ -1,6 +1,6 @@
 enyo.ready(function () {
-	enyo.kind({
-	  name: "Bootplate.SystemUnavailableContent"
+  enyo.kind({
+    name: "Bootplate.SystemUnavailableContent"
     , kind: "Bootplate.ParentContent"
     , id: 'systemUnavailableContent'
     , published: {

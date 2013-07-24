@@ -1,5 +1,5 @@
 enyo.depends(
-	"PopupDialog.js"
+    "PopupDialog.js"
   , "Routes.js"
   , "ParentController.js"
   , "public"

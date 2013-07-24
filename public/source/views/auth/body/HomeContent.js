@@ -1,6 +1,6 @@
 enyo.ready(function () {
-	enyo.kind({
-	  name: "Bootplate.HomeContent"
+  enyo.kind({
+    name: "Bootplate.HomeContent"
     , kind: "Bootplate.ParentContent"
     , id: 'homeContent'
     , bindings: [
@@ -19,6 +19,6 @@ enyo.ready(function () {
         this.insertInternalLink(owner, 'logout', 'Logout');
 
         owner.render();
-      } // end setupBodyContent
+    } // end setupBodyContent
   });
 });

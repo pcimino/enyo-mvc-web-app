@@ -1,3 +1,3 @@
 enyo.depends(
-	"HomeController.js"
+    "HomeController.js"
 );

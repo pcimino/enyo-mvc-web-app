@@ -7,7 +7,7 @@ enyo.kind({
      , fireEvent: null
      , url: null
   }
-	, constructor: function (props) {
+    , constructor: function (props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
@@ -24,11 +24,11 @@ enyo.kind({
 
       // send parameters the remote service using the 'go()' method
       this.go({});
-	}
-	, processError: function(inSender, inResponse) {
+    }
+    , processError: function(inSender, inResponse) {
       console.log('JSONP.Parent processError');
-	}
-	, processResponse: function(inSender, inResponse) {
+    }
+    , processResponse: function(inSender, inResponse) {
       console.log('JSONP.Parent processResponse');
-	}
+    }
 });

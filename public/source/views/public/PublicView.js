@@ -6,10 +6,10 @@ enyo.kind({
   , dbAvailable: false
   , controller: 'Bootplate.PublicController'
   , create: function() {
-    this.inherited(arguments);
-    this.setupHeaderContent();
-    this.setupBodyContent();
-    this.setupFooterContent();
+      this.inherited(arguments);
+      this.setupHeaderContent();
+      this.setupBodyContent();
+      this.setupFooterContent();
   }
   , bindings: [
       /* Was trying to bind and it did appear to work initially, now broken

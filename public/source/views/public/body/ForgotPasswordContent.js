@@ -1,22 +1,22 @@
 enyo.ready(function () {
-	enyo.kind({
-	  name: "Bootplate.ForgotPasswordContent"
+  enyo.kind({
+    name: "Bootplate.ForgotPasswordContent"
     , kind: "Bootplate.ParentContent"
     , id: 'forgotPasswordContent'
     , bindings: [
       {
-			  from: ".$.username.value",
+        from: ".$.username.value",
         to: ".mvcApp.data",
-			  kind: "enyo.InputBinding"
-		  }
+        kind: "enyo.InputBinding"
+      }
     ]
     , setupBodyContent: function(owner) {
         owner.createComponent(
           { name: "username",
-					  kind: "onyx.Input",
+                      kind: "onyx.Input",
             classes:"form-input-box form-field-left-margin",
-					  placeholder: "Username"
-				  }
+                      placeholder: "Username"
+                  }
         );
         this.insertBreak(owner);
         owner.createComponent(
@@ -40,6 +40,6 @@ enyo.ready(function () {
         this.insertInternalLink(owner, 'userSignup', 'New User Signup');
 
         owner.render();
-      } // end setupBodyContent
+    } // end setupBodyContent
   });
 });

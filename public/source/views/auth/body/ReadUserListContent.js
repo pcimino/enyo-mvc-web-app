@@ -1,6 +1,6 @@
 enyo.ready(function () {
-	enyo.kind({
-	  name: "Bootplate.ReadUserListContent"
+  enyo.kind({
+    name: "Bootplate.ReadUserListContent"
     , kind: "Bootplate.ParentContent"
     , id: 'readUserListContent'
     , bindings: [

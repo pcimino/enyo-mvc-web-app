@@ -1,3 +1,3 @@
 enyo.depends(
-	"PublicController.js"
+    "PublicController.js"
 );
