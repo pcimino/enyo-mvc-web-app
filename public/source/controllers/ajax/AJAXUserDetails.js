@@ -4,18 +4,18 @@ enyo.kind({
   , kind: 'AJAX.Parent'
   , method:'GET'
   , rest:'/api/v1/user'
-	, constructor: function (props) {
+  , constructor: function (props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
   }
-	, processError: function(inSender, inResponse) {
+  , processError: function(inSender, inResponse) {
       console.log('AJAX.UserDetails processError');
       if (this.fireEvent) {
         this.owner.bubble(this.fireEvent, {authenticated: false, message: 'Problem authenticating this username and password.'});
       }
-	}
-	, processResponse: function(inSender, inResponse) {
+  }
+  , processResponse: function(inSender, inResponse) {
       console.log('AJAX.UserDetails processResponse ');
       if (inResponse) {
        if (this.fireEvent) {

@@ -1,4 +1,4 @@
-var AAZZ = {}
+
 enyo.kind({
   name: "Bootplate.AuthHeaderView"
   , kind: "enyo.FittableRows"
@@ -17,11 +17,8 @@ enyo.kind({
   , rendered: function() {
       this.inherited(arguments);
       console.log('AuthHeaderView enter rendered');
-    AAZZ = this.$.headerRightContent
-   //   this.$.headerRightContent.components.valueOf('gravatar').setEmail(mvcApp.data.userData.email);
-    //
-    this.$.headerRightContent.createComponent({name:"gravatar", kind: "tld.Gravatar", email: mvcApp.data.userData.email, imageSize: 75});
-    console.log('AuthHeaderView rendered complete');
+      this.$.headerRightContent.createComponent({name:"gravatar", kind: "tld.Gravatar", email: mvcApp.data.userData.email, imageSize: 75});
+      console.log('AuthHeaderView rendered complete');
   }
 });
 

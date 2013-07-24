@@ -59,18 +59,18 @@ enyo.kind({
   }
   // Check Username availability
   , checkUsername: function () {
-    console.log("checkUsername :" + mvcApp.data.username);
-    // TODO Look at refactoring to use promises to callback instead of firing an event
-      var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
+      console.log("checkUsername :" + mvcApp.data.username);
+      // var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
+      var ajaxUsernameExists = new JSONP.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
       ajaxUsernameExists.makeRequest({username:mvcApp.data.username});
-    console.log("done");
+      console.log("done");
   }
   // Check Username Result
   , checkUsernameResult: function (inSender, inEvent) {
       console.log("checkUsernameResult");
-     //this.$.bodyContainer.userSignupContent.setValidUsername(inEvent.exists);
-    //new Bootplate.ForgotPasswordApp({name: "forgotPasswordApp"}).renderInto(document.body);
-    console.log("done");
+      //this.$.bodyContainer.userSignupContent.setValidUsername(inEvent.exists);
+      //new Bootplate.ForgotPasswordApp({name: "forgotPasswordApp"}).renderInto(document.body);
+      console.log("done");
   }
   // UserSignup
   , userSignup: function () {

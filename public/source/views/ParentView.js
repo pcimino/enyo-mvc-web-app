@@ -9,7 +9,6 @@ enyo.kind({
   , classes: "onyx"
   , showMessage: function(messageText) {
       mvcApp.$.popupDialog.showMessage(messageText);
-
   }
   , setupBodyContent: function() {
       if (!mvcApp.$.popupDialog) {

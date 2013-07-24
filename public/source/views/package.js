@@ -1,5 +1,5 @@
 enyo.depends(
-    "ParentContent.js"
+  "ParentContent.js"
   , "ParentView.js"
   , "auth"
   , "public"

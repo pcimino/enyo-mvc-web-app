@@ -1,6 +1,6 @@
 enyo.ready(function () {
-	enyo.kind({
-	  name: "Bootplate.DeleteUserContent"
+  enyo.kind({
+    name: "Bootplate.DeleteUserContent"
     , kind: "Bootplate.ParentContent"
     , id: 'deleteUserContent'
     , bindings: [
@@ -20,6 +20,6 @@ enyo.ready(function () {
         this.insertInternalLink(owner, 'logout', 'Logout');
 
         owner.render();
-      } // end setupBodyContent
+    } // end setupBodyContent
   });
 });

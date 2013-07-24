@@ -14,7 +14,7 @@ enyo.kind({
      owner: null
      , fireEvent: null
   }
-	, constructor: function (props) {
+  , constructor: function (props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
@@ -27,12 +27,12 @@ enyo.kind({
       this.response(this, "processResponse");
       this.error(this, "processError");
       this.data = params;
-    this.postBody = JSON.stringify(params);
-    console.log(params)
-    console.log(this.postBody)
+      this.postBody = JSON.stringify(params);
+      console.log(params)
+      console.log(this.postBody)
       // send parameters the remote service using the 'go()' method
       this.go();
-	}
+  }
   , buildBaseURL: function() {
     return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
   }

@@ -1,6 +1,6 @@
 enyo.ready(function () {
-	enyo.kind({
-	  name: "Bootplate.UpdateUserInfoContent"
+  enyo.kind({
+    name: "Bootplate.UpdateUserInfoContent"
     , kind: "Bootplate.ParentContent"
     , id: 'updateUserInfoContent'
     , bindings: [
