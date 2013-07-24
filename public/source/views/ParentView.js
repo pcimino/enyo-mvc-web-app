@@ -8,12 +8,13 @@ enyo.kind({
   , fit: true
   , classes: "onyx"
   , showMessage: function(messageText) {
-      console.log('showMessage: ' + messageText);
-      this.$.popupDialog.showMessage(messageText);
+      mvcApp.$.popupDialog.showMessage(messageText);
 
   }
   , setupBodyContent: function() {
-      this.createComponent({name:'popupDialog', kind: "PopupDialog"});
+      if (!mvcApp.$.popupDialog) {
+        this.createComponent({name:'popupDialog', kind: "PopupDialog", owner: mvcApp});
+      }
       this.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center body-margin"});
   }
 });

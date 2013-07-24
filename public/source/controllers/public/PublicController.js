@@ -14,30 +14,26 @@ enyo.kind({
   , dbAvailable: false
   , handlers: {
      onLogin: 'login'
+     , onLoginResult: 'loginResult'
+     , onCheckUsername: 'checkUsername'
+     , onCheckUsernameResult: 'checkUsernameResult'
      , onForgotPassword: 'forgotPassword'
      , onUserSignup: 'userSignup'
+     , onCheckUsername: 'checkUsername'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
-     , onLoginResult: 'loginResult'
      , onUserDetails: 'userDetails'
   }
   // Login
   , login: function () {
-    console.log("login " + mvcApp.data.username + ":" + mvcApp.data.password);
-    var ajaxLogin = new AJAX.Login({owner:this, fireEvent:'onLoginResult'});
-    ajaxLogin.makeRequest({username:mvcApp.data.username , password:mvcApp.data.password});
-
-    console.log("done");
+      var ajaxLogin = new AJAX.Login({owner:this, fireEvent:'onLoginResult'});
+      ajaxLogin.makeRequest({username:mvcApp.data.username , password:mvcApp.data.password});
   }
   , loginResult: function (inSender, inEvent) {
-      console.log("loginResult");
       if (inEvent.authenticated) {
         mvcApp.data.userData = inEvent.userdata;
         mvcApp.data.username = '';
         mvcApp.data.password = '';
-        // load the user's information
-        var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
-        ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
 
         // display the authenticated home page
         mvcApp.setAuthView();
@@ -46,14 +42,33 @@ enyo.kind({
       }
   }
   , userDetails: function (inSender, inEvent) {
-      console.log("userDetails ");
-    if (inEvent.userDetails) {
-      mvcApp.data.userDetails = inEvent.userDetails;
-    }
+      // load the user's information
+      var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
+      ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
+  }
+  , userDetailsResult: function (inSender, inEvent) {
+      if (inEvent.userDetails) {
+        mvcApp.data.userDetails = inEvent.userDetails;
+      }
   }
   // ForgotPassword
   , forgotPassword: function () {
     console.log("forgotPassword");
+    //new Bootplate.ForgotPasswordApp({name: "forgotPasswordApp"}).renderInto(document.body);
+    console.log("done");
+  }
+  // Check Username availability
+  , checkUsername: function () {
+    console.log("checkUsername :" + mvcApp.data.username);
+    // TODO Look at refactoring to use promises to callback instead of firing an event
+      var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
+      ajaxUsernameExists.makeRequest({username:mvcApp.data.username});
+    console.log("done");
+  }
+  // Check Username Result
+  , checkUsernameResult: function (inSender, inEvent) {
+      console.log("checkUsernameResult");
+     //this.$.bodyContainer.userSignupContent.setValidUsername(inEvent.exists);
     //new Bootplate.ForgotPasswordApp({name: "forgotPasswordApp"}).renderInto(document.body);
     console.log("done");
   }
@@ -74,7 +89,7 @@ enyo.kind({
         mvcApp.controllers.routes.trigger({location:'/systemUnavailable'});
         mvcApp.publicView.showMessage("Cannot connect to the Database.");
       } else {
-        mvcApp.publicView.showMessage("Database is up.");
+        // mvcApp.publicView.showMessage("Database is up.");
       }
   }
 });

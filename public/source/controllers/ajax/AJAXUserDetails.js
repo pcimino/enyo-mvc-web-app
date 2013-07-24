@@ -10,13 +10,13 @@ enyo.kind({
       console.log(this.fireEvent)
   }
 	, processError: function(inSender, inResponse) {
-      console.log('AJAX.Login processError');
+      console.log('AJAX.UserDetails processError');
       if (this.fireEvent) {
         this.owner.bubble(this.fireEvent, {authenticated: false, message: 'Problem authenticating this username and password.'});
       }
 	}
 	, processResponse: function(inSender, inResponse) {
-      console.log('AJAX.Login processResponse ');
+      console.log('AJAX.UserDetails processResponse ');
       if (inResponse) {
        if (this.fireEvent) {
          this.owner.bubble(this.fireEvent, {userdata: inResponse, authenticated: true});

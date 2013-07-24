@@ -7,7 +7,7 @@ enyo.kind({
   , autoDismiss: true
   , style: "text-align: center; color:black;padding: 10px;background: #C9C9C9;"
   , published: {
-		message: ""
+		  messageText: ""
 	}
   , components: [
 		{name: "message", style: "font-size: 26px; padding: 6px; text-align: center; color:black;"},
@@ -22,11 +22,11 @@ enyo.kind({
   , messageChanged: function() {
 		// check to ensure we have this component has been created before updating it.
 		if (this.$.message) {
-			this.$.message.setContent(this.message);
+			this.$.message.setContent(this.messageText);
 		}
 	}
   , getValue: function() {
-		return this.$.input.getValue();
+		  return _this.$.input.getValue();
 	}
   , hidePopup: function() {
 		  this.hide();
@@ -35,8 +35,8 @@ enyo.kind({
 		  this.show();
 	}
   , showMessage: function(messageText) {
-      this.message = messageText;
-      this.$.message.setContent(this.message);
+      this.messageText = messageText;
+      this.$.message.setContent(this.messageText);
 		  this.show();
 	}
 });
