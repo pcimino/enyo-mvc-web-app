@@ -1,0 +1,25 @@
+NPM Modules set to update to "latest"
+
+Grabbed the current versions in use on 7/24/2013, in case I need to rollback
+
+Enyo-MVC-App@1.0.0 C:\develop\code\enyo-mvc-app
+└─┬ express@3.3.1
+  ├── buffer-crc32@0.2.1
+  ├── commander@0.6.1
+  ├─┬ connect@2.8.1
+  │ ├── bytes@0.2.0
+  │ ├── cookie@0.0.5
+  │ ├── formidable@1.0.14
+  │ ├── pause@0.0.1
+  │ ├── qs@0.6.5
+  │ └── uid2@0.0.2
+  ├── cookie@0.1.0
+  ├── cookie-signature@1.0.1
+  ├── debug@0.7.2
+  ├── fresh@0.1.0
+  ├── methods@0.0.1
+  ├── mkdirp@0.3.4
+  ├── range-parser@0.0.4
+  └─┬ send@0.1.1
+    └── mime@1.2.9
+
