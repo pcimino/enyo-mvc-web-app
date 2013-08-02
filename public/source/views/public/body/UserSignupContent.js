@@ -4,8 +4,11 @@ enyo.ready(function () {
     name: "Bootplate.UserSignupContent"
     , kind: "Bootplate.ParentContent"
     , id: 'userSignupContent'
+    , handlers: {
+       onUsernameStatus: 'usernameStatus'
+    }
     , published: {
-        validUsername: false
+      usernameRef : {}
     }
     , bindings: [
       {
@@ -29,11 +32,19 @@ enyo.ready(function () {
     , inputChange: function(inSender, inEvent){
         console.log("inputChange", inSender.getValue(), inEvent);
     }
-    , validUsernameChanged: function() {
-        if (this.validUsername) {
-          this.$.bodyContainer.$.username.addClass("text-input-confirm-box");
+    , usernameStatus: function(inSender, inEvent) {
+      console.log('usernameStatus 1');
+        if (inEvent.exists == 'reset') {
+          console.log('usernameStatus 2');
+          this.$.bodyContainer.$.username.removeClass("text-input-confirm-box");
+          this.$.bodyContainer.$.username.removeClass("text-input-error-box");
         } else {
-          this.$.bodyContainer.$.username.addClass("text-input-error-box");
+          console.log('usernameStatus 3');
+          if (inEvent.exists == true) {
+            this.$.bodyContainer.$.username.addClass("text-input-error-box");
+          } else {
+            this.$.bodyContainer.$.username.addClass("text-input-confirm-box");
+          }
         }
         return true;
     }
@@ -53,19 +64,22 @@ enyo.ready(function () {
           * If longer than 3 characters, check availability, bubble the event up to the PublicController
           */
           , usernameChanged: function(inSender, inEvent) {
-            console.log('onCheckUsername');
               mvcApp.data.username = this.value;
               if (!this.value || this.value.length < 4) {
                 this.removeClass("text-input-confirm-box");
                 this.removeClass("text-input-error-box");
               } else {
-                // ?? this.bubbleUp('onCheckUsername');
                 mvcApp.waterfall('onCheckUsername');
               }
               return true;
           }
         }
       );
+      this.bindInputData(owner.$.username);
+      // Why doesn't the "handlers : {}"" definition above work?
+      // owner.$.username.handlers.onUsernameStatus = 'usernameStatus';
+      owner.handlers.onUsernameStatus = this.usernameStatus;
+
       // bind taken care of in usernameChanged() : this.bindInputData(owner.$.username);
       this.insertBreak(owner);
       owner.createComponent(

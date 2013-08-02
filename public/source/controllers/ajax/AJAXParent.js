@@ -17,7 +17,7 @@ enyo.kind({
   , constructor: function (props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
-      console.log(this.fireEvent)
+      console.log("AJAX.Parent " + this.fireEvent)
   }
   , makeRequest: function (params) {
       console.log('AJAX.Parent makeRequest ' + JSON.stringify(params));
@@ -26,12 +26,14 @@ enyo.kind({
       // attach responders to the transaction object
       this.response(this, "processResponse");
       this.error(this, "processError");
-      this.data = params;
-      this.postBody = JSON.stringify(params);
-      console.log(params)
-      console.log(this.postBody)
+
       // send parameters the remote service using the 'go()' method
-      this.go();
+      if (this.method == 'GET') {
+        this.data = params;
+      } else {
+        this.postBody = JSON.stringify(params);
+      }
+      this.go(this.data);
   }
   , buildBaseURL: function() {
     return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();

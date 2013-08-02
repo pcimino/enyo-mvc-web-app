@@ -26,4 +26,5 @@ enyo.kind({
       }
       console.log(JSON.stringify(inResponse, null, 2));
   }
+
 });

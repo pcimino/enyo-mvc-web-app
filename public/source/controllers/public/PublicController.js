@@ -22,7 +22,6 @@ enyo.kind({
      , onCheckUsername: 'checkUsername'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
-     , onUserDetails: 'userDetails'
   }
   // Login
   , login: function () {
@@ -34,49 +33,35 @@ enyo.kind({
         mvcApp.data.userData = inEvent.userdata;
         mvcApp.data.username = '';
         mvcApp.data.password = '';
-
         // display the authenticated home page
         mvcApp.setAuthView();
       } else {
         mvcApp.publicView.showMessage(inEvent.message);
-      }
-  }
-  , userDetails: function (inSender, inEvent) {
-      // load the user's information
-      var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
-      ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
-  }
-  , userDetailsResult: function (inSender, inEvent) {
-      if (inEvent.userDetails) {
-        mvcApp.data.userDetails = inEvent.userDetails;
-      }
+      };
   }
   // ForgotPassword
   , forgotPassword: function () {
-    console.log("forgotPassword");
+    console.log("PublicController forgotPassword");
     //new Bootplate.ForgotPasswordApp({name: "forgotPasswordApp"}).renderInto(document.body);
     console.log("done");
   }
   // Check Username availability
   , checkUsername: function () {
-      console.log("checkUsername :" + mvcApp.data.username);
-      // var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
-      var ajaxUsernameExists = new JSONP.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
+      console.log("PublicController checkUsername :" + mvcApp.data.username);
+      mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
+      var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
       ajaxUsernameExists.makeRequest({username:mvcApp.data.username});
-      console.log("done");
   }
   // Check Username Result
   , checkUsernameResult: function (inSender, inEvent) {
-      console.log("checkUsernameResult");
-      //this.$.bodyContainer.userSignupContent.setValidUsername(inEvent.exists);
-      //new Bootplate.ForgotPasswordApp({name: "forgotPasswordApp"}).renderInto(document.body);
-      console.log("done");
+      console.log("PublicController checkUsernameResult");
+      mvcApp.waterfall('onUsernameStatus', {exists: inEvent.exists});
+      return true;
   }
   // UserSignup
   , userSignup: function () {
-    console.log("userSignup");
+    console.log("PublicController userSignup");
     //new Bootplate.UserSignupApp({name: "userSignupApp"}).renderInto(document.body);
-    console.log("done");
   }
   // check database connection
   , checkDB: function (inSender, inEvent) {

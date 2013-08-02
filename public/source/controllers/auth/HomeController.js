@@ -3,15 +3,29 @@ enyo.ready(function () {
     name: "Bootplate.HomeController"
     , kind: "Bootplate.ParentController"
     , handlers: {
-        onLogin2: 'logout'
+        onLogout: 'logout'
+        , onLogoutResult: 'logoutResult'
+        , onUserDetails: 'userDetails'
     }
     // Logout
     , logout: function () {
-        console.log("logout");
-        // TODO end session
+        console.log("logout handler");
 
+        var ajaxLogout = new AJAX.Logout({owner:this, fireEvent:'onLogoutResult'});
+        ajaxLogout.makeRequest({})
+    }
+    , logoutResult: function (inSender, inEvent) {
         mvcApp.setPublicView();
-        console.log("done");
+    }
+    , userDetails: function () {
+        // load the user's information
+        var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
+        ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
+    }
+    , userDetailsResult: function (inSender, inEvent) {
+        if (inEvent.userDetails) {
+          mvcApp.data.userDetails = inEvent.userDetails;
+        }
     }
   });
 });

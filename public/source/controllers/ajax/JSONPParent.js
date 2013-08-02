@@ -23,12 +23,12 @@ enyo.kind({
       this.error(this, "processError");
 
       // send parameters the remote service using the 'go()' method
-      this.go({});
+      this.go(params);
     }
     , processError: function(inSender, inResponse) {
-      console.log('JSONP.Parent processError');
+        console.log('JSONP.Parent processError');
     }
     , processResponse: function(inSender, inResponse) {
-      console.log('JSONP.Parent processResponse');
+        console.log('JSONP.Parent processResponse');
     }
 });

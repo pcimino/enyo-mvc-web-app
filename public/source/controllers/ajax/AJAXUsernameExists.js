@@ -18,6 +18,6 @@ enyo.kind({
   , processResponse: function(inSender, inResponse) {
       console.log('AJAX.UsernameExists processResponse ');
       this.owner.bubble(this.fireEvent, {exists: false, message: 'Username is available.'});
-      console.log(JSON.stringify(inResponse, null, 2));
+      // console.log(JSON.stringify(inResponse, null, 2));
   }
 });
