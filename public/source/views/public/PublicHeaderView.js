@@ -14,5 +14,8 @@ enyo.kind({
          {name:'headerRightContent', content: "header-right", classes: "header-right", components: []}
        ]}
   ]
+  , constructor: function (props) {
+      this.inherited(arguments);
+  }
 });
 

@@ -26,6 +26,7 @@ enyo.kind({
     }
     , { path: '/logout'
         , handler: 'logout'
+        , change:'true'
     }
     , { path: '/deleteUser'
         , handler: 'deleteUser'
@@ -53,7 +54,9 @@ enyo.kind({
   }
   , logout: function () {
       console.log("logout router");
-      this.loadBodyContent('Bootplate.LoginContent', true);
+      //this.loadBodyContent('Bootplate.LoginContent', true);
+      mvcApp.waterfall('onLogout');
+      return true;
   }
   , deleteUser: function () {
       console.log("deleteUser router");

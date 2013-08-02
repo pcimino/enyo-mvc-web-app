@@ -1,6 +1,6 @@
 enyo.kind({
   name: 'Bootplate.PublicFooterView'
-  , kind: "enyo.FittableRows",
+  , kind: "enyo.FittableRows"
   , id: 'footerView'
   , tag: 'footer' // give it a specific html tag
   , classes: "onyx"
@@ -12,4 +12,7 @@ enyo.kind({
         {name:'footerRightContent', content: "footer right", classes: "footer-right"}
       ]}
   ]
+  , constructor: function (props) {
+      this.inherited(arguments);
+  }
 });
