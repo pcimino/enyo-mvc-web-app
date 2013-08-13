@@ -24,11 +24,11 @@ enyo.kind({
   }
   , setupHeaderContent: function() {
       if (this.$.headerContainer) this.$.headerContainer.destroy();
-      this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
+      this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
   }
   , setupBodyContent: function() {
       this.inherited(arguments);
-      this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
+      this.body = this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
       this.$.bodyContainer.$.bodyContent.setupBodyContent(this.$.bodyContainer);
 
     /* Alternative
@@ -39,6 +39,6 @@ enyo.kind({
   }
   , setupFooterContent: function() {
       if (this.$.footerContainer) this.$.footerContainer.destroy();
-      this.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView'});
+      this.footer = this.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView'});
   }
 });

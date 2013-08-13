@@ -1,4 +1,3 @@
-var AAA= {}
 // Put common navigation methods in here
 //
 // Enyo 2.x has a Routes class, which is really the way to go, still need to figure that out
@@ -47,15 +46,13 @@ enyo.kind({
   }
   // Check Username availability
   , checkUsername: function () {
-      console.log("PublicController checkUsername :" + mvcApp.data.username);
       mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
       var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
       ajaxUsernameExists.makeRequest({username:mvcApp.data.username});
   }
   // Check Username Result
   , checkUsernameResult: function (inSender, inEvent) {
-      console.log("PublicController checkUsernameResult");
-      mvcApp.waterfall('onUsernameStatus', {exists: inEvent.exists});
+      mvcApp.view.body.waterfall('onUsernameStatus', inEvent);
       return true;
   }
   // UserSignup

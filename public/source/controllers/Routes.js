@@ -46,9 +46,10 @@ enyo.kind({
   ]
   , loadBodyContent: function (kindByName, renderFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
+        console.log("loadBodyContent");
         var owner = mvcApp.view.$.bodyContainer;
         owner.destroyClientControls();
-        owner.createComponent({name:'bodyContent', kind: kindByName});
+        mvcApp.view.body = owner.createComponent({name:'bodyContent', kind: kindByName});
         owner.$.bodyContent.setupBodyContent(owner, renderFlag);
     }
   }
