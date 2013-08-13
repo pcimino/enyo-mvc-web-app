@@ -14,16 +14,16 @@ enyo.ready(function () {
     }
     , setupHeaderContent: function() {
         if (this.$.headerContainer) this.$.headerContainer.destroy();
-        this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthHeaderView'});
+        this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthHeaderView'});
     }
     , setupBodyContent: function() {
         this.inherited(arguments);
-        this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.HomeContent'});
+        this.body = this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.HomeContent'});
         this.$.bodyContainer.$.bodyContent.setupBodyContent(this.$.bodyContainer);
     }
     , setupFooterContent: function() {
         if (this.$.footerContainer) this.$.footerContainer.destroy();
-        this.createComponent({name: 'footerContainer', kind: 'Bootplate.AuthFooterView'});
+        this.footer = this.createComponent({name: 'footerContainer', kind: 'Bootplate.AuthFooterView'});
     }
   });
 });

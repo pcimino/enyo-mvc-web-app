@@ -1,4 +1,4 @@
-var AAA = {}
+
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.UserSignupContent"
@@ -33,23 +33,23 @@ enyo.ready(function () {
         console.log("inputChange", inSender.getValue(), inEvent);
     }
     , usernameStatus: function(inSender, inEvent) {
-      console.log('usernameStatus 1');
+        // more kludgi
         if (inEvent.exists == 'reset') {
           console.log('usernameStatus 2');
-          this.$.bodyContainer.$.username.removeClass("text-input-confirm-box");
-          this.$.bodyContainer.$.username.removeClass("text-input-error-box");
+          this.usernameRef.removeClass("text-input-confirm-box");
+          this.usernameRef.removeClass("text-input-error-box");
         } else {
           console.log('usernameStatus 3');
           if (inEvent.exists == true) {
-            this.$.bodyContainer.$.username.addClass("text-input-error-box");
+            this.usernameRef.addClass("text-input-error-box");
           } else {
-            this.$.bodyContainer.$.username.addClass("text-input-confirm-box");
+            this.usernameRef.addClass("text-input-confirm-box");
           }
         }
         return true;
     }
     , setupBodyContent: function(owner) {
-        owner.createComponent(
+        this.usernameRef = owner.createComponent(
         { name: "username"
           , kind: "onyx.Input"
           , classes:"form-input-box form-field-left-margin"

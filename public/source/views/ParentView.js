@@ -7,6 +7,11 @@ enyo.kind({
   , tag: 'body'
   , fit: true
   , classes: "onyx"
+  , published : {
+      header : {}
+    , body: {}
+    , footer: {}
+  }
   , showMessage: function(messageText) {
       mvcApp.$.popupDialog.showMessage(messageText);
   }
