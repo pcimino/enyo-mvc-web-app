@@ -30,6 +30,7 @@ enyo.kind({
   , create: function() {
       this.publicView = new Bootplate.PublicView({name: "publicView"});
       this.authView = new Bootplate.HomeView({name: "homeView"});
+      this.createComponent({name:'popupDialog', kind: "PopupDialog", owner: this});
   }
   , setPublicView: function() {
       mvcApp.view = this.publicView;
@@ -40,5 +41,8 @@ enyo.kind({
       mvcApp.view = this.authView;
       mvcApp.render();
       window.location.hash = '/home'
+  }
+  , showMessage: function(messageText) {
+      this.$.popupDialog.showMessage(messageText);
   }
 });

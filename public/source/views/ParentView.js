@@ -16,9 +16,6 @@ enyo.kind({
       mvcApp.$.popupDialog.showMessage(messageText);
   }
   , setupBodyContent: function() {
-      if (!mvcApp.$.popupDialog) {
-        this.createComponent({name:'popupDialog', kind: "PopupDialog", owner: mvcApp});
-      }
       this.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center body-margin"});
   }
 });
