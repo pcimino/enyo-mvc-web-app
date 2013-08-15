@@ -1,22 +1,22 @@
 
 enyo.kind({
-  name: 'AJAX.Login'
+  name: 'AJAX.UserSignup'
   , kind: 'AJAX.Parent'
   , method:'POST'
-  , rest:'/api/v1/session/login'
+  , rest:'/api/v1/user'
   , constructor: function (props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
   }
   , processError: function(inSender, inResponse) {
-      console.log('AJAX.Login processError');
+      console.log('AJAX.UserSignup processError');
       if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: 'Problem authenticating this username and password.'});
+        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, message: 'Problem creating this user.'});
       }
   }
   , processResponse: function(inSender, inResponse) {
-      console.log('AJAX.Login processResponse ');
+      console.log('AJAX.UserSignup processResponse ');
       if (inResponse) {
        if (this.fireEvent) {
          this.owner.bubble(this.fireEvent, {userdata: inResponse, authenticated: true});

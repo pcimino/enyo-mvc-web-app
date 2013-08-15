@@ -12,12 +12,12 @@ enyo.kind({
   , processError: function(inSender, inResponse) {
       console.log('AJAX.UsernameExists processError');
       if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {exists: true, message: 'Username exists.'});
+        this.owner.bubble(this.fireEvent, {exists: true, response: inSender.xhrResponse, response: inResponse, message: 'Problem checking Username with server.'});
       }
   }
   , processResponse: function(inSender, inResponse) {
       console.log('AJAX.UsernameExists processResponse ');
-      this.owner.bubble(this.fireEvent, {exists: false, message: 'Username is available.'});
+      this.owner.bubble(this.fireEvent, {exists: false, response: inSender.xhrResponse, message: 'Username is available.'});
       // console.log(JSON.stringify(inResponse, null, 2));
   }
 });

@@ -1,6 +1,7 @@
 enyo.depends(
     "AJAXParent.js"
   , "AJAXLogin.js"
+  , "AJAXUserSignup.js"
   , "AJAXUserDetails.js"
   , "AJAXUsernameExists.js"
   , "AJAXLogout.js"

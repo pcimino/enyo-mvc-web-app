@@ -12,7 +12,11 @@ enyo.ready(function () {
     }
     , bindings: [
       {
-        from: ".$.validUsername.value",
+        from: ".$.name.value",
+        to: ".mvcApp.data",
+        kind: "enyo.InputBinding"
+      },{
+        from: ".$.email.value",
         to: ".mvcApp.data",
         kind: "enyo.InputBinding"
       },{
@@ -80,6 +84,26 @@ enyo.ready(function () {
       // owner.$.username.handlers.onUsernameStatus = 'usernameStatus';
       owner.handlers.onUsernameStatus = this.usernameStatus;
 
+      owner.createComponent(
+        { name: "name"
+          , kind: "onyx.Input"
+          , classes:"form-input-box form-field-left-margin"
+          , placeholder: "Name"
+          , owner: owner
+        }
+      );
+      this.bindInputData(owner.$.name);
+
+      owner.createComponent(
+        { name: "email"
+          , kind: "onyx.Input"
+          , classes:"form-input-box form-field-left-margin"
+          , placeholder: "Email"
+          , owner: owner
+        }
+      );
+      this.bindInputData(owner.$.email);
+
       // bind taken care of in usernameChanged() : this.bindInputData(owner.$.username);
       this.insertBreak(owner);
       owner.createComponent(
@@ -101,6 +125,23 @@ enyo.ready(function () {
         }
       );
       this.bindInputData(owner.$.vPassword);
+      this.insertBreak(owner);
+      owner.createComponent(
+        { kind: "onyx.Button",
+         content: "Sign Up",
+         classes: "onyx-blue form-field-left-margin",
+         owner: owner,
+         handlers: {
+           onclick: 'signup'
+         },
+         signup: function () {
+           mvcApp.waterfall('onUserSignup');
+           return true;
+         }
+        }
+      );
+
+      this.insertBreak(owner);
       this.insertBreak(owner);
       this.insertInternalLink(owner, 'login2', 'Cancel');
       this.insertBreak(owner);

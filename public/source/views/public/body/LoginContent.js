@@ -64,6 +64,7 @@ enyo.ready(function () {
         );
 
         this.insertBreak(owner);
+        this.insertBreak(owner);
         this.insertInternalLink(owner, 'userSignup', 'New User Signup');
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'forgotPassword', 'Reset My Password');

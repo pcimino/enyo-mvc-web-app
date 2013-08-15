@@ -18,6 +18,7 @@ enyo.kind({
      , onCheckUsernameResult: 'checkUsernameResult'
      , onForgotPassword: 'forgotPassword'
      , onUserSignup: 'userSignup'
+     , onUserSignupResult: 'userSignupResult'
      , onCheckUsername: 'checkUsername'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
@@ -35,6 +36,7 @@ enyo.kind({
         // display the authenticated home page
         mvcApp.setAuthView();
       } else {
+        console.log(inEvent.message);
         mvcApp.publicView.showMessage(inEvent.message);
       };
   }
@@ -52,13 +54,35 @@ enyo.kind({
   }
   // Check Username Result
   , checkUsernameResult: function (inSender, inEvent) {
+      if (!inEvent.exists && mvcApp.data.createNewUser) {
+        mvcApp.data.createNewUser = '';
+        // create the user
+        var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult'});
+        ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword});
+      }
       mvcApp.view.body.waterfall('onUsernameStatus', inEvent);
       return true;
   }
   // UserSignup
   , userSignup: function () {
     console.log("PublicController userSignup");
-    //new Bootplate.UserSignupApp({name: "userSignupApp"}).renderInto(document.body);
+      mvcApp.data.createNewUser = true;
+      this.checkUsername();
+  }
+  // UserSignupResult
+  , userSignupResult: function (inSender, inEvent) {
+    console.log("PublicController UserSignupResult");
+      if (inEvent.response == '200') {
+      console.log("Success");
+      mvcApp.data.createNewUser = '';
+      mvcApp.data.username = '';
+      mvcApp.data.password = '';
+      mvcApp.data.vPassword = '';
+      } else {
+        console.log("Failed " + inEvent.message);
+        mvcApp.showMessage(inEvent.message);
+      }
+
   }
   // check database connection
   , checkDB: function (inSender, inEvent) {
@@ -69,9 +93,9 @@ enyo.kind({
       console.log("checkDBResult");
       if (!inEvent.dbAvailable) {
         mvcApp.controllers.routes.trigger({location:'/systemUnavailable'});
-        mvcApp.publicView.showMessage("Cannot connect to the Database.");
+        mvcApp.showMessage("Cannot connect to the Database.");
       } else {
-        // mvcApp.publicView.showMessage("Database is up.");
+        // mvcApp.showMessage("Database is up.");
       }
   }
 });
