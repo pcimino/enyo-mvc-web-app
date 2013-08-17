@@ -71,11 +71,6 @@ enyo.ready(function () {
 
       // only call this on navigation, not initial load
         if (renderFlag) owner.render();
-
-        //console.log("BBB " + mvcApp.view.$.bodyContainer.$.password);
-//var bind = new enyo.Binding({from: ".mvcApp.publicView.$.bodyContainer.$.password.value", to: ".mvcApp.controllers.publicController.data.username"});
-//this.bindings.push(bind);
-
     } // end setupBodyContent
   });
 });

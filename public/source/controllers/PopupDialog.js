@@ -1,3 +1,6 @@
+/**
+* Popup Dialog used for displaying modal messages to the user
+*/
 enyo.kind({
     name: "PopupDialog"
     , kind: onyx.Popup

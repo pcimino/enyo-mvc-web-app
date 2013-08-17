@@ -9,6 +9,7 @@ enyo.kind({
         ajaxBaseURL: 'http://localhost'
         , ajaxBasePort: '3000'
         , data: {}
+        , broadcast: {displayClass:'', message: ''}
     }
     , controllers: [
     {

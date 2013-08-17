@@ -1,4 +1,6 @@
-
+/**
+* Parent for the AJAX requests, provides default success and error handlers
+*/
 enyo.kind({
   name: 'AJAX.Parent'
   , kind: 'enyo.Ajax'
@@ -9,7 +11,12 @@ enyo.kind({
   , callback: '?'
   , cacheBust: false
   , data: {}
+  ,crossDomain: true
   , headers: [{'Access-Control-Allow-Credentials':true}]
+  , beforeSend: function(xhr){
+       xhr.withCredentials = true;
+  }
+  , xhrFields: {withCredentials : true}
   , published: {
      owner: null
      , fireEvent: null

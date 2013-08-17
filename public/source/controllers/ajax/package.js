@@ -7,4 +7,5 @@ enyo.depends(
   , "AJAXLogout.js"
   , "JSONPParent.js"
   , "JSONPCheckDB.js"
+  , "JSONPCheckAuth.js"
 );

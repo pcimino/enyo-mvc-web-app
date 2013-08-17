@@ -1,14 +1,10 @@
+/**
+* JSONP request to check if the database is working
+*/
 enyo.kind({
   name: 'JSONP.CheckDB'
   , kind: 'JSONP.Parent'
   , rest:'/db'
-  , processError: function(inSender, inResponse) {
-      this.inherited(arguments);
-      console.log('JSONP.CheckDB processError');
-      if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {dbAvailable: false});
-      }
-  }
   , constructor: function (props) {
       this.inherited(arguments);
   }
@@ -25,5 +21,12 @@ enyo.kind({
         }
       }
       // console.log(JSON.stringify(inResponse, null, 2));
+  }
+  , processError: function(inSender, inResponse) {
+      this.inherited(arguments);
+      console.log('JSONP.CheckDB processError');
+      if (this.fireEvent) {
+        this.owner.bubble(this.fireEvent, {dbAvailable: false});
+      }
   }
 });
