@@ -1,4 +1,6 @@
-
+/**
+* POST for creating a new user
+*/
 enyo.kind({
   name: 'AJAX.UserSignup'
   , kind: 'AJAX.Parent'
@@ -8,12 +10,6 @@ enyo.kind({
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
-  }
-  , processError: function(inSender, inResponse) {
-      console.log('AJAX.UserSignup processError');
-      if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, message: 'Problem creating this user.'});
-      }
   }
   , processResponse: function(inSender, inResponse) {
       console.log('AJAX.UserSignup processResponse ');
@@ -26,5 +22,10 @@ enyo.kind({
       }
       console.log(JSON.stringify(inResponse, null, 2));
   }
-
+  , processError: function(inSender, inResponse) {
+      console.log('AJAX.UserSignup processError');
+      if (this.fireEvent) {
+        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, message: 'Problem creating this user.'});
+      }
+  }
 });

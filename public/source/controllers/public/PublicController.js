@@ -1,16 +1,10 @@
-// Put common navigation methods in here
-//
-// Enyo 2.x has a Routes class, which is really the way to go, still need to figure that out
-// in the mean time the parent has routing methods
+/**
+* Public Controller
+* Common handlers for the public (unauth) pages
+*/
 enyo.kind({
   name: "Bootplate.PublicController"
   , kind: "Bootplate.ParentController"
-  , autoLoad: true
-  , published: {
-     ajaxBaseURL: 'http://localhost'
-     , ajaxBasePort: '3000'
-  }
-  , dbAvailable: false
   , handlers: {
      onLogin: 'login'
      , onLoginResult: 'loginResult'
@@ -22,11 +16,15 @@ enyo.kind({
      , onCheckUsername: 'checkUsername'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
+     , onIsUserValidated: 'isUserValidated'
+     , onIsUserValidatedResult: 'isUserValidatedResult'
   }
   // Login
   , login: function () {
       var ajaxLogin = new AJAX.Login({owner:this, fireEvent:'onLoginResult'});
-      ajaxLogin.makeRequest({username:mvcApp.data.username , password:mvcApp.data.password});
+    // ensure unique request  by adding a random number
+    // TODO can probably remove this, trying to figure out CORS issue and multiple posts with same data might be masking something
+    ajaxLogin.makeRequest({username:mvcApp.data.username , password:mvcApp.data.password, rndNo : Math.random()});
   }
   , loginResult: function (inSender, inEvent) {
       if (inEvent.authenticated) {
@@ -72,14 +70,16 @@ enyo.kind({
   // UserSignupResult
   , userSignupResult: function (inSender, inEvent) {
     console.log("PublicController UserSignupResult");
-      if (inEvent.response == '200') {
-      console.log("Success");
-      mvcApp.data.createNewUser = '';
-      mvcApp.data.username = '';
-      mvcApp.data.password = '';
-      mvcApp.data.vPassword = '';
+      if (inEvent.userdata && inEvent.userdata.hashed_password) {
+        mvcApp.broadcast.displayClass = 'success';
+        mvcApp.broadcast.message = "You have successfully created your account " + mvcApp.data.username +". Please check your " + mvcApp.data.email + " email account to verify this address. You will then be able to login.";
+        mvcApp.data.createNewUser = '';
+        mvcApp.data.username = '';
+        mvcApp.data.email = '';
+        mvcApp.data.password = '';
+        mvcApp.data.vPassword = '';
+        mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
       } else {
-        console.log("Failed " + inEvent.message);
         mvcApp.showMessage(inEvent.message);
       }
 
@@ -90,12 +90,24 @@ enyo.kind({
       checkDB.makeRequest({});
   }
   , checkDBResult: function (inSender, inEvent) {
-      console.log("checkDBResult");
       if (!inEvent.dbAvailable) {
-        mvcApp.controllers.routes.trigger({location:'/systemUnavailable'});
+        mvcApp.broadcast.displayClass = 'error';
+        mvcApp.broadcast.message = "The system is currently unavailable. Please try again later.";
+        mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
         mvcApp.showMessage("Cannot connect to the Database.");
       } else {
         // mvcApp.showMessage("Database is up.");
       }
   }
+  // see if the user is already logged in
+  , onIsUserValidated: function (inSender, inEvent) {
+      var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onIsUserValidatedResult'});
+      checkAuth.makeRequest({});
+  }
+  , isUserValidatedResult: function (inSender, inEvent) {
+      if (inEvent.response == '200') {
+        mvcApp.controllers.routes.trigger({location:'/home'});
+      }
+  }
+
 });

@@ -1,4 +1,6 @@
-
+/**
+* Login POST
+*/
 enyo.kind({
   name: 'AJAX.Login'
   , kind: 'AJAX.Parent'
@@ -8,12 +10,6 @@ enyo.kind({
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
-  }
-  , processError: function(inSender, inResponse) {
-      console.log('AJAX.Login processError');
-      if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: 'Problem authenticating this username and password.'});
-      }
   }
   , processResponse: function(inSender, inResponse) {
       console.log('AJAX.Login processResponse ');
@@ -26,5 +22,10 @@ enyo.kind({
       }
       console.log(JSON.stringify(inResponse, null, 2));
   }
-
+  , processError: function(inSender, inResponse) {
+      console.log('AJAX.Login processError');
+      if (this.fireEvent) {
+        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: 'Problem authenticating this username and password.'});
+      }
+  }
 });

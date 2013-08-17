@@ -3,7 +3,6 @@
 enyo.kind({
   name: 'Bootplate.PublicView'
   , kind: "Bootplate.ParentView"
-  , dbAvailable: false
   , controller: 'Bootplate.PublicController'
   , create: function() {
       this.inherited(arguments);
@@ -21,6 +20,7 @@ enyo.kind({
   , rendered: function() {
       this.inherited(arguments);
       this.bubble('onCheckDB');
+      this.bubble('onIsUserValidated');
   }
   , setupHeaderContent: function() {
       if (this.$.headerContainer) this.$.headerContainer.destroy();

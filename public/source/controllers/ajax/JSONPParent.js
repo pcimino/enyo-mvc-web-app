@@ -1,3 +1,6 @@
+/**
+* Parent for the JSONP requests, provides default success and error handlers
+*/
 enyo.kind({
   name: 'JSONP.Parent'
   , kind: 'enyo.JsonpRequest'
@@ -7,7 +10,7 @@ enyo.kind({
      , fireEvent: null
      , url: null
   }
-    , constructor: function (props) {
+  , constructor: function (props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
@@ -24,11 +27,11 @@ enyo.kind({
 
       // send parameters the remote service using the 'go()' method
       this.go(params);
-    }
-    , processError: function(inSender, inResponse) {
-        console.log('JSONP.Parent processError');
-    }
-    , processResponse: function(inSender, inResponse) {
-        console.log('JSONP.Parent processResponse');
-    }
+  }
+  , processError: function(inSender, inResponse) {
+    console.log('JSONP.Parent processError');
+  }
+  , processResponse: function(inSender, inResponse) {
+    console.log('JSONP.Parent processResponse');
+  }
 });

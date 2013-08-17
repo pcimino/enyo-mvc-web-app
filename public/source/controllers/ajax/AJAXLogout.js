@@ -1,4 +1,6 @@
-
+/**
+* Logout request
+*/
 enyo.kind({
   name: 'AJAX.Logout'
   , kind: 'AJAX.Parent'
@@ -7,10 +9,10 @@ enyo.kind({
   , constructor: function (props) {
       this.inherited(arguments);
   }
-  , processError: function(inSender, inResponse) {
+  , processResponse: function(inSender, inResponse) {
       this.owner.bubble(this.fireEvent);
   }
-  , processResponse: function(inSender, inResponse) {
+  , processError: function(inSender, inResponse) {
       this.owner.bubble(this.fireEvent);
   }
 });

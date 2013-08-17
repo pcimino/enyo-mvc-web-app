@@ -40,5 +40,17 @@ enyo.ready(function () {
        };
        bindOwner.handlers.onblur='setData';
     }
+    /**
+    * rndLink is a utility to add a random parameter to a URL
+    * This helps prevent a situation where the page misloads due to error, but the link
+    * won't resumbit. When this occurs you may be on an error display page, but the url still has
+    * the previous url:  "...#/login"
+    */
+    , rndLink: function(url) {
+        if (url.indexOf('?') > 0) {
+          return url + "&r=" + enyo.irand(50000);
+        }
+        return url + "?r=" + enyo.irand(50000);
+    }
   });
 });

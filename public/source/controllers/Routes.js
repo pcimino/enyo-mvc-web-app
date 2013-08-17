@@ -1,3 +1,7 @@
+/**
+* Router class
+* Takes events form the URL hashtag, e.g. #/login path gets routed to the login handler
+*/
 enyo.kind({
     kind: 'enyo.Router'
   , name: 'Bootplate.Routes'
@@ -15,8 +19,8 @@ enyo.kind({
         , handler: 'authenticate'
         , change:'true'
     }
-    , { path: '/systemUnavailable'
-        , handler: 'systemUnavailable'
+    , { path: '/publicBroadcastMessage'
+        , handler: 'publicBroadcastMessage'
     }
     , { path: '/userSignup'
         , handler: 'userSignup'
@@ -46,7 +50,7 @@ enyo.kind({
   ]
   , loadBodyContent: function (kindByName, renderFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
-        console.log("loadBodyContent");
+        console.log("loadBodyContent " + kindByName);
         var owner = mvcApp.view.$.bodyContainer;
         owner.destroyClientControls();
         mvcApp.view.body = owner.createComponent({name:'bodyContent', kind: kindByName});
@@ -96,9 +100,9 @@ enyo.kind({
       console.log("forgotPassword router");
       this.loadBodyContent('Bootplate.ForgotPasswordContent', false);
   }
-  , systemUnavailable: function () {
-      console.log("systemUnavailable router");
-      this.loadBodyContent('Bootplate.SystemUnavailableContent', true);
+  , publicBroadcastMessage: function () {
+      console.log("publicBroadcastMessage router");
+      this.loadBodyContent('Bootplate.PublicMessageDisplayContent', true);
   }
   , authenticate: function () {
       console.log("authenticate router");

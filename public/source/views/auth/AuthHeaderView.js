@@ -17,7 +17,11 @@ enyo.kind({
   , rendered: function() {
       this.inherited(arguments);
       console.log('AuthHeaderView enter rendered');
-      this.$.headerRightContent.createComponent({name:"gravatar", kind: "tld.Gravatar", email: mvcApp.data.userData.email, imageSize: 75});
+      if (this.$.headerRightContent.$.gravatar) {
+        this.$.headerRightContent.$.gravatar.setEmail(mvcApp.data.userData.email)
+      } else {
+        this.$.headerRightContent.createComponent({name:"gravatar", kind: "tld.Gravatar", email: mvcApp.data.userData.email, imageSize: 75});
+      }
       console.log('AuthHeaderView rendered complete');
   }
 });

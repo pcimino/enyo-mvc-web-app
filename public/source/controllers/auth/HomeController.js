@@ -1,3 +1,7 @@
+/**
+* Home Controller
+* Common handlers for the authenticated pages
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.HomeController"
@@ -10,7 +14,6 @@ enyo.ready(function () {
     // Logout
     , logout: function () {
         console.log("logout handler");
-
         var ajaxLogout = new AJAX.Logout({owner:this, fireEvent:'onLogoutResult'});
         ajaxLogout.makeRequest({})
     }
