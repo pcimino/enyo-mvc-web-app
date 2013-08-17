@@ -11,11 +11,11 @@ enyo.kind({
   , callback: '?'
   , cacheBust: false
   , data: {}
-  ,crossDomain: true
-  , headers: [{'Access-Control-Allow-Credentials':true}]
-  , beforeSend: function(xhr){
-       xhr.withCredentials = true;
-  }
+//  , crossDomain: true
+//  , headers: [{'Access-Control-Allow-Credentials':true}]
+//  , beforeSend: function(xhr){
+//       xhr.withCredentials = true;
+//  }
   , xhrFields: {withCredentials : true}
   , published: {
      owner: null
