@@ -53,7 +53,8 @@ enyo.kind({
         console.log("loadBodyContent " + kindByName);
         var owner = mvcApp.view.$.bodyContainer;
         owner.destroyClientControls();
-        mvcApp.view.body = owner.createComponent({name:'bodyContent', kind: kindByName});
+        mvcApp.view.body = owner.createComponent({kind: kindByName, name:'bodyContent'});
+        mvcApp.view.body.render();
         owner.$.bodyContent.setupBodyContent(owner, renderFlag);
     }
   }
@@ -84,7 +85,7 @@ enyo.kind({
       this.loadBodyContent('Bootplate.HomeContent', false);
   }
   , checkLogin: function () {
-      console.log("checkLogin router");
+    //  console.log("checkLogin router");
     // TODO if logged in go to /home, otherwise to /login
       this.loadBodyContent('Bootplate.LoginContent', true);
   }
