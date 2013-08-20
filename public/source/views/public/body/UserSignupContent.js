@@ -37,13 +37,11 @@ enyo.ready(function () {
         console.log("inputChange", inSender.getValue(), inEvent);
     }
     , usernameStatus: function(inSender, inEvent) {
-        // more kludgi
+        // more kludging
         if (inEvent.exists == 'reset') {
-          console.log('usernameStatus 2');
           this.usernameRef.removeClass("text-input-confirm-box");
           this.usernameRef.removeClass("text-input-error-box");
         } else {
-          console.log('usernameStatus 3');
           if (inEvent.exists == true) {
             this.usernameRef.addClass("text-input-error-box");
           } else {
