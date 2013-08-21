@@ -24,6 +24,11 @@ enyo.ready(function () {
     name: "Bootplate.LoginContent"
     , kind: "Bootplate.ParentContent"
     , id: 'loginContent'
+    // This checks to see if the user is allowed on this page
+    , rendered: function() {
+        this.inherited(arguments);
+        this.bubble('onIsUserValidated', {auth:false});
+    }
     , setupBodyContent: function(owner, renderFlag) {
         owner.createComponent(
           { name: "username"

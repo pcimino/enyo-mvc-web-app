@@ -99,15 +99,6 @@ enyo.kind({
         // mvcApp.showMessage("Database is up.");
       }
   }
-  // see if the user is already logged in
-  , onIsUserValidated: function (inSender, inEvent) {
-      var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onIsUserValidatedResult'});
-      checkAuth.makeRequest({});
-  }
-  , isUserValidatedResult: function (inSender, inEvent) {
-      if (inEvent.response == '200') {
-        mvcApp.controllers.routes.trigger({location:'/home'});
-      }
-  }
+
 
 });

@@ -13,5 +13,35 @@ enyo.kind({
   , published: {
      ajaxBaseURL: 'http://localhost'
      , ajaxBasePort: '3000'
+     , auth : false
+     , role : 'user'
+  }
+  // Will this work or will the subclsses overwrite?
+  , handlers: {
+     , onIsUserValidated: 'isUserValidated'
+     , onIsUserValidatedResult: 'isUserValidatedResult'
+  }
+  // see if the user is already logged in
+  , onIsUserValidated: function (inSender, inEvent) {
+      this.auth = inEvent.auth;
+      this.role = inEvent.role;
+      var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onIsUserValidatedResult'});
+      checkAuth.makeRequest({});
+  }
+  , isUserValidatedResult: function (inSender, inEvent) {
+      if (inEvent.response == '200') {
+        // user is validated
+        if (!this.auth) {
+          // user is logged in but tried to go to a public page, redirect to home
+          mvcApp.controllers.routes.trigger({location:'/home'});
+        }
+
+        //TODO need to handle ADMIN rights
+      } else {
+        if (this.auth) {
+          // user is not logged in but tried to access am authorized page
+          mvcApp.controllers.routes.trigger({location:'/login'});
+        }
+      }
   }
 });

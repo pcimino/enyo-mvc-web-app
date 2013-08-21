@@ -9,6 +9,11 @@ enyo.ready(function () {
     , published: {
         contentComponent: null
     }
+    // This checks to see if the user is allowed on this page
+    , rendered: function() {
+        this.inherited(arguments);
+        this.bubble('onIsUserValidated', {auth:false});
+    }
     , setupBodyContent: function(owner, renderFlag) {
         console.log("Bootplate.MessageDisplayContent");
         this.insertBreak(owner);

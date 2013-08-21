@@ -20,7 +20,7 @@ enyo.kind({
   , rendered: function() {
       this.inherited(arguments);
       this.bubble('onCheckDB');
-      this.bubble('onIsUserValidated');
+      // this.bubble('onIsUserValidated');
   }
   , setupHeaderContent: function() {
       if (this.$.headerContainer) this.$.headerContainer.destroy();
