@@ -1,3 +1,4 @@
 enyo.depends(
-
+  "ajax"
+  , "socket"
 );

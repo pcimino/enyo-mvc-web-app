@@ -10,6 +10,11 @@ enyo.ready(function () {
         kind: "enyo.InputBinding"
       }
     ]
+    // This checks to see if the user is allowed on this page
+    , rendered: function() {
+        this.inherited(arguments);
+        this.bubble('onIsUserValidated', {auth:false});
+    }
     , setupBodyContent: function(owner) {
         owner.createComponent(
           { name: "username",

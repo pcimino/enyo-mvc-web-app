@@ -36,6 +36,11 @@ enyo.ready(function () {
         kind: "enyo.InputBinding"
       }
     ]
+    // This checks to see if the user is allowed on this page
+    , rendered: function() {
+        this.inherited(arguments);
+        this.bubble('onIsUserValidated', {auth:true});
+    }
     , updateUserStatus: function(inSender, inEvent) {
         // more kludging
         if (inEvent.exists == 'reset') {
