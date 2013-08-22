@@ -57,6 +57,9 @@ enyo.kind({
         mvcApp.view.body.render();
         owner.$.bodyContent.setupBodyContent(owner, renderFlag);
     }
+    // every navigation check the user validation
+    // if they try to navigate to a page with out proper access, they get redirected
+    mvcApp.waterfall('onIsUserValidated');
   }
   , logout: function () {
       console.log("logout router");

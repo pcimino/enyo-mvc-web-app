@@ -2,7 +2,6 @@ enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.HomeView"
     , kind: "Bootplate.ParentView"
-    , controller: 'Bootplate.HomeController'
     , bindings: [
 
     ]

@@ -1,0 +1,8 @@
+Resend validation email
+Forgot Password
+Update user
+Socket integration
+Admin page
+   Search for users
+   Delete a user
+

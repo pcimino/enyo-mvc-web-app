@@ -12,18 +12,15 @@ enyo.kind({
         , broadcast: {displayClass:'', message: ''}
     }
     , controllers: [
-    {
-       name: "publicController",
-       kind: "Bootplate.PublicController"
-    }
-    , {
-        name: "authController",
-        kind: "Bootplate.HomeController"
-    }
-    , {
-        name: "routes",
-        kind: "Bootplate.Routes"
-    }
+        {  name: "publicController",
+           kind: "Bootplate.PublicController"
+        }
+        , { name: "authController",
+            kind: "Bootplate.HomeController"
+        }
+        , { name: "routes",
+            kind: "Bootplate.Routes"
+        }
   ]
   , view:'Bootplate.PublicView'
   , publicView:''

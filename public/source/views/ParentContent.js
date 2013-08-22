@@ -3,7 +3,6 @@ enyo.ready(function () {
     name: "Bootplate.ParentContent"
     , kind: "enyo.Control"
     , id: 'parentContent'
-    , controller: 'publicController'
     , insertBreak: function(owner) {
         owner.createComponent({ tag: "br"});
     }
