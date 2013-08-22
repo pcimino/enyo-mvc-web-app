@@ -18,11 +18,11 @@ enyo.kind({
   }
   // Will this work or will the subclsses overwrite?
   , handlers: {
-     , onIsUserValidated: 'isUserValidated'
+     onIsUserValidated: 'isUserValidated'
      , onIsUserValidatedResult: 'isUserValidatedResult'
   }
   // see if the user is already logged in
-  , onIsUserValidated: function (inSender, inEvent) {
+  , isUserValidated: function (inSender, inEvent) {
       this.auth = inEvent.auth;
       this.role = inEvent.role;
       var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onIsUserValidatedResult'});
@@ -45,3 +45,4 @@ enyo.kind({
       }
   }
 });
+
