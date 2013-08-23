@@ -1,11 +1,13 @@
-Resend validation email
+
 Forgot Password
   rename forgotpassword view to something inclusive (forgot password & resend verification email)
 Update user
-Socket integration
+
 Check Admin status
 Admin page
    Search for users
    Delete a user
+Socket integration
+
 
 
