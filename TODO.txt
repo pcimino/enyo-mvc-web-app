@@ -2,7 +2,9 @@ Resend validation email
 Forgot Password
 Update user
 Socket integration
+Check Admin status
 Admin page
    Search for users
    Delete a user
+
 

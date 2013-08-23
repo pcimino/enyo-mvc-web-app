@@ -12,4 +12,22 @@ enyo.kind({
         {name:'footerRightContent', content: "footer-right", classes: "fittable-sample-box fittable-sample-mlr"}
       ]}
   ]
+  , rendered: function() {
+      this.inherited(arguments);
+      console.log(this.footerCenterContent);
+  }
 });
+
+/*
+var socket = new Socket({
+  init: {
+    on: {
+      example: function(data){
+        console.log(data);
+      },
+      example2: function(data){
+        console.log(data);
+      }
+    }
+  }
+});*/

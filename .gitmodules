@@ -13,3 +13,6 @@
 [submodule "public/lib/enyo-socket.io"]
 	path = public/lib/enyo-socket.io
 	url = https://github.com/phated/enyo-socket.io.git
+[submodule "public/lib/socket-io.client"]
+	path = public/lib/socket-io.client
+	url = git://github.com/phated/socket.io-client.git
