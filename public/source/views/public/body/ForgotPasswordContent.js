@@ -16,6 +16,7 @@ enyo.ready(function () {
         this.bubble('onIsUserValidated', {auth:false});
     }
     , setupBodyContent: function(owner) {
+
         owner.createComponent(
           { name: "username",
                       kind: "onyx.Input",
@@ -23,16 +24,32 @@ enyo.ready(function () {
                       placeholder: "Username"
                   }
         );
+        // setup the binding between the input and the Controller data store
+        this.bindInputData(owner.$.username);
+
         this.insertBreak(owner);
+         owner.createComponent(
+          { kind: "onyx.Button",
+            content: "Resend my Verification Email",
+            classes: "onyx-blue form-field-left-margin",
+            handlers: {
+              onclick: 'resendEmail'
+            },
+            resendEmail: function () {
+              mvcApp.waterfall('onResendEmail');
+              return true;
+            }
+          }
+        );
         owner.createComponent(
           { kind: "onyx.Button",
             content: "Request Password reset",
             classes: "onyx-blue form-field-left-margin",
             handlers: {
-              onclick: 'passwordReset'
+              onclick: 'forgotPassword'
             },
-            passwordReset: function () {
-              owner.bubble('onPasswordReset');
+            forgotPassword: function () {
+              mvcApp.waterfall('onForgotPassword');
               return true;
             }
           }
@@ -41,10 +58,10 @@ enyo.ready(function () {
 
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'login', 'Cancel');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'userSignup', 'New User Signup');
 
         owner.render();
     } // end setupBodyContent
   });
 });
+
+

@@ -1,3 +1,4 @@
+var AAA = {}
 /**
 * Public Controller
 * Common handlers for the public (unauth) pages
@@ -11,6 +12,9 @@ enyo.kind({
      , onCheckUsername: 'checkUsername'
      , onCheckUsernameResult: 'checkUsernameResult'
      , onForgotPassword: 'forgotPassword'
+     , onForgotPasswordResult: 'forgotPasswordResult'
+     , onResendEmail: 'resendEmail'
+     , onResendEmailResult: 'resendEmailResult'
      , onUserSignup: 'userSignup'
      , onUserSignupResult: 'userSignupResult'
      , onCheckUsername: 'checkUsername'
@@ -40,9 +44,45 @@ enyo.kind({
   }
   // ForgotPassword
   , forgotPassword: function () {
-    console.log("PublicController forgotPassword");
-    //new Bootplate.ForgotPasswordApp({name: "forgotPasswordApp"}).renderInto(document.body);
-    console.log("done");
+    var jsonpResetPassword = new JSONP.ResetPassword({owner:this, fireEvent:'onForgotPasswordResult'});
+    jsonpResetPassword.makeRequest({username:mvcApp.data.username});
+  }
+  // Forgot Passsword Result
+  , forgotPasswordResult: function (inSender, inEvent) {
+    if (inEvent.email && inEvent.email.length) {
+      mvcApp.broadcast.displayClass = 'success';
+      var emailAddr = inEvent.email;
+      if (inEvent.newEmail) {
+        emailAddr = inEvent.email + ' and ' + inEvent.newEmail;
+      }
+      mvcApp.broadcast.message = "We reset your password and sent you an email. Please check your " + emailAddr + " email account to verify this address. You will then be able to login.";
+      mvcApp.data.username = '';
+      mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
+    } else {
+      mvcApp.showMessage("We had trouble sending your email. Please try again later or contact your system administrator.");
+    }
+  }
+  // Resend  Verification Email
+  , resendEmail: function () {
+      var jsonpResendVerificationEmail = new JSONP.ResendVerificationEmail({owner:this, fireEvent:'onResendEmailResult'});
+      jsonpResendVerificationEmail.makeRequest({username:mvcApp.data.username});
+  }
+  // Resend  Verification Email Result
+  , resendEmailResult: function (inSender, inEvent) {
+    console.log("PublicController resendEmailResult ");
+    if (inEvent.email && inEvent.email.length) {
+      mvcApp.broadcast.displayClass = 'success';
+      var emailAddr = inEvent.email;
+      if (inEvent.newEmail) {
+        emailAddr = inEvent.email + ' and ' + inEvent.newEmail;
+      }
+      mvcApp.broadcast.message = "We have resent your verification email. Please check your " + emailAddr + " email account to verify this address. You will then be able to login.";
+      mvcApp.data.username = '';
+      mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
+    } else {
+      //mvcApp.showMessage("We had trouble sending your email. Please try again later or contact your system administrator.");
+    mvcApp.showMessage("We had trouble sending your email. Please try again later or contact your system administrator.");
+    }
   }
   // Check Username availability
   , checkUsername: function () {

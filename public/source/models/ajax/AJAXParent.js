@@ -46,3 +46,4 @@ enyo.kind({
     return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
   }
 });
+
