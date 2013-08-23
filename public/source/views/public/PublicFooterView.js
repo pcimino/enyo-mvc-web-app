@@ -1,4 +1,4 @@
-var AAA = {}
+
 enyo.kind({
   name: 'Bootplate.PublicFooterView'
   , kind: "enyo.FittableRows"
@@ -21,19 +21,18 @@ enyo.kind({
   }
   , rendered: function() {
       this.inherited(arguments);
-    this.updateTime('test 1');
-    var host = mvcApp.getWsSocketURL() + ':' + mvcApp.getWsSocketPort();
+    /*
+      var host = mvcApp.getWsSocketURL() + ':' + mvcApp.getWsSocketPort();
       var timeSocket = new Socket({address: host, owner: this});
-    this.updateTime('test 2');
+
       timeSocket.on('connect', function() {
         timeSocket.on('timestamp', function (data) {
           updateTime(JSON.parse(data));
         });
       });
-    this.updateTime('test 3');
+    */
 
   }
 });
 
-/*
-var socket = new Socket();*/
+

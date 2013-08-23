@@ -3,8 +3,9 @@ enyo.depends(
 	"$lib/layout"
 	, "$lib/onyx"
   , "$lib/gravatar"
-  , "$lib/enyo-socket.io"
-  , "$lib/socket-io.client"
+  //, "$lib/enyo-socket.io"
+  //, "$lib/socket-io.client"
+  //, "$lib/socket-io-client"
 	// include application sources
 	, "css"
 	, "models"
