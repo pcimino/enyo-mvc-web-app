@@ -18,16 +18,3 @@ enyo.kind({
   }
 });
 
-/*
-var socket = new Socket({
-  init: {
-    on: {
-      example: function(data){
-        console.log(data);
-      },
-      example2: function(data){
-        console.log(data);
-      }
-    }
-  }
-});*/
