@@ -28,6 +28,9 @@ enyo.kind({
     , { path: '/forgotPassword'
         , handler: 'forgotPassword'
     }
+    , { path: '/resendEmail'
+        , handler: 'resendEmail'
+    }
     , { path: '/logout'
         , handler: 'logout'
         , change:'true'
@@ -104,6 +107,10 @@ enyo.kind({
       console.log("forgotPassword router");
       this.loadBodyContent('Bootplate.ForgotPasswordContent', false);
   }
+  , resendEmail: function () {
+      console.log("resendEmail router");
+      this.loadBodyContent('Bootplate.ForgotPasswordContent', false);
+  }
   , publicBroadcastMessage: function () {
       console.log("publicBroadcastMessage router");
       this.loadBodyContent('Bootplate.PublicMessageDisplayContent', true);
@@ -114,3 +121,4 @@ enyo.kind({
   }
 
 });
+

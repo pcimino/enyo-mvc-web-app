@@ -72,6 +72,8 @@ enyo.ready(function () {
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'userSignup', 'New User Signup');
         this.insertBreak(owner);
+        this.insertInternalLink(owner, 'resendEmail', 'Resend My Verification Email');
+        this.insertBreak(owner);
         this.insertInternalLink(owner, 'forgotPassword', 'Reset My Password');
 
       // only call this on navigation, not initial load
@@ -79,3 +81,4 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+

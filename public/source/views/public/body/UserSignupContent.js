@@ -147,11 +147,10 @@ enyo.ready(function () {
       this.insertBreak(owner);
       this.insertBreak(owner);
       this.insertInternalLink(owner, 'login2', 'Cancel');
-      this.insertBreak(owner);
-      this.insertInternalLink(owner, 'forgotPassword', 'Reset My Password');
 
       owner.render();
     } // end setupBodyContent
   });
 });
+
 
