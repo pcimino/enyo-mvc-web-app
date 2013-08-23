@@ -1,7 +1,7 @@
 # Assumes server is in parent directory, set to absolute path to run script from anywhere
-export SERVER_HOME=.. 
+export SERVER_HOME=..
 # Development is the default environment, showing how to do it explicitly
-export NODE_ENV=development 
-cd $SERVER_HOME 
-git submodule update --init
+export NODE_ENV=development
+cd $SERVER_HOME
+git submodule update --init --recursive
 git submodule foreach git pull origin master

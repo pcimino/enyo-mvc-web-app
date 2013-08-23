@@ -10,6 +10,8 @@ enyo.kind({
         , ajaxBasePort: '3000'
         , data: {}
         , broadcast: {displayClass:'', message: ''}
+        , wsSocketURL: 'ws://localhost'
+        , wsSocketPort: '3000'
     }
     , controllers: [
         {  name: "publicController",
@@ -44,3 +46,4 @@ enyo.kind({
       this.$.popupDialog.showMessage(messageText);
   }
 });
+
