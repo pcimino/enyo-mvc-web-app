@@ -10,3 +10,6 @@
 [submodule "public/lib/gravatar"]
 	path = public/lib/gravatar
 	url = https://github.com/pcimino/Gravatar.git
+[submodule "public/lib/enyo-socket.io"]
+	path = public/lib/enyo-socket.io
+	url = https://github.com/phated/enyo-socket.io.git
