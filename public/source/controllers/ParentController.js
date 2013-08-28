@@ -37,14 +37,15 @@ enyo.kind({
         // user is validated
         if (!this.auth) {
           // user is logged in but tried to go to a public page, redirect to home
-          mvcApp.controllers.routes.trigger({location:'/home'});
+          mvcApp.controllers.routes.trigger({location:'/homeEvent'});
+          this.checkAdmin();
         }
 
         //TODO need to handle ADMIN rights
       } else {
         if (this.auth) {
           // user is not logged in but tried to access am authorized page
-          mvcApp.controllers.routes.trigger({location:'/login'});
+          mvcApp.controllers.routes.trigger({location:'/loginEvent'});
         }
       }
   }
@@ -61,6 +62,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 

@@ -1,3 +1,4 @@
+var AAB = {}
 /**
 * Router class
 * Takes events form the URL hashtag, e.g. #/login path gets routed to the login handler
@@ -13,6 +14,10 @@ enyo.kind({
     }
     , { path: '/login'
         , handler: 'login'
+        , change:'true'
+    }
+    , { path: '/loginEvent'
+        , handler: 'loginEvent'
         , change:'true'
     }
     , { path: '/authenticate'
@@ -41,6 +46,9 @@ enyo.kind({
     , { path: '/home'
         , handler: 'home'
     }
+    , { path: '/homeEvent'
+        , handler: 'homeEvent'
+    }
     , { path: '/readUserInfo'
         , handler: 'readUserInfo'
     }
@@ -51,7 +59,7 @@ enyo.kind({
         , handler: 'updateUserInfo'
     }
   ]
-  , loadBodyContent: function (kindByName, renderFlag) {
+  , loadBodyContent: function (kindByName, renderFlag, skipWaterfallFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
         console.log("loadBodyContent " + kindByName);
         var owner = mvcApp.view.$.bodyContainer;
@@ -62,7 +70,7 @@ enyo.kind({
     }
     // every navigation check the user validation
     // if they try to navigate to a page with out proper access, they get redirected
-    mvcApp.waterfall('onIsUserValidated');
+    if (!skipWaterfallFlag) {mvcApp.waterfall('onIsUserValidated');}
   }
   , logout: function () {
       console.log("logout router");
@@ -87,8 +95,13 @@ enyo.kind({
       this.loadBodyContent('Bootplate.UpdateUserInfoContent', false);
   }
   , home: function () {
-      console.log("home router");
+    console.log("home router ");
       this.loadBodyContent('Bootplate.HomeContent', false);
+  }
+  // this is triggered by the isUserValidated event, purpose is to avoid loops
+  , homeEvent: function () {
+    console.log("homeEvent router ");
+      this.loadBodyContent('Bootplate.HomeContent', false, true);
   }
   , checkLogin: function () {
     //  console.log("checkLogin router");
@@ -98,6 +111,11 @@ enyo.kind({
   , login: function () {
       console.log("login router");
       this.loadBodyContent('Bootplate.LoginContent', true);
+  }
+  // this is triggered by the isUserValidated event, purpose is to avoid loops
+  , loginEvent: function () {
+      console.log("loginEvent router");
+      this.loadBodyContent('Bootplate.LoginContent', true, true);
   }
   , userSignup: function () {
       console.log("userSignup router");
@@ -121,5 +139,6 @@ enyo.kind({
   }
 
 });
+
 
 
