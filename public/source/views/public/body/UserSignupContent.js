@@ -36,7 +36,6 @@ enyo.ready(function () {
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
-        this.bubble('onIsUserValidated', {auth:false});
     }
     , inputChange: function(inSender, inEvent){
         console.log("inputChange", inSender.getValue(), inEvent);

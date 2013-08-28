@@ -12,7 +12,6 @@ enyo.ready(function () {
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
-        this.bubble('onIsUserValidated', {auth:true});
     }
     , showAdminOptions: function() {
       console.log("showAdminOptions");
