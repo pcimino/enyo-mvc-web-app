@@ -26,7 +26,11 @@ enyo.kind({
   , isUserValidated: function (inSender, inEvent) {
       this.auth = inEvent.auth;
       this.role = inEvent.role;
-      this.checkAuth();;
+
+      var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onIsUserValidatedResult'});
+      checkAuth.makeRequest({});
+
+      this.checkAdmin();
   }
   , isUserValidatedResult: function (inSender, inEvent) {
       if (inEvent.response == '200') {
@@ -45,11 +49,11 @@ enyo.kind({
       }
   }
   // check database connection
-  , checkAuth: function (inSender, inEvent) {
-      var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onCheckAuthResult'});
-      checkAuth.makeRequest({});
+  , checkAdmin: function (inSender, inEvent) {
+      var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
+      checkAdmin.makeRequest({});
   }
-  , checkAuthResult: function (inSender, inEvent) {
+  , checkAdminResult: function (inSender, inEvent) {
       if (inEvent.response == '200') {
         mvcApp.setAdminFlag(true);
       } else {
@@ -57,5 +61,6 @@ enyo.kind({
       }
   }
 });
+
 
 

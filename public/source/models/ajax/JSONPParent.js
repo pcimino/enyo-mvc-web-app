@@ -20,7 +20,7 @@ enyo.kind({
   }
   // check database connection
   , makeRequest: function (params) {
-      this.url = this.buildBaseURL() + this.rest;// + this.buildParams(params);
+      this.url = this.buildBaseURL() + this.rest;
 
       // attach responders to the transaction object
       this.response(this, "processResponse");
@@ -40,17 +40,9 @@ enyo.kind({
         this.owner.bubble(this.fireEvent, {response: inResponse});
       }
   }
-  , buildParams: function(params) {
-    console.log('buildParams')
-    console.log(JSON.stringify(params))
-      if (params && params.length > 0) {
-        return Object.keys(data).map(function(k) {
-          return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-        }).join('&');
-      }
-      return "";
-  }
 });
+
+
 
 
 
