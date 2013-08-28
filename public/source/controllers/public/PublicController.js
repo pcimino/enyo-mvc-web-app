@@ -1,4 +1,4 @@
-var AAA = {}
+var AAA={}
 /**
 * Public Controller
 * Common handlers for the public (unauth) pages
@@ -49,8 +49,10 @@ enyo.kind({
   }
   // Forgot Passsword Result
   , forgotPasswordResult: function (inSender, inEvent) {
+    console.log("forgotPasswordResult")
     if (inEvent.email && inEvent.email.length) {
       mvcApp.broadcast.displayClass = 'success';
+
       var emailAddr = inEvent.email;
       if (inEvent.newEmail) {
         emailAddr = inEvent.email + ' and ' + inEvent.newEmail;
@@ -139,6 +141,6 @@ enyo.kind({
         // mvcApp.showMessage("Database is up.");
       }
   }
-
-
 });
+
+

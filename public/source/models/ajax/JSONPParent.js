@@ -30,11 +30,15 @@ enyo.kind({
       // sending this in the body and on the URI
       this.go(params);
   }
-  , processError: function(inSender, inResponse) {
-    console.log('JSONP.Parent processError');
-  }
   , processResponse: function(inSender, inResponse) {
-    console.log('JSONP.Parent processResponse');
+      if (this.fireEvent) {
+        this.owner.bubble(this.fireEvent, {response: '200'});
+      }
+  }
+  , processError: function(inSender, inResponse) {
+      if (this.fireEvent) {
+        this.owner.bubble(this.fireEvent, {response: inResponse});
+      }
   }
   , buildParams: function(params) {
     console.log('buildParams')
@@ -47,5 +51,6 @@ enyo.kind({
       return "";
   }
 });
+
 
 

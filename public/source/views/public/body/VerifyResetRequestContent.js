@@ -1,6 +1,6 @@
 enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.ForgotPasswordContent"
+    name: "Bootplate.VerifyResetRequestContent"
     , kind: "Bootplate.ParentContent"
     , id: 'forgotPasswordContent'
     , bindings: [
@@ -63,5 +63,6 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
 
 
