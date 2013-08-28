@@ -14,7 +14,7 @@ enyo.kind({
   ]
   , rendered: function() {
       this.inherited(arguments);
-      console.log(this.footerCenterContent);
   }
 });
+
 

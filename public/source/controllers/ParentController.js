@@ -20,13 +20,13 @@ enyo.kind({
   , handlers: {
      onIsUserValidated: 'isUserValidated'
      , onIsUserValidatedResult: 'isUserValidatedResult'
+     , onCheckAuthResult: 'checkAuthResult'
   }
   // see if the user is already logged in
   , isUserValidated: function (inSender, inEvent) {
       this.auth = inEvent.auth;
       this.role = inEvent.role;
-      var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onIsUserValidatedResult'});
-      checkAuth.makeRequest({});
+      this.checkAuth();;
   }
   , isUserValidatedResult: function (inSender, inEvent) {
       if (inEvent.response == '200') {
@@ -44,5 +44,18 @@ enyo.kind({
         }
       }
   }
+  // check database connection
+  , checkAuth: function (inSender, inEvent) {
+      var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onCheckAuthResult'});
+      checkAuth.makeRequest({});
+  }
+  , checkAuthResult: function (inSender, inEvent) {
+      if (inEvent.response == '200') {
+        mvcApp.setAdminFlag(true);
+      } else {
+        mvcApp.setAdminFlag(false);
+      }
+  }
 });
+
 

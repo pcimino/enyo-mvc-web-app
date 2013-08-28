@@ -3,18 +3,20 @@ enyo.ready(function () {
     name: "Bootplate.ParentContent"
     , kind: "enyo.Control"
     , id: 'parentContent'
-    , insertBreak: function(owner) {
-        owner.createComponent({ tag: "br"});
+    , insertBreak: function(owner, optionalName) {
+        owner.createComponent({ tag: "br", kind: 'enyo.Control', name: optionalName}); // optionalName used when fields need to be shown/hidden
     }
-    , insertInternalLink: function(owner, link, text) {
+    , insertInternalLink: function(owner, link, text, optionalName) {
         owner.createComponent({
           tag: 'a'
           , id: 'tag_' + link
+          , name: optionalName // used when fields need to be shown/hidden
           , attributes: {
                 href: '#/' + link
           }
           , content: text
           , classes:"form-field-left-margin"
+          , kind: 'enyo.Control'
         });
     }
     , bindInputData: function(bindOwner) {

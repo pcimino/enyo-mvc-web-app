@@ -9,6 +9,7 @@ enyo.kind({
         ajaxBaseURL: 'http://localhost'
         , ajaxBasePort: '3000'
         , data: {}
+        , adminFlag: false
         , broadcast: {displayClass:'', message: ''}
         , wsSocketURL: 'ws://localhost'
         , wsSocketPort: '3000'
@@ -45,5 +46,20 @@ enyo.kind({
   , showMessage: function(messageText) {
       this.$.popupDialog.showMessage(messageText);
   }
+  , adminFlagChanged: function(oldVal) {
+    console.log("CHANGED " + oldVal);
+      // if flag is true, this allows Admin links to be seen, but server will
+      // still restrict functionality
+      // each view implementing admin options will have to be responsible for show/hide
+      // and look for hideAdminOptions and showAdminOptions events
+    mvcApp.authView.$.bodyContainer.$.adminUpdateUserLink.hide()
+      if (this.adminFlag) {
+        mvcApp.waterfall('onShowAdminOptions');
+      } else {
+        mvcApp.waterfall('onHideAdminOptions');
+      }
+  }
 });
+
+
 

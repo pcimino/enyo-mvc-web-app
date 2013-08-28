@@ -105,11 +105,11 @@ enyo.kind({
   }
   , forgotPassword: function () {
       console.log("forgotPassword router");
-      this.loadBodyContent('Bootplate.ForgotPasswordContent', false);
+      this.loadBodyContent('Bootplate.VerifyResetRequestContent', false);
   }
   , resendEmail: function () {
       console.log("resendEmail router");
-      this.loadBodyContent('Bootplate.ForgotPasswordContent', false);
+      this.loadBodyContent('Bootplate.VerifyResetRequestContent', false);
   }
   , publicBroadcastMessage: function () {
       console.log("publicBroadcastMessage router");
@@ -121,4 +121,5 @@ enyo.kind({
   }
 
 });
+
 

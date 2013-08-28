@@ -8,9 +8,11 @@ enyo.depends(
   , "JSONPParent.js"
   , "JSONPCheckDB.js"
   , "JSONPCheckAuth.js"
+  , "JSONPCheckAdmin.js"
   , "JSONPResendVerificationEmail.js"
   , "JSONPResetPassword.js"
 );
+
 
 
 
