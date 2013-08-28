@@ -5,8 +5,7 @@
 enyo.kind({
   name: 'JSONP.CheckAdmin'
   , kind: 'JSONP.Parent'
-  , rest:'/api/auth'
-  , constructor: function (props) {
-      this.inherited(arguments);
-  }
+  , rest:'/api/v1/roles/access?role=Admin'
 });
+
+

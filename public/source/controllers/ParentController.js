@@ -20,17 +20,17 @@ enyo.kind({
   , handlers: {
      onIsUserValidated: 'isUserValidated'
      , onIsUserValidatedResult: 'isUserValidatedResult'
-     , onCheckAuthResult: 'checkAuthResult'
+     , onCheckAdmin: 'checkAdmin'
+     , onCheckAdminResult: 'checkAdminResult'
   }
   // see if the user is already logged in
+  //TODO Causing a loop, since the result can cause the /home or /login call, which calls routes which calls this...hmmmmm
   , isUserValidated: function (inSender, inEvent) {
       this.auth = inEvent.auth;
       this.role = inEvent.role;
 
       var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onIsUserValidatedResult'});
       checkAuth.makeRequest({});
-
-      this.checkAdmin();
   }
   , isUserValidatedResult: function (inSender, inEvent) {
       if (inEvent.response == '200') {

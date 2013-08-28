@@ -20,8 +20,6 @@ enyo.kind({
      , onCheckUsername: 'checkUsername'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
-     , onIsUserValidated: 'isUserValidated'
-     , onIsUserValidatedResult: 'isUserValidatedResult'
   }
   // Login
   , login: function () {
