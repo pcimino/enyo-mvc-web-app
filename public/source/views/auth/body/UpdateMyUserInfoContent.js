@@ -1,6 +1,6 @@
 enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.UpdateUserInfoContent"
+    name: "Bootplate.UpdateMyUserInfoContent"
     , kind: "Bootplate.ParentContent"
     , id: 'updateUserInfoContent'
     , handlers: {
@@ -20,18 +20,6 @@ enyo.ready(function () {
         kind: "enyo.InputBinding"
       },{
         from: ".$.username.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.cPassword.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.password.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.vPassword.value",
         to: ".mvcApp.data",
         kind: "enyo.InputBinding"
       }
@@ -106,38 +94,6 @@ enyo.ready(function () {
         );
         this.bindInputData(owner.$.email);
 
-        this.insertBreak(owner);
-        owner.createComponent(
-          { name: "cPassword",
-            kind: "onyx.Input",
-            classes:"form-input-box form-field-left-margin",
-            placeholder: "Current Password",
-            owner: owner
-          }
-        );
-        this.bindInputData(owner.$.cPassword);
-
-        this.insertBreak(owner);
-        owner.createComponent(
-          { name: "password",
-            kind: "onyx.Input",
-            classes:"form-input-box form-field-left-margin",
-            placeholder: "New Password",
-            owner: owner
-          }
-        );
-        this.bindInputData(owner.$.password);
-
-        this.insertBreak(owner);
-        owner.createComponent(
-          { name: "vPassword",
-            kind: "onyx.Input",
-            classes:"form-input-box form-field-left-margin",
-            placeholder: "Verify Password",
-            owner: owner
-          }
-        );
-        this.bindInputData(owner.$.vPassword);
         this.insertBreak(owner);
         owner.createComponent(
           { kind: "onyx.Button",

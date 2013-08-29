@@ -1,6 +1,6 @@
 enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.UpdateUserInfoContent"
+    name: "Bootplate.UpdateMyPasswordContent"
     , kind: "Bootplate.ParentContent"
     , id: 'updateUserInfoContent'
     , handlers: {
@@ -11,18 +11,6 @@ enyo.ready(function () {
     }
     , bindings: [
       {
-        from: ".$.name.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.email.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.username.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
         from: ".$.cPassword.value",
         to: ".mvcApp.data",
         kind: "enyo.InputBinding"
@@ -55,56 +43,6 @@ enyo.ready(function () {
         return true;
     }
     , setupBodyContent: function(owner) {
-          this.usernameRef = owner.createComponent(
-          { name: "username"
-            , kind: "onyx.Input"
-            , classes:"form-input-box form-field-left-margin"
-            , placeholder: "Username"
-            , owner: owner
-            , handlers: {
-                onblur: 'usernameChanged'
-              , onkeyup: 'usernameChanged'
-            }
-            /**
-            * When the username changes, check the lenght, if short remove any indicator classes
-            * If longer than 3 characters, check availability, bubble the event up to the PublicController
-            */
-            , usernameChanged: function(inSender, inEvent) {
-                mvcApp.data.username = this.value;
-                if (!this.value || this.value.length < 4) {
-                  this.removeClass("text-input-confirm-box");
-                  this.removeClass("text-input-error-box");
-                } else {
-                  mvcApp.waterfall('onCheckChangeUsername');
-                }
-                return true;
-            }
-          }
-        );
-        this.bindInputData(owner.$.username);
-        // Why doesn't the "handlers : {}"" definition above work?
-        // owner.$.username.handlers.onUsernameStatus = 'usernameStatus';
-        owner.handlers.onUsernameStatus = this.usernameStatus;
-
-        owner.createComponent(
-          { name: "name"
-            , kind: "onyx.Input"
-            , classes:"form-input-box form-field-left-margin"
-            , placeholder: "Name"
-            , owner: owner
-          }
-        );
-        this.bindInputData(owner.$.name);
-
-        owner.createComponent(
-          { name: "email"
-            , kind: "onyx.Input"
-            , classes:"form-input-box form-field-left-margin"
-            , placeholder: "Email"
-            , owner: owner
-          }
-        );
-        this.bindInputData(owner.$.email);
 
         this.insertBreak(owner);
         owner.createComponent(
@@ -138,6 +76,7 @@ enyo.ready(function () {
           }
         );
         this.bindInputData(owner.$.vPassword);
+
         this.insertBreak(owner);
         owner.createComponent(
           { kind: "onyx.Button",
@@ -171,4 +110,5 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 

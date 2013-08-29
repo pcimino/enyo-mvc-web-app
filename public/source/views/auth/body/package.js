@@ -4,4 +4,7 @@ enyo.depends(
   , "ReadUserInfoContent.js"
   , "ReadUserListContent.js"
   , "UpdateUserInfoContent.js"
+  , "UpdateMyUserInfoContent.js"
+  , "UpdateMyPasswordContent.js"
 );
+
