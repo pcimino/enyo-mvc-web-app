@@ -58,6 +58,12 @@ enyo.kind({
     , { path: '/updateUserInfo'
         , handler: 'updateUserInfo'
     }
+    , { path: '/updateMyUserInfo'
+        , handler: 'updateMyUserInfo'
+    }
+    , { path: '/updateMyPassword'
+        , handler: 'updateMyPassword'
+    }
   ]
   , loadBodyContent: function (kindByName, renderFlag, skipWaterfallFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
@@ -93,6 +99,14 @@ enyo.kind({
   , updateUserInfo: function () {
       console.log("updateUserInfo router");
       this.loadBodyContent('Bootplate.UpdateUserInfoContent', false);
+  }
+  , updateMyUserInfo: function () {
+      console.log("updateMyUserInfo router");
+      this.loadBodyContent('Bootplate.UpdateMyUserInfoContent', false);
+  }
+  , updateMyPassword: function () {
+      console.log("updateMyPassword router");
+      this.loadBodyContent('Bootplate.UpdateMyPasswordContent', false);
   }
   , home: function () {
     console.log("home router ");
@@ -139,6 +153,7 @@ enyo.kind({
   }
 
 });
+
 
 
 

@@ -1,8 +1,12 @@
-IsUserValidated loops since it's trying to check if new location should be /home or /login, but that in turn fires the same event
+Gravatar not working
 
 Implement hide/show Admin settings , see HomeController for example, still needs work
 
 Update user
+
+Update My User
+
+Update My Password
 
 
 Admin page
@@ -12,6 +16,9 @@ Admin page
 Socket integration
 
 
+Messaging
+
+Should links be built in the parent?
 
 
 
