@@ -11,18 +11,28 @@ enyo.kind({
          , components: [
              {name:'headerLeftContent', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"}
              , {name:'headerCenterContent', content: "auth header-center", fit: true, classes: "header-center"}
-             , {name:'headerRightContent', classes: "header-right"}
+             , {name:'headerRightContent', classes: "header-right", kind: "tld.Gravatar", email: '', imageSize: 75}
       ]}
     ]
+
   , rendered: function() {
       this.inherited(arguments);
-      console.log('AuthHeaderView enter rendered');
+   //   this.setupGravatar();
+
+      //this.gravatarEmail = mvcApp.data.userData.email;
+
       if (this.$.headerRightContent.$.gravatar) {
-        this.$.headerRightContent.$.gravatar.setEmail(mvcApp.data.userData.email)
+       // console.log("Gravatar exists, setting email");
+        this.$.headerRightContent.setEmail(mvcApp.data.userData.email);
       } else {
+        console.log("Create new Gravatar");
         this.$.headerRightContent.createComponent({name:"gravatar", kind: "tld.Gravatar", email: mvcApp.data.userData.email, imageSize: 75});
       }
+
       console.log('AuthHeaderView rendered complete');
   }
+
 });
+
+
 
