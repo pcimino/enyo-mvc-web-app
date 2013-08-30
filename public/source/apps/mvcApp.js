@@ -10,6 +10,7 @@ enyo.kind({
         , ajaxBasePort: '3000'
         , data: {}
         , adminFlag: false
+        , gravatarEmail: ''
         , broadcast: {displayClass:'', message: ''}
         , wsSocketURL: 'ws://localhost'
         , wsSocketPort: '3000'
@@ -39,9 +40,16 @@ enyo.kind({
       window.location.hash = '/login'
   }
   , setAuthView: function() {
+    console.log(1);
       mvcApp.view = this.authView;
       mvcApp.render();
       window.location.hash = '/home'
+      if (this.data && this.data.userData) {
+        mvcApp.setGravatarEmail(mvcApp.data.userData.email);
+      } else {
+        mvcApp.setGravatarEmail('');
+      }
+
   }
   , showMessage: function(messageText) {
       this.$.popupDialog.showMessage(messageText);
@@ -59,7 +67,11 @@ enyo.kind({
         mvcApp.waterfall('onHideAdminOptions');
       }
   }
+  , gravatarEmailChanged: function(oldVal) {
+      mvcApp.waterfall('onSetupGravatar');
+  }
 });
+
 
 
 

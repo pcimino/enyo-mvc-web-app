@@ -1,4 +1,5 @@
-Gravatar not working
+Gravatar dissappears on screen refresh
+need to add event to Gravatar module
 
 Implement hide/show Admin settings , see HomeController for example, still needs work
 
@@ -19,6 +20,7 @@ Socket integration
 Messaging
 
 Should links be built in the parent?
+
 
 
 
