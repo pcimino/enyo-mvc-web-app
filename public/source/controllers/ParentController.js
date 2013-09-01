@@ -2,7 +2,7 @@
 //
 // Enyo 2.x has a Routes class, which is really the way to go, still need to figure that out
 // in the mean time the parent has routing methods
-
+var AAAB = {}
 /**
 * Parent Controller
 */
@@ -22,6 +22,7 @@ enyo.kind({
      , onIsUserValidatedResult: 'isUserValidatedResult'
      , onCheckAdmin: 'checkAdmin'
      , onCheckAdminResult: 'checkAdminResult'
+     , onReloadUser: 'reloadUser'
   }
   // see if the user is already logged in
   //TODO Causing a loop, since the result can cause the /home or /login call, which calls routes which calls this...hmmmmm
@@ -33,21 +34,42 @@ enyo.kind({
       checkAuth.makeRequest({});
   }
   , isUserValidatedResult: function (inSender, inEvent) {
+
       if (inEvent.response == '200') {
         // user is validated
         if (!this.auth) {
           // user is logged in but tried to go to a public page, redirect to home
+          mvcApp.setAuthView();
           mvcApp.controllers.routes.trigger({location:'/homeEvent'});
-          this.checkAdmin();
+          // retrieve and reload the users data
+          if (!mvcApp.data.user) {
+            // data was cleared, reload
+            var userDetails = new AJAX.UserDetails({owner:this, fireEvent:'onReloadUser'});
+            userDetails.makeRequest({username: inEvent.username});
+          } else {
+            this.checkAdmin();
+          }
         }
-
-        //TODO need to handle ADMIN rights
       } else {
         if (this.auth) {
           // user is not logged in but tried to access am authorized page
+          mvcApp.setPublicView();
           mvcApp.controllers.routes.trigger({location:'/loginEvent'});
         }
       }
+  }
+  , reloadUser: function (inSender, inEvent) {
+      if (inEvent.userdata) {
+        mvcApp.data.user = inEvent.userdata;
+        mvcApp.username = mvcApp.data.user.username;
+        mvcApp.data.username = '';
+        mvcApp.data.password = '';
+        mvcApp.setGravatarEmail(mvcApp.data.user.email);
+        // reload admin rights
+        var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
+        checkAdmin.makeRequest({});
+      }
+
   }
   // check database connection
   , checkAdmin: function (inSender, inEvent) {
@@ -62,6 +84,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 

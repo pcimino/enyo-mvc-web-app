@@ -9,6 +9,7 @@ enyo.kind({
         ajaxBaseURL: 'http://localhost'
         , ajaxBasePort: '3000'
         , data: {}
+      , username: ''
         , adminFlag: false
         , gravatarEmail: ''
         , broadcast: {displayClass:'', message: ''}
@@ -40,16 +41,16 @@ enyo.kind({
       window.location.hash = '/login'
   }
   , setAuthView: function() {
-    console.log(1);
       mvcApp.view = this.authView;
       mvcApp.render();
       window.location.hash = '/home'
-      if (this.data && this.data.userData) {
-        mvcApp.setGravatarEmail(mvcApp.data.userData.email);
+      if (this.data && this.data.user) {
+        mvcApp.setGravatarEmail(mvcApp.data.user.email);
       } else {
         mvcApp.setGravatarEmail('');
       }
-
+      console.log("Fire onSetupGravatar")
+      mvcApp.authView.waterfall('onSetupGravatar');
   }
   , showMessage: function(messageText) {
       this.$.popupDialog.showMessage(messageText);
@@ -60,7 +61,7 @@ enyo.kind({
       // still restrict functionality
       // each view implementing admin options will have to be responsible for show/hide
       // and look for hideAdminOptions and showAdminOptions events
-    mvcApp.authView.$.bodyContainer.$.adminUpdateUserLink.hide()
+      mvcApp.authView.$.bodyContainer.$.adminUpdateUserLink.hide()
       if (this.adminFlag) {
         mvcApp.waterfall('onShowAdminOptions');
       } else {
@@ -68,9 +69,10 @@ enyo.kind({
       }
   }
   , gravatarEmailChanged: function(oldVal) {
-      mvcApp.waterfall('onSetupGravatar');
+      mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
 
 
 

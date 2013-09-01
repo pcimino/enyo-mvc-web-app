@@ -29,8 +29,10 @@ enyo.kind({
     ajaxLogin.makeRequest({username:mvcApp.data.username , password:mvcApp.data.password, rndNo : Math.random()});
   }
   , loginResult: function (inSender, inEvent) {
+    console.log('loginResult');
       if (inEvent.authenticated) {
         mvcApp.data.userData = inEvent.userdata;
+        mvcApp.username = mvcApp.data.username;
         mvcApp.data.username = '';
         mvcApp.data.password = '';
         // display the authenticated home page
@@ -140,6 +142,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 
