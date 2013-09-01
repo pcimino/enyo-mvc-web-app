@@ -9,4 +9,10 @@ enyo.kind({
   , constructor: function (props) {
       this.inherited(arguments);
   }
+  , processResponse: function(inSender, inResponse) {
+      if (this.fireEvent) {
+        this.owner.bubble(this.fireEvent, {response: '200', username: inResponse.username});
+      }
+  }
 });
+

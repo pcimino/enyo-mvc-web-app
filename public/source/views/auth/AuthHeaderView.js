@@ -14,25 +14,24 @@ enyo.kind({
              , {name:'headerRightContent', classes: "header-right", kind: "tld.Gravatar", email: '', imageSize: 75}
       ]}
     ]
-
+  , handlers: {
+     onSetupGravatar: 'setupGravatar'
+  }
   , rendered: function() {
       this.inherited(arguments);
-   //   this.setupGravatar();
-
-      //this.gravatarEmail = mvcApp.data.userData.email;
-
-      if (this.$.headerRightContent.$.gravatar) {
-       // console.log("Gravatar exists, setting email");
-        this.$.headerRightContent.setEmail(mvcApp.data.userData.email);
-      } else {
-        console.log("Create new Gravatar");
-        this.$.headerRightContent.createComponent({name:"gravatar", kind: "tld.Gravatar", email: mvcApp.data.userData.email, imageSize: 75});
-      }
-
+      this.$.headerRightContent.setEmail(mvcApp.getGravatarEmail());
       console.log('AuthHeaderView rendered complete');
+  },
+  setupGravatar: function() {
+    console.log("setupGravatar " + mvcApp.getGravatarEmail())
+    this.$.headerRightContent.setEmail(mvcApp.getGravatarEmail());
+    //this.$.headerRightContent.render();
+    console.log("Done")
+    return true;
   }
 
 });
+
 
 
 

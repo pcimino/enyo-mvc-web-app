@@ -1,4 +1,3 @@
-
 enyo.kind({
   name: 'AJAX.UserDetails'
   , kind: 'AJAX.Parent'
