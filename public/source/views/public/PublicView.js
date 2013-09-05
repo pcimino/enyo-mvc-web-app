@@ -24,20 +24,27 @@ enyo.kind({
   , setupHeaderContent: function() {
       if (this.$.headerContainer) this.$.headerContainer.destroy();
       this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
+
+      var navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.PublicNavigation'});
+      navigation.setupTopNav(this.header);
   }
   , setupBodyContent: function() {
       this.inherited(arguments);
-      this.body = this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
-      this.$.bodyContainer.$.bodyContent.setupBodyContent(this.$.bodyContainer);
+      this.createComponent({name:'bodyContainer', fit: true, classes: "body-height-public enyo-center body-margin"});
 
-    /* Alternative
-      var content = new Bootplate.LoginContent({name:'bodyContent'});
-      content.setupBodyContent(this);
-      content.renderInto(this.$.bodyContainer);
-    */
+      this.body = this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
+      this.body.setupBodyContent(this.$.bodyContainer);
   }
   , setupFooterContent: function() {
       if (this.$.footerContainer) this.$.footerContainer.destroy();
-      this.footer = this.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView'});
+      this.footer = this.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView', owner: this});
+
+      // TODO need a better way to add bottom nav
+      // var navigation = this.footer.createComponent({name:'bottomNav', kind: 'Bootplate.PublicNavigation', addBefore:null});
+      // navigation.setupBottomNav(this.footer);
   }
 });
+
+
+
+

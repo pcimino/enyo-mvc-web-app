@@ -6,6 +6,7 @@ enyo.ready(function () {
     name: "Bootplate.PublicMessageDisplayContent"
     , kind: "Bootplate.ParentContent"
     , id: 'messageDisplayContent'
+    , authFlag: false
     , published: {
         contentComponent: null
     }

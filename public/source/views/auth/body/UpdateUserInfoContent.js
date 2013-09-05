@@ -3,6 +3,7 @@ enyo.ready(function () {
     name: "Bootplate.UpdateUserInfoContent"
     , kind: "Bootplate.ParentContent"
     , id: 'updateUserInfoContent'
+    , authFlag: true // used to help determine if user has access to this page
     , handlers: {
        onUpdateUserStatus: 'updateUserStatus'
     }
@@ -171,4 +172,5 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 

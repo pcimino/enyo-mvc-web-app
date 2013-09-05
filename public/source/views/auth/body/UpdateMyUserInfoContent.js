@@ -3,6 +3,7 @@ enyo.ready(function () {
     name: "Bootplate.UpdateMyUserInfoContent"
     , kind: "Bootplate.ParentContent"
     , id: 'updateUserInfoContent'
+    , authFlag: true // used to help determine if user has access to this page
     , handlers: {
        onUpdateUserStatus: 'updateUserStatus'
     }
@@ -110,21 +111,10 @@ enyo.ready(function () {
           }
         );
 
-        this.insertBreak(owner);
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'readUserInfo', 'Read User Info');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'readUserList', 'Search For Users');
-
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'deleteUser', 'Delete User');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'home', 'Home');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'logout', 'Logout');
-
         owner.render();
       } // end setupBodyContent
   });
 });
+
+
 

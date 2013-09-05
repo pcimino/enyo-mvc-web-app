@@ -4,6 +4,7 @@ enyo.ready(function () {
     name: "Bootplate.UserSignupContent"
     , kind: "Bootplate.ParentContent"
     , id: 'userSignupContent'
+    , authFlag: false
     , handlers: {
        onUsernameStatus: 'usernameStatus'
     }
@@ -145,11 +146,13 @@ enyo.ready(function () {
 
       this.insertBreak(owner);
       this.insertBreak(owner);
-      this.insertInternalLink(owner, 'login2', 'Cancel');
+      this.insertInternalLink(owner, this.rndLink('login'), 'Cancel');
 
       owner.render();
     } // end setupBodyContent
   });
 });
+
+
 
 
