@@ -23,9 +23,19 @@ enyo.kind({
          , attributes: {
            href: '#/' + link
          }
-        });
-    }
+      });
+  }
+  , setupTopNav: function(owner) {
+
+  }
+  , setupLeftNav: function(owner) {
+  }
+  , setupRightNav: function(owner) {
+  }
+  , setupBottomNav: function(owner) {
+  }
 });
+
 
 
 
