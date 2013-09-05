@@ -24,6 +24,7 @@ enyo.ready(function () {
     name: "Bootplate.LoginContent"
     , kind: "Bootplate.ParentContent"
     , id: 'loginContent'
+    , authFlag: false
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
@@ -67,18 +68,12 @@ enyo.ready(function () {
           }
         );
 
-        this.insertBreak(owner);
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'userSignup', 'New User Signup');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'resendEmail', 'Resend My Verification Email');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'forgotPassword', 'Reset My Password');
-
       // only call this on navigation, not initial load
         if (renderFlag) owner.render();
     } // end setupBodyContent
   });
 });
+
+
 
 

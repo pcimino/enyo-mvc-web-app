@@ -1,6 +1,12 @@
+Toolbar buttons need to behave like links
 
+Fix Gravatar again?
 
-Implement hide/show Admin settings , see HomeController for example, still needs work
+Implement hide/show Admin toolbar
+
+responsive sized buttons?
+
+can I replace mvcApp with .app ?
 
 Update user
 
@@ -16,6 +22,7 @@ Socket integration
 
 
 Messaging
+
 
 
 

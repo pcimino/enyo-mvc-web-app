@@ -3,6 +3,7 @@ enyo.ready(function () {
     name: "Bootplate.ReadUserListContent"
     , kind: "Bootplate.ParentContent"
     , id: 'readUserListContent'
+    , authFlag: true // used to help determine if user has access to this page
     , bindings: [
 
     ]
@@ -26,3 +27,4 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+

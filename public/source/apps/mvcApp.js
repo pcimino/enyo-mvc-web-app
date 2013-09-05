@@ -9,7 +9,7 @@ enyo.kind({
         ajaxBaseURL: 'http://localhost'
         , ajaxBasePort: '3000'
         , data: {}
-      , username: ''
+        , username: ''
         , adminFlag: false
         , gravatarEmail: ''
         , broadcast: {displayClass:'', message: ''}
@@ -52,6 +52,17 @@ enyo.kind({
       console.log("Fire onSetupGravatar")
       mvcApp.authView.waterfall('onSetupGravatar');
   }
+  , isAuthView: function() {
+      if (typeof this.view !== 'undefined') {
+      if (typeof this.view.$ !== 'undefined') {
+      if (typeof this.view.$.bodyContainer !== 'undefined') {
+      if (typeof this.view.$.bodyContainer.$ !== 'undefined') {
+      if (typeof this.view.$.bodyContainer.$.bodyContent !== 'undefined') {
+      if (typeof this.view.$.bodyContainer.$.bodyContent.authFlag !== 'undefined') {
+        return this.view.$.bodyContainer.$.bodyContent.authFlag;
+      }}}}}}
+      return false;
+  }
   , showMessage: function(messageText) {
       this.$.popupDialog.showMessage(messageText);
   }
@@ -72,6 +83,7 @@ enyo.kind({
       mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
 
 
 

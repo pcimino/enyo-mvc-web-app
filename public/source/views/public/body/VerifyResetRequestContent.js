@@ -3,6 +3,7 @@ enyo.ready(function () {
     name: "Bootplate.VerifyResetRequestContent"
     , kind: "Bootplate.ParentContent"
     , id: 'forgotPasswordContent'
+    , authFlag: false
     , bindings: [
       {
         from: ".$.username.value",
@@ -56,12 +57,14 @@ enyo.ready(function () {
         this.insertBreak(owner);
 
         this.insertBreak(owner);
-        this.insertInternalLink(owner, 'login', 'Cancel');
+        this.insertInternalLink(owner, this.rndLink('login'), 'Cancel');
 
         owner.render();
     } // end setupBodyContent
   });
 });
+
+
 
 
 

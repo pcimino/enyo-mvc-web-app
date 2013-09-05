@@ -3,6 +3,7 @@ enyo.ready(function () {
     name: "Bootplate.HomeContent"
     , kind: "Bootplate.ParentContent"
     , id: 'homeContent'
+    , authFlag: true // used to help determine if user has access to this page
     , handlers: {
         onShowAdminOptions: 'showAdminOptions'
         , onHideAdminOptions: 'hideAdminOptions'
@@ -14,26 +15,27 @@ enyo.ready(function () {
         this.inherited(arguments);
     }
     , showAdminOptions: function() {
-      console.log("showAdminOptions");
+      console.log("showAdminOptions");/*
         this.$.adminReadUserInfoLink.show();
         this.$.adminReadUserListLink.show();
         this.$.adminUpdateUserLink.show();
         this.$.adminReadUserInfoBreak.show();
         this.$.adminReadUserListBreak.show();
         this.$.adminUpdateUserLink.show();
-        this.$.adminDeleteUserLink.show();
+        this.$.adminDeleteUserLink.show();*/
     }
     , hideAdminOptions: function() {
       console.log("hideAdminOptions");
-        this.$.adminReadUserInfoLink.hide();
+        this.$.adminReadUserInfoLink.hide();/*
         this.$.adminReadUserListLink.hide();
         this.$.adminUpdateUserLink.hide();
         this.$.adminReadUserInfoBreak.hide();
         this.$.adminReadUserListBreak.hide();
         this.$.adminUpdateUserLink.hide();
-        this.$.adminDeleteUserLink.hide();
+        this.$.adminDeleteUserLink.hide();*/
     }
     , setupBodyContent: function(owner) {
+
 
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'updateMyUserInfo', 'Update My Info');
@@ -41,7 +43,7 @@ enyo.ready(function () {
         this.insertInternalLink(owner, 'updateMyPassword', 'Update My Password');
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'logout', 'Logout');
-
+/*
         // Administrative links
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'readUserInfo', 'Read User Info', 'adminReadUserInfoLink');
@@ -51,11 +53,14 @@ enyo.ready(function () {
         this.insertInternalLink(owner, 'updateUserInfo', 'Update User', 'adminUpdateUserLink');
         this.insertBreak(owner, 'adminUpdatedUserBreak');
         this.insertInternalLink(owner, 'deleteUser', 'Delete User', 'adminDeleteUserLink');
-
+*/
         owner.render();
     } // end setupBodyContent
   });
 });
+
+
+
 
 
 

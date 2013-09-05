@@ -34,13 +34,15 @@ enyo.kind({
       checkAuth.makeRequest({});
   }
   , isUserValidatedResult: function (inSender, inEvent) {
-
       if (inEvent.response == '200') {
         // user is validated
         if (!this.auth) {
           // user is logged in but tried to go to a public page, redirect to home
-          mvcApp.setAuthView();
-          mvcApp.controllers.routes.trigger({location:'/homeEvent'});
+          // this checks the bodyContent for the authFlag, if both conditions match then no need to switch views
+          if (mvcApp.isAuthView() != true) {
+            mvcApp.setAuthView();
+            mvcApp.controllers.routes.trigger({location:'/homeEvent'});
+          }
           // retrieve and reload the users data
           if (!mvcApp.data.user) {
             // data was cleared, reload
@@ -84,6 +86,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 

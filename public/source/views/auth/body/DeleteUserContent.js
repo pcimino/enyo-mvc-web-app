@@ -3,6 +3,7 @@ enyo.ready(function () {
     name: "Bootplate.DeleteUserContent"
     , kind: "Bootplate.ParentContent"
     , id: 'deleteUserContent'
+    , authFlag: true // used to help determine if user has access to this page
     , bindings: [
 
     ]
@@ -27,3 +28,4 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+

@@ -39,8 +39,11 @@
 .body-margin {
 	margin-top: 15% !important;
 }
-.body-height {
-  height:64%;
+.body-height-public {
+  height:59%;
+}
+.body-height-auth {
+  height:52%;
 }
 .href-link {
 	color:blue;
@@ -117,7 +120,10 @@
   height:50px;
 }
 
-
+.button-float-right
+{
+  float:right;
+}
 
 
 
@@ -242,3 +248,4 @@
 .onyx-contextualpopup-button-container{
 	padding:10px;
 }
+
