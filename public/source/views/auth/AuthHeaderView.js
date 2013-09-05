@@ -11,7 +11,7 @@ enyo.kind({
          , components: [
              {name:'headerLeftContent', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"}
              , {name:'headerCenterContent', content: "auth header-center", fit: true, classes: "header-center"}
-             , {name:'headerRightContent', classes: "header-right", kind: "tld.Gravatar", email: '', imageSize: 75}
+             , {name:'headerRightContent', name: 'gravatarDisplay', classes: "header-right", kind: "tld.Gravatar", email: '', imageSize: 75}
       ]}
     ]
   , handlers: {
@@ -19,18 +19,16 @@ enyo.kind({
   }
   , rendered: function() {
       this.inherited(arguments);
-      this.$.headerRightContent.setEmail(mvcApp.getGravatarEmail());
-      console.log('AuthHeaderView rendered complete');
-  },
-  setupGravatar: function() {
-    console.log("setupGravatar " + mvcApp.getGravatarEmail())
-    this.$.headerRightContent.setEmail(mvcApp.getGravatarEmail());
-    //this.$.headerRightContent.render();
-    console.log("Done")
-    return true;
+      this.$.gravatarDisplay.setEmail(mvcApp.getGravatarEmail());
+  }
+  , setupGravatar: function() {
+      this.$.gravatarDisplay.setEmail(mvcApp.getGravatarEmail());
+      this.$.gravatarDisplay.render();
+      return true;
   }
 
 });
+
 
 
 

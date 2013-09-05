@@ -49,8 +49,6 @@ enyo.kind({
       } else {
         mvcApp.setGravatarEmail('');
       }
-      console.log("Fire onSetupGravatar")
-      mvcApp.authView.waterfall('onSetupGravatar');
   }
   , isAuthView: function() {
       if (typeof this.view !== 'undefined') {

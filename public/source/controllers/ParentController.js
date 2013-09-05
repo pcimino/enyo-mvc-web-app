@@ -67,6 +67,8 @@ enyo.kind({
         mvcApp.data.username = '';
         mvcApp.data.password = '';
         mvcApp.setGravatarEmail(mvcApp.data.user.email);
+    console.log("Fire onSetupGravatar")
+        mvcApp.authView.waterfall('onSetupGravatar');
         // reload admin rights
         var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
         checkAdmin.makeRequest({});

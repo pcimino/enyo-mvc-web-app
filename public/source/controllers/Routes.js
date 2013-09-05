@@ -80,7 +80,7 @@ enyo.kind({
   }
   , logout: function () {
       console.log("logout router");
-      //this.loadBodyContent('Bootplate.LoginContent', true);
+      mvcApp.data = {};
       mvcApp.waterfall('onLogout');
       return true;
   }

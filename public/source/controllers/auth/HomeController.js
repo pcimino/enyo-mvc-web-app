@@ -8,7 +8,6 @@ enyo.ready(function () {
     , kind: "Bootplate.ParentController"
     , handlers: {
         onLogout: 'logout'
-        , onLogoutResult: 'logoutResult'
         , onUserDetails: 'userDetails'
     }
     // Logout
@@ -16,11 +15,8 @@ enyo.ready(function () {
         console.log("logout handler");
         // clear out the session data
         mvcApp.data = {};
-        var ajaxLogout = new AJAX.Logout({owner:this, fireEvent:'onLogoutResult'});
+        var ajaxLogout = new AJAX.Logout({owner:this, fireEvent:'onIsUserValidated'});
         ajaxLogout.makeRequest({})
-    }
-    , logoutResult: function (inSender, inEvent) {
-        mvcApp.setPublicView();
     }
     , userDetails: function () {
         // load the user's information
@@ -34,5 +30,6 @@ enyo.ready(function () {
     }
   });
 });
+
 
 

@@ -125,6 +125,11 @@
   float:right;
 }
 
+.button-link
+{
+  text-decoration: none !important;
+}
+
 
 
 
@@ -248,4 +253,5 @@
 .onyx-contextualpopup-button-container{
 	padding:10px;
 }
+
 
