@@ -70,7 +70,6 @@ enyo.kind({
       // still restrict functionality
       // each view implementing admin options will have to be responsible for show/hide
       // and look for hideAdminOptions and showAdminOptions events
-      mvcApp.authView.$.bodyContainer.$.adminUpdateUserLink.hide()
       if (this.adminFlag) {
         mvcApp.waterfall('onShowAdminOptions');
       } else {
@@ -81,6 +80,7 @@ enyo.kind({
       mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
 
 
 

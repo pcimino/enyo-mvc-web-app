@@ -13,7 +13,7 @@ enyo.ready(function () {
     }
     , setupBodyContent: function(owner) {
 
-        this.insertBreak(owner);
+        this.insertFormSpace(owner);
         this.insertInternalLink(owner, 'readUserList', 'Search For Users');
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'updateUserInfo', 'Update User');
@@ -28,5 +28,9 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
+
+
+
 
 

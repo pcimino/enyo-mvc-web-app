@@ -45,11 +45,11 @@ enyo.ready(function () {
     }
     , setupBodyContent: function(owner) {
 
-        this.insertBreak(owner);
+        this.insertFormSpace(owner);
         owner.createComponent(
           { name: "cPassword",
             kind: "onyx.Input",
-            classes:"form-input-box form-field-left-margin",
+            classes:"form-input-box form-field-left-margin form-top-margin",
             placeholder: "Current Password",
             owner: owner
           }
@@ -98,6 +98,9 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
+
+
 
 
 

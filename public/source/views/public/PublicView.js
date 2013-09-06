@@ -24,16 +24,23 @@ enyo.kind({
   , setupHeaderContent: function() {
       if (this.$.headerContainer) this.$.headerContainer.destroy();
       this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
-
-      var navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.PublicNavigation'});
-      navigation.setupTopNav(this.header);
   }
   , setupBodyContent: function() {
       this.inherited(arguments);
-      this.createComponent({name:'bodyContainer', fit: true, classes: "body-height-public enyo-center body-margin"});
+      var pageContainer = this.createComponent({name:'pageContainer', fit: true, classes: "enyo-center container-height", owner: this});
 
-      this.body = this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
-      this.body.setupBodyContent(this.$.bodyContainer);
+      var navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.PublicNavigation', owner: this});
+      navigation.setupTopNav(pageContainer);
+      navigation.setupLeftNav(pageContainer);
+
+      var bodyContainer = pageContainer.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
+
+
+      var bodyContent = bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
+      bodyContent.setupBodyContent(bodyContainer);
+
+      navigation.setupRightNav(pageContainer);
+      navigation.setupBottomNav(pageContainer);
   }
   , setupFooterContent: function() {
       if (this.$.footerContainer) this.$.footerContainer.destroy();
@@ -44,6 +51,8 @@ enyo.kind({
       // navigation.setupBottomNav(this.footer);
   }
 });
+
+
 
 
 

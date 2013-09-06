@@ -12,7 +12,7 @@ enyo.ready(function () {
         this.inherited(arguments);
     }
     , setupBodyContent: function(owner) {
-        this.insertBreak(owner);
+        this.insertFormSpace(owner);
         this.insertInternalLink(owner, 'readUserInfo', 'Read User Info');
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'updateUserInfo', 'Update User');
@@ -27,4 +27,8 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
+
+
+
 

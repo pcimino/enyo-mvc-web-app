@@ -5,14 +5,15 @@ enyo.kind({
   , create: function() {
       this.inherited(arguments);
   }
-  /** Traditional buttons work in the MVC app, but not with the
+  /**
+  *   Traditional buttons work in the MVC app, but not with the
   *   user authentication check, somehow the mvcApp.controllers.routes.trigger({location:'/readUserList'});
   *   doesn't so the exact same thing as <a href="#/readUserList">Read user List</a>
   */
   , createLinkButton: function(owner, link, text, addClass) {
-      var classList = "onyx-blue button-link";
+      var classList = "onyx-blue button-link ";
       if (addClass) {
-        classList = classList + " " + addClass;
+        classList = classList + addClass;
       }
       owner.createComponent(
         { kind: "onyx.Button"
@@ -25,8 +26,26 @@ enyo.kind({
          }
       });
   }
+  /**
+  *   These buttons work, but sometimes run afoul of the isUserAuthenticated Logic
+  */
+  , createtriggerButton: function(owner, link, text, addClass) {
+      var classList = "onyx-blue ";
+      if (addClass) {
+        classList = classList + addClass;
+      }
+      owner.createComponent({ kind: "onyx.Button", content: text, classes: classList,
+              handlers: {
+                onclick: 'onClickButton'
+              },
+              onClickButton: function () {
+                mvcApp.controllers.routes.trigger({location:'/' + link});
+                return true;
+              }
+            }
+      );
+  }
   , setupTopNav: function(owner) {
-
   }
   , setupLeftNav: function(owner) {
   }
@@ -35,6 +54,8 @@ enyo.kind({
   , setupBottomNav: function(owner) {
   }
 });
+
+
 
 
 

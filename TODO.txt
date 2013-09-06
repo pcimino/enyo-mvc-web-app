@@ -1,11 +1,17 @@
-Logout button needs to get around auth check on logout, or auth check has to ignore login
+Buttons not working again ???
 
-Fix Gravatar again?
+Gravatar works on refresh, why not load?
 
-Implement hide/show Admin toolbar
+
+All nav needs to be inside the page body
+
+Implement hide/show Admin toolbar, need to call events:
+    onShowAdminOptions: 'showAdminOptions'
+    , onHideAdminOptions: 'hideAdminOptions'
 
 responsive sized buttons?
 
+cleanup/comments
 
 Update user
 
@@ -21,6 +27,8 @@ Socket integration
 
 
 Messaging
+
+Dosumentation
 
 
 

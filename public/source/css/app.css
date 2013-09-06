@@ -7,16 +7,16 @@
 }
 
 .form-field-left-margin {
+  margin-top: 15px;
   margin-left:40%;
-  margin-top: 15px !important;
 }
 .form-field-margin {
-	margin-top: 15px !important;
+	margin-top: 15px;
   margin-left:20px;
 }
 .form-label-margin {
 	margin-right: 10px !important;
-  margin-top: 15px !important;
+  margin-top: 15px;
 }
 .form-input-box {
 	box-shadow: -6px 0px 6px lightblue;
@@ -39,11 +39,11 @@
 .body-margin {
 	margin-top: 15% !important;
 }
-.body-height-public {
-  height:59%;
+.body-height {
+  height:85%;
 }
-.body-height-auth {
-  height:52%;
+.container-height {
+  height:85%;
 }
 .href-link {
 	color:blue;
@@ -253,5 +253,8 @@
 .onyx-contextualpopup-button-container{
 	padding:10px;
 }
+
+
+
 
 

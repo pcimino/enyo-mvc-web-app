@@ -2,9 +2,6 @@ enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.HomeView"
     , kind: "Bootplate.ParentView"
-    , bindings: [
-
-    ]
     , create: function() {
         this.inherited(arguments);
         this.setupHeaderContent();
@@ -14,16 +11,23 @@ enyo.ready(function () {
     , setupHeaderContent: function() {
         if (this.$.headerContainer) this.$.headerContainer.destroy();
         this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthHeaderView'});
-
-        var navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.AuthNavigation'});
-        navigation.setupTopNav(this.header);
     }
     , setupBodyContent: function() {
         this.inherited(arguments);
-        this.createComponent({name:'bodyContainer', fit: true, classes: "body-height-auth enyo-center body-margin"});
+        var pageContainer = this.createComponent({name:'pageContainer', fit: true, classes: "enyo-center container-height", owner: this});
 
-        this.body = this.$.bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.HomeContent'});
-        this.$.bodyContainer.$.bodyContent.setupBodyContent(this.$.bodyContainer);
+        var navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.AuthNavigation', owner: this});
+        navigation.setupTopNav(pageContainer);
+        navigation.setupLeftNav(pageContainer);
+
+        var bodyContainer = pageContainer.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
+
+
+        var bodyContent = bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.HomeContent'});
+        bodyContent.setupBodyContent(bodyContainer);
+
+        navigation.setupRightNav(pageContainer);
+        navigation.setupBottomNav(pageContainer);
     }
     , setupFooterContent: function() {
         if (this.$.footerContainer) this.$.footerContainer.destroy();
@@ -31,6 +35,8 @@ enyo.ready(function () {
     }
   });
 });
+
+
 
 
 

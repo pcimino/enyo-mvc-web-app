@@ -4,41 +4,16 @@ enyo.ready(function () {
     , kind: "Bootplate.ParentContent"
     , id: 'homeContent'
     , authFlag: true // used to help determine if user has access to this page
-    , handlers: {
-        onShowAdminOptions: 'showAdminOptions'
-        , onHideAdminOptions: 'hideAdminOptions'
-    }
     , bindings: [
     ]
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
     }
-    , showAdminOptions: function() {
-      console.log("showAdminOptions");/*
-        this.$.adminReadUserInfoLink.show();
-        this.$.adminReadUserListLink.show();
-        this.$.adminUpdateUserLink.show();
-        this.$.adminReadUserInfoBreak.show();
-        this.$.adminReadUserListBreak.show();
-        this.$.adminUpdateUserLink.show();
-        this.$.adminDeleteUserLink.show();*/
-    }
-    , hideAdminOptions: function() {
-      console.log("hideAdminOptions");
-        this.$.adminReadUserInfoLink.hide();/*
-        this.$.adminReadUserListLink.hide();
-        this.$.adminUpdateUserLink.hide();
-        this.$.adminReadUserInfoBreak.hide();
-        this.$.adminReadUserListBreak.hide();
-        this.$.adminUpdateUserLink.hide();
-        this.$.adminDeleteUserLink.hide();*/
-    }
     , setupBodyContent: function(owner) {
 
-
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'updateMyUserInfo', 'Update My Info');
+        this.insertFormSpace(this);
+        this.insertInternalLink(owner, 'updateMyUserInfo', 'Update My Account Info');
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'updateMyPassword', 'Update My Password');
         this.insertBreak(owner);
@@ -58,6 +33,10 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
+
+
+
 
 
 

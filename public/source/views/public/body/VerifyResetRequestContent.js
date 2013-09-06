@@ -16,13 +16,13 @@ enyo.ready(function () {
         this.inherited(arguments);
     }
     , setupBodyContent: function(owner) {
-
+        this.insertFormSpace(this);
         owner.createComponent(
           { name: "username",
-                      kind: "onyx.Input",
+            kind: "onyx.Input",
             classes:"form-input-box form-field-left-margin",
-                      placeholder: "Username"
-                  }
+            placeholder: "Username"
+          }
         );
         // setup the binding between the input and the Controller data store
         this.bindInputData(owner.$.username);
@@ -63,6 +63,8 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
+
 
 
 
