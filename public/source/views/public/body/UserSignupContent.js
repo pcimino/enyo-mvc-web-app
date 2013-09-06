@@ -56,6 +56,7 @@ enyo.ready(function () {
         return true;
     }
     , setupBodyContent: function(owner) {
+        this.insertFormSpace(this);
         this.usernameRef = owner.createComponent(
         { name: "username"
           , kind: "onyx.Input"
@@ -152,6 +153,8 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
+
 
 
 

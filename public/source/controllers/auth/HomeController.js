@@ -16,7 +16,12 @@ enyo.ready(function () {
         // clear out the session data
         mvcApp.data = {};
         var ajaxLogout = new AJAX.Logout({owner:this, fireEvent:'onIsUserValidated'});
-        ajaxLogout.makeRequest({})
+        ajaxLogout.makeRequest({});
+      	setTimeout(function() {
+            // Kludgey: Timing issue, the logout occurs but the redirect checks logged in status prior to
+            // logout completion, so make a delayed request to go back to login
+            mvcApp.controllers.routes.trigger({location:'/login'});
+		    }, 1000);
     }
     , userDetails: function () {
         // load the user's information
@@ -30,6 +35,7 @@ enyo.ready(function () {
     }
   });
 });
+
 
 
 

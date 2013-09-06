@@ -1,4 +1,4 @@
-var AAAA= {}
+
 enyo.kind({
   name: 'Bootplate.PublicFooterView'
   , kind: "enyo.FittableRows"
@@ -34,6 +34,7 @@ enyo.kind({
 
   }
 });
+
 
 
 

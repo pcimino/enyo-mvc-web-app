@@ -3,6 +3,19 @@ enyo.ready(function () {
     name: "Bootplate.ParentContent"
     , kind: "enyo.Control"
     , id: 'parentContent'
+    , insertFormSpace: function(owner, paddingInPx) {
+        var padHeight = "padding-top:";
+        if (paddingInPx) {
+            padHeight = padHeight + paddingInPx;
+            var last2 = (padHeight.substring(padHeight.length-2)).toLowerCase();
+            if (last2.localeCompare("px") != 0) {
+              padHeight = padHeight + "px";
+            }
+        } else {
+            padHeight = padHeight + "150px";
+        }
+        owner.createComponent({kind: enyo.Control, style: padHeight});
+    }
     , insertBreak: function(owner, optionalName) {
         owner.createComponent({ tag: "br", kind: 'enyo.Control', name: optionalName}); // optionalName used when fields need to be shown/hidden
     }
@@ -15,7 +28,7 @@ enyo.ready(function () {
                 href: '#/' + link
           }
           , content: text
-          , classes:"form-field-left-margin"
+          , classes: "form-field-left-margin"
           , kind: 'enyo.Control'
         });
     }
@@ -55,3 +68,8 @@ enyo.ready(function () {
     }
   });
 });
+
+
+
+
+

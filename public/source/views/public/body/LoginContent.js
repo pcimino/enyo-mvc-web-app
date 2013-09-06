@@ -30,6 +30,7 @@ enyo.ready(function () {
         this.inherited(arguments);
     }
     , setupBodyContent: function(owner, renderFlag) {
+        this.insertFormSpace(owner);
         owner.createComponent(
           { name: "username"
             , kind: "onyx.Input"
@@ -73,6 +74,10 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
+
+
+
 
 
 

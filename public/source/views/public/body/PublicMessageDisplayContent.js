@@ -16,7 +16,7 @@ enyo.ready(function () {
     }
     , setupBodyContent: function(owner, renderFlag) {
         console.log("Bootplate.MessageDisplayContent");
-        this.insertBreak(owner);
+        this.insertFormSpace(owner);
 
         var displayClasses = "text-input-error-box form-field-left-margin";
         if (mvcApp.broadcast.displayClass != 'error')  {
@@ -47,3 +47,5 @@ enyo.ready(function () {
   }
 });
 });
+
+

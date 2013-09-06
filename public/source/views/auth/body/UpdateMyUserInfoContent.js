@@ -44,10 +44,11 @@ enyo.ready(function () {
         return true;
     }
     , setupBodyContent: function(owner) {
+          this.insertFormSpace(owner);
           this.usernameRef = owner.createComponent(
           { name: "username"
             , kind: "onyx.Input"
-            , classes:"form-input-box form-field-left-margin"
+            , classes:"form-input-box form-field-left-margin form-top-margin"
             , placeholder: "Username"
             , owner: owner
             , handlers: {
@@ -115,6 +116,9 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
+
+
 
 
 
