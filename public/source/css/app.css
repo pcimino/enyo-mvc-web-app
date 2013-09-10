@@ -123,6 +123,8 @@
 .button-float-right
 {
   float:right;
+  margin-right: 5px;
+  margin-top:0px !important;
 }
 
 .button-link
@@ -253,6 +255,7 @@
 .onyx-contextualpopup-button-container{
 	padding:10px;
 }
+
 
 
 
