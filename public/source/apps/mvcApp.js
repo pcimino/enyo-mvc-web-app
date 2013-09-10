@@ -10,7 +10,7 @@ enyo.kind({
         , ajaxBasePort: '3000'
         , data: {}
         , username: ''
-        , adminFlag: false
+        , adminFlag: ''
         , gravatarEmail: ''
         , broadcast: {displayClass:'', message: ''}
         , wsSocketURL: 'ws://localhost'
@@ -65,21 +65,21 @@ enyo.kind({
       this.$.popupDialog.showMessage(messageText);
   }
   , adminFlagChanged: function(oldVal) {
-    console.log("CHANGED " + oldVal);
       // if flag is true, this allows Admin links to be seen, but server will
       // still restrict functionality
       // each view implementing admin options will have to be responsible for show/hide
       // and look for hideAdminOptions and showAdminOptions events
       if (this.adminFlag) {
-        mvcApp.waterfall('onShowAdminOptions');
+        mvcApp.authView.waterfall('onShowAdminOptions');
       } else {
-        mvcApp.waterfall('onHideAdminOptions');
+        mvcApp.authView.waterfall('onHideAdminOptions');
       }
   }
   , gravatarEmailChanged: function(oldVal) {
       mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
 
 
 

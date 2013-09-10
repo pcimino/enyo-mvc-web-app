@@ -6,8 +6,8 @@ enyo.kind({
       this.inherited(arguments);
   }
   , handlers: {
-    onShowAdminOptions: 'showAdminOptions'
-    , onHideAdminOptions: 'hideAdminOptions'
+      onShowAdminOptions: 'showAdminOptions'
+      , onHideAdminOptions: 'hideAdminOptions'
   }
   , published: {
       adminNavToolbar : ''
@@ -52,6 +52,7 @@ enyo.kind({
       }
     }
 });
+
 
 
 
