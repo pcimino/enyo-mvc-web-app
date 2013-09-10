@@ -1,3 +1,10 @@
+/**
+* This is the authenticated view kind.
+*
+* - setupHeaderContent() sets up the header
+* - setupBodyContent() sets up the body
+* - setupFooterContent() sets up the footer
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.HomeView"
@@ -9,6 +16,7 @@ enyo.ready(function () {
         this.setupFooterContent();
     }
     , setupHeaderContent: function() {
+        this.inherited(arguments);
         if (this.$.headerContainer) this.$.headerContainer.destroy();
         this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthHeaderView'});
     }
@@ -30,11 +38,13 @@ enyo.ready(function () {
         navigation.setupBottomNav(pageContainer);
     }
     , setupFooterContent: function() {
+        this.inherited(arguments);
         if (this.$.footerContainer) this.$.footerContainer.destroy();
         this.footer = this.createComponent({name: 'footerContainer', kind: 'Bootplate.AuthFooterView'});
     }
   });
 });
+
 
 
 

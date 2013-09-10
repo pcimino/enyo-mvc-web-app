@@ -1,3 +1,6 @@
+/**
+* Thi is the CVerifyResetRequestContent kind used for when the user forgets their password, or needs a verification email resend
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.VerifyResetRequestContent"
@@ -63,6 +66,7 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
 
 
 

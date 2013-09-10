@@ -1,3 +1,8 @@
+/**
+* UpdateMyPasswordContent kind for suthenticated user to update their password
+*
+* - setupBodyContent() Implemented setup method
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.UpdateMyPasswordContent"
@@ -28,20 +33,6 @@ enyo.ready(function () {
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
-    }
-    , updateUserStatus: function(inSender, inEvent) {
-        // more kludging
-        if (inEvent.exists == 'reset') {
-          this.usernameRef.removeClass("text-input-confirm-box");
-          this.usernameRef.removeClass("text-input-error-box");
-        } else {
-          if (inEvent.exists == true) {
-            this.usernameRef.addClass("text-input-error-box");
-          } else {
-            this.usernameRef.addClass("text-input-confirm-box");
-          }
-        }
-        return true;
     }
     , setupBodyContent: function(owner) {
 
@@ -98,6 +89,7 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 
 
 

@@ -1,4 +1,7 @@
-
+/**
+* This kind builds the public header.
+*
+*/
 enyo.kind({
   name: "Bootplate.PublicHeaderView"
   , kind: "enyo.FittableRows"
@@ -18,4 +21,5 @@ enyo.kind({
       this.inherited(arguments);
   }
 });
+
 

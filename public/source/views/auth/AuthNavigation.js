@@ -1,4 +1,11 @@
-
+/**
+* This is the Navigation kind when the user is authenticated
+*
+* - showAdminOptions() Responds to the onShowAdminOptions event to show the admin toolbar
+* - hideAdminOptions() Responds to the onHideAdminOptions event to hide the admin toolbar
+* - setupTopNav() Implements this for the top navigation
+* - setupBottompNav() Implements this for the bottom navigation, used for administrative links
+*/
 enyo.kind({
   name: 'Bootplate.AuthNavigation'
   , kind: "Bootplate.Navigation"
@@ -21,12 +28,6 @@ enyo.kind({
       this.createLinkButton(topNavToolbar, 'updateMyUserInfo', 'Update My Info');
       this.createLinkButton(topNavToolbar, 'updateMyPassword', 'Update My Password');
       this.createLinkButton(topNavToolbar, 'logout', 'Logout', 'button-float-right');
-  }
-  , setupLeftNav: function(owner) {
-      this.inherited(arguments);
-  }
-  , setupRightNav: function(owner) {
-      this.inherited(arguments);
   }
   , setupBottomNav: function(owner) {
       this.inherited(arguments);
@@ -52,6 +53,8 @@ enyo.kind({
       }
     }
 });
+
+
 
 
 

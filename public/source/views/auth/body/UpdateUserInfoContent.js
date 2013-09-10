@@ -1,3 +1,8 @@
+/**
+* UpdateUserInfoContent kind, displays the form for the user to update some of their information
+* - updateUserStatus() used to display issues with username
+* - setupBodyContent() Implemented setup method
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.UpdateUserInfoContent"
@@ -173,6 +178,7 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 
 
 

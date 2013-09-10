@@ -1,4 +1,10 @@
-
+/**
+* Build the authenticated header. Displays the Gravatar icon. If the user has an email registered with Gravatar, displays their avatar
+*
+* - Upon rendering sets the email setup in the application
+* - setupGravatar() Provides a method to reset the email. Had timing issues with logging in, retrieving the gravatar and displaying
+*      so there are probably some unnecessary calls to this method that can be cleaned up at some point
+*/
 enyo.kind({
   name: "Bootplate.AuthHeaderView"
   , kind: "enyo.FittableRows"
@@ -28,6 +34,7 @@ enyo.kind({
   }
 
 });
+
 
 
 

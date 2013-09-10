@@ -1,3 +1,8 @@
+/**
+* ReadUserInfoContent
+*
+* - setupBodyContent() Implemented setup method
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.ReadUserInfoContent"
@@ -28,6 +33,7 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 
 
 

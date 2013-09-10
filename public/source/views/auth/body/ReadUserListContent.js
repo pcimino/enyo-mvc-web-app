@@ -1,3 +1,8 @@
+/**
+* ReadUserListContent
+*
+* - setupBodyContent() Implemented setup method
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.ReadUserListContent"
@@ -27,6 +32,7 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 
 
 
