@@ -1,4 +1,9 @@
-enyo.ready(function () {
+/**
+* This is the HomeContent kind, displays the authenticated user's home page
+*
+* - setupBodyContent() Implemented child method
+*/
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.HomeContent"
     , kind: "Bootplate.ParentContent"
@@ -33,6 +38,8 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
+
 
 
 

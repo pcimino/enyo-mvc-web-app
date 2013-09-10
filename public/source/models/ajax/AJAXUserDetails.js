@@ -1,9 +1,15 @@
+/**
+* UserDetails AJAX requests: Retrieve the user details
+*
+* - processResponse()
+* - processError()
+*/
 enyo.kind({
   name: 'AJAX.UserDetails'
   , kind: 'AJAX.Parent'
   , method:'GET'
   , rest:'/api/v1/user'
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
@@ -26,3 +32,5 @@ enyo.kind({
       }
   }
 });
+
+

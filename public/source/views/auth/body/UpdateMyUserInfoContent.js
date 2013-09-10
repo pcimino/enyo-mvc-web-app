@@ -1,4 +1,10 @@
-enyo.ready(function () {
+/**
+* This is the UpdateMyUserInfoContent for authenticated users
+*
+* - updateUserStatus() displays username availability
+* - setupBodyContent() Child implementation
+*/
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.UpdateMyUserInfoContent"
     , kind: "Bootplate.ParentContent"
@@ -10,7 +16,7 @@ enyo.ready(function () {
     , published: {
       usernameRef : {}
     }
-    , bindings: [
+    /*, bindings: [
       {
         from: ".$.name.value",
         to: ".mvcApp.data",
@@ -24,7 +30,7 @@ enyo.ready(function () {
         to: ".mvcApp.data",
         kind: "enyo.InputBinding"
       }
-    ]
+    ]*/
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
@@ -105,7 +111,7 @@ enyo.ready(function () {
            handlers: {
              onclick: 'updateUser'
            },
-           updateUser: function () {
+           updateUser: function() {
              mvcApp.waterfall('onUserUpdate');
              return true;
            }
@@ -116,6 +122,8 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
+
 
 
 

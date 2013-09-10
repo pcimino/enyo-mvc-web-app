@@ -61,7 +61,7 @@ enyo.kind({
         handlers: {
           onclick: 'onClickButton'
         },
-        onClickButton: function () {
+        onClickButton: function() {
           mvcApp.controllers.routes.trigger({location:'/' + link});
           return true;
         }
@@ -76,6 +76,7 @@ enyo.kind({
   , setupBottomNav: function(owner) {
   }
 });
+
 
 
 

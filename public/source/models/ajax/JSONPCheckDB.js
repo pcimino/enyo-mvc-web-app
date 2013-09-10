@@ -1,11 +1,11 @@
 /**
-* JSONP request to check if the database is working
+* CheckDB JSONP request to check if the database is working
 */
 enyo.kind({
   name: 'JSONP.CheckDB'
   , kind: 'JSONP.Parent'
   , rest:'/db'
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
   }
   , processResponse: function(inSender, inResponse) {
@@ -26,3 +26,5 @@ enyo.kind({
       }
   }
 });
+
+

@@ -1,7 +1,28 @@
-var AAB = {}
 /**
-* Router class
+* Router kind
 * Takes events form the URL hashtag, e.g. #/login path gets routed to the login handler
+*
+* TODO Is there an equivalent to routing with an argument. I could strip args off in the pre handler, but this
+* makes the app interdependent on specialized server code
+*
+* - loadBodyContent(kindByName, renderFlag, skipWaterfallFlag)
+* - logout()
+* - deleteUser()
+* - readUserInfo()
+* - readUserList()
+* - updateUserInfo()
+* - updateMyUserInfo()
+* - updateMyPassword()
+* - home()
+* - homeEvent()
+* - checkLogin()
+* - login()
+* - loginEvent()
+* - userSignup()
+* - forgotPassword()
+* - resendEmail()
+* - publicBroadcastMessage()
+* - authenticate()
 */
 enyo.kind({
     kind: 'enyo.Router'
@@ -153,6 +174,7 @@ enyo.kind({
   }
 
 });
+
 
 
 

@@ -5,7 +5,7 @@
 * - setupBodyContent() sets up the body
 * - setupFooterContent() sets up the footer
 */
-enyo.ready(function () {
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.HomeView"
     , kind: "Bootplate.ParentView"
@@ -44,6 +44,7 @@ enyo.ready(function () {
     }
   });
 });
+
 
 
 

@@ -1,7 +1,8 @@
 /**
-* Thi is the CVerifyResetRequestContent kind used for when the user forgets their password, or needs a verification email resend
+* This is the VerifyResetRequestContent kind used for when the user forgets their password,
+*    or needs a verification email resend
 */
-enyo.ready(function () {
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.VerifyResetRequestContent"
     , kind: "Bootplate.ParentContent"
@@ -38,7 +39,7 @@ enyo.ready(function () {
             handlers: {
               onclick: 'resendEmail'
             },
-            resendEmail: function () {
+            resendEmail: function() {
               mvcApp.waterfall('onResendEmail');
               return true;
             }
@@ -51,7 +52,7 @@ enyo.ready(function () {
             handlers: {
               onclick: 'forgotPassword'
             },
-            forgotPassword: function () {
+            forgotPassword: function() {
               mvcApp.waterfall('onForgotPassword');
               return true;
             }
@@ -66,6 +67,8 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
+
 
 
 

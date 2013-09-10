@@ -1,12 +1,12 @@
 /**
-* POST for creating a new user
+* UserSignup Ajax POST for creating a new user
 */
 enyo.kind({
   name: 'AJAX.UserSignup'
   , kind: 'AJAX.Parent'
   , method:'POST'
   , rest:'/api/v1/user'
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
@@ -29,3 +29,4 @@ enyo.kind({
       }
   }
 });
+
