@@ -1,7 +1,6 @@
-// https://github.com/tastejs/todomvc/tree/gh-pages/labs/dependency-examples/enyo_backbone/js
-//
-// Maybe 2.3 will make this a sinlge app with configuration for switching views?
-// http://forums.enyojs.com/discussion/comment/6928/#Comment_6928
+/**
+* This is the main app, all non-global objects reside within the app memory space
+*/
 enyo.kind({
     name: "Bootplate.MvcApp"
     , kind: "enyo.Application"

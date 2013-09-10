@@ -1,13 +1,6 @@
-Buttons not working again ???
 
 Gravatar works on refresh, why not load?
 
-
-All nav needs to be inside the page body
-
-Implement hide/show Admin toolbar, need to call events:
-    onShowAdminOptions: 'showAdminOptions'
-    , onHideAdminOptions: 'hideAdminOptions'
 
 responsive sized buttons?
 
@@ -29,6 +22,7 @@ Socket integration
 Messaging
 
 Dosumentation
+
 
 
 

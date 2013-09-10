@@ -16,5 +16,15 @@
 		<script src="source/package.js" type="text/javascript"></script>
 	</head>
 	<body class="enyo-unselectable">
+	    <script type="text/javascript">
+            function isCanvasSupported(){
+                var elem = document.createElement('canvas');
+                return !!(elem.getContext && elem.getContext('2d'));
+            }
+            if (!isCanvasSupported()) {
+                location = "index.html"
+            }
+        </script>
 	</body>
 </html>
+
