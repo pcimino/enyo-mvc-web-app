@@ -1,12 +1,12 @@
 /**
-* Request used to see if the username already exists
+* UsernameExists Ajax GET used to see if the username already exists
 */
 enyo.kind({
   name: 'AJAX.UsernameExists'
   , kind: 'AJAX.Parent'
   , method:'GET'
   , rest:'/api/v1/user/username/exists'
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
@@ -23,3 +23,4 @@ enyo.kind({
       }
   }
 });
+

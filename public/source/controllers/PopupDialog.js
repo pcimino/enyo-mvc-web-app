@@ -1,5 +1,11 @@
 /**
-* Popup Dialog used for displaying modal messages to the user
+* Popup Dialog kind used for displaying modal messages to the user
+*
+* - messageChanged: function()
+* - getValue: function()
+* - hidePopup: function()
+* - showPopup: function()
+* - showMessage: function(messageText)
 */
 enyo.kind({
     name: "PopupDialog"
@@ -43,3 +49,5 @@ enyo.kind({
         this.show();
     }
 });
+
+

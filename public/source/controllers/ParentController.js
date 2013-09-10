@@ -2,9 +2,14 @@
 //
 // Enyo 2.x has a Routes class, which is really the way to go, still need to figure that out
 // in the mean time the parent has routing methods
-var AAAB = {}
 /**
-* Parent Controller
+* Parent Controller kind
+*
+* - isUserValidated: function(inSender, inEvent)
+* - isUserValidatedResult: function(inSender, inEvent)
+* - reloadUser: function(inSender, inEvent)
+* - checkAdmin: function(inSender, inEvent)
+* - checkAdminResult: function(inSender, inEvent)
 */
 enyo.kind({
   name: "Bootplate.ParentController"
@@ -26,14 +31,14 @@ enyo.kind({
   }
   // see if the user is already logged in
   //TODO Causing a loop, since the result can cause the /home or /login call, which calls routes which calls this...hmmmmm
-  , isUserValidated: function (inSender, inEvent) {
+  , isUserValidated: function(inSender, inEvent) {
       this.auth = inEvent.auth;
       this.role = inEvent.role;
 
       var checkAuth = new JSONP.CheckAuth({owner:this, fireEvent:'onIsUserValidatedResult'});
       checkAuth.makeRequest({});
   }
-  , isUserValidatedResult: function (inSender, inEvent) {
+  , isUserValidatedResult: function(inSender, inEvent) {
       if (inEvent.response == '200') {
         // user is validated
         if (!this.auth) {
@@ -60,7 +65,7 @@ enyo.kind({
         }
       }
   }
-  , reloadUser: function (inSender, inEvent) {
+  , reloadUser: function(inSender, inEvent) {
       if (inEvent.userdata) {
         mvcApp.data.user = inEvent.userdata;
         mvcApp.username = mvcApp.data.user.username;
@@ -76,11 +81,11 @@ enyo.kind({
 
   }
   // check database connection
-  , checkAdmin: function (inSender, inEvent) {
+  , checkAdmin: function(inSender, inEvent) {
       var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
       checkAdmin.makeRequest({});
   }
-  , checkAdminResult: function (inSender, inEvent) {
+  , checkAdminResult: function(inSender, inEvent) {
       if (inEvent.response == '200') {
         mvcApp.setAdminFlag(true);
       } else {
@@ -88,6 +93,8 @@ enyo.kind({
       }
   }
 });
+
+
 
 
 

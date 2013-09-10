@@ -24,7 +24,7 @@ It should be, then you would call this.refreshBindings();
 /**
 * This is the Login Page content kind.
 */
-enyo.ready(function () {
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.LoginContent"
     , kind: "Bootplate.ParentContent"
@@ -67,7 +67,7 @@ enyo.ready(function () {
             handlers: {
               onclick: 'login'
             },
-            login: function () {
+            login: function() {
               mvcApp.waterfall('onLogin');
               return true;
             }
@@ -79,6 +79,7 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
 
 
 

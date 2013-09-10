@@ -1,5 +1,5 @@
 /**
-* This ajax checks to see if the user is an administrator
+* CheckAdmin JSONP kind: checks to see if the user is an administrator.
 * Responds with a 200 if successful
 */
 enyo.kind({
@@ -7,5 +7,6 @@ enyo.kind({
   , kind: 'JSONP.Parent'
   , rest:'/api/v1/roles/access?role=Admin'
 });
+
 
 

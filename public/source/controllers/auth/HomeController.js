@@ -1,8 +1,12 @@
 /**
 * Home Controller
 * Common handlers for the authenticated pages
+*
+* - logout: function()
+* - userDetails: function()
+* - userDetailsResult: function(inSender, inEvent)
 */
-enyo.ready(function () {
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.HomeController"
     , kind: "Bootplate.ParentController"
@@ -11,7 +15,7 @@ enyo.ready(function () {
         , onUserDetails: 'userDetails'
     }
     // Logout
-    , logout: function () {
+    , logout: function() {
         console.log("logout handler");
         // clear out the session data
         mvcApp.data = {};
@@ -23,18 +27,19 @@ enyo.ready(function () {
             mvcApp.controllers.routes.trigger({location:'/login'});
 		    }, 1000);
     }
-    , userDetails: function () {
+    , userDetails: function() {
         // load the user's information
         var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
         ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
     }
-    , userDetailsResult: function (inSender, inEvent) {
+    , userDetailsResult: function(inSender, inEvent) {
         if (inEvent.userDetails) {
           mvcApp.data.userDetails = inEvent.userDetails;
         }
     }
   });
 });
+
 
 
 

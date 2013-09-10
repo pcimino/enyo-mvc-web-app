@@ -3,7 +3,7 @@
 *
 * - setupBodyContent() Implemented setup method
 */
-enyo.ready(function () {
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.ReadUserInfoContent"
     , kind: "Bootplate.ParentContent"
@@ -33,6 +33,7 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 
 
 

@@ -16,7 +16,7 @@ enyo.kind({
         , {name:'footerRightContent', content: "footer right", classes: "footer-right"}
       ]}
   ]
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
   }
   , updateTime: function(timeStr) {
@@ -29,7 +29,7 @@ enyo.kind({
       var timeSocket = new Socket({address: host, owner: this});
 
       timeSocket.on('connect', function() {
-        timeSocket.on('timestamp', function (data) {
+        timeSocket.on('timestamp', function(data) {
           updateTime(JSON.parse(data));
         });
       });
@@ -37,6 +37,7 @@ enyo.kind({
 
   }
 });
+
 
 
 

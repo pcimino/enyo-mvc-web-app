@@ -1,4 +1,9 @@
-enyo.ready(function () {
+/**
+* This DeleteUserContent kind, restricted to administrators
+*
+* - setupBodyContent() Impemented method
+*/
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.DeleteUserContent"
     , kind: "Bootplate.ParentContent"
@@ -28,6 +33,8 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
+
 
 
 

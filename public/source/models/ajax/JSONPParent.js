@@ -1,5 +1,10 @@
 /**
 * Parent for the JSONP requests, provides default success and error handlers
+*
+* - buildBaseURL() creates the base URL
+* - makeRequest() Processes the request
+* - processResponse()
+* - processError()
 */
 enyo.kind({
   name: 'JSONP.Parent'
@@ -10,16 +15,16 @@ enyo.kind({
      , fireEvent: null
      , url: null
   }
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
   }
   , buildBaseURL: function() {
-    return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
+      return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
   }
   // check database connection
-  , makeRequest: function (params) {
+  , makeRequest: function(params) {
       this.url = this.buildBaseURL() + this.rest;
 
       // attach responders to the transaction object
@@ -41,6 +46,8 @@ enyo.kind({
       }
   }
 });
+
+
 
 
 

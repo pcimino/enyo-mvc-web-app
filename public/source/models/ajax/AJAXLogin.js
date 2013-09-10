@@ -1,12 +1,15 @@
 /**
-* Login POST
+* Login Kind for POST login data
+*
+* - processResponse()
+* - processError()
 */
 enyo.kind({
   name: 'AJAX.Login'
   , kind: 'AJAX.Parent'
   , method:'POST'
   , rest:'/api/v1/session/login'
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log(this.fireEvent)
@@ -29,3 +32,4 @@ enyo.kind({
       }
   }
 });
+

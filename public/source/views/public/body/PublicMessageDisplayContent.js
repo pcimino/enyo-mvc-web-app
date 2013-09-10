@@ -6,7 +6,7 @@
 * - setErrorMessage()
 * - setConfirmMessage()
 */
-enyo.ready(function () {
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.PublicMessageDisplayContent"
     , kind: "Bootplate.ParentContent"
@@ -52,6 +52,7 @@ enyo.ready(function () {
   }
 });
 });
+
 
 
 

@@ -1,11 +1,11 @@
 /**
-* JSONP request to reset password and send email
+* ResetPassword JSONP request to reset password and send email
 */
 enyo.kind({
   name: 'JSONP.ResetPassword'
   , kind: 'JSONP.Parent'
   , rest:'/api/v1/password/sendNew'
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
   }
   , processResponse: function(inSender, inResponse) {
@@ -19,6 +19,8 @@ enyo.kind({
       }
   }
 });
+
+
 
 
 

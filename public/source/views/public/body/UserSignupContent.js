@@ -1,7 +1,7 @@
 /**
 * This is the UserSignupContent kind
 */
-enyo.ready(function () {
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.UserSignupContent"
     , kind: "Bootplate.ParentContent"
@@ -140,7 +140,7 @@ enyo.ready(function () {
          handlers: {
            onclick: 'signup'
          },
-         signup: function () {
+         signup: function() {
            mvcApp.waterfall('onUserSignup');
            return true;
          }
@@ -155,6 +155,7 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
 
 
 

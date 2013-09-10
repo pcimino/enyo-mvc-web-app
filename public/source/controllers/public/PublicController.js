@@ -1,7 +1,19 @@
-var AAA={}
 /**
-* Public Controller
+* Public Controller kind
 * Common handlers for the public (unauth) pages
+*
+* - login: function()
+* - loginResult: function(inSender, inEvent)
+* - forgotPassword: function()
+* - forgotPasswordResult: function(inSender, inEvent)
+* - resendEmail: function()
+* - resendEmailResult: function(inSender, inEvent)
+* - checkUsername: function()
+* - checkUsernameResult: function(inSender, inEvent)
+* - userSignup: function()
+* - userSignupResult: function(inSender, inEvent)
+* - checkDB: function(inSender, inEvent)
+* - checkDBResult: function(inSender, inEvent)
 */
 enyo.kind({
   name: "Bootplate.PublicController"
@@ -22,13 +34,13 @@ enyo.kind({
      , onCheckDBResult: 'checkDBResult'
   }
   // Login
-  , login: function () {
+  , login: function() {
       var ajaxLogin = new AJAX.Login({owner:this, fireEvent:'onLoginResult'});
     // ensure unique request  by adding a random number
     // TODO can probably remove this, trying to figure out CORS issue and multiple posts with same data might be masking something
     ajaxLogin.makeRequest({username:mvcApp.data.username , password:mvcApp.data.password, rndNo : Math.random()});
   }
-  , loginResult: function (inSender, inEvent) {
+  , loginResult: function(inSender, inEvent) {
     console.log('loginResult');
       if (inEvent.authenticated) {
         mvcApp.data.userData = inEvent.userdata;
@@ -43,12 +55,12 @@ enyo.kind({
       };
   }
   // ForgotPassword
-  , forgotPassword: function () {
+  , forgotPassword: function() {
     var jsonpResetPassword = new JSONP.ResetPassword({owner:this, fireEvent:'onForgotPasswordResult'});
     jsonpResetPassword.makeRequest({username:mvcApp.data.username});
   }
   // Forgot Passsword Result
-  , forgotPasswordResult: function (inSender, inEvent) {
+  , forgotPasswordResult: function(inSender, inEvent) {
     console.log("forgotPasswordResult")
     if (inEvent.email && inEvent.email.length) {
       mvcApp.broadcast.displayClass = 'success';
@@ -65,12 +77,12 @@ enyo.kind({
     }
   }
   // Resend  Verification Email
-  , resendEmail: function () {
+  , resendEmail: function() {
       var jsonpResendVerificationEmail = new JSONP.ResendVerificationEmail({owner:this, fireEvent:'onResendEmailResult'});
       jsonpResendVerificationEmail.makeRequest({username:mvcApp.data.username});
   }
   // Resend  Verification Email Result
-  , resendEmailResult: function (inSender, inEvent) {
+  , resendEmailResult: function(inSender, inEvent) {
     console.log("PublicController resendEmailResult ");
     if (inEvent.email && inEvent.email.length) {
       mvcApp.broadcast.displayClass = 'success';
@@ -87,13 +99,13 @@ enyo.kind({
     }
   }
   // Check Username availability
-  , checkUsername: function () {
+  , checkUsername: function() {
       mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
       var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
       ajaxUsernameExists.makeRequest({username:mvcApp.data.username});
   }
   // Check Username Result
-  , checkUsernameResult: function (inSender, inEvent) {
+  , checkUsernameResult: function(inSender, inEvent) {
       if (!inEvent.exists && mvcApp.data.createNewUser) {
         mvcApp.data.createNewUser = '';
         // create the user
@@ -104,13 +116,13 @@ enyo.kind({
       return true;
   }
   // UserSignup
-  , userSignup: function () {
+  , userSignup: function() {
     console.log("PublicController userSignup");
       mvcApp.data.createNewUser = true;
       this.checkUsername();
   }
   // UserSignupResult
-  , userSignupResult: function (inSender, inEvent) {
+  , userSignupResult: function(inSender, inEvent) {
     console.log("PublicController UserSignupResult");
       if (inEvent.userdata && inEvent.userdata.hashed_password) {
         mvcApp.broadcast.displayClass = 'success';
@@ -127,11 +139,11 @@ enyo.kind({
 
   }
   // check database connection
-  , checkDB: function (inSender, inEvent) {
+  , checkDB: function(inSender, inEvent) {
       var checkDB = new JSONP.CheckDB({owner:this, fireEvent:'onCheckDBResult'});
       checkDB.makeRequest({});
   }
-  , checkDBResult: function (inSender, inEvent) {
+  , checkDBResult: function(inSender, inEvent) {
       if (!inEvent.dbAvailable) {
         mvcApp.broadcast.displayClass = 'error';
         mvcApp.broadcast.message = "The system is currently unavailable. Please try again later.";
@@ -142,6 +154,8 @@ enyo.kind({
       }
   }
 });
+
+
 
 
 

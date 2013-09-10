@@ -10,7 +10,7 @@
 *        the wrong url. Sometimes with navigating and refresh, the user can be on the login page, and
 *        the url displays #/userSignup, so the user signup link stops working.
 */
-enyo.ready(function () {
+enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.ParentContent"
     , kind: "enyo.Control"
@@ -59,7 +59,7 @@ enyo.ready(function () {
           bind.refresh();
           bindOwner.refreshBindings();
        */
-       bindOwner.setData = function (inSender, inEvent) {
+       bindOwner.setData = function(inSender, inEvent) {
          console.log('bindOwner ' + inSender.name + ":" + mvcApp.data[inSender.name]);
          mvcApp.data[inSender.name] = this.value;
          return true;
@@ -80,6 +80,7 @@ enyo.ready(function () {
     }
   });
 });
+
 
 
 

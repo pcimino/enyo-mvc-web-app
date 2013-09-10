@@ -1,5 +1,10 @@
 /**
 * Parent for the AJAX requests, provides default success and error handlers
+*
+* - buildBaseURL() creates the base URL
+* - makeRequest() Processes the request
+* - processResponse()
+* - processError()
 */
 enyo.kind({
   name: 'AJAX.Parent'
@@ -11,22 +16,17 @@ enyo.kind({
   , callback: '?'
   , cacheBust: false
   , data: {}
-//  , crossDomain: true
-//  , headers: [{'Access-Control-Allow-Credentials':true}]
-//  , beforeSend: function(xhr){
-//       xhr.withCredentials = true;
-//  }
   , xhrFields: {withCredentials : true}
   , published: {
      owner: null
      , fireEvent: null
   }
-  , constructor: function (props) {
+  , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       console.log("AJAX.Parent " + this.fireEvent)
   }
-  , makeRequest: function (params) {
+  , makeRequest: function(params) {
       console.log('AJAX.Parent makeRequest ' + JSON.stringify(params));
       this.url = this.buildBaseURL() + this.rest;
 
@@ -43,7 +43,15 @@ enyo.kind({
       this.go(this.data);
   }
   , buildBaseURL: function() {
-    return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
+      return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
+  }
+  , processResponse: function(inSender, inResponse) {
+      this.owner.bubble(this.fireEvent);
+  }
+  , processError: function(inSender, inResponse) {
+      this.owner.bubble(this.fireEvent);
   }
 });
+
+
 
