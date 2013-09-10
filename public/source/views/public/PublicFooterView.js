@@ -1,4 +1,7 @@
-
+/**
+* This kind builds the public footer.
+*
+*/
 enyo.kind({
   name: 'Bootplate.PublicFooterView'
   , kind: "enyo.FittableRows"
@@ -21,7 +24,7 @@ enyo.kind({
   }
   , rendered: function() {
       this.inherited(arguments);
-    /*
+    /*TODO
       var host = mvcApp.getWsSocketURL() + ':' + mvcApp.getWsSocketPort();
       var timeSocket = new Socket({address: host, owner: this});
 
@@ -34,6 +37,7 @@ enyo.kind({
 
   }
 });
+
 
 
 

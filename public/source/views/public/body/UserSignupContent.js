@@ -1,4 +1,6 @@
-
+/**
+* This is the UserSignupContent kind
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.UserSignupContent"
@@ -153,6 +155,7 @@ enyo.ready(function () {
     } // end setupBodyContent
   });
 });
+
 
 
 

@@ -1,3 +1,6 @@
+/**
+* Build the authenticated fooer
+*/
 enyo.kind({
   name: 'Bootplate.AuthFooterView'
   , kind: "enyo.FittableRows"
@@ -16,5 +19,6 @@ enyo.kind({
       this.inherited(arguments);
   }
 });
+
 
 

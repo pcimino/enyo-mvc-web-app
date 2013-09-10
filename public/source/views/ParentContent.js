@@ -1,3 +1,15 @@
+/**
+* This is the parent content kind, Contents are the main body of the page
+* - insertBreak() creates a newline in the page
+* - insertInternalLink() creates a link within the application
+* - bindInputData() Is used to bind input form data to events, still need to figure out why
+*       the Enyo MVC Biolerplate doesn't seem to work with dynamially generated objects
+* - rndLink() This doesn't really work correctly. The idea is some links need a random parameter so the router
+*        will see it as a new link. In reality router just sees a corrupt link and sends it to the default page
+*        (which is fine for now). But need to figure out a mechanism to force a redirect when the browser displays
+*        the wrong url. Sometimes with navigating and refresh, the user can be on the login page, and
+*        the url displays #/userSignup, so the user signup link stops working.
+*/
 enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.ParentContent"
@@ -68,6 +80,7 @@ enyo.ready(function () {
     }
   });
 });
+
 
 
 

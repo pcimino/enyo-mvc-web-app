@@ -1,7 +1,8 @@
 /**
-* Setup the navigation for the site. Any links in the page itself are part of the content
+* This is the publicly accessible Navigation kind
 *
-* The left & right navs might be used for a sliding pane
+* - setupTopNav() Implements this for the top navigation
+* - setupBottompNav() Implements this for the bottom navigation
 */
 enyo.kind({
   name: 'Bootplate.PublicNavigation'
@@ -18,12 +19,6 @@ enyo.kind({
 
       this.createLinkButton(topNavToolbar, 'login', 'Login', 'button-float-right');
   }
-  , setupLeftNav: function(owner) {
-      this.inherited(arguments);
-  }
-  , setupRightNav: function(owner) {
-      this.inherited(arguments);
-  }
   , setupBottomNav: function(owner) {
       this.inherited(arguments);
       var topNavToolbar = owner.createComponent({kind: "onyx.Toolbar", name: 'bottomNavToolbar', owner: owner});
@@ -33,6 +28,7 @@ enyo.kind({
       this.createLinkButton(topNavToolbar, 'forgotPassword', 'Reset My Password');
   }
 });
+
 
 
 

@@ -1,5 +1,10 @@
 /**
-* Display content for showing the user a message on a page
+* Display content for showing the user a message on a page. Can be used for displaying an
+*   error message or a confirmation messsage
+*
+* - setupBodyContent()
+* - setErrorMessage()
+* - setConfirmMessage()
 */
 enyo.ready(function () {
   enyo.kind({
@@ -47,5 +52,6 @@ enyo.ready(function () {
   }
 });
 });
+
 
 
