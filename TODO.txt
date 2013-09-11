@@ -1,7 +1,5 @@
 
-Gravatar works on refresh, why not load?
-
-
+Firefox toolbar issue?
 
 Update user
 
@@ -19,6 +17,7 @@ Socket integration
 Messaging
 
 Documentation
+
 
 
 
