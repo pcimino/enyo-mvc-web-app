@@ -1,8 +1,4 @@
 
-<<<<<<< HEAD
-=======
-Firefox toolbar issue?
->>>>>>> 4e231145d645cac7c660e119e4f71adcdb3f3ced
 
 Update user
 
@@ -26,6 +22,7 @@ Documentation
 JS Utils
 
 http://ntt.cc/2008/05/10/over-10-useful-javascript-regular-expression-functions-to-improve-your-web-applications-efficiency.html
+
 
 
 
