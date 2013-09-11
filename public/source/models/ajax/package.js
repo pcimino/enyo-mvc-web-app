@@ -4,6 +4,7 @@ enyo.depends(
   , "AJAXUserSignup.js"
   , "AJAXUserDetails.js"
   , "AJAXUsernameExists.js"
+  , "AJAXUserUpdate.js"
   , "AJAXLogout.js"
   , "JSONPParent.js"
   , "JSONPCheckDB.js"
@@ -12,6 +13,7 @@ enyo.depends(
   , "JSONPResendVerificationEmail.js"
   , "JSONPResetPassword.js"
 );
+
 
 
 

@@ -10,7 +10,6 @@
 * - deleteUser()
 * - readUserInfo()
 * - readUserList()
-* - updateUserInfo()
 * - updateMyUserInfo()
 * - updateMyPassword()
 * - home()
@@ -76,9 +75,6 @@ enyo.kind({
     , { path: '/readUserList'
         , handler: 'readUserList'
     }
-    , { path: '/updateUserInfo'
-        , handler: 'updateUserInfo'
-    }
     , { path: '/updateMyUserInfo'
         , handler: 'updateMyUserInfo'
     }
@@ -116,10 +112,6 @@ enyo.kind({
   , readUserList: function () {
       console.log("readUserList router");
       this.loadBodyContent('Bootplate.ReadUserListContent', true);
-  }
-  , updateUserInfo: function () {
-      console.log("updateUserInfo router");
-      this.loadBodyContent('Bootplate.UpdateUserInfoContent', false);
   }
   , updateMyUserInfo: function () {
       console.log("updateMyUserInfo router");
@@ -174,6 +166,7 @@ enyo.kind({
   }
 
 });
+
 
 
 
