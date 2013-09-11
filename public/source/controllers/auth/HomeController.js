@@ -27,7 +27,8 @@ enyo.ready(function() {
             // Kludgey: Timing issue, the logout occurs but the redirect checks logged in status prior to
             // logout completion, so make a delayed request to go back to login
             mvcApp.controllers.routes.trigger({location:'/login'});
-		    }, 1000);
+            mvcApp.setPublicView();
+		    }, 300);
     }
     , userDetails: function() {
         // load the user's information
