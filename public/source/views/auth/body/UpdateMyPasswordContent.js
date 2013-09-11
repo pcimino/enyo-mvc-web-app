@@ -7,7 +7,7 @@ enyo.ready(function () {
   enyo.kind({
     name: "Bootplate.UpdateMyPasswordContent"
     , kind: "Bootplate.ParentContent"
-    , id: 'updateUserInfoContent'
+    , id: 'updateMyPasswordContent'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
        onUpdateUserStatus: 'updateUserStatus'
@@ -89,6 +89,7 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 
 
 

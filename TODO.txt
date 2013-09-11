@@ -1,7 +1,4 @@
 
-Gravatar works on refresh, why not load?
-
-
 
 Update user
 
@@ -19,6 +16,12 @@ Socket integration
 Messaging
 
 Documentation
+
+
+
+JS Utils
+
+http://ntt.cc/2008/05/10/over-10-useful-javascript-regular-expression-functions-to-improve-your-web-applications-efficiency.html
 
 
 
