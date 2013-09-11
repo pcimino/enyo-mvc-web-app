@@ -60,6 +60,7 @@ enyo.kind({
       } else {
         if (this.auth) {
           // user is not logged in but tried to access am authorized page
+          mvcApp.setGravatarEmail('');
           mvcApp.setPublicView();
           mvcApp.controllers.routes.trigger({location:'/loginEvent'});
         }
@@ -72,7 +73,7 @@ enyo.kind({
         mvcApp.data.username = '';
         mvcApp.data.password = '';
         mvcApp.setGravatarEmail(mvcApp.data.user.email);
-    console.log("Fire onSetupGravatar")
+
         mvcApp.authView.waterfall('onSetupGravatar');
         // reload admin rights
         var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
@@ -93,6 +94,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 
