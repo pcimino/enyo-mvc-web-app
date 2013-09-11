@@ -13,6 +13,8 @@ enyo.ready(function() {
     , handlers: {
         onLogout: 'logout'
         , onUserDetails: 'userDetails'
+        , onUserUpdate: 'updateuserInfo'
+        , onUserUpdateResult: 'userUpdateResult'
     }
     // Logout
     , logout: function() {
@@ -37,8 +39,19 @@ enyo.ready(function() {
           mvcApp.data.userDetails = inEvent.userDetails;
         }
     }
+    , updateuserInfo: function() {
+        // load the user's information
+        var ajaxUserUpdate = new AJAX.UserUpdate({owner:this, fireEvent:'onUserUpdateResult'});
+        ajaxUserUpdate.makeRequest({username:mvcApp.data.newUsername, name:mvcApp.data.newName, email:mvcApp.data.newEmail, password:mvcApp.data.newPassword, vPassword:mvcApp.data.vPassword});
+    }
+    , userUpdateResult: function(inSender, inEvent) {
+        if (inEvent.userDetails) {
+          mvcApp.data.userDetails = inEvent.userDetails;
+        }
+    }
   });
 });
+
 
 
 
