@@ -8,10 +8,10 @@ enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.UpdateMyUserInfoContent"
     , kind: "Bootplate.ParentContent"
-    , id: 'updateUserInfoContent'
+    , id: 'updateMyUserInfoContent'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
-       onUpdateUserStatus: 'updateUserStatus'
+        onUpdateUserStatus: 'updateUserStatus'
     }
     , published: {
       usernameRef : {}
@@ -52,7 +52,7 @@ enyo.ready(function() {
     , setupBodyContent: function(owner) {
           this.insertFormSpace(owner);
           this.usernameRef = owner.createComponent(
-          { name: "username"
+          { name: "newUsername"
             , kind: "onyx.Input"
             , classes:"form-input-box form-field-left-margin form-top-margin"
             , placeholder: "Username"
@@ -66,7 +66,7 @@ enyo.ready(function() {
             * If longer than 3 characters, check availability, bubble the event up to the PublicController
             */
             , usernameChanged: function(inSender, inEvent) {
-                mvcApp.data.username = this.value;
+                mvcApp.data.newUsername = this.value;
                 if (!this.value || this.value.length < 4) {
                   this.removeClass("text-input-confirm-box");
                   this.removeClass("text-input-error-box");
@@ -77,30 +77,30 @@ enyo.ready(function() {
             }
           }
         );
-        this.bindInputData(owner.$.username);
+        this.bindInputData(owner.$.newUsername);
         // Why doesn't the "handlers : {}"" definition above work?
         // owner.$.username.handlers.onUsernameStatus = 'usernameStatus';
         owner.handlers.onUsernameStatus = this.usernameStatus;
 
         owner.createComponent(
-          { name: "name"
+          { name: "newName"
             , kind: "onyx.Input"
             , classes:"form-input-box form-field-left-margin"
             , placeholder: "Name"
             , owner: owner
           }
         );
-        this.bindInputData(owner.$.name);
+        this.bindInputData(owner.$.newName);
 
         owner.createComponent(
-          { name: "email"
+          { name: "newEmail"
             , kind: "onyx.Input"
             , classes:"form-input-box form-field-left-margin"
             , placeholder: "Email"
             , owner: owner
           }
         );
-        this.bindInputData(owner.$.email);
+        this.bindInputData(owner.$.newEmail);
 
         this.insertBreak(owner);
         owner.createComponent(
@@ -122,6 +122,8 @@ enyo.ready(function() {
       } // end setupBodyContent
   });
 });
+
+
 
 
 
