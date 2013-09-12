@@ -49,7 +49,11 @@ enyo.ready(function() {
         if (inEvent.userdata) {
           mvcApp.data.user = inEvent.userdata;
           mvcApp.setGravatarEmail(mvcApp.data.user.email);
-          mvcApp.showMessage('Your information has been successfully updated.');
+          var alertMessage = 'Your information has been successfully updated.';
+          if (mvcApp.data.user.newEmail) {
+            alertMessage = alertMessage + ' Check your ' + mvcApp.data.user.newEmail + ' and click the link to verify the address.';
+          }
+          mvcApp.showMessage(alertMessage);
         } else if (inEvent.message) {
           mvcApp.showMessage(inEvent.message);
         }
