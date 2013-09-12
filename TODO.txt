@@ -1,19 +1,18 @@
-Update My Password
 
-Different CSS for Mozilla?
+
 
 Admin page
    Search for users
    Delete a user
    Admin update a user
-Socket integration
 
+Socket integration
 
 Messaging
 
 Documentation
 
-
+Different CSS for Mozilla?
 
 JS Utils
 
