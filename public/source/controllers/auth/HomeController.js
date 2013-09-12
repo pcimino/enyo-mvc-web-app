@@ -43,15 +43,20 @@ enyo.ready(function() {
     , updateuserInfo: function() {
         // load the user's information
         var ajaxUserUpdate = new AJAX.UserUpdate({owner:this, fireEvent:'onUserUpdateResult'});
-        ajaxUserUpdate.makeRequest({username:mvcApp.data.newUsername, name:mvcApp.data.newName, email:mvcApp.data.newEmail, password:mvcApp.data.newPassword, vPassword:mvcApp.data.vPassword});
+        ajaxUserUpdate.makeRequest({id:mvcApp.data.user._id, username:mvcApp.data.newUsername, name:mvcApp.data.newName, email:mvcApp.data.newEmail, cPassword:mvcApp.data.cPassword, password:mvcApp.data.newPassword, vPassword:mvcApp.data.vPassword});
     }
     , userUpdateResult: function(inSender, inEvent) {
-        if (inEvent.userDetails) {
-          mvcApp.data.userDetails = inEvent.userDetails;
+        if (inEvent.userdata) {
+          mvcApp.data.user = inEvent.userdata;
+          mvcApp.setGravatarEmail(mvcApp.data.user.email);
+          mvcApp.showMessage('Your information has been successfully updated.');
+        } else if (inEvent.message) {
+          mvcApp.showMessage(inEvent.message);
         }
     }
   });
 });
+
 
 
 

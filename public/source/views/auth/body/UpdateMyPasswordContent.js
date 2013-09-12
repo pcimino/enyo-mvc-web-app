@@ -14,7 +14,7 @@ enyo.ready(function () {
     }
     , published: {
       usernameRef : {}
-    }
+    }/*
     , bindings: [
       {
         from: ".$.cPassword.value",
@@ -29,7 +29,7 @@ enyo.ready(function () {
         to: ".mvcApp.data",
         kind: "enyo.InputBinding"
       }
-    ]
+    ]*/
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
@@ -49,14 +49,14 @@ enyo.ready(function () {
 
         this.insertBreak(owner);
         owner.createComponent(
-          { name: "password",
+          { name: "newPassword",
             kind: "onyx.Input",
             classes:"form-input-box form-field-left-margin",
             placeholder: "New Password",
             owner: owner
           }
         );
-        this.bindInputData(owner.$.password);
+        this.bindInputData(owner.$.newPassword);
 
         this.insertBreak(owner);
         owner.createComponent(
@@ -89,6 +89,7 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 
 
 
