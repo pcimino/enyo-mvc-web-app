@@ -15,9 +15,11 @@ enyo.kind({
       var topNavToolbar = owner.createComponent({kind: "onyx.Toolbar", name: 'topNavToolbar', owner: owner});
 
       // need to create buttons that behave as links
+      // float right comes first, otherwise Mozilla pushes it down vertically
+      this.createLinkButton(topNavToolbar, 'login', 'Login', 'button-float-right');
+
       this.createLinkButton(topNavToolbar, 'userSignup', 'New User Signup');
 
-      this.createLinkButton(topNavToolbar, 'login', 'Login', 'button-float-right');
   }
   , setupBottomNav: function(owner) {
       this.inherited(arguments);
@@ -28,6 +30,7 @@ enyo.kind({
       this.createLinkButton(topNavToolbar, 'forgotPassword', 'Reset My Password');
   }
 });
+
 
 
 

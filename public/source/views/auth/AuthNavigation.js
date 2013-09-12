@@ -24,14 +24,17 @@ enyo.kind({
       var topNavToolbar = owner.createComponent({kind: "onyx.Toolbar", name: 'topNavToolbar', owner: owner});
 
       // need to create buttons that behave as links
+      // float right comes first, otherwise Mozilla pushes it down vertically
+      this.createLinkButton(topNavToolbar, 'logout', 'Logout', 'button-float-right');
+
       this.createLinkButton(topNavToolbar, 'home', 'Home');
       this.createLinkButton(topNavToolbar, 'updateMyUserInfo', 'Update My Info');
       this.createLinkButton(topNavToolbar, 'updateMyPassword', 'Update My Password');
-      this.createLinkButton(topNavToolbar, 'logout', 'Logout', 'button-float-right');
+
   }
   , setupBottomNav: function(owner) {
       this.inherited(arguments);
-      this.setAdminNavToolbar(owner.createComponent({kind: "onyx.Toolbar", name: 'adminNavToolbar', owner: owner}));
+      this.setAdminNavToolbar(owner.createComponent({kind: "onyx.Toolbar", name: 'adminNavToolbar', showing: false, owner: owner}));
 
       /** Begin Admin navs, need a way to show/hide this*/
       this.createLinkButton(this.adminNavToolbar, 'readUserInfo', 'Read User Info');
@@ -53,6 +56,7 @@ enyo.kind({
       }
     }
 });
+
 
 
 
