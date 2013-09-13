@@ -132,7 +132,9 @@
   text-decoration: none !important;
 }
 
-
+.info-text {
+	font-size: 12px;
+}
 
 
 
@@ -255,6 +257,7 @@
 .onyx-contextualpopup-button-container{
 	padding:10px;
 }
+
 
 
 
