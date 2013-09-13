@@ -17,10 +17,11 @@ enyo.kind({
       // console.log(JSON.stringify(inResponse, null, 2));
   }
   , processError: function(inSender, inResponse) {
-      console.log('AJAX.UsernameExists processError');
+      console.log('AJAX.UsernameExists processError ' + this.fireEvent);
       if (this.fireEvent) {
         this.owner.bubble(this.fireEvent, {exists: true, response: inSender.xhrResponse, response: inResponse, message: 'Problem checking Username with server.'});
       }
   }
 });
+
 

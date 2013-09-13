@@ -5,6 +5,8 @@
 * - logout: function()
 * - userDetails: function()
 * - userDetailsResult: function(inSender, inEvent)
+* - checkNewUsername: function()
+* - checkNewUsernameResult: function(inSender, inEvent)
 */
 enyo.ready(function() {
   enyo.kind({
@@ -15,6 +17,8 @@ enyo.ready(function() {
         , onUserDetails: 'userDetails'
         , onUserUpdate: 'updateuserInfo'
         , onUserUpdateResult: 'userUpdateResult'
+        , onCheckNewUsername: 'checkNewUsername'
+        , onCheckNewUsernameResult: 'checkNewUsernameResult'
     }
     // Logout
     , logout: function() {
@@ -58,8 +62,20 @@ enyo.ready(function() {
             mvcApp.showMessage(inEvent.message);
         }
     }
+    // Check Username availability
+    , checkNewUsername: function() {
+        mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
+        var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckNewUsernameResult'});
+        ajaxUsernameExists.makeRequest({username:mvcApp.data.newUsername});
+    }
+    // Check Username Result
+    , checkNewUsernameResult: function(inSender, inEvent) {
+        mvcApp.view.body.waterfall('onNewUsernameStatus', inEvent);
+        return true;
+    }
   });
 });
+
 
 
 

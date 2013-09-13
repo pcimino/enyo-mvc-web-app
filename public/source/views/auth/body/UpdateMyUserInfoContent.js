@@ -11,42 +11,25 @@ enyo.ready(function() {
     , id: 'updateMyUserInfoContent'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
-        onUpdateUserStatus: 'updateUserStatus'
+        onNewUsernameStatus: 'newUsernameStatus'
     }
     , published: {
       usernameRef : {}
     }
-    /*, bindings: [
-      {
-        from: ".$.name.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.email.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.username.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      }
-    ]*/
+
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
     }
-    , updateUserStatus: function(inSender, inEvent) {
-        // more kludging
-        if (inEvent.exists == 'reset') {
+    , newUsernameStatus: function(inSender, inEvent) {
           this.usernameRef.removeClass("text-input-confirm-box");
           this.usernameRef.removeClass("text-input-error-box");
-        } else {
+
           if (inEvent.exists == true) {
             this.usernameRef.addClass("text-input-error-box");
           } else {
             this.usernameRef.addClass("text-input-confirm-box");
           }
-        }
         return true;
     }
     , setupBodyContent: function(owner) {
@@ -67,11 +50,11 @@ enyo.ready(function() {
             */
             , usernameChanged: function(inSender, inEvent) {
                 mvcApp.data.newUsername = this.value;
-                if (!this.value || this.value.length < 4) {
+                if (!this.value) {// || this.value.length < 4
                   this.removeClass("text-input-confirm-box");
                   this.removeClass("text-input-error-box");
                 } else {
-                  mvcApp.waterfall('onCheckChangeUsername');
+                  mvcApp.waterfall('onCheckNewUsername');
                 }
                 return true;
             }
@@ -122,6 +105,7 @@ enyo.ready(function() {
       } // end setupBodyContent
   });
 });
+
 
 
 

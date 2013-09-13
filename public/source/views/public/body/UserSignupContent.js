@@ -13,29 +13,6 @@ enyo.ready(function() {
     , published: {
       usernameRef : {}
     }
-    , bindings: [
-      {
-        from: ".$.name.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.email.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.username.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.password.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.vPassword.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      }
-    ]
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
@@ -155,6 +132,7 @@ enyo.ready(function() {
     } // end setupBodyContent
   });
 });
+
 
 
 
