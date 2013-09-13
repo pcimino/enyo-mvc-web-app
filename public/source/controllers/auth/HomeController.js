@@ -47,19 +47,20 @@ enyo.ready(function() {
     }
     , userUpdateResult: function(inSender, inEvent) {
         if (inEvent.userdata) {
-          mvcApp.data.user = inEvent.userdata;
-          mvcApp.setGravatarEmail(mvcApp.data.user.email);
-          var alertMessage = 'Your information has been successfully updated.';
-          if (mvcApp.data.user.newEmail) {
-            alertMessage = alertMessage + ' Check your email account ' + mvcApp.data.user.newEmail + ' and click the link to verify the address.';
-          }
-          mvcApp.showMessage(alertMessage);
+            mvcApp.data.user = inEvent.userdata;
+            mvcApp.setGravatarEmail(mvcApp.data.user.email);
+            var alertMessage = 'Your information has been successfully updated.';
+            if (mvcApp.data.user.newEmail) {
+              alertMessage = alertMessage + ' Check your email account ' + mvcApp.data.user.newEmail + ' and click the link to verify the address.';
+            }
+            mvcApp.showMessage(alertMessage);
         } else if (inEvent.message) {
-          mvcApp.showMessage(inEvent.message);
+            mvcApp.showMessage(inEvent.message);
         }
     }
   });
 });
+
 
 
 
