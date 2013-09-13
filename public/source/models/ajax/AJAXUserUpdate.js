@@ -25,7 +25,7 @@ enyo.kind({
   , processError: function(inSender, inResponse) {
       console.log('AJAX.UserUpdate processError');
       if (this.fireEvent) {
-        var messageStr = 'Problem creating this user.';
+        var messageStr = 'Problem updating this user.';
         if (inSender.xhrResponse && inSender.xhrResponse.body) {
           messageStr = JSON.parse(inSender.xhrResponse.body).message;
         }
@@ -33,6 +33,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 

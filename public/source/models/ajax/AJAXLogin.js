@@ -28,8 +28,16 @@ enyo.kind({
   , processError: function(inSender, inResponse) {
       console.log('AJAX.Login processError');
       if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: 'Problem authenticating this username and password.'});
+        var messageStr = 'Problem authenticating this username and password.';
+        if (inSender.xhrResponse && inSender.xhrResponse.body) {
+          messageStr = JSON.parse(inSender.xhrResponse.body).message;
+          if (messageStr.length == 0) {
+            messageStr = 'Database error, please check that this is not a duplicate Username.';
+          }
+        };
+        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: messageStr});
       }
   }
 });
+
 
