@@ -60,6 +60,9 @@ enyo.ready(function() {
             }
           }
         );
+        owner.createComponent({kind:"enyo.Control", classes:'info-text form-field-left-margin', content:'Modifying your username will require you to update or reset your password.'});
+
+
         this.bindInputData(owner.$.newUsername);
         // Why doesn't the "handlers : {}"" definition above work?
         // owner.$.username.handlers.onUsernameStatus = 'usernameStatus';
