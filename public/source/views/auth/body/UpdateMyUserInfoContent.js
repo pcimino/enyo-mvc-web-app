@@ -16,8 +16,6 @@ enyo.ready(function() {
     , published: {
       usernameRef : {}
     }
-
-    // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
     }
@@ -108,6 +106,7 @@ enyo.ready(function() {
       } // end setupBodyContent
   });
 });
+
 
 
 
