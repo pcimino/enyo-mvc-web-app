@@ -15,6 +15,10 @@ enyo.ready(function() {
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
+        if (!mvcApp.adminFlag) {
+          mvcApp.controllers.routes.trigger({location:'/home'});
+        }
+        // populate the list
     }
     , setupBodyContent: function(owner) {
 
@@ -33,6 +37,7 @@ enyo.ready(function() {
       } // end setupBodyContent
   });
 });
+
 
 
 
