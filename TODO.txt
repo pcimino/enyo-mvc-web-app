@@ -1,3 +1,6 @@
+List
+http://macfja.github.com/enyo2-lib/onyx/dynamiclist.html
+
 
 
 Admin page
@@ -5,9 +8,27 @@ Admin page
    Delete a user
    Admin update a user
 
-Socket integration
+Socket integration: http://socket.io/#how-to-use
 
 Messaging
+
+Update notifications: http://macfja.github.com/enyo2-lib/notification/index.html
+
+  {kind: "Notification", name: "notif"}
+
+  this.sendNotif("notification.PageCurl", true);
+
+			sendNotif: function(theme, stay, duration) {
+				this.$.notif.sendNotification({
+					title: "Test",
+					message: new Date(),
+					icon: "http://icons.iconseeker.com/png/fullsize/ivista-2-os-x-icons/warning-4.png",//http://gakuseisean.deviantart.com
+					theme: theme,
+					stay: stay,
+					duration: duration
+				}, enyo.bind(this, "callb"));
+			}
+
 
 Documentation
 
@@ -18,11 +39,73 @@ JS Utils
 http://ntt.cc/2008/05/10/over-10-useful-javascript-regular-expression-functions-to-improve-your-web-applications-efficiency.html
 
 
+http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updating/
 
 
 
 
 
+
+<!doctype html>
+<html>
+<head>
+	<title>Onyx : DynamicList sample</title>
+	<script src="http://enyojs.com/enyo-2.0b5/enyo.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		enyo.depends(
+			"http://enyojs.com/enyo-2.0b5/enyo.css",
+			"http://enyojs.com/lib/onyx/",
+			"sources/DynamicList.js",
+			"css/DynamicList.css"
+		);
+
+	</script>
+</head>
+<body>
+	<script>
+		new enyo.kind({
+			name: "App",
+			kind: "Control",
+			components: [
+				{content: "DynamicList", style: "margin: 10px;"},
+				{kind: "onyx.DynamicList", defaultRowHeight: 50, name: "list", style: "height: 250px; border: 1px solid red", onSetupRow: "setupRow", onRowTap:"rowTap"},
+				{tag: "hr"},
+				{kind: "onyx.Button", ontap: "iRow15", content: "Invalidate row 15"},
+				{kind: "onyx.Button", ontap: "goBottom", content: "Scroll to the bottom"},
+				{tag: "hr"},
+				{content: "The \"defaultRowHeight\" attribute is your estimation of the height of one row", style: "margin: 20px"},
+				{content: "In this example the list contain 150 rows, but only 6 are really load on launch, other row are load only when needed", style: "margin: 20px"},
+				{content: "Each row can be redraw, example : scroll to the row 15, then tap on \"Invalidate row 15\", the date change to the current date (the row is load only if visible)", style: "margin: 20px;"}
+			],
+
+			setupRow: function(inSender, inEvent) {
+				console.log("onSetupRow", inEvent);
+				inEvent.template="<div style=\"border: 2px solid #000; font-size: 20px; padding: 10px;\">{$label}</div>";
+				inEvent.template={components: [
+					{kind: "onyx.Button", content: "Button : "+inEvent.context.label},
+					{content: inEvent.context.label+" : "+new Date()}
+				]};
+			},
+			iRow15: function() {
+				this.$.list.invalidateRow(14);
+			},
+			goBottom: function() {
+				this.$.list.scrollTo(0, this.$.list.getScrollBounds().height);
+			},
+			rowTap: function(inSender, inEvent) {
+				console.log("onRowTap", inEvent);
+			}
+		});
+		var a = new App().renderInto(document.body);
+
+		for(var b=[],t=0;t<150;t++) {
+			b.push({label: t+1, owner: a});
+		}
+
+		a.$.list.setItems(b);
+	</script>
+</body>
+</html>
 
 
 
