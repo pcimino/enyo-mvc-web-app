@@ -1,3 +1,4 @@
+
 /**
 * This is the parent view for all view kinds
 * - showMessage() calls the popup
@@ -42,22 +43,22 @@ enyo.kind({
 
   }
   , showMessage: function(messageText) {
-      // TODO should this bubble an event?
-      mvcApp.$.popupDialog.showMessage(messageText);
-  }
-  , setupHeaderContent: function() {
+      console.log('showMessage: ' + messageText);
+      this.$.popupDialog.showMessage(messageText);
+
   }
   , setupBodyContent: function() {
       this.notification = this.createComponent({kind: "Notification", name: "notif", owner: this});
+      this.createComponent({name:'popupDialog', kind: "PopupDialog"});
+      this.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center body-margin"});
   }
   , setupFooterContent: function() {
       this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
   }
   , dummy: function() {
+
   }
 });
-
-
 
 
 
