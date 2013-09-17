@@ -23,17 +23,7 @@ enyo.ready(function() {
         this.insertInternalLink(owner, 'updateMyPassword', 'Update My Password');
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'logout', 'Logout');
-/*
-        // Administrative links
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'readUserInfo', 'Read User Info', 'adminReadUserInfoLink');
-        this.insertBreak(owner, 'adminReadUserInfoBreak');
-        this.insertInternalLink(owner, 'readUserList', 'Search For Users', 'adminReadUserListLink');
-        this.insertBreak(owner, 'adminReadUserListBreak');
-        this.insertInternalLink(owner, 'updateUserInfo', 'Update User', 'adminUpdateUserLink');
-        this.insertBreak(owner, 'adminUpdatedUserBreak');
-        this.insertInternalLink(owner, 'deleteUser', 'Delete User', 'adminDeleteUserLink');
-*/
+
         owner.render();
     } // end setupBodyContent
   });

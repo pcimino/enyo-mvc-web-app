@@ -26,10 +26,12 @@ enyo.kind({
       // need to create buttons that behave as links
       // float right comes first, otherwise Mozilla pushes it down vertically
       this.createLinkButton(topNavToolbar, 'logout', 'Logout', 'button-float-right');
+      this.createLinkButton(topNavToolbar, 'updateMyUserInfo', 'Update My Info', 'button-float-right');
+      this.createLinkButton(topNavToolbar, 'updateMyPassword', 'Update My Password', 'button-float-right');
 
       this.createLinkButton(topNavToolbar, 'home', 'Home');
-      this.createLinkButton(topNavToolbar, 'updateMyUserInfo', 'Update My Info');
-      this.createLinkButton(topNavToolbar, 'updateMyPassword', 'Update My Password');
+      this.createLinkButton(topNavToolbar, 'message', 'Message Center');
+
 
   }
   , setupBottomNav: function(owner) {
@@ -37,9 +39,8 @@ enyo.kind({
       this.setAdminNavToolbar(owner.createComponent({kind: "onyx.Toolbar", name: 'adminNavToolbar', showing: false, owner: owner}));
 
       /** Begin Admin navs, need a way to show/hide this*/
-      this.createLinkButton(this.adminNavToolbar, 'readUserInfo', 'Read User Info');
-      this.createLinkButton(this.adminNavToolbar, 'readUserList', 'Search For Users');
-      this.createLinkButton(this.adminNavToolbar, 'deleteUser', 'Delete User');
+      this.createLinkButton(this.adminNavToolbar, 'userManagementInfo', 'Manage User Info');
+      this.createLinkButton(this.adminNavToolbar, 'systemMessage', 'System Message');
   }
   , showAdminOptions: function() {
       console.log("showAdminOptions");
@@ -56,6 +57,7 @@ enyo.kind({
       }
     }
 });
+
 
 
 
