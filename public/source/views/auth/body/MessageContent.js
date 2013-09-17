@@ -1,15 +1,16 @@
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
-* This DeleteUserContent kind, restricted to administrators
+* MessageContent kind,
+* used to create and send messages between users
 *
 * - setupBodyContent() Impemented method
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.DeleteUserContent"
+    name: "Bootplate.MessageContent"
     , kind: "Bootplate.ParentContent"
-    , id: 'deleteUserContent'
+    , id: 'messageContent'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
       listRef:''
@@ -17,9 +18,7 @@ enyo.ready(function() {
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
-        if (!mvcApp.adminFlag) {
-          mvcApp.controllers.routes.trigger({location:'/home'});
-        }
+
         // populate the list
     }
     , setupBodyContent: function(owner) {
@@ -39,6 +38,7 @@ enyo.ready(function() {
     } // end setupBodyContent
   });
 });
+
 
 
 

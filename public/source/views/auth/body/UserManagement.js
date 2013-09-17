@@ -1,13 +1,13 @@
 /**
-* ReadUserInfoContent
+* UserManagementContent
 *
 * - setupBodyContent() Implemented setup method
 */
-enyo.ready(function() {
+enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.ReadUserInfoContent"
+    name: "Bootplate.UserManagementContent"
     , kind: "Bootplate.ParentContent"
-    , id: 'readUserInfoContent'
+    , id: 'userManagementContent'
     , authFlag: true // used to help determine if user has access to this page
     , bindings: [
 
@@ -21,13 +21,9 @@ enyo.ready(function() {
         // populate the list
     }
     , setupBodyContent: function(owner) {
-
         this.insertFormSpace(owner);
-        this.insertInternalLink(owner, 'readUserList', 'Search For Users');
-        this.insertBreak(owner);
+
         this.insertInternalLink(owner, 'updateUserInfo', 'Update User');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'deleteUser', 'Delete User');
         this.insertBreak(owner);
         this.insertInternalLink(owner, 'home', 'Home');
         this.insertBreak(owner);

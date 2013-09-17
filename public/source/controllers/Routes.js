@@ -7,9 +7,9 @@
 *
 * - loadBodyContent(kindByName, renderFlag, skipWaterfallFlag)
 * - logout()
-* - deleteUser()
-* - readUserInfo()
-* - readUserList()
+* - message()
+* - systemMessage()
+* - userManagementInfo()
 * - updateMyUserInfo()
 * - updateMyPassword()
 * - home()
@@ -60,8 +60,11 @@ enyo.kind({
         , handler: 'logout'
         , change:'true'
     }
-    , { path: '/deleteUser'
-        , handler: 'deleteUser'
+    , { path: '/message'
+        , handler: 'message'
+    }
+    , { path: '/systemMessage'
+        , handler: 'systemMessage'
     }
     , { path: '/home'
         , handler: 'home'
@@ -69,11 +72,8 @@ enyo.kind({
     , { path: '/homeEvent'
         , handler: 'homeEvent'
     }
-    , { path: '/readUserInfo'
-        , handler: 'readUserInfo'
-    }
-    , { path: '/readUserList'
-        , handler: 'readUserList'
+    , { path: '/userManagementInfo'
+        , handler: 'userManagementInfo'
     }
     , { path: '/updateMyUserInfo'
         , handler: 'updateMyUserInfo'
@@ -101,17 +101,17 @@ enyo.kind({
       mvcApp.waterfall('onLogout');
       return true;
   }
-  , deleteUser: function () {
-      console.log("deleteUser router");
-      this.loadBodyContent('Bootplate.DeleteUserContent', false);
+  , systemMessage: function () {
+      console.log("systemMessage router");
+      this.loadBodyContent('Bootplate.SystemMessageContent', false);
   }
-  , readUserInfo: function () {
-      console.log("readUserInfo router");
-      this.loadBodyContent('Bootplate.ReadUserInfoContent', false);
+  , userManagementInfo: function () {
+      console.log("userManagementInfo router");
+      this.loadBodyContent('Bootplate.UserManagementContent', false);
   }
-  , readUserList: function () {
-      console.log("readUserList router");
-      this.loadBodyContent('Bootplate.ReadUserListContent', true);
+  , message: function () {
+      console.log("message router");
+      this.loadBodyContent('Bootplate.MessageContent', true);
   }
   , updateMyUserInfo: function () {
       console.log("updateMyUserInfo router");
@@ -166,6 +166,7 @@ enyo.kind({
   }
 
 });
+
 
 
 
