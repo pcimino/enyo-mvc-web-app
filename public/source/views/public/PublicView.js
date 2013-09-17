@@ -44,7 +44,6 @@ enyo.kind({
 
       var bodyContainer = pageContainer.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
 
-
       var bodyContent = bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
       bodyContent.setupBodyContent(bodyContainer);
 
@@ -61,6 +60,7 @@ enyo.kind({
       // navigation.setupBottomNav(this.footer);
   }
 });
+
 
 
 

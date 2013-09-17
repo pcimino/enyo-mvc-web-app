@@ -17,7 +17,6 @@ enyo.kind({
       // need to create buttons that behave as links
       // float right comes first, otherwise Mozilla pushes it down vertically
       this.createLinkButton(topNavToolbar, 'login', 'Login', 'button-float-right');
-
       this.createLinkButton(topNavToolbar, 'userSignup', 'New User Signup');
 
   }
@@ -30,6 +29,7 @@ enyo.kind({
       this.createLinkButton(topNavToolbar, 'forgotPassword', 'Reset My Password');
   }
 });
+
 
 
 

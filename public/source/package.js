@@ -3,6 +3,8 @@ enyo.depends(
 	"$lib/layout"
 	, "$lib/onyx"
   , "$lib/gravatar"
+  , "$lib/notification"
+  , "$lib/macfja-tools"
   //, "$lib/enyo-socket.io"
   //, "$lib/socket-io.client"
   //, "$lib/socket-io-client"
