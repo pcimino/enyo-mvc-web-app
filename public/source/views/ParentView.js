@@ -16,6 +16,30 @@ enyo.kind({
       header : {}
     , body: {}
     , footer: {}
+    , notification: {}
+    , notificationPop: {}
+  }
+  , rendered: function() {
+      this.inherited(arguments);
+
+    this.notification.sendNotification({
+					title: "Test",
+					message: new Date(),
+					icon: "http://icons.iconseeker.com/png/fullsize/ivista-2-os-x-icons/warning-4.png",//http://gakuseisean.deviantart.com
+					theme: "notification.PageCurl",
+					stay: true,
+					duration: 10
+				}, enyo.bind(this, "dummy"));
+   this.notificationPop.sendNotification({
+					title: "Test",
+					message: new Date(),
+					icon: "http://icons.iconseeker.com/png/fullsize/ivista-2-os-x-icons/warning-4.png",//http://gakuseisean.deviantart.com
+					theme: "notification.Pop",
+					stay: true,
+					duration: 10
+				}, enyo.bind(this, "dummy"));
+
+
   }
   , showMessage: function(messageText) {
       // TODO should this bubble an event?
@@ -24,10 +48,16 @@ enyo.kind({
   , setupHeaderContent: function() {
   }
   , setupBodyContent: function() {
+      this.notification = this.createComponent({kind: "Notification", name: "notif", owner: this});
   }
   , setupFooterContent: function() {
+      this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
+  }
+  , dummy: function() {
   }
 });
+
+
 
 
 
