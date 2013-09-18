@@ -53,13 +53,16 @@ enyo.ready(function() {
         if (inEvent.userdata) {
             mvcApp.data.user = inEvent.userdata;
             mvcApp.setGravatarEmail(mvcApp.data.user.email);
+            var alertTitle = 'Update Successful';
             var alertMessage = 'Your information has been successfully updated.';
             if (mvcApp.data.user.newEmail) {
               alertMessage = alertMessage + ' Check your email account ' + mvcApp.data.user.newEmail + ' and click the link to verify the address.';
+              mvcApp.showWarningMessage("Verify your information", alertMessage);
+            } else {
+              mvcApp.showInfoMessage(alertTitle, alertMessage);
             }
-            mvcApp.showMessage(alertMessage);
         } else if (inEvent.message) {
-            mvcApp.showMessage(inEvent.message);
+            mvcApp.showErrorMessage("Error", inEvent.message);
         }
     }
     // Check Username availability

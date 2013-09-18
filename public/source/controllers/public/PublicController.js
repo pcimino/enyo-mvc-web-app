@@ -50,7 +50,7 @@ enyo.kind({
         mvcApp.setAuthView();
       } else {
         console.log(inEvent.message);
-        mvcApp.publicView.showMessage(inEvent.message);
+        mvcApp.showWarningMessage("Login failed", inEvent.message);
       };
   }
   // ForgotPassword
@@ -72,7 +72,7 @@ enyo.kind({
       mvcApp.data.username = '';
       mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
     } else {
-      mvcApp.showMessage("We had trouble sending your email. Please try again later or contact your system administrator.");
+      mvcApp.showErrorMessage("Email Problem", "We had trouble sending your email. Please try again later or contact your system administrator.");
     }
   }
   // Resend  Verification Email
@@ -93,8 +93,7 @@ enyo.kind({
       mvcApp.data.username = '';
       mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
     } else {
-      //mvcApp.showMessage("We had trouble sending your email. Please try again later or contact your system administrator.");
-    mvcApp.showMessage("We had trouble sending your email. Please try again later or contact your system administrator.");
+      mvcApp.showErrorMessage("Email Problem", "We had trouble sending your email. Please try again later or contact your system administrator.");
     }
   }
   // Check Username availability
@@ -147,9 +146,9 @@ enyo.kind({
         mvcApp.broadcast.displayClass = 'error';
         mvcApp.broadcast.message = "The system is currently unavailable. Please try again later.";
         mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
-        mvcApp.showMessage("Cannot connect to the Database.");
+        mvcApp.showErrorMessage("Cannot connect to the Database", "We're experiencing networking issues, please try again later.");
       } else {
-        // mvcApp.showMessage("Database is up.");
+        // mvcApp.showInfoMessage("Database is up.", "Database is up.");
       }
   }
 });
