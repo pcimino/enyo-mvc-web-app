@@ -11,5 +11,5 @@
   , "dependencies": {
       "express": "latest"
   }
-  , "socket.io-client": "latest"
 }
+
