@@ -8,6 +8,7 @@ enyo.kind({
   , tag: 'footer' // give it a specific html tag
   , classes: "onyx"
   , fit: true
+  , webSocket: {}
   , components: [
       {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "footer-height fittable-sample-box fittable-sample-mtb fittable-sample-o", components: [
         {name:'footerLeftContent', content: "Auth footer-left", classes: "fittable-sample-box fittable-sample-mlr"},
@@ -17,8 +18,24 @@ enyo.kind({
   ]
   , rendered: function() {
       this.inherited(arguments);
+      this.startSocket();
+  }
+  , startSocket: function() {
+      if (io) {
+        var host = mvcApp.wsSocketURL + ":" + mvcApp.wsSocketPort;
+        this.$.webSocket = io.connect(host);
+        this.$.webSocket.on('connect', function() {
+          this.$.webSocket.on('timestamp', function (data) {
+            this.$.footerCenterContent.content = JSON.parse(data);
+          });
+        });
+      }
+  }
+  , stopSocket: function() {
+      this.$.webSocket.emit('close');
   }
 });
+
 
 
 

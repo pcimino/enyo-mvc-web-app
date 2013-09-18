@@ -15,7 +15,6 @@ enyo.kind({
   , classes: "onyx"
   , published : {
       header : {}
-    , body: {}
     , footer: {}
     , notification: {}
     , notificationPop: {}
@@ -29,9 +28,10 @@ enyo.kind({
   , rendered: function() {
       this.inherited(arguments);
   }
+  , setupHeaderContent: function() {
+  }
   , setupBodyContent: function() {
       this.notification = this.createComponent({kind: "Notification", name: "notif", owner: this});
-      this.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center body-margin"});
   }
   , setupFooterContent: function() {
       this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
@@ -72,6 +72,7 @@ enyo.kind({
 
   }
 });
+
 
 
 
