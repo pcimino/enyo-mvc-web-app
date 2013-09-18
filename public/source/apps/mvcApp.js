@@ -32,7 +32,6 @@ enyo.kind({
   , create: function() {
       this.publicView = new Bootplate.PublicView({name: "publicView"});
       this.authView = new Bootplate.HomeView({name: "homeView"});
-      this.createComponent({name:'popupDialog', kind: "PopupDialog", owner: this});
   }
   , setPublicView: function() {
       mvcApp.view = this.publicView;
@@ -60,8 +59,17 @@ enyo.kind({
       }}}}}}
       return false;
   }
-  , showMessage: function(messageText) {
-      this.$.popupDialog.showMessage(messageText);
+  , showErrorMessage: function(title, messageText) {
+      mvcApp.view.waterfall('onShowErrorMessage', {title: title, message: messageText});
+  }
+  , showWarningMessage: function(title, messageText) {
+      mvcApp.view.waterfall('onShowWarningMessage', {title: title, message: messageText});
+  }
+  , showInfoMessage: function(title, messageText) {
+      mvcApp.view.waterfall('onShowInfoMessage', {title: title, message: messageText});
+  }
+  , showSystemMessage: function(title, messageText) {
+      mvcApp.view.waterfall('onShowSystemMessage', {title: title, message: messageText});
   }
   , adminFlagChanged: function(oldVal) {
       // if flag is true, this allows Admin links to be seen, but server will
@@ -78,6 +86,7 @@ enyo.kind({
       mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
 
 
 

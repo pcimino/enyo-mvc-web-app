@@ -20,45 +20,60 @@ enyo.kind({
     , notification: {}
     , notificationPop: {}
   }
+  , handlers: {
+     onShowSystemMessage: 'systemMessage'
+     , onShowErrorMessage: 'showErrorMessage'
+     , onShowWarningMessage: 'showWarningMessage'
+     , onShowInfoMessage: 'showInfoMessage'
+  }
   , rendered: function() {
       this.inherited(arguments);
-
-    this.notification.sendNotification({
-					title: "Test",
-					message: new Date(),
-					icon: "http://icons.iconseeker.com/png/fullsize/ivista-2-os-x-icons/warning-4.png",//http://gakuseisean.deviantart.com
-					theme: "notification.PageCurl",
-					stay: true,
-					duration: 10
-				}, enyo.bind(this, "dummy"));
-   this.notificationPop.sendNotification({
-					title: "Test",
-					message: new Date(),
-					icon: "http://icons.iconseeker.com/png/fullsize/ivista-2-os-x-icons/warning-4.png",//http://gakuseisean.deviantart.com
-					theme: "notification.Pop",
-					stay: true,
-					duration: 10
-				}, enyo.bind(this, "dummy"));
-
-
-  }
-  , showMessage: function(messageText) {
-      console.log('showMessage: ' + messageText);
-      this.$.popupDialog.showMessage(messageText);
-
   }
   , setupBodyContent: function() {
       this.notification = this.createComponent({kind: "Notification", name: "notif", owner: this});
-      this.createComponent({name:'popupDialog', kind: "PopupDialog"});
       this.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center body-margin"});
   }
   , setupFooterContent: function() {
       this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
   }
-  , dummy: function() {
+  , systemMessage: function(inSender, inEvent) {
+      this.notification.sendNotification({
+					title: inEvent.title
+					, message: inEvent.message
+					, icon: 'img/alert-yellow-64.png'
+					, theme: "notification.PageCurl"
+					, stay: true
+					, duration: 10
+				}, enyo.bind(this, "archiveSystemMessage"));
+  }
+  , showErrorMessage: function(inSender, inEvent) {
+      this.showMessage(inEvent.title, inEvent.message, 'img/alert-red-64.png', 'notification.Pop');
+  }
+  , showWarningMessage: function(inSender, inEvent) {
+      this.showMessage(inEvent.title, inEvent.message, 'img/alert-yellow-64.png', 'notification.Pop');
+  }
+  , showInfoMessage: function(inSender, inEvent) {
+      this.showMessage(inEvent.title, inEvent.message, 'img/alert-green-64.png', 'notification.Pop');
+  }
+  , showMessage: function(title, message, icon, theme) {
+       this.notificationPop.sendNotification({
+					title: title
+					, message: message
+					, icon: icon
+					, theme: theme
+					, stay: true
+					, duration: 10
+				}, enyo.bind(this, "dummy"));
+  }
+  , archiveSystemMessage: function(inSender, inEvent) {
+      console.log(JSON.stringify(inEvent))
+  }
+  , dummy: function(inSender, inEvent) {
 
   }
 });
+
+
 
 
 
