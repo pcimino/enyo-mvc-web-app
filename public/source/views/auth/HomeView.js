@@ -29,8 +29,6 @@ enyo.ready(function() {
         navigation.setupLeftNav(pageContainer);
 
         var bodyContainer = pageContainer.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
-
-
         var bodyContent = bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.HomeContent'});
         bodyContent.setupBodyContent(bodyContainer);
 
@@ -44,6 +42,7 @@ enyo.ready(function() {
     }
   });
 });
+
 
 
 
