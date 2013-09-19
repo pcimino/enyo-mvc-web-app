@@ -6,6 +6,13 @@
 	padding: 15px !important;
 }
 
+.reverse-text {
+  background: gray;
+  font-family:arial;
+  color: white;
+  font-weight:bold;
+}
+
 .form-field-left-margin {
   margin-top: 15px;
   margin-left:40%;
@@ -257,6 +264,7 @@
 .onyx-contextualpopup-button-container{
 	padding:10px;
 }
+
 
 
 

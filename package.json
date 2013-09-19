@@ -1,5 +1,5 @@
 {
-    "name": "Enyo-MVC-App"
+    "name": "enyo-mvc-app"
   , "description": "An Enyo front end for the Restify demo:  https://github.com/pcimino/nodejs-restify-mongodb"
   , "version": "1.0.0"
   , "private": false

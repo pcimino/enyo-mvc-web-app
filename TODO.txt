@@ -1,7 +1,7 @@
 List
 http://macfja.github.com/enyo2-lib/onyx/dynamiclist.html
 
-
+macfja TextArea conflict
 
 Admin page
    Search for users
@@ -12,10 +12,11 @@ Socket integration: http://socket.io/#how-to-use
 
 Messaging
 
+forced logout warning pop
+redirect to home warning pop
 
 Documentation
 
-Different CSS for Mozilla?
 
 JS Utils
 
@@ -26,8 +27,8 @@ http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updatin
 
 
 
-git submodule add -f https://github.com/LearnBoost/socket.io.git /public/lib/socket.io
-
+git submodule add -f https://github.com/LearnBoost/socket.io.git ./public/lib/socket.io
+git rm –cached ./public/lib/socket.io
 
 <!doctype html>
 <html>
@@ -89,6 +90,7 @@ git submodule add -f https://github.com/LearnBoost/socket.io.git /public/lib/soc
 	</script>
 </body>
 </html>
+
 
 
 
