@@ -76,6 +76,7 @@ enyo.ready(function() {
         );
         this.bindInputData(owner.$.newName);
 
+        this.insertBreak(owner);
         owner.createComponent(
           { name: "newEmail"
             , kind: "onyx.Input"
@@ -106,6 +107,7 @@ enyo.ready(function() {
       } // end setupBodyContent
   });
 });
+
 
 
 
