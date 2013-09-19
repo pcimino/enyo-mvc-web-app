@@ -17,6 +17,7 @@ redirect to home warning pop
 
 Documentation
 
+auto logout when session done?
 
 JS Utils
 

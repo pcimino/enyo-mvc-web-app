@@ -9,10 +9,10 @@ enyo.kind({
   , classes: "onyx"
   , fit: true
   , components: [
-      {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "footer-height fittable-sample-box fittable-sample-mtb fittable-sample-o", components: [
-        {name:'footerLeftContent', content: "Auth footer-left", classes: "fittable-sample-box fittable-sample-mlr"},
-        {name:'footerCenterContent', content: "Auth footer-center", fit: true, classes: "fittable-sample-box fittable-sample-mlr fittable-sample-o reverse-text"},
-        {name:'footerRightContent', content: "footer-right", classes: "fittable-sample-box fittable-sample-mlr"}
+      {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "footer-height footer-width reverse-text", components: [
+        {name:'footerLeftContent', content: "Auth footer-left", classes: "footer-mlr footer-mtb"},
+        {name:'footerCenterContent', content: "Auth footer-center", fit: true, classes: "footer-mlr footer-mtb"},
+        {name:'footerRightContent', content: "footer-right", classes: "footer-mlr footer-mtb"}
       ]}
   ]
   , rendered: function() {
@@ -35,6 +35,7 @@ enyo.kind({
       this.$.webSocket.emit('close');
   }
 });
+
 
 
 

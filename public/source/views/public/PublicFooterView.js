@@ -10,10 +10,10 @@ enyo.kind({
   , classes: "onyx"
   , fit: true
   , components: [
-      {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "footer-height footer-width", components: [
-        {name:'footerLeftContent', content: "public footer left", classes: "footer-left"}
-        , {name:'footerCenterContent', content: "footer center", fit: true, classes: "footer-center"}
-        , {name:'footerRightContent', content: "footer right", classes: "footer-right"}
+      {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "footer-height footer-width reverse-text", components: [
+        {name:'footerLeftContent', content: "public footer left", classes: "footer-mlr footer-mtb"}
+        , {name:'footerCenterContent', content: "footer center", fit: true, classes: "footer-mlr footer-mtb"}
+        , {name:'footerRightContent', content: "footer right", classes: "footer-mlr footer-mtb"}
       ]}
   ]
   , constructor: function(props) {
@@ -37,6 +37,7 @@ enyo.kind({
 
   }
 });
+
 
 
 
