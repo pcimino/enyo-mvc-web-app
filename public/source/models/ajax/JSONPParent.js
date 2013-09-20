@@ -18,7 +18,7 @@ enyo.kind({
   , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
-      console.log(this.fireEvent)
+      // console.log(this.fireEvent)
   }
   , buildBaseURL: function() {
       return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
@@ -46,6 +46,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 

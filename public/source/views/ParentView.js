@@ -24,6 +24,8 @@ enyo.kind({
      , onShowErrorMessage: 'showErrorMessage'
      , onShowWarningMessage: 'showWarningMessage'
      , onShowInfoMessage: 'showInfoMessage'
+     , onGetSystemMessages: 'getSystemMessages'
+     , onGetSystemMessagesResult: 'getSystemMessagesResult'
   }
   , rendered: function() {
       this.inherited(arguments);
@@ -71,7 +73,28 @@ enyo.kind({
   , dummy: function(inSender, inEvent) {
 
   }
+  // Retrieve system messages
+  , getSystemMessages: function(inSender, inEvent) {
+    // load the system message
+    var jsonpGetSysMessages = new JSONP.GetSystemMessages({owner:this, fireEvent:'onGetSystemMessagesResult'});
+    jsonpGetSysMessages.makeRequest({});
+
+  }
+  // Dsiplay system messages
+  , getSystemMessagesResult: function(inSender, inEvent) {
+    // mvcApp.view.body.waterfall('onNewUsernameStatus', inEvent);
+    // TODO want to clear the notifications programmatically before reloading
+    // checking to see if any are loaded to avoid duplicates
+    // this means messages get loaded once per session, unless the user archives them all
+    if (this.notification.pending.length === 0) {
+      for (var i = 0; i < inEvent.length; i++) {
+        mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message);
+      }
+    }
+    return true;
+  }
 });
+
 
 
 

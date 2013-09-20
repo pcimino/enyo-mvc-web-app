@@ -9,7 +9,7 @@ enyo.kind({
   , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
-      console.log(this.fireEvent)
+      // console.log(this.fireEvent)
   }
   , processResponse: function(inSender, inResponse) {
       console.log('AJAX.UsernameExists processResponse ');
@@ -23,5 +23,6 @@ enyo.kind({
       }
   }
 });
+
 
 

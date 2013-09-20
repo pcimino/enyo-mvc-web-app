@@ -9,17 +9,17 @@ Admin page
    Admin update a user
 
 
-forced logout warning pop
-redirect to home warning pop
+
 
 Documentation
 tutorial: Add authenticated user contact page
 
 auto logout when session done?
+forced logout warning pop
+redirect to home warning pop
 
-JS Utils
 
-http://ntt.cc/2008/05/10/over-10-useful-javascript-regular-expression-functions-to-improve-your-web-applications-efficiency.html
+JS Utils: http://ntt.cc/2008/05/10/over-10-useful-javascript-regular-expression-functions-to-improve-your-web-applications-efficiency.html
 
 
 http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updating/
