@@ -14,20 +14,16 @@ enyo.ready(function() {
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
+
+        // retrieve system messages
+        mvcApp.authView.waterfall('onGetSystemMessages');
     }
     , setupBodyContent: function(owner) {
-
-        this.insertFormSpace(this);
-        this.insertInternalLink(owner, 'updateMyUserInfo', 'Update My Account Info');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'updateMyPassword', 'Update My Password');
-        this.insertBreak(owner);
-        this.insertInternalLink(owner, 'logout', 'Logout');
-
         owner.render();
     } // end setupBodyContent
   });
 });
+
 
 
 

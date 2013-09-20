@@ -15,6 +15,14 @@ enyo.ready(function() {
     name: "Bootplate.ParentContent"
     , kind: "enyo.Control"
     , id: 'parentContent'
+    // This checks to see if the user is allowed on this page
+    , rendered: function() {
+        this.inherited(arguments);
+        if (mvcApp.data.user) {
+          // retrieve system messages
+          mvcApp.authView.waterfall('onGetSystemMessages');
+        }
+    }
     , insertFormSpace: function(owner, paddingInPx) {
         var padHeight = "padding-top:";
         if (paddingInPx) {
@@ -80,6 +88,8 @@ enyo.ready(function() {
     }
   });
 });
+
+
 
 
 

@@ -12,7 +12,7 @@ enyo.kind({
   , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
-      console.log(this.fireEvent)
+      // console.log(this.fireEvent)
   }
   , processResponse: function(inSender, inResponse) {
       console.log('AJAX.Login processResponse ');
@@ -23,7 +23,7 @@ enyo.kind({
       } else {
         this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, message: 'Problem contacting the server, please try again later.'});
       }
-      console.log(JSON.stringify(inResponse, null, 2));
+      // console.log(JSON.stringify(inResponse, null, 2));
   }
   , processError: function(inSender, inResponse) {
       console.log('AJAX.Login processError');
@@ -39,5 +39,6 @@ enyo.kind({
       }
   }
 });
+
 
 

@@ -12,7 +12,11 @@ enyo.depends(
   , "JSONPCheckAdmin.js"
   , "JSONPResendVerificationEmail.js"
   , "JSONPResetPassword.js"
+  , "JSONPGetSystemMessages.js"
+  , "JSONPGetMessageThreads.js"
 );
+
+
 
 
 
