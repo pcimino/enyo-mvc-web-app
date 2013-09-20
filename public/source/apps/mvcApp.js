@@ -20,7 +20,7 @@ enyo.kind({
            kind: "Bootplate.PublicController"
         }
         , { name: "authController",
-            kind: "Bootplate.HomeController"
+            kind: "Bootplate.AuthController"
         }
         , { name: "routes",
             kind: "Bootplate.Routes"

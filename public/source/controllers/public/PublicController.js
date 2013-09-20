@@ -144,8 +144,6 @@ enyo.kind({
   , checkDBResult: function(inSender, inEvent) {
       if (!inEvent.dbAvailable) {
         mvcApp.broadcast.displayClass = 'error';
-        mvcApp.broadcast.message = "The system is currently unavailable. Please try again later.";
-        mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
         mvcApp.showErrorMessage("Cannot connect to the Database", "We're experiencing networking issues, please try again later.");
       } else {
         // mvcApp.showInfoMessage("Database is up.", "Database is up.");
