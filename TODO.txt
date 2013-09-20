@@ -1,21 +1,19 @@
 List
 http://macfja.github.com/enyo2-lib/onyx/dynamiclist.html
 
-macfja TextArea conflict
+
 
 Admin page
    Search for users
    Delete a user
    Admin update a user
 
-Socket integration: http://socket.io/#how-to-use
-
-Messaging
 
 forced logout warning pop
 redirect to home warning pop
 
 Documentation
+tutorial: Add authenticated user contact page
 
 auto logout when session done?
 
@@ -91,6 +89,7 @@ git rm –cached ./public/lib/socket.io
 	</script>
 </body>
 </html>
+
 
 
 

@@ -22,8 +22,6 @@ enyo.depends(
 	, "RatingLevel.js"
   , "css/RatingLevel.css"
   
-	, "TextArea.js"
-  , "css/TextArea.css"
 	, "UpDown.js"
   , "css/UpDown.css"
 );

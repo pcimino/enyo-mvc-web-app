@@ -63,6 +63,7 @@ enyo.kind({
           mvcApp.setGravatarEmail('');
           mvcApp.setPublicView();
           mvcApp.controllers.routes.trigger({location:'/loginEvent'});
+          mvcApp.showWarningMessage("Session Ended", "Your session has expired, please login.");
         }
       }
   }
@@ -94,6 +95,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 
