@@ -39,19 +39,20 @@ enyo.ready(function() {
 
       // only call this on navigation, not initial load
         if (renderFlag) owner.render();
-  } // end setupBodyContent
-  , setErrorMessage: function(newText) {
-      this.contentComponent.setContent(newText);
-      this.contentComponent.removeClass("text-input-confirm-box");
-      this.contentComponent.addClass("text-input-error-box");
-  }
-  , setConfirmMessage: function(newText) {
-      this.contentComponent.setContent(newText);
-      this.contentComponent.removeClass("text-input-error-box");
-      this.contentComponent.addClass("text-input-confirm-box");
-  }
+    } // end setupBodyContent
+    , setErrorMessage: function(newText) {
+        this.contentComponent.setContent(newText);
+        this.contentComponent.removeClass("text-input-confirm-box");
+        this.contentComponent.addClass("text-input-error-box");
+    }
+    , setConfirmMessage: function(newText) {
+        this.contentComponent.setContent(newText);
+        this.contentComponent.removeClass("text-input-error-box");
+        this.contentComponent.addClass("text-input-confirm-box");
+    }
+  });
 });
-});
+
 
 
 

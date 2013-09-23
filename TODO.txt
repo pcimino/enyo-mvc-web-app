@@ -1,7 +1,7 @@
 List
 http://macfja.github.com/enyo2-lib/onyx/dynamiclist.html
 
-
+spacing/layout on small screens
 
 Admin page
    Search for users
@@ -21,6 +21,16 @@ redirect to home warning pop
 
 JS Utils: http://ntt.cc/2008/05/10/over-10-useful-javascript-regular-expression-functions-to-improve-your-web-applications-efficiency.html
 
+// Adding a new page:
+1: Create the file
+    views/public/body/ContactContent.js
+2: and add to the package
+3: Add to controllers/Routes.js
+    Add an entry to the routes[] array
+    Add a method to load the body content
+4: Add navigation
+      views/public/PublicNavigation.js
+5: Explain the renderFlag, is it still needed?
 
 http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updating/
 
@@ -89,6 +99,7 @@ git rm –cached ./public/lib/socket.io
 	</script>
 </body>
 </html>
+
 
 
 
