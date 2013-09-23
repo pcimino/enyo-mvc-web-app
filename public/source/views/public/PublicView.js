@@ -37,13 +37,15 @@ enyo.kind({
   }
   , setupBodyContent: function() {
       this.inherited(arguments);
+
+
       this.pageContainer = this.createComponent({name:'pageContainer', fit: true, classes: "enyo-center container-height", owner: this});
 
       this.navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.PublicNavigation', owner: this});
       this.navigation.setupTopNav(this.pageContainer);
       this.navigation.setupLeftNav(this.pageContainer);
 
-      var bodyContainer = this.pageContainer.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
+      var bodyContainer = this.pageContainer.createComponent({kind: enyo.Scroller, name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
       var bodyContent = bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
       bodyContent.setupBodyContent(bodyContainer);
   }
@@ -57,6 +59,7 @@ enyo.kind({
       this.footer = this.pageContainer.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView', owner: this.pageContainer});
   }
 });
+
 
 
 
