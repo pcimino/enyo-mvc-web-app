@@ -14,13 +14,13 @@
  * @extends enyo.Scroller
  */
 enyo.kind({
-	name: "onyx.DynamicList",
+	name: "macfja.DynamicList",
 	kind: "enyo.Scroller",
 	classes: "onyx-dynamiclist",
 
 	published: {
 		/** @lends onyx.DynamicList# */
-		
+
 		/**
 		 * The contents of the list (use getter/setter)<br />
 		 * each item is an object and <tt>template</tt> attribute (optional) the row template, <tt>owner</tt> attribute (optional), the row owner
@@ -65,7 +65,7 @@ enyo.kind({
 		 * @see enyojs.com for more information about events
 		 */
 		onSetupRow: "",
-		
+
 		/**
 		 * Inform that a row is tap
 		 * @event
@@ -75,7 +75,7 @@ enyo.kind({
 		onRowTap: ""
 	},
 	/** @lends onyx.DynamicList# */
-	
+
 	/**
 	 * Components of the control
 	 * @ignore
@@ -83,7 +83,7 @@ enyo.kind({
 	 * @default <tt><i>[]</i></tt>
 	 */
 	components: [],
-	
+
 	/**
 	 * The internal row list
 	 * @field
@@ -91,7 +91,7 @@ enyo.kind({
 	 * @type Array
 	 */
 	rows: [],
-	
+
 	/**
 	 * The list of height of all row
 	 * @private
@@ -99,7 +99,7 @@ enyo.kind({
 	 * @type Array
 	 */
 	heights: [],
-	
+
 	/**
 	 * create function, init the object
 	 * @private
@@ -131,7 +131,7 @@ enyo.kind({
 				template: (this.items[tour].template || this.rowTemplate),
 				generated: false
 			});
-			
+
 			if(this.hasNode())//If the scroller is ready
 				{ this.render(); }//Update it
 		}
@@ -197,7 +197,7 @@ enyo.kind({
 		var top = this.getScrollBounds().top,
 			visibleHeight = this.getBounds().height,
 			visibleRow = Math.ceil(visibleHeight/this.avgHeight());
-		
+
 		//Get visible rows
 		lastToDisplay = this.indexAtHeight(top+visibleHeight+1);//One after
 		firstToDisplay = lastToDisplay-visibleRow-1;//this.indexAtHeight(top)-1;//One before
@@ -205,7 +205,7 @@ enyo.kind({
 
 		this.renderRows(firstToDisplay, lastToDisplay);
 	},
-	
+
 	/**
 	 * Handler for event <q>onTap</q> of row
 	 * @function
@@ -219,8 +219,8 @@ enyo.kind({
 		this.doRowTap({index: rowIdx, context: this.rows[rowIdx].source});//Send onRowTap event
 		return true;
 	},
-	
-	
+
+
 	/**
 	 * Handler for event <q>onScroll</q>
 	 * @function
@@ -233,7 +233,7 @@ enyo.kind({
 		//Limit calculateRowToDisplay call (memory save...)
 		enyo.job("calculateRowToDisplay", enyo.bind(this, "calculateRowToDisplay"), 15);
 	},
-	
+
 	/**
 	 * Handler for event <q>onScrollStop</q>
 	 * @function
@@ -245,7 +245,7 @@ enyo.kind({
 	scrollEndHandler: function(inSender, inEvent) {
 		this.calculateRowToDisplay();
 	},
-	
+
 	/**
 	 * Force the redraw of a row
 	 * @function
@@ -257,7 +257,7 @@ enyo.kind({
 		this.rows[index].generated = false;//Set generated to "false", to force the row to be redraw
 		this.calculateRowToDisplay();//Redraw the visible rows (in case where the row "index" is visible)
 	},
-	
+
 	/**
 	 * Get the row index for a specific height (in pixel)
 	 * @private
@@ -273,12 +273,12 @@ enyo.kind({
 			size = this.heights.length;
 		for(;tour<size;tour++) {
 			calcHeight+= this.heights[tour];//Get the sum height from 0 to "tour"
-			
+
 			if(calcHeight >= height) return tour;//If the sum of height is sup or equal then return "tour"
 		}
-		return size-1;//Return the last index 
+		return size-1;//Return the last index
 	},
-	
+
 	/**
 	 * Calculate the average height of a row
 	 * @function
@@ -290,7 +290,7 @@ enyo.kind({
 	avgHeight: function() {
 		return Math.round(this.totalHeight()/this.heights.length);
 	},
-	
+
 	/**
 	 * Calculate the sum of all row height
 	 * @function
@@ -306,10 +306,10 @@ enyo.kind({
 		for(;tour<size;tour++) {
 			total+=this.heights[tour];
 		}
-		
+
 		return total;
 	},
-	
+
 	/**
 	 * Set a row height
 	 * @function
@@ -321,7 +321,7 @@ enyo.kind({
 	addHeight: function(idx, height) {
 		this.heights[idx] = height;
 	},
-	
+
 	/**
 	 * Reset all row height to the default row height
 	 * @function
