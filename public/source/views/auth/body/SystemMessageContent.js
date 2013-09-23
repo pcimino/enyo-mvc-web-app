@@ -20,27 +20,14 @@ enyo.ready(function() {
        onGetSystemMessagesAdminScreen: 'getSystemMessagesAdminScreen'
       , onLoadSystemMessagesAdminScreen: 'loadSystemMessagesAdminScreen'
     }
-    /*
-    , components: [
-				{content:'System Messages', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;"}
-				, {name: "systemMessageList"
-          , kind: "macfja.DynamicList"
-          , defaultRowHeight: 50
-          , style: "width:80%; margin-left:10%; height: 250px; border: 1px solid grey"
-          , onSetupRow: "setupRow"
-          , onRowTap:"rowTap"
-          , classes:"form-input-box form-top-margin"
-        }
-    ]
-    */
 
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
     }
     , setupBodyContent: function(owner) {
-      this.createComponent({content:'System Messages', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
-       this.createComponent(
+        this.createComponent({content:'System Messages', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
+        this.createComponent(
           { name: "subject"
             , kind: "onyx.Input"
             , classes:"form-input-box "
@@ -52,21 +39,21 @@ enyo.ready(function() {
 
         this.insertBreak(owner);
         this.createComponent(
-          { name: "message",
-            kind: "onyx.Input",
-            classes:"form-input-box ",
-            placeholder: "Message",
-            owner: this
+          { name: "message"
+            , kind: "onyx.Input"
+            , classes:"form-input-box "
+            , placeholder: "Message"
+            , owner: this
             , style: "width:80%; margin-left:10%; "
           }
         );
         this.insertBreak(owner);
         this.createComponent(
-          { kind: "onyx.Button",
-            content: "Send System Message",
-            classes: "onyx-blue ",
-            owner: this,
-            ontap: 'sendSysMessage'
+          { kind: "onyx.Button"
+            , content: "Send System Message"
+            , classes: "onyx-blue "
+            , owner: this
+            , ontap: 'sendSysMessage'
             , style: "margin-left:10%; "
           }
         );
@@ -112,13 +99,13 @@ enyo.ready(function() {
         ]};
     }
     , archiveMessage: function(inSender, inEvent) {
-        var objId = (inSender.name.substring(inSender.name.indexOf('archiveMessage_') + ("archiveMessage_").length)).trim();
+        var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessage_') + ("archiveMessage_").length)).trim();
         // archive the system message
         var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen'});
         ajaxArchiveSysMessage.makeRequest({systemMessageId: objId});
     }
     , deleteMessage: function(inSender, inEvent) {
-        var objId = (inSender.name.substring(inSender.name.indexOf('deleteMessage_') + ("deleteMessage_").length)).trim();
+        var objId = (inSender.id.substring(inSender.id.indexOf('deleteMessage_') + ("deleteMessage_").length)).trim();
         // delete the system message
         var ajaxDeleteSysMessage = new AJAX.DeleteSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen'});
         ajaxDeleteSysMessage.makeRequest({systemMessageId: objId});
@@ -127,9 +114,13 @@ enyo.ready(function() {
         var subject = this.$.subject.getValue();
         var message = this.$.message.getValue();
         if (subject && subject)
-        // archive the system message
-        var ajaxSysMessage = new AJAX.SendSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen'});
-        ajaxSysMessage.makeRequest({subject: subject, message:message });
+        // send the system message
+        if (subject && subject.length > 0 && message && message.length > 0) {
+          var ajaxSysMessage = new AJAX.SendSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen'});
+          ajaxSysMessage.makeRequest({subject: subject, message:message });
+        } else {
+          mvcApp.showErrorMessage('Missing Data', 'Enter the subject and message before sending.');
+        }
     }
 
   });
@@ -138,6 +129,7 @@ enyo.ready(function() {
 // TODO
 // Put message inline
 // put page content in a scroll panel (all pages?)
+
 
 
 
