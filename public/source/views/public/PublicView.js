@@ -11,6 +11,7 @@
 enyo.kind({
   name: 'Bootplate.PublicView'
   , kind: "Bootplate.ParentView"
+
   , create: function() {
       this.inherited(arguments);
       this.setupHeaderContent();
@@ -36,29 +37,27 @@ enyo.kind({
   }
   , setupBodyContent: function() {
       this.inherited(arguments);
-      var pageContainer = this.createComponent({name:'pageContainer', fit: true, classes: "enyo-center container-height", owner: this});
+      this.pageContainer = this.createComponent({name:'pageContainer', fit: true, classes: "enyo-center container-height", owner: this});
 
-      var navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.PublicNavigation', owner: this});
-      navigation.setupTopNav(pageContainer);
-      navigation.setupLeftNav(pageContainer);
+      this.navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.PublicNavigation', owner: this});
+      this.navigation.setupTopNav(this.pageContainer);
+      this.navigation.setupLeftNav(this.pageContainer);
 
-      var bodyContainer = pageContainer.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
+      var bodyContainer = this.pageContainer.createComponent({name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
       var bodyContent = bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
       bodyContent.setupBodyContent(bodyContainer);
-
-      navigation.setupRightNav(pageContainer);
-      navigation.setupBottomNav(pageContainer);
   }
   , setupFooterContent: function() {
       this.inherited(arguments);
-      if (this.$.footerContainer) this.$.footerContainer.destroy();
-      this.footer = this.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView', owner: this});
 
-      // TODO need a better way to add bottom nav
-      // var navigation = this.footer.createComponent({name:'bottomNav', kind: 'Bootplate.PublicNavigation', addBefore:null});
-      // navigation.setupBottomNav(this.footer);
+      this.navigation.setupRightNav(this.pageContainer);
+      this.navigation.setupBottomNav(this.pageContainer);
+
+      if (this.$.footerContainer) this.$.footerContainer.destroy();
+      this.footer = this.pageContainer.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView', owner: this.pageContainer});
   }
 });
+
 
 
 
