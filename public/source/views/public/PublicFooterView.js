@@ -24,19 +24,9 @@ enyo.kind({
   }
   , rendered: function() {
       this.inherited(arguments);
-    /*TODO
-      var host = mvcApp.getWsSocketURL() + ':' + mvcApp.getWsSocketPort();
-      var timeSocket = new Socket({address: host, owner: this});
-
-      timeSocket.on('connect', function() {
-        timeSocket.on('timestamp', function(data) {
-          updateTime(JSON.parse(data));
-        });
-      });
-    */
-
   }
 });
+
 
 
 

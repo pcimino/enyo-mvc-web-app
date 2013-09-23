@@ -16,6 +16,8 @@ enyo.kind({
   , published : {
       header : {}
     , footer: {}
+    , pageContainer: {}
+    , navigation: {}
     , notification: {}
     , notificationPop: {}
   }
@@ -94,6 +96,7 @@ enyo.kind({
     return true;
   }
 });
+
 
 
 

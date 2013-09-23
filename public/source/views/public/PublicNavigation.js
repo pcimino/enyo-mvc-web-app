@@ -23,13 +23,14 @@ enyo.kind({
   }
   , setupBottomNav: function(owner) {
       this.inherited(arguments);
-      var topNavToolbar = owner.createComponent({kind: "onyx.Toolbar", name: 'bottomNavToolbar', owner: owner});
+      var bottomNavToolbar = owner.createComponent({kind: "onyx.Toolbar", fit: true, name: 'bottomNavToolbar', owner: owner});
 
       // need to create buttons that behave as links
-      this.createLinkButton(topNavToolbar, 'resendEmail', 'Resend My Verification Email');
-      this.createLinkButton(topNavToolbar, 'forgotPassword', 'Reset My Password');
+      this.createLinkButton(bottomNavToolbar, 'resendEmail', 'Resend My Verification Email');
+      this.createLinkButton(bottomNavToolbar, 'forgotPassword', 'Reset My Password');
   }
 });
+
 
 
 
