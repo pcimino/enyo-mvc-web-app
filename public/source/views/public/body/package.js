@@ -3,5 +3,7 @@ enyo.depends(
   , "VerifyResetRequestContent.js"
   , "UserSignupContent.js"
   , "PublicMessageDisplayContent.js"
+  , "ContactContent.js"
 );
+
 

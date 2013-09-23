@@ -81,6 +81,9 @@ enyo.kind({
     , { path: '/updateMyPassword'
         , handler: 'updateMyPassword'
     }
+    , { path: '/contactPublic'
+        , handler: 'contactPublic'
+    }
   ]
   , loadBodyContent: function (kindByName, renderFlag, skipWaterfallFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
@@ -164,8 +167,13 @@ enyo.kind({
       console.log("authenticate router");
       this.loadBodyContent('Bootplate.HomeContent', true);
   }
+  , contactPublic: function () {
+      console.log("contactPublic router");
+      this.loadBodyContent('Bootplate.ContactContent', true);
+  }
 
 });
+
 
 
 
