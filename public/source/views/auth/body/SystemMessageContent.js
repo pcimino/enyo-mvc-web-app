@@ -135,7 +135,9 @@ enyo.ready(function() {
   });
 });
 
-
+// TODO
+// Put message inline
+// put page content in a scroll panel (all pages?)
 
 
 
