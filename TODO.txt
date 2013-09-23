@@ -1,7 +1,6 @@
 List
 http://macfja.github.com/enyo2-lib/onyx/dynamiclist.html
 
-spacing/layout on small screens
 
 Admin page
    Search for users

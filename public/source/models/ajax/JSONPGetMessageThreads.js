@@ -1,5 +1,5 @@
 /**
-* GetMessageThreads JSONP request to resend verification email
+* GetMessageThreads JSONP (optional) archiveFlag if true includes all
 */
 enyo.kind({
   name: 'JSONP.GetMessageThreads'
@@ -19,6 +19,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 
