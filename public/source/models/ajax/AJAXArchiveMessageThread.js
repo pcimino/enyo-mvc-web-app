@@ -1,22 +1,22 @@
 /**
-* ArchiveSystemMessage AJAX requests: mark a system message as archived
-* takes parameter systemMessageId
+* ArchiveMessageThread AJAX requests: mark a system message as archived
+* takes parameter messageThreadId
 *
 * - processResponse()
 * - processError()
 */
 enyo.kind({
-  name: 'AJAX.ArchiveSystemMessage'
+  name: 'AJAX.ArchiveMessageThread'
   , kind: 'AJAX.Parent'
   , method:'DELETE'
-  , rest:'/api/v1/systemMessage'
+  , rest:'/api/v1/messageThread'
   , constructor: function(props) {
       this.inherited(arguments);
       // properties mapped to published attributes get set
       // console.log(this.fireEvent)
   }
   , processResponse: function(inSender, inResponse) {
-      console.log('AJAX.ArchiveSystemMessage processResponse ');
+      console.log('AJAX.ArchiveMessageThread processResponse ');
       if (inResponse) {
        if (this.fireEvent) {
          this.owner.bubble(this.fireEvent, {userdata: inResponse, authenticated: true});
@@ -27,11 +27,12 @@ enyo.kind({
       // console.log(JSON.stringify(inResponse, null, 2));
   }
   , processError: function(inSender, inResponse) {
-      console.log('AJAX.ArchiveSystemMessage processError');
+      console.log('AJAX.ArchiveMessageThread processError');
       if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: 'Problem archiving system message.'});
+        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: 'Problem archiving message thread.'});
       }
   }
 });
+
 
 

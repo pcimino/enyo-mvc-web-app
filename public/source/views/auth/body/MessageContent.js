@@ -60,11 +60,11 @@ enyo.ready(function() {
         this.insertBreak(this);
         this.insertBreak(this);
         this.createComponent({kind: enyo.Checkbox, name: 'showArchivedThreadsCheckbox', onActivate: 'threadCheckboxChanged', content:'Show Archived Message Threads', style: "margin-left: 10%;margin-bottom: 10px;", owner:this});
-        this.createComponent({name: "MessageThreadList"
+        this.createComponent({name: "messageThreadList"
           , kind: "macfja.DynamicList"
           , defaultRowHeight: 20
           , style: "width:80%; margin-left:10%; height: 150px; border: 1px solid grey"
-          , onSetupRow: "setupRow"
+          , onSetupRow: "setupMessageThreadRow"
           , classes:"form-input-box form-top-margin"
           , owner: this
         });
@@ -84,8 +84,8 @@ enyo.ready(function() {
           owner.render();
 
         // populate the list
-        this.getSystemMessagesUserScreen();
         this.getMessageThreadsUserScreen();
+        this.getSystemMessagesUserScreen();
     } // end setupBodyContent
 
     , sendMessage: function(inSender, inEvent) {
@@ -102,12 +102,52 @@ enyo.ready(function() {
     , threadCheckboxChanged : function() {
         console.log('Checkbox value ' + this.$.showArchivedThreadsCheckbox.getChecked());
         // reload the message list
-        this.getSystemMessagesUserScreen();
+        this.getMessageThreadsUserScreen();
     }
     , getMessageThreadsUserScreen: function() {
         // load the system message
         var jsonpGetMessageThreads = new JSONP.GetMessageThreads({owner:this, fireEvent:'onLoadMessageThreadsUserScreen'});
         jsonpGetMessageThreads.makeRequest({archiveFlag: this.$.showArchivedThreadsCheckbox.getChecked()});
+    }
+    // Display message threads
+    , loadMessageThreadsUserScreen: function(inSender, inEvent) {
+        this.$.messageThreadList.setItems(inEvent);
+        return true;
+    }
+    , setupMessageThreadRow: function(inSender, inEvent) {
+        inEvent.template="<div style=\"border: 2px solid #000; font-size: 20px; padding: 10px;\">{$label}</div>";
+        inEvent.template={components: [
+            { kind: "FittableColumns", components: [
+              {content: "From: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.fromUsername}
+              , {content: "To: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.toUsername}
+              , {content: "Subject: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.subject}
+            ]}
+            , { kind: "FittableColumns", components: [
+              {content: "Message: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.messages[0]}
+            ]}
+            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessageThread', id: 'archiveMessageThread_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+        ]};
+            /*
+        inEvent.template={components: [
+          , { kind: "FittableColumns", components: [
+              {content: "Subject: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.subject}
+              , {content: "Message: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.messages[0]}
+            ]}
+            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessageThread', id: 'archiveMessageThread_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+        ]};
+        */
+    }
+    , archiveMessageThread: function(inSender, inEvent) {
+        var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessageThread_') + ("archiveMessageThread_").length)).trim();
+        // archive the system message
+        var ajaxMessage = new AJAX.ArchiveMessageThread({owner:this, fireEvent:'onGetSystemMessagesUserScreen'});
+        ajaxMessage.makeRequest({messageThreadId: objId});
     }
     /////////////////////
     // System messages
@@ -122,7 +162,7 @@ enyo.ready(function() {
         var jsonpGetSysMessages = new JSONP.GetSystemMessages({owner:this, fireEvent:'onLoadSystemMessagesUserScreen'});
         jsonpGetSysMessages.makeRequest({archiveFlag: this.$.showArchivedCheckbox.getChecked()});
     }
-    // Dsiplay system messages
+    // Display system messages
     , loadSystemMessagesUserScreen: function(inSender, inEvent) {
         this.$.systemMessageList.setItems(inEvent);
         return true;
@@ -151,6 +191,7 @@ enyo.ready(function() {
     }
   });
 });
+
 
 
 

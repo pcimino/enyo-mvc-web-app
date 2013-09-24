@@ -6,6 +6,7 @@ enyo.depends(
   , "AJAXUsernameExists.js"
   , "AJAXUserUpdate.js"
   , "AJAXLogout.js"
+  , "AJAXArchiveMessageThread.js"
   , "AJAXArchiveSystemMessage.js"
   , "AJAXDeleteSystemMessage.js"
   , "AJAXSendSystemMessage.js"
@@ -19,6 +20,7 @@ enyo.depends(
   , "JSONPGetSystemMessages.js"
   , "JSONPGetMessageThreads.js"
 );
+
 
 
 

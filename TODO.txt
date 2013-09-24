@@ -1,4 +1,5 @@
-
+message threads only show first message,
+need send and reply function
 
 Admin page
    Search for users
