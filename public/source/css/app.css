@@ -157,8 +157,13 @@
 	margin-right: 6px;
 }
 
+.list-item-margin {
+  margin-left:10px;
+}
 
-
+.bold-text {
+  font-weight:bold;
+}
 
 
 

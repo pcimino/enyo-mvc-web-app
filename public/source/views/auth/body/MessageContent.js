@@ -130,10 +130,17 @@ enyo.ready(function() {
     , setupRow: function(inSender, inEvent) {
         inEvent.template="<div style=\"border: 2px solid #000; font-size: 20px; padding: 10px;\">{$label}</div>";
         inEvent.template={components: [
-          {content: "Created: " + inEvent.context.createDate}
-          , {content: "Subject: " + inEvent.context.subject}
-          , {content: "Message: " + inEvent.context.message}
-          , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this}
+          { kind: "FittableColumns", components: [
+              {content: "Created: ", classes:'list-item-margin bold-text'}
+            , {content: inEvent.context.createDate}
+          ]}
+          , { kind: "FittableColumns", components: [
+              {content: "Subject: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.subject}
+              , {content: "Message: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.message}
+            ]}
+            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
     , archiveMessage: function(inSender, inEvent) {
@@ -144,6 +151,7 @@ enyo.ready(function() {
     }
   });
 });
+
 
 
 
