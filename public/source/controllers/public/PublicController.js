@@ -132,7 +132,7 @@ enyo.kind({
         mvcApp.data.vPassword = '';
         mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
       } else {
-        mvcApp.showMessage(inEvent.message);
+        mvcApp.showInfoMessage(inEvent.message);
       }
 
   }
@@ -150,6 +150,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 
