@@ -1,7 +1,4 @@
 
-http://macfja.github.com/enyo2-lib/onyx/dynamiclist.html
-
-email highlight new user
 
 Admin page
    Search for users
@@ -10,6 +7,13 @@ Admin page
 
 
 TOOLTIP with dev comments??
+http://forums.enyojs.com/discussion/1384/trying-to-use-tooltips-and-tooltipdecorator-inside-a-list-and-defaultkind-is-component
+
+{kind: "onyx.TooltipDecorator", components: [
+    {kind: "onyx.Button", content: "Tooltip"},
+    {kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
+]}
+
 
 quick start modify admin role
 
@@ -41,5 +45,6 @@ http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updatin
 
 git submodule add -f https://github.com/LearnBoost/socket.io.git ./public/lib/socket.io
 git rm –cached ./public/lib/socket.io
+
 
 
