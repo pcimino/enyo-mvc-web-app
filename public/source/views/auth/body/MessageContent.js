@@ -115,7 +115,6 @@ enyo.ready(function() {
         return true;
     }
     , setupMessageThreadRow: function(inSender, inEvent) {
-        inEvent.template="<div style=\"border: 2px solid #000; font-size: 20px; padding: 10px;\">{$label}</div>";
         inEvent.template={components: [
             { kind: "FittableColumns", components: [
               {content: "From: ", classes:'list-item-margin bold-text'}
@@ -131,17 +130,6 @@ enyo.ready(function() {
             ]}
             , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessageThread', id: 'archiveMessageThread_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
-            /*
-        inEvent.template={components: [
-          , { kind: "FittableColumns", components: [
-              {content: "Subject: ", classes:'list-item-margin bold-text'}
-              , {content: inEvent.context.subject}
-              , {content: "Message: ", classes:'list-item-margin bold-text'}
-              , {content: inEvent.context.messages[0]}
-            ]}
-            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessageThread', id: 'archiveMessageThread_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
-        ]};
-        */
     }
     , archiveMessageThread: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessageThread_') + ("archiveMessageThread_").length)).trim();
