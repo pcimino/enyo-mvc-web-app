@@ -10,6 +10,8 @@
 * - resendEmailResult: function(inSender, inEvent)
 * - checkUsername: function()
 * - checkUsernameResult: function(inSender, inEvent)
+* - checkEmail: function()
+* - checkEmailResult: function(inSender, inEvent)
 * - userSignup: function()
 * - userSignupResult: function(inSender, inEvent)
 * - checkDB: function(inSender, inEvent)
@@ -23,13 +25,14 @@ enyo.kind({
      , onLoginResult: 'loginResult'
      , onCheckUsername: 'checkUsername'
      , onCheckUsernameResult: 'checkUsernameResult'
+     , onCheckEmail: 'checkEmail'
+     , onCheckEmailResult: 'checkEmailResult'
      , onForgotPassword: 'forgotPassword'
      , onForgotPasswordResult: 'forgotPasswordResult'
      , onResendEmail: 'resendEmail'
      , onResendEmailResult: 'resendEmailResult'
      , onUserSignup: 'userSignup'
      , onUserSignupResult: 'userSignupResult'
-     , onCheckUsername: 'checkUsername'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
   }
@@ -104,6 +107,7 @@ enyo.kind({
   }
   // Check Username Result
   , checkUsernameResult: function(inSender, inEvent) {
+      // TODO Kludgey, need to change how the user gets created, shouldn't be in this method
       if (!inEvent.exists && mvcApp.data.createNewUser) {
         mvcApp.data.createNewUser = '';
         // create the user
@@ -111,6 +115,17 @@ enyo.kind({
         ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword});
       }
       mvcApp.view.body.waterfall('onUsernameStatus', inEvent);
+      return true;
+  }
+  // Check Email availability
+  , checkEmail: function() {
+      mvcApp.waterfall('onCheckEmailResult', {exists:'reset'});
+      var ajaxEmailExists = new AJAX.EmailExists({owner:this, fireEvent:'onCheckEmailResult'});
+      ajaxEmailExists.makeRequest({email:mvcApp.data.email, newEmail:mvcApp.data.newEmail});
+  }
+  // Check Email Result
+  , checkEmailResult: function(inSender, inEvent) {
+      mvcApp.view.body.waterfall('onEmailStatus', inEvent);
       return true;
   }
   // UserSignup
@@ -150,6 +165,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 
