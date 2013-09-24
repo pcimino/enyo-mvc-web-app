@@ -7,6 +7,8 @@
 * - userDetailsResult: function(inSender, inEvent)
 * - checkNewUsername: function()
 * - checkNewUsernameResult: function(inSender, inEvent)
+* - onCheckNewEmail: function()
+* - onCheckNewEmailResult: function(inSender, inEvent)
 */
 enyo.ready(function() {
   enyo.kind({
@@ -19,6 +21,8 @@ enyo.ready(function() {
         , onUserUpdateResult: 'userUpdateResult'
         , onCheckNewUsername: 'checkNewUsername'
         , onCheckNewUsernameResult: 'checkNewUsernameResult'
+        , onCheckNewEmail: 'checkNewEmail'
+        , onCheckNewEmailResult: 'checkNewEmailResult'
     }
     // Logout
     , logout: function() {
@@ -76,8 +80,20 @@ enyo.ready(function() {
         mvcApp.view.body.waterfall('onNewUsernameStatus', inEvent);
         return true;
     }
+    // Check Email availability
+    , checkNewEmail: function() {
+        mvcApp.waterfall('onCheckEmailResult', {exists:'reset'});
+        var ajaxEmailExists = new AJAX.EmailExists({owner:this, fireEvent:'onCheckNewEmailResult'});
+        ajaxEmailExists.makeRequest({newEmail:mvcApp.data.newEmail});
+    }
+    // Check Email Result
+    , checkNewEmailResult: function(inSender, inEvent) {
+        mvcApp.view.body.waterfall('onNewEmailStatus', inEvent);
+        return true;
+    }
   });
 });
+
 
 
 

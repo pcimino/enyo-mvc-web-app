@@ -12,9 +12,11 @@ enyo.ready(function() {
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
         onNewUsernameStatus: 'newUsernameStatus'
+        , onNewEmailStatus: 'newEmailStatus'
     }
     , published: {
-      usernameRef : {}
+        usernameRef : {}
+        , emailRef : {}
     }
     , rendered: function() {
         this.inherited(arguments);
@@ -27,6 +29,17 @@ enyo.ready(function() {
             this.usernameRef.addClass("text-input-error-box");
           } else {
             this.usernameRef.addClass("text-input-confirm-box");
+          }
+        return true;
+    }
+    , newEmailStatus: function(inSender, inEvent) {
+          this.emailRef.removeClass("text-input-confirm-box");
+          this.emailRef.removeClass("text-input-error-box");
+
+          if (inEvent.exists == true) {
+            this.emailRef.addClass("text-input-error-box");
+          } else {
+            this.emailRef.addClass("text-input-confirm-box");
           }
         return true;
     }
@@ -62,9 +75,11 @@ enyo.ready(function() {
 
 
         this.bindInputData(owner.$.newUsername);
+        // TODO figure out and clean this up
         // Why doesn't the "handlers : {}"" definition above work?
-        // owner.$.username.handlers.onUsernameStatus = 'usernameStatus';
+        // presumably the ownership chain on the dynamic components
         owner.handlers.onUsernameStatus = this.usernameStatus;
+        owner.handlers.onEmailStatus = this.emailStatus;
 
         owner.createComponent(
           { name: "newName"
@@ -77,12 +92,30 @@ enyo.ready(function() {
         this.bindInputData(owner.$.newName);
 
         this.insertBreak(owner);
-        owner.createComponent(
+        this.emailRef = owner.createComponent(
           { name: "newEmail"
             , kind: "onyx.Input"
             , classes:"form-input-box form-field-left-margin"
             , placeholder: "Email"
             , owner: owner
+            , handlers: {
+                onblur: 'emailChanged'
+              , onkeyup: 'emailChanged'
+            }
+            /**
+            * When the username changes, check the lenght, if short remove any indicator classes
+            * If longer than 3 characters, check availability, bubble the event up to the PublicController
+            */
+            , emailChanged: function(inSender, inEvent) {
+                mvcApp.data.newEmail = this.value;
+                if (!this.value) {// || this.value.length < 4
+                  this.removeClass("text-input-confirm-box");
+                  this.removeClass("text-input-error-box");
+                } else {
+                  mvcApp.waterfall('onCheckNewEmail');
+                }
+                return true;
+            }
           }
         );
         this.bindInputData(owner.$.newEmail);
@@ -107,6 +140,7 @@ enyo.ready(function() {
       } // end setupBodyContent
   });
 });
+
 
 
 
