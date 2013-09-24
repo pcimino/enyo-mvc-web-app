@@ -1,5 +1,6 @@
 /**
 * UsernameExists Ajax GET used to see if the username already exists
+* parameter username
 */
 enyo.kind({
   name: 'AJAX.UsernameExists'
@@ -23,6 +24,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 

@@ -9,9 +9,11 @@ enyo.ready(function() {
     , authFlag: false
     , handlers: {
        onUsernameStatus: 'usernameStatus'
+      , onEmailStatus: 'emailStatus'
     }
     , published: {
       usernameRef : {}
+      , emailRef : {}
     }
     // This checks to see if the user is allowed on this page
     , rendered: function() {
@@ -34,6 +36,21 @@ enyo.ready(function() {
         }
         return true;
     }
+    , emailStatus: function(inSender, inEvent) {
+      console.log("emailStatusemailStatusemailStatusemailStatusemailStatusemailStatusemailStatusemailStatusemailStatus")
+        // more kludging
+        if (inEvent.exists == 'reset') {
+          this.emailRef.removeClass("text-input-confirm-box");
+          this.emailRef.removeClass("text-input-error-box");
+        } else {
+          if (inEvent.exists == true) {
+            this.emailRef.addClass("text-input-error-box");
+          } else {
+            this.emailRef.addClass("text-input-confirm-box");
+          }
+        }
+        return true;
+    }
     , setupBodyContent: function(owner) {
         this.insertFormSpace(this);
         this.usernameRef = owner.createComponent(
@@ -47,7 +64,7 @@ enyo.ready(function() {
             , onkeyup: 'usernameChanged'
           }
           /**
-          * When the username changes, check the lenght, if short remove any indicator classes
+          * When the username changes, check the length, if short remove any indicator classes
           * If longer than 3 characters, check availability, bubble the event up to the PublicController
           */
           , usernameChanged: function(inSender, inEvent) {
@@ -63,9 +80,11 @@ enyo.ready(function() {
         }
       );
       this.bindInputData(owner.$.username);
+      // TODO figure out and clean this up
       // Why doesn't the "handlers : {}"" definition above work?
-      // owner.$.username.handlers.onUsernameStatus = 'usernameStatus';
+      // presumably the ownership chain on the dynamic components
       owner.handlers.onUsernameStatus = this.usernameStatus;
+      owner.handlers.onEmailStatus = this.emailStatus;
 
       owner.createComponent(
         { name: "name"
@@ -77,12 +96,30 @@ enyo.ready(function() {
       );
       this.bindInputData(owner.$.name);
 
-      owner.createComponent(
+      this.emailRef = owner.createComponent(
         { name: "email"
           , kind: "onyx.Input"
           , classes:"form-input-box form-field-left-margin"
           , placeholder: "Email"
           , owner: owner
+          , handlers: {
+              onblur: 'emailChanged'
+            , onkeyup: 'emailChanged'
+          }
+          /**
+          * When the email changes, check the length, if short remove any indicator classes
+          * If longer than 3 characters, check availability, bubble the event up to the PublicController
+          */
+          , emailChanged: function(inSender, inEvent) {
+              mvcApp.data.email = this.value;
+              if (!this.value || this.value.length < 4) {
+                this.removeClass("text-input-confirm-box");
+                this.removeClass("text-input-error-box");
+              } else {
+                mvcApp.waterfall('onCheckEmail');
+              }
+              return true;
+          }
         }
       );
       this.bindInputData(owner.$.email);
@@ -132,6 +169,7 @@ enyo.ready(function() {
     } // end setupBodyContent
   });
 });
+
 
 
 
