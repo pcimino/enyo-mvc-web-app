@@ -9,6 +9,8 @@ Admin page
 
 TOOLTIP with dev comments??
 
+quick start modify admin role
+
 
 Documentation
 tutorial: Add authenticated user contact page
