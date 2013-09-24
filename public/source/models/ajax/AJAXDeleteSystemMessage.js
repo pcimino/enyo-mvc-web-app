@@ -16,7 +16,7 @@ enyo.kind({
       // console.log(this.fireEvent)
   }
   , processResponse: function(inSender, inResponse) {
-      console.log('AJAX.UserDetails processResponse ');
+      console.log('AJAX.DeleteSystemMessage processResponse ');
       if (inResponse) {
        if (this.fireEvent) {
          this.owner.bubble(this.fireEvent, {userdata: inResponse, authenticated: true});
@@ -27,10 +27,11 @@ enyo.kind({
       // console.log(JSON.stringify(inResponse, null, 2));
   }
   , processError: function(inSender, inResponse) {
-      console.log('AJAX.UserDetails processError');
+      console.log('AJAX.DeleteSystemMessage processError');
       if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: 'Problem authenticating this username and password.'});
+        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: 'Problem deleting system message.'});
       }
   }
 });
+
 
