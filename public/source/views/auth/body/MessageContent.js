@@ -6,6 +6,7 @@
 *
 * - setupBodyContent() Impemented method
 */
+var AAA
 enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.MessageContent"
@@ -36,7 +37,6 @@ enyo.ready(function() {
             , style: "width:10%; margin-left:10%; "
           }
         );
-
         this.insertBreak(owner);
         this.createComponent(
           { name: "message"
@@ -65,6 +65,7 @@ enyo.ready(function() {
           , defaultRowHeight: 20
           , style: "width:80%; margin-left:10%; height: 150px; border: 1px solid grey"
           , onSetupRow: "setupMessageThreadRow"
+          , onRowTap: "messageThreadTap"
           , classes:"form-input-box form-top-margin"
           , owner: this
         });
@@ -115,21 +116,56 @@ enyo.ready(function() {
         return true;
     }
     , setupMessageThreadRow: function(inSender, inEvent) {
-        inEvent.template={components: [
-            { kind: "FittableColumns", components: [
-              {content: "From: ", classes:'list-item-margin bold-text'}
-              , {content: inEvent.context.fromUsername}
-              , {content: "To: ", classes:'list-item-margin bold-text'}
-              , {content: inEvent.context.toUsername}
-              , {content: "Subject: ", classes:'list-item-margin bold-text'}
-              , {content: inEvent.context.subject}
-            ]}
-            , { kind: "FittableColumns", components: [
-              {content: "Message: ", classes:'list-item-margin bold-text'}
-              , {content: inEvent.context.messages[0]}
-            ]}
-            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessageThread', id: 'archiveMessageThread_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
-        ]};
+      // This is about to get messy, I want to dynamically add N rows of messages to the
+      // row. Why Lists and scrollers can't take objects? I think the object for the row is predefined when setup
+      // is called but can't add components to it
+      // When using JSON.parse(string). keep in mind that this is valid:
+      //   JSON.parse('{"kind":"onyx.Button","content":"Reply"}');
+      // and these are NOT valid:
+      //   JSON.parse("{'kind':'onyx.Button','content':'Reply'}");  String in double " instead of single '
+      //   JSON.parse('{kind:"onyx.Button",content:"Reply"}');  Attributes and values must be quoted
+
+      // build the rows of messages
+      var messageContent = "";
+      for (var i = 0; i < inEvent.context.messages.length; i++) {
+        var from = inEvent.context.fromUsername;
+        if ((i % 2) == 1) from = inEvent.context.toUsername;
+        if (i > 0) messageContent = messageContent + ',';
+        messageContent = messageContent + '{"kind":"FittableColumns","components": [';
+        messageContent = messageContent + '{"content":"From: ","classes":"list-item-margin bold-text"}';
+        messageContent = messageContent + ',{"content":"' + from + '"}';
+        messageContent = messageContent + ',{"content":"Message: ","classes":"list-item-margin bold-text"}';
+        messageContent = messageContent + ',{"content":"' + inEvent.context.messages[i] + '"}';
+        messageContent = messageContent + ']}';
+      }
+
+      // start building the List Row string to parse
+      var jsonStr = '{"components": [';
+      jsonStr = jsonStr + '{"kind":"FittableColumns","components":[';
+      jsonStr = jsonStr + '  {"content":"Subject: ","classes":"list-item-margin bold-text"}';
+      jsonStr = jsonStr + '  , {"content":"' + inEvent.context.subject + '"}';
+      jsonStr = jsonStr + ']}';
+      jsonStr = jsonStr + ',{"kind":"FittableRows","components": [';
+      jsonStr = jsonStr + messageContent;
+      jsonStr = jsonStr + ']}'
+
+      // have to present an action modal on click
+      // 'this' doesn't work with the JSON string manipulation
+      // jsonStr = jsonStr + ',{"kind":"onyx.Button","content":"Reply","ontap":"replyMessageThread","id":"replyMessageThread_'+inEvent.context._id+'","owner":"' + this + '","classes":"list-item-margin"}';
+      // jsonStr = jsonStr + ',{"kind":"onyx.Button","content":"Archive","ontap":"archiveMessageThread","id":"archiveMessageThread_'+inEvent.context._id+'","owner":"' + this + '","classes":"list-item-margin"}';
+
+      jsonStr = jsonStr + ']}';
+
+      // Parse the
+      var jsonObj = JSON.parse(jsonStr);
+      inEvent.template = jsonObj;
+
+        // alternatively, DynamicList supports html like this:
+        //    inEvent.template="<div style=\"border: 2px solid #000; font-size: 20px; padding: 10px;\">" + inEvent.context.fromUsername + "</div>";
+    }
+    , messageThreadTap: function(inSender, inEvent) {
+        var objId = (inSender.id.substring(inSender.id.indexOf('replyMessageThread_') + ("replyMessageThread_").length)).trim();
+      console.log('messageThreadTap ' + objId + ":" + JSON.stringify(inEvent))
     }
     , archiveMessageThread: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessageThread_') + ("archiveMessageThread_").length)).trim();
@@ -156,7 +192,6 @@ enyo.ready(function() {
         return true;
     }
     , setupRow: function(inSender, inEvent) {
-        inEvent.template="<div style=\"border: 2px solid #000; font-size: 20px; padding: 10px;\">{$label}</div>";
         inEvent.template={components: [
           { kind: "FittableColumns", components: [
               {content: "Created: ", classes:'list-item-margin bold-text'}
@@ -179,6 +214,8 @@ enyo.ready(function() {
     }
   });
 });
+
+
 
 
 

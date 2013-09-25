@@ -151,16 +151,18 @@ enyo.kind({
 	renderRows: function(from, to, forceRender) {
 		if(from < 0) from = 0;
 		if(to >= this.rows.length) to = this.rows.length-1;
-
+console.log("RENDER ROW")
 		for(var tour=from;tour<=to;tour++) {
 			var theRow = this.rows[tour];
 			if(forceRender || !theRow.generated) {//If the row isn't generated
 				var inEvent = {context: theRow.source, template: theRow.template};//Create an inEvent object
 				this.doSetupRow(inEvent);//Send the event
 				if(enyo.isString(inEvent.template)) {//The template is a (HTML) string
+          console.log("STRING")
 					theRow.node.hasNode().innerHTML = enyo.macroize(inEvent.template, inEvent.context);
 				}
 				else {//The template is an enyo Component definition
+          console.log("COMPONENT")
 					if(theRow.dataNode) { theRow.dataNode.destroy(); }//destroy previous node
 					theRow.dataNode = theRow.node.createComponent(inEvent.template, {owner: inEvent.context.owner||this});
 					theRow.node.render();
@@ -337,3 +339,4 @@ enyo.kind({
 		}
 	}
 });
+
