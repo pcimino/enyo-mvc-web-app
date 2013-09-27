@@ -1,13 +1,13 @@
 /**
-* UserManagementContent
+* AdminUserManagementContent
 *
 * - setupBodyContent() Implemented setup method
 */
 enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.UserManagementContent"
+    name: "Bootplate.AdminUserManagementContent"
     , kind: "Bootplate.ParentContent"
-    , id: 'userManagementContent'
+    , id: 'adminUserManagementContent'
     , authFlag: true // used to help determine if user has access to this page
     , bindings: [
 
@@ -33,6 +33,7 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
 
 
 

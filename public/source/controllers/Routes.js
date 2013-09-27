@@ -63,8 +63,8 @@ enyo.kind({
     , { path: '/message'
         , handler: 'message'
     }
-    , { path: '/systemMessage'
-        , handler: 'systemMessage'
+    , { path: '/adminSystemMessage'
+        , handler: 'adminSystemMessage'
     }
     , { path: '/home'
         , handler: 'home'
@@ -72,8 +72,11 @@ enyo.kind({
     , { path: '/homeEvent'
         , handler: 'homeEvent'
     }
-    , { path: '/userManagementInfo'
-        , handler: 'userManagementInfo'
+    , { path: '/adminUserManagementInfo'
+        , handler: 'adminUserManagementInfo'
+    }
+    , { path: '/adminUpdateUser'
+        , handler: 'adminUpdateUser'
     }
     , { path: '/updateMyUserInfo'
         , handler: 'updateMyUserInfo'
@@ -104,13 +107,17 @@ enyo.kind({
       mvcApp.waterfall('onLogout');
       return true;
   }
-  , systemMessage: function () {
-      console.log("systemMessage router");
-      this.loadBodyContent('Bootplate.SystemMessageContent', false);
+  , adminSystemMessage: function () {
+      console.log("adminSystemMessage router");
+      this.loadBodyContent('Bootplate.AdminSystemMessageContent', false);
   }
-  , userManagementInfo: function () {
+  , adminUserManagementInfo: function () {
       console.log("userManagementInfo router");
-      this.loadBodyContent('Bootplate.UserManagementContent', false);
+      this.loadBodyContent('Bootplate.AdminUserManagementContent', false);
+  }
+  , adminUpdateUser: function () {
+      console.log("adminUpdateUser router");
+      this.loadBodyContent('Bootplate.AdminUpdateUserContent', false);
   }
   , message: function () {
       console.log("message router");
@@ -173,6 +180,7 @@ enyo.kind({
   }
 
 });
+
 
 
 

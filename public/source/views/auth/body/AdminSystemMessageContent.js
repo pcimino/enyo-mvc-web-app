@@ -1,7 +1,7 @@
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
-* This SystemMessageContent kind, restricted to administrators
+* This AdminSystemMessageContent kind, restricted to administrators
 * used to create system messages which appear on the home page
 *
 * - setupBodyContent() Impemented method
@@ -9,9 +9,9 @@
 var AAA
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.SystemMessageContent"
+    name: "Bootplate.AdminSystemMessageContent"
     , kind: "Bootplate.ParentContent"
-    , id: 'systemMessageContent'
+    , id: 'adminSystemMessageContent'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
       listRef:''
@@ -136,6 +136,7 @@ enyo.ready(function() {
 // TODO
 // Put message inline
 // put page content in a scroll panel (all pages?)
+
 
 
 
