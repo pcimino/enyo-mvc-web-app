@@ -39,8 +39,8 @@ enyo.kind({
       this.setAdminNavToolbar(owner.createComponent({kind: "onyx.Toolbar", name: 'adminNavToolbar', showing: false, owner: owner}));
 
       /** Begin Admin navs, need a way to show/hide this*/
-      this.createLinkButton(this.adminNavToolbar, 'userManagementInfo', 'Manage User Info');
-      this.createLinkButton(this.adminNavToolbar, 'systemMessage', 'System Message');
+      this.createLinkButton(this.adminNavToolbar, 'adminUserManagementInfo', 'Manage User Info');
+      this.createLinkButton(this.adminNavToolbar, 'adminSystemMessage', 'System Message');
   }
   , showAdminOptions: function() {
       console.log("showAdminOptions");
@@ -57,6 +57,7 @@ enyo.kind({
       }
     }
 });
+
 
 
 

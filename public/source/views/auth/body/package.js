@@ -1,11 +1,14 @@
 enyo.depends(
   "HomeContent.js"
-  , "UserManagementContent.js"
+  , "AdminUserManagementContent.js"
+  , "AdminUpdateUserContent.js"
   , "UpdateMyUserInfoContent.js"
   , "UpdateMyPasswordContent.js"
-  , "SystemMessageContent.js"
+  , "AdminSystemMessageContent.js"
   , "MessageContent.js"
 );
+
+
 
 
 
