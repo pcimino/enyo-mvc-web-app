@@ -29,10 +29,10 @@ enyo.ready(function() {
           }
         );
         // setup the binding between the input and the Controller data store
-        this.bindInputData(owner.$.username);
+        // this.bindInputData(owner.$.username);
 
         this.insertBreak(owner);
-         owner.createComponent(
+        owner.createComponent(
           { kind: "onyx.Button",
             content: "Resend my Verification Email",
             classes: "onyx-blue form-field-left-margin",
@@ -40,7 +40,7 @@ enyo.ready(function() {
               onclick: 'resendEmail'
             },
             resendEmail: function() {
-              mvcApp.waterfall('onResendEmail');
+              mvcApp.waterfall('onResendEmail', {username: owner.$.username.value});
               return true;
             }
           }
@@ -53,7 +53,7 @@ enyo.ready(function() {
               onclick: 'forgotPassword'
             },
             forgotPassword: function() {
-              mvcApp.waterfall('onForgotPassword');
+              mvcApp.waterfall('onForgotPassword', {username: owner.$.username.value});
               return true;
             }
           }
@@ -67,6 +67,8 @@ enyo.ready(function() {
     } // end setupBodyContent
   });
 });
+
+
 
 
 

@@ -68,8 +68,8 @@ enyo.kind({
   , showInfoMessage: function(title, messageText) {
       mvcApp.view.waterfall('onShowInfoMessage', {title: title, message: messageText});
   }
-  , showSystemMessage: function(title, messageText) {
-      mvcApp.view.waterfall('onShowSystemMessage', {title: title, message: messageText});
+  , showSystemMessage: function(title, messageText, messageId) {
+      mvcApp.view.waterfall('onShowSystemMessage', {title: title, message: messageText, messageId: messageId});
   }
   , adminFlagChanged: function(oldVal) {
       // if flag is true, this allows Admin links to be seen, but server will
@@ -86,6 +86,7 @@ enyo.kind({
       mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
 
 
 

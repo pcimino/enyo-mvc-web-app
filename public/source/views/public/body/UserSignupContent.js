@@ -37,7 +37,6 @@ enyo.ready(function() {
         return true;
     }
     , emailStatus: function(inSender, inEvent) {
-      console.log("emailStatusemailStatusemailStatusemailStatusemailStatusemailStatusemailStatusemailStatusemailStatus")
         // more kludging
         if (inEvent.exists == 'reset') {
           this.emailRef.removeClass("text-input-confirm-box");
@@ -73,7 +72,7 @@ enyo.ready(function() {
                 this.removeClass("text-input-confirm-box");
                 this.removeClass("text-input-error-box");
               } else {
-                mvcApp.waterfall('onCheckUsername');
+                mvcApp.waterfall('onCheckUsername', {username:owner.$.username.value});
               }
               return true;
           }
@@ -116,7 +115,7 @@ enyo.ready(function() {
                 this.removeClass("text-input-confirm-box");
                 this.removeClass("text-input-error-box");
               } else {
-                mvcApp.waterfall('onCheckEmail');
+                mvcApp.waterfall('onCheckEmail', {email:owner.$.email.value, newEmail:owner.$.email.value});
               }
               return true;
           }
@@ -169,6 +168,8 @@ enyo.ready(function() {
     } // end setupBodyContent
   });
 });
+
+
 
 
 

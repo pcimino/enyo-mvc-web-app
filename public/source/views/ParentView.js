@@ -46,6 +46,7 @@ enyo.kind({
 					, message: inEvent.message
 					, icon: 'img/alert-yellow-64.png'
 					, theme: "notification.PageCurl"
+          , messageId: inEvent.messageId
 					, stay: true
 					, duration: 10
 				}, enyo.bind(this, "archiveSystemMessage"));
@@ -70,7 +71,9 @@ enyo.kind({
 				}, enyo.bind(this, "dummy"));
   }
   , archiveSystemMessage: function(inSender, inEvent) {
-      console.log(JSON.stringify(inEvent))
+        // archive the system message
+        var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onShowSystemMessage'});
+        ajaxArchiveSysMessage.makeRequest({systemMessageId: inSender.messageId});
   }
   , dummy: function(inSender, inEvent) {
 
@@ -82,7 +85,7 @@ enyo.kind({
     jsonpGetSysMessages.makeRequest({});
 
   }
-  // Dsiplay system messages
+  // Display system messages
   , getSystemMessagesResult: function(inSender, inEvent) {
     // mvcApp.view.body.waterfall('onNewUsernameStatus', inEvent);
     // TODO want to clear the notifications programmatically before reloading
@@ -90,12 +93,15 @@ enyo.kind({
     // this means messages get loaded once per session, unless the user archives them all
     if (this.notification.pending.length === 0) {
       for (var i = 0; i < inEvent.length; i++) {
-        mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message);
+        mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message, inEvent[i]._id);
       }
     }
     return true;
   }
 });
+
+
+
 
 
 

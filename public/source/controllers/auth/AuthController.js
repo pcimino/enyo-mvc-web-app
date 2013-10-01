@@ -4,10 +4,18 @@
 *
 * - logout: function()
 * - userDetails: function()
+*      Params: id
 * - userDetailsResult: function(inSender, inEvent)
+*      Params: userDetails
+* - updateuserInfo: function()
+*      Params: User data object
+* - userUpdateResult: function(inSender, inEvent)
+*      Params: User data object
 * - checkNewUsername: function()
+*      Params: username
 * - checkNewUsernameResult: function(inSender, inEvent)
 * - onCheckNewEmail: function()
+*       Params: newEmail
 * - onCheckNewEmailResult: function(inSender, inEvent)
 */
 enyo.ready(function() {
@@ -38,20 +46,21 @@ enyo.ready(function() {
             mvcApp.setPublicView();
 		    }, 300);
     }
-    , userDetails: function() {
+    , userDetails: function(inSender, inEvent) {
         // load the user's information
         var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
-        ajaxUserDetails.makeRequest({id:mvcApp.data.userData._id});
+        ajaxUserDetails.makeRequest({id:inEvent.id});
     }
     , userDetailsResult: function(inSender, inEvent) {
         if (inEvent.userDetails) {
           mvcApp.data.userDetails = inEvent.userDetails;
         }
     }
-    , updateuserInfo: function() {
+    , updateuserInfo: function(inSender, inEvent) {
         // load the user's information
         var ajaxUserUpdate = new AJAX.UserUpdate({owner:this, fireEvent:'onUserUpdateResult'});
-        ajaxUserUpdate.makeRequest({id:mvcApp.data.user._id, username:mvcApp.data.newUsername, name:mvcApp.data.newName, email:mvcApp.data.newEmail, cPassword:mvcApp.data.cPassword, password:mvcApp.data.newPassword, vPassword:mvcApp.data.vPassword});
+        // ajaxUserUpdate.makeRequest({id:mvcApp.data.user._id, username:mvcApp.data.newUsername, name:mvcApp.data.newName, email:mvcApp.data.newEmail, cPassword:mvcApp.data.cPassword, password:mvcApp.data.newPassword, vPassword:mvcApp.data.vPassword});
+        ajaxUserUpdate.makeRequest(inEvent);
     }
     , userUpdateResult: function(inSender, inEvent) {
         if (inEvent.userdata) {
@@ -70,10 +79,10 @@ enyo.ready(function() {
         }
     }
     // Check Username availability
-    , checkNewUsername: function() {
+    , checkNewUsername: function(inSender, inEvent) {
         mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
         var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckNewUsernameResult'});
-        ajaxUsernameExists.makeRequest({username:mvcApp.data.newUsername});
+        ajaxUsernameExists.makeRequest({username:inEvent.username});
     }
     // Check Username Result
     , checkNewUsernameResult: function(inSender, inEvent) {
@@ -81,10 +90,10 @@ enyo.ready(function() {
         return true;
     }
     // Check Email availability
-    , checkNewEmail: function() {
+    , checkNewEmail: function(inSender, inEvent) {
         mvcApp.waterfall('onCheckEmailResult', {exists:'reset'});
         var ajaxEmailExists = new AJAX.EmailExists({owner:this, fireEvent:'onCheckNewEmailResult'});
-        ajaxEmailExists.makeRequest({newEmail:mvcApp.data.newEmail});
+        ajaxEmailExists.makeRequest({newEmail:inEvent.newEmail});
     }
     // Check Email Result
     , checkNewEmailResult: function(inSender, inEvent) {
@@ -93,6 +102,9 @@ enyo.ready(function() {
     }
   });
 });
+
+
+
 
 
 

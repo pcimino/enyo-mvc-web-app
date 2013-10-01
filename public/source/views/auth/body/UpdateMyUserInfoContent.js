@@ -60,12 +60,11 @@ enyo.ready(function() {
             * If longer than 3 characters, check availability, bubble the event up to the PublicController
             */
             , usernameChanged: function(inSender, inEvent) {
-                mvcApp.data.newUsername = this.value;
                 if (!this.value) {// || this.value.length < 4
                   this.removeClass("text-input-confirm-box");
                   this.removeClass("text-input-error-box");
                 } else {
-                  mvcApp.waterfall('onCheckNewUsername');
+                  mvcApp.waterfall('onCheckNewUsername', {username:this.value});
                 }
                 return true;
             }
@@ -73,10 +72,8 @@ enyo.ready(function() {
         );
         owner.createComponent({kind:"enyo.Control", classes:'info-text form-field-left-margin', content:'Modifying your username will require you to update or reset your password.'});
 
-
-        this.bindInputData(owner.$.newUsername);
         // TODO figure out and clean this up
-        // Why doesn't the "handlers : {}"" definition above work?
+        // Why don't the "handlers : {}"" definition above work?
         // presumably the ownership chain on the dynamic components
         owner.handlers.onUsernameStatus = this.usernameStatus;
         owner.handlers.onEmailStatus = this.emailStatus;
@@ -89,7 +86,6 @@ enyo.ready(function() {
             , owner: owner
           }
         );
-        this.bindInputData(owner.$.newName);
 
         this.insertBreak(owner);
         this.emailRef = owner.createComponent(
@@ -107,18 +103,17 @@ enyo.ready(function() {
             * If longer than 3 characters, check availability, bubble the event up to the PublicController
             */
             , emailChanged: function(inSender, inEvent) {
-                mvcApp.data.newEmail = this.value;
+
                 if (!this.value) {// || this.value.length < 4
                   this.removeClass("text-input-confirm-box");
                   this.removeClass("text-input-error-box");
                 } else {
-                  mvcApp.waterfall('onCheckNewEmail');
+                  mvcApp.waterfall('onCheckNewEmail', {newEmail:this.value});
                 }
                 return true;
             }
           }
         );
-        this.bindInputData(owner.$.newEmail);
 
         this.insertBreak(owner);
         owner.createComponent(
@@ -130,7 +125,8 @@ enyo.ready(function() {
              onclick: 'updateUser'
            },
            updateUser: function() {
-             mvcApp.waterfall('onUserUpdate');
+             var user = {id:mvcApp.data.user._id, username:owner.$.newUsername.value, name:owner.$.newName.value, email:owner.$.newEmail.value};
+             mvcApp.waterfall('onUserUpdate', user);
              return true;
            }
           }
@@ -140,6 +136,8 @@ enyo.ready(function() {
       } // end setupBodyContent
   });
 });
+
+
 
 
 
