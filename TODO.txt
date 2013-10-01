@@ -1,4 +1,8 @@
-message threads only show first message,
+System messages: Archive on click
+
+
+don't store variables in mvcApp when calling event, pass as parameters
+
 need send and reply function
 
 Admin page
@@ -46,6 +50,8 @@ http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updatin
 
 git submodule add -f https://github.com/LearnBoost/socket.io.git ./public/lib/socket.io
 git rm –cached ./public/lib/socket.io
+
+
 
 
 

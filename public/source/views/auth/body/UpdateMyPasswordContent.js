@@ -14,28 +14,12 @@ enyo.ready(function () {
     }
     , published: {
       usernameRef : {}
-    }/*
-    , bindings: [
-      {
-        from: ".$.cPassword.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.password.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      },{
-        from: ".$.vPassword.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
-      }
-    ]*/
+    }
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
     }
     , setupBodyContent: function(owner) {
-
         this.insertFormSpace(owner);
         owner.createComponent(
           { name: "cPassword",
@@ -45,7 +29,6 @@ enyo.ready(function () {
             owner: owner
           }
         );
-        this.bindInputData(owner.$.cPassword);
 
         this.insertBreak(owner);
         owner.createComponent(
@@ -56,7 +39,6 @@ enyo.ready(function () {
             owner: owner
           }
         );
-        this.bindInputData(owner.$.newPassword);
 
         this.insertBreak(owner);
         owner.createComponent(
@@ -67,7 +49,6 @@ enyo.ready(function () {
             owner: owner
           }
         );
-        this.bindInputData(owner.$.vPassword);
 
         this.insertBreak(owner);
         owner.createComponent(
@@ -79,7 +60,8 @@ enyo.ready(function () {
              onclick: 'updateUser'
            },
            updateUser: function () {
-             mvcApp.waterfall('onUserUpdate');
+             var user = {id:mvcApp.data.user._id, cPassword:owner.$.cPassword.value, password:owner.$.newPassword.value, vPassword:owner.$.vPassword.value};
+             mvcApp.waterfall('onUserUpdate', user);
              return true;
            }
           }
@@ -89,6 +71,9 @@ enyo.ready(function () {
       } // end setupBodyContent
   });
 });
+
+
+
 
 
 

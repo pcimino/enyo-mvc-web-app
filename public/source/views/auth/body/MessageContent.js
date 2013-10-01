@@ -6,7 +6,6 @@
 *
 * - setupBodyContent() Impemented method
 */
-var AAA
 enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.MessageContent"
@@ -214,6 +213,7 @@ enyo.ready(function() {
     }
   });
 });
+
 
 
 

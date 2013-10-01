@@ -45,9 +45,6 @@ enyo.ready(function() {
           }
         );
 
-        // setup the binding between the input and the Controller data store
-        this.bindInputData(owner.$.username);
-
         this.insertBreak(owner);
         owner.createComponent(
           { name: "password",
@@ -57,7 +54,7 @@ enyo.ready(function() {
             owner: owner
           }
         );
-        this.bindInputData(owner.$.password);
+
         this.insertBreak(owner);
         owner.createComponent(
           { kind: "onyx.Button",
@@ -68,7 +65,7 @@ enyo.ready(function() {
               onclick: 'login'
             },
             login: function() {
-              mvcApp.waterfall('onLogin');
+              mvcApp.waterfall('onLogin', {username: owner.$.username.value, password: owner.$.password.value});
               return true;
             }
           }
@@ -79,6 +76,8 @@ enyo.ready(function() {
     } // end setupBodyContent
   });
 });
+
+
 
 
 

@@ -41,10 +41,10 @@ enyo.ready(function() {
 
         if (this.$.footerContainer) this.$.footerContainer.destroy();
         this.footer = this.pageContainer.createComponent({name: 'footerContainer', kind: 'Bootplate.AuthFooterView', owner: this.pageContainer});
-
     }
   });
 });
+
 
 
 

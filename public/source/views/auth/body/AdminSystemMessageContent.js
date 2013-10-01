@@ -6,7 +6,6 @@
 *
 * - setupBodyContent() Impemented method
 */
-var AAA
 enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.AdminSystemMessageContent"
@@ -74,7 +73,6 @@ enyo.ready(function() {
         this.getSystemMessagesAdminScreen();
     } // end setupBodyContent
     , checkboxChanged : function() {
-        console.log('Checkbox value ' + this.$.showArchivedCheckbox.getChecked());
         // reload the message list
         this.getSystemMessagesAdminScreen();
     }
@@ -133,9 +131,7 @@ enyo.ready(function() {
   });
 });
 
-// TODO
-// Put message inline
-// put page content in a scroll panel (all pages?)
+
 
 
 

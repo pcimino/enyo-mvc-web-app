@@ -3,10 +3,13 @@
 * Common handlers for the public (unauth) pages
 *
 * - login: function()
+*      Params: username password
 * - loginResult: function(inSender, inEvent)
 * - forgotPassword: function()
+*      Params: username
 * - forgotPasswordResult: function(inSender, inEvent)
 * - resendEmail: function()
+*      Params: username
 * - resendEmailResult: function(inSender, inEvent)
 * - checkUsername: function()
 * - checkUsernameResult: function(inSender, inEvent)
@@ -37,11 +40,9 @@ enyo.kind({
      , onCheckDBResult: 'checkDBResult'
   }
   // Login
-  , login: function() {
+  , login: function(inSender, inEvent) {
       var ajaxLogin = new AJAX.Login({owner:this, fireEvent:'onLoginResult'});
-    // ensure unique request  by adding a random number
-    // TODO can probably remove this, trying to figure out CORS issue and multiple posts with same data might be masking something
-    ajaxLogin.makeRequest({username:mvcApp.data.username , password:mvcApp.data.password, rndNo : Math.random()});
+      ajaxLogin.makeRequest({username:inEvent.username , password:inEvent.password});
   }
   , loginResult: function(inSender, inEvent) {
       if (inEvent.authenticated) {
@@ -57,9 +58,9 @@ enyo.kind({
       };
   }
   // ForgotPassword
-  , forgotPassword: function() {
+  , forgotPassword: function(inSender, inEvent) {
     var jsonpResetPassword = new JSONP.ResetPassword({owner:this, fireEvent:'onForgotPasswordResult'});
-    jsonpResetPassword.makeRequest({username:mvcApp.data.username});
+    jsonpResetPassword.makeRequest({username:inEvent.username});
   }
   // Forgot Passsword Result
   , forgotPasswordResult: function(inSender, inEvent) {
@@ -79,9 +80,9 @@ enyo.kind({
     }
   }
   // Resend  Verification Email
-  , resendEmail: function() {
+  , resendEmail: function(inSender, inEvent) {
       var jsonpResendVerificationEmail = new JSONP.ResendVerificationEmail({owner:this, fireEvent:'onResendEmailResult'});
-      jsonpResendVerificationEmail.makeRequest({username:mvcApp.data.username});
+      jsonpResendVerificationEmail.makeRequest({username:inEvent.username});
   }
   // Resend  Verification Email Result
   , resendEmailResult: function(inSender, inEvent) {
@@ -100,10 +101,10 @@ enyo.kind({
     }
   }
   // Check Username availability
-  , checkUsername: function() {
+  , checkUsername: function(inSender, inEvent) {
       mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
       var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
-      ajaxUsernameExists.makeRequest({username:mvcApp.data.username});
+      ajaxUsernameExists.makeRequest({username:inEvent.username});
   }
   // Check Username Result
   , checkUsernameResult: function(inSender, inEvent) {
@@ -118,10 +119,10 @@ enyo.kind({
       return true;
   }
   // Check Email availability
-  , checkEmail: function() {
+  , checkEmail: function(inSender, inEvent) {
       mvcApp.waterfall('onCheckEmailResult', {exists:'reset'});
       var ajaxEmailExists = new AJAX.EmailExists({owner:this, fireEvent:'onCheckEmailResult'});
-      ajaxEmailExists.makeRequest({email:mvcApp.data.email, newEmail:mvcApp.data.newEmail});
+      ajaxEmailExists.makeRequest({email:inEvent.email, newEmail:inEvent.newEmail});
   }
   // Check Email Result
   , checkEmailResult: function(inSender, inEvent) {
@@ -129,7 +130,7 @@ enyo.kind({
       return true;
   }
   // UserSignup
-  , userSignup: function() {
+  , userSignup: function(inSender, inEvent) {
     console.log("PublicController userSignup");
       mvcApp.data.createNewUser = true;
       this.checkUsername();
@@ -165,6 +166,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 
