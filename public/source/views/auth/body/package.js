@@ -6,7 +6,10 @@ enyo.depends(
   , "UpdateMyPasswordContent.js"
   , "AdminSystemMessageContent.js"
   , "MessageContent.js"
+  , "MessagingDialog.js"
 );
+
+
 
 
 

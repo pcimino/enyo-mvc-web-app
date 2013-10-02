@@ -20,6 +20,7 @@ enyo.kind({
   , published: {
      owner: null
      , fireEvent: null
+     , errorEvent: null
   }
   , constructor: function(props) {
       this.inherited(arguments);
@@ -52,6 +53,7 @@ enyo.kind({
       this.owner.bubble(this.fireEvent);
   }
 });
+
 
 
 

@@ -13,6 +13,7 @@ enyo.kind({
   , published: {
      owner: null
      , fireEvent: null
+     , errorEvent: null
      , url: null
   }
   , constructor: function(props) {
@@ -46,6 +47,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 
