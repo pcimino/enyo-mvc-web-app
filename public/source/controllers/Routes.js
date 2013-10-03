@@ -63,6 +63,9 @@ enyo.kind({
     , { path: '/message'
         , handler: 'message'
     }
+    , { path: '/sendMessage'
+        , handler: 'sendMessage'
+    }
     , { path: '/adminSystemMessage'
         , handler: 'adminSystemMessage'
     }
@@ -123,6 +126,10 @@ enyo.kind({
       console.log("message router");
       this.loadBodyContent('Bootplate.MessageContent', true);
   }
+  , sendMessage: function () {
+      console.log("sendMessage router");
+      this.loadBodyContent('Bootplate.SendMessageContent', true);
+  }
   , updateMyUserInfo: function () {
       console.log("updateMyUserInfo router");
       this.loadBodyContent('Bootplate.UpdateMyUserInfoContent', false);
@@ -180,6 +187,7 @@ enyo.kind({
   }
 
 });
+
 
 
 

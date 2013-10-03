@@ -66,6 +66,9 @@ enyo.ready(function() {
           archiveFlag = true;
         }
 
+        // clear the message and reset the buttons (This object is reused)
+        this.$.messageText.setValue('');
+
         if (archiveFlag) {
             this.$.ReplyMessage.setDisabled(true);
             this.$.ArchiveMessageThread.setDisabled(true);
@@ -113,10 +116,10 @@ enyo.ready(function() {
         }
     }
     , archiveMessage: function() {
-        console.log("archiveMessage " + this.messageId);
+        console.log("archiveMessage " + this.messageThread);
         // archive the message thread
         var ajaxMessage = new AJAX.ArchiveMessageThread({owner:this, fireEvent:'onGetMessageThreadsUserScreen'});
-        ajaxMessage.makeRequest({messageThreadId: this.messageThreadData._id});
+        ajaxMessage.makeRequest({messageThreadId: this.messageThread._id});
         this.hide();
     }
     , unarchiveMessage: function() {

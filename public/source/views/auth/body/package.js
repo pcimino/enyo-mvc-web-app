@@ -7,7 +7,9 @@ enyo.depends(
   , "AdminSystemMessageContent.js"
   , "MessageContent.js"
   , "MessagingDialog.js"
+  , "SendMessageContent.js"
 );
+
 
 
 

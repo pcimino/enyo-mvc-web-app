@@ -11,6 +11,8 @@ Admin page
    Delete a user
    Admin update a user
 
+Session seems to timeout despite activity, how to renew timestamp?
+Set session to 'forever' if remember me is used
 
 TOOLTIP with dev comments??
 http://forums.enyojs.com/discussion/1384/trying-to-use-tooltips-and-tooltipdecorator-inside-a-list-and-defaultkind-is-component
@@ -29,7 +31,7 @@ tutorial: Add authenticated user contact page
 
 auto logout when session done?
 forced logout warning pop
-redirect to home warning pop
+
 
 
 JS Utils: http://ntt.cc/2008/05/10/over-10-useful-javascript-regular-expression-functions-to-improve-your-web-applications-efficiency.html
@@ -51,6 +53,7 @@ http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updatin
 
 git submodule add -f https://github.com/LearnBoost/socket.io.git ./public/lib/socket.io
 git rm –cached ./public/lib/socket.io
+
 
 
 
