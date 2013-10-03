@@ -32,6 +32,21 @@ enyo.ready(function() {
             , owner: this
           }
         );
+        this.createComponent({content:'Send a New Message', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
+        this.createComponent({ kind: "onyx.Button"
+            , content: "Send a Message"
+            , name: "SendNewMessage"
+            , classes: "onyx-blue button-link "
+            , style: "margin-left:10%; "
+            , owner: owner
+            , tag: 'a'
+            , attributes: {
+              href: '#/sendMessage'
+            }
+        });
+
+        this.insertBreak(owner);
+
         this.createComponent({content:'Message Threads', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
 
         this.insertBreak(owner);

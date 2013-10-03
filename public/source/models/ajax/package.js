@@ -20,7 +20,9 @@ enyo.depends(
   , "JSONPResetPassword.js"
   , "JSONPGetSystemMessages.js"
   , "JSONPGetMessageThreads.js"
+  , "JSONPGetUserList.js"
 );
+
 
 
 
