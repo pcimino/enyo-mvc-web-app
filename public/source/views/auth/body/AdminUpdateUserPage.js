@@ -1,12 +1,12 @@
 /**
-* This is the AdminUpdateUserContent for Administrators
+* This is the AdminUpdateUserPage for Administrators
 *
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.AdminUpdateUserContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'adminUpdateUserContent'
+    name: "Bootplate.AdminUpdateUserPage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'adminUpdateUserPage'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
 
@@ -17,7 +17,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
         this.insertFormSpace(owner);
 
 
@@ -38,7 +38,7 @@ enyo.ready(function() {
         );
 
         owner.render();
-      } // end setupBodyContent
+      } // end setupPageBody
   });
 });
 

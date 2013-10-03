@@ -1,13 +1,13 @@
 /**
-* AdminUserManagementContent
+* AdminUserManagementPage
 *
-* - setupBodyContent() Implemented setup method
+* - setupPageBody() Implemented setup method
 */
 enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.AdminUserManagementContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'adminUserManagementContent'
+    name: "Bootplate.AdminUserManagementPage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'adminUserManagementPage'
     , authFlag: true // used to help determine if user has access to this page
     , bindings: [
 
@@ -20,7 +20,7 @@ enyo.ready(function () {
         }
         // populate the list
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
         this.insertFormSpace(owner);
 
         this.insertInternalLink(owner, 'updateUserInfo', 'Update User');
@@ -30,7 +30,7 @@ enyo.ready(function () {
         this.insertInternalLink(owner, 'logout', 'Logout');
 
         owner.render();
-      } // end setupBodyContent
+      } // end setupPageBody
   });
 });
 

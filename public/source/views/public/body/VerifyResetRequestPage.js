@@ -1,12 +1,12 @@
 /**
-* This is the VerifyResetRequestContent kind used for when the user forgets their password,
+* This is the VerifyResetRequestPage kind used for when the user forgets their password,
 *    or needs a verification email resend
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.VerifyResetRequestContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'forgotPasswordContent'
+    name: "Bootplate.VerifyResetRequestPage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'forgotPasswordPage'
     , authFlag: false
     , bindings: [
       {
@@ -19,7 +19,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
         this.insertFormSpace(this);
         owner.createComponent(
           { name: "username",
@@ -64,7 +64,7 @@ enyo.ready(function() {
         this.insertInternalLink(owner, this.rndLink('login'), 'Cancel');
 
         owner.render();
-    } // end setupBodyContent
+    } // end setupPageBody
   });
 });
 

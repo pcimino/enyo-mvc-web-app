@@ -1,5 +1,5 @@
 /**
-* This is the parent content kind, Contents are the main body of the page
+* This is the parent content kind, Pages are the main body of the page
 * - insertBreak() creates a newline in the page
 * - insertInternalLink() creates a link within the application
 * - bindInputData() Is used to bind input form data to events, still need to figure out why
@@ -12,9 +12,9 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.ParentContent"
+    name: "Bootplate.ParentPage"
     , kind: "enyo.Control"
-    , id: 'parentContent'
+    , id: 'parentPage'
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);

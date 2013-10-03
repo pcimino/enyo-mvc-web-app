@@ -15,9 +15,9 @@ enyo.kind({
   , components: [
       {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "header-height header-width"
          , components: [
-             {name:'headerLeftContent', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"}
-             , {name:'headerCenterContent', content: "auth header-center", fit: true, classes: "header-center"}
-             , {name:'headerRightContent', name: 'gravatarDisplay', classes: "header-right", kind: "tld.Gravatar", email: '', imageSize: 75}
+             {name:'headerLeftPage', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"}
+             , {name:'headerCenterPage', content: "auth header-center", fit: true, classes: "header-center"}
+             , {name:'headerRightPage', name: 'gravatarDisplay', classes: "header-right", kind: "tld.Gravatar", email: '', imageSize: 75}
       ]}
     ]
   , handlers: {

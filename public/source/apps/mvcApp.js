@@ -53,9 +53,9 @@ enyo.kind({
       if (typeof this.view.$ !== 'undefined') {
       if (typeof this.view.$.bodyContainer !== 'undefined') {
       if (typeof this.view.$.bodyContainer.$ !== 'undefined') {
-      if (typeof this.view.$.bodyContainer.$.bodyContent !== 'undefined') {
-      if (typeof this.view.$.bodyContainer.$.bodyContent.authFlag !== 'undefined') {
-        return this.view.$.bodyContainer.$.bodyContent.authFlag;
+      if (typeof this.view.$.bodyContainer.$.bodyPage !== 'undefined') {
+      if (typeof this.view.$.bodyContainer.$.bodyPage.authFlag !== 'undefined') {
+        return this.view.$.bodyContainer.$.bodyPage.authFlag;
       }}}}}}
       return false;
   }

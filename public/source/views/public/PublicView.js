@@ -4,9 +4,9 @@
 *    is using is as an authenticated browser app, a refresh will load the default view and wipe out the browser session data
 *    but the user is still logged in, so we check, if authenticated, reload the user data and redirect to the user's hoe page
 *
-* - setupHeaderContent() sets up the header
-* - setupBodyContent() sets up the body
-* - setupFooterContent() sets up the footer
+* - setupHeaderPage() sets up the header
+* - setupPageBody() sets up the body
+* - setupFooterPage() sets up the footer
 */
 enyo.kind({
   name: 'Bootplate.PublicView'
@@ -14,9 +14,9 @@ enyo.kind({
 
   , create: function() {
       this.inherited(arguments);
-      this.setupHeaderContent();
-      this.setupBodyContent();
-      this.setupFooterContent();
+      this.setupHeaderPage();
+      this.setupPageBody();
+      this.setupFooterPage();
   }
   , bindings: [
       /* Was trying to bind and it did appear to work initially, now broken
@@ -30,12 +30,12 @@ enyo.kind({
       mvcApp.waterfall('onCheckDB');
       mvcApp.waterfall('onIsUserValidated');
   }
-  , setupHeaderContent: function() {
+  , setupHeaderPage: function() {
       this.inherited(arguments);
       if (this.$.headerContainer) this.$.headerContainer.destroy();
       this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
   }
-  , setupBodyContent: function() {
+  , setupPageBody: function() {
       this.inherited(arguments);
 
 
@@ -46,10 +46,10 @@ enyo.kind({
       this.navigation.setupLeftNav(this.pageContainer);
 
       var bodyContainer = this.pageContainer.createComponent({kind: enyo.Scroller, name:'bodyContainer', fit: true, classes: "body-height enyo-center", owner: this});
-      var bodyContent = bodyContainer.createComponent({name:'bodyContent', kind: 'Bootplate.LoginContent'});
-      bodyContent.setupBodyContent(bodyContainer);
+      var bodyPage = bodyContainer.createComponent({name:'bodyPage', kind: 'Bootplate.LoginPage'});
+      bodyPage.setupPageBody(bodyContainer);
   }
-  , setupFooterContent: function() {
+  , setupFooterPage: function() {
       this.inherited(arguments);
 
       this.navigation.setupRightNav(this.pageContainer);

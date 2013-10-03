@@ -1,13 +1,13 @@
 /**
-* This is the HomeContent kind, displays the authenticated user's home page
+* This is the HomePage kind, displays the authenticated user's home page
 *
-* - setupBodyContent() Implemented child method
+* - setupPageBody() Implemented child method
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.HomeContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'homeContent'
+    name: "Bootplate.HomePage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'homePage'
     , authFlag: true // used to help determine if user has access to this page
     , bindings: [
     ]
@@ -18,9 +18,9 @@ enyo.ready(function() {
         // retrieve system messages
         mvcApp.authView.waterfall('onGetSystemMessages');
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
         owner.render();
-    } // end setupBodyContent
+    } // end setupPageBody
   });
 });
 

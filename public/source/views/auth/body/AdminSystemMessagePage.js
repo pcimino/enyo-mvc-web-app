@@ -1,16 +1,16 @@
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
-* This AdminSystemMessageContent kind, restricted to administrators
+* This AdminSystemMessagePage kind, restricted to administrators
 * used to create system messages which appear on the home page
 *
-* - setupBodyContent() Impemented method
+* - setupPageBody() Impemented method
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.AdminSystemMessageContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'adminSystemMessageContent'
+    name: "Bootplate.AdminSystemMessagePage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'adminSystemMessagePage'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
       listRef:''
@@ -24,7 +24,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
         this.createComponent({content:'System Messages', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
         this.createComponent(
           { name: "subject"
@@ -71,7 +71,7 @@ enyo.ready(function() {
 
         // populate the list
         this.getSystemMessagesAdminScreen();
-    } // end setupBodyContent
+    } // end setupPageBody
     , checkboxChanged : function() {
         // reload the message list
         this.getSystemMessagesAdminScreen();
