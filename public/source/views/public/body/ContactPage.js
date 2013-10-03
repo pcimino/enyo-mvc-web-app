@@ -1,13 +1,13 @@
 /**
 * Contact page
 *
-* - setupBodyContent()
+* - setupPageBody()
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.ContactContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'contactContent'
+    name: "Bootplate.ContactPage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'contactPage'
     , authFlag: false
     , published: {
         contentComponent: null
@@ -16,7 +16,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupBodyContent: function(owner, renderFlag) {
+    , setupPageBody: function(owner, renderFlag) {
 
         this.insertFormSpace(owner);
         owner.createComponent({
@@ -36,7 +36,7 @@ enyo.ready(function() {
 
         // only call this on navigation, not initial load
         if (renderFlag) owner.render();
-    } // end setupBodyContent
+    } // end setupPageBody
   });
 });
 

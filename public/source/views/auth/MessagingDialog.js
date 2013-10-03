@@ -80,11 +80,11 @@ enyo.ready(function() {
             this.$.messageText.setDisabled(false);
             this.$.UnarchiveMessageThread.setDisabled(true);
         }
-        this.$.subjectLine.setContent('Subject: ' + messageThreadData.subject);
+        this.$.subjectLine.setPage('Subject: ' + messageThreadData.subject);
 
         // build message list
         this.$.messages.destroyComponents();
-        var messageContent = "";
+        var messagePage = "";
         for (var i = 0; i < messageThreadData.messages.length; i++) {
           if ((i % 2) == 1) from = messageThreadData.toUsername;
           this.$.messages.createComponent(

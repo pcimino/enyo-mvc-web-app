@@ -1,14 +1,14 @@
 /**
-* This is the UpdateMyUserInfoContent for authenticated users
+* This is the UpdateMyUserInfoPage for authenticated users
 *
 * - updateUserStatus() displays username availability
-* - setupBodyContent() Child implementation
+* - setupPageBody() Child implementation
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.UpdateMyUserInfoContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'updateMyUserInfoContent'
+    name: "Bootplate.UpdateMyUserInfoPage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'updateMyUserInfoPage'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
         onNewUsernameStatus: 'newUsernameStatus'
@@ -43,7 +43,7 @@ enyo.ready(function() {
           }
         return true;
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
           this.insertFormSpace(owner);
           this.usernameRef = owner.createComponent(
           { name: "newUsername"
@@ -133,7 +133,7 @@ enyo.ready(function() {
         );
 
         owner.render();
-      } // end setupBodyContent
+      } // end setupPageBody
   });
 });
 

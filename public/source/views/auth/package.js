@@ -3,6 +3,7 @@ enyo.depends(
   , "AuthHeaderView.js"
   , "AuthFooterView.js"
   , "AuthNavigation.js"
+  , "MessagingDialog.js"
   , "body"
 );
 

@@ -10,9 +10,9 @@ enyo.kind({
   , fit: true
   , components: [
       {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "footer-height footer-width reverse-text", components: [
-        {name:'footerLeftContent', content: "Auth footer-left", classes: "footer-mlr footer-mtb"},
-        {name:'footerCenterContent', content: "Auth footer-center", fit: true, classes: "footer-mlr footer-mtb"},
-        {name:'footerRightContent', content: "footer-right", classes: "footer-mlr footer-mtb"}
+        {name:'footerLeftPage', content: "Auth footer-left", classes: "footer-mlr footer-mtb"},
+        {name:'footerCenterPage', content: "Auth footer-center", fit: true, classes: "footer-mlr footer-mtb"},
+        {name:'footerRightPage', content: "footer-right", classes: "footer-mlr footer-mtb"}
       ]}
   ]
   , rendered: function() {
@@ -21,12 +21,12 @@ enyo.kind({
   }
   , startSocket: function() {
       if (io) {
-        var footerContent = this.$.footerCenterContent;
+        var footerPage = this.$.footerCenterPage;
         var host = mvcApp.wsSocketURL + ":" + mvcApp.wsSocketPort;
         var webSocket = io.connect(host);
         webSocket.on('connect', function() {
           webSocket.on('timestamp', function (data) {
-            footerContent.setContent('Server time via web socket: ' + JSON.parse(data));
+            footerPage.setPage('Server time via web socket: ' + JSON.parse(data));
           });
         });
       }

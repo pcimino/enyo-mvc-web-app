@@ -1,16 +1,16 @@
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
-* MessageContent kind,
+* MessagePage kind,
 * used to create and send messages between users
 *
-* - setupBodyContent() Impemented method
+* - setupPageBody() Impemented method
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.MessageContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'messageContent'
+    name: "Bootplate.MessagePage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'messagePage'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
       listRef:''
@@ -25,7 +25,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
         this.createComponent(
           { name: "messagingDialog"
             , kind: "Bootplate.MessagingDialog"
@@ -80,7 +80,7 @@ enyo.ready(function() {
         // populate the list
         this.getMessageThreadsUserScreen();
         this.getSystemMessagesUserScreen();
-    } // end setupBodyContent
+    } // end setupPageBody
     , threadCheckboxChanged : function() {
         // reload the message list
         this.getMessageThreadsUserScreen();
@@ -106,15 +106,15 @@ enyo.ready(function() {
       //   JSON.parse('{kind:"onyx.Button",content:"Reply"}');  Attributes and values must be quoted
 
       // build the rows of messages
-      var messageContent = "";
+      var messagePage = "";
       for (var i = 0; i < inEvent.context.messages.length; i++) {
-        if (i > 0) messageContent = messageContent + ',';
-        messageContent = messageContent + '{"kind":"FittableColumns","components": [';
-        messageContent = messageContent + '{"content":"From: ","classes":"list-item-margin bold-text"}';
-        messageContent = messageContent + ',{"content":"' + inEvent.context.messages[i].from + '"}';
-        messageContent = messageContent + ',{"content":"Message: ","classes":"list-item-margin bold-text"}';
-        messageContent = messageContent + ',{"content":"' + inEvent.context.messages[i].message + '"}';
-        messageContent = messageContent + ']}';
+        if (i > 0) messagePage = messagePage + ',';
+        messagePage = messagePage + '{"kind":"FittableColumns","components": [';
+        messagePage = messagePage + '{"content":"From: ","classes":"list-item-margin bold-text"}';
+        messagePage = messagePage + ',{"content":"' + inEvent.context.messages[i].from + '"}';
+        messagePage = messagePage + ',{"content":"Message: ","classes":"list-item-margin bold-text"}';
+        messagePage = messagePage + ',{"content":"' + inEvent.context.messages[i].message + '"}';
+        messagePage = messagePage + ']}';
       }
 
       // start building the List Row string to parse
@@ -124,7 +124,7 @@ enyo.ready(function() {
       jsonStr = jsonStr + '  , {"content":"' + inEvent.context.subject + '"}';
       jsonStr = jsonStr + ']}';
       jsonStr = jsonStr + ',{"kind":"FittableRows","components": [';
-      jsonStr = jsonStr + messageContent;
+      jsonStr = jsonStr + messagePage;
       jsonStr = jsonStr + ']}'
 
       // have to present an action modal on click

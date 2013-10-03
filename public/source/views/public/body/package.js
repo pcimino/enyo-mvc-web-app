@@ -1,9 +1,9 @@
 enyo.depends(
-  "LoginContent.js"
-  , "VerifyResetRequestContent.js"
-  , "UserSignupContent.js"
-  , "PublicMessageDisplayContent.js"
-  , "ContactContent.js"
+  "LoginPage.js"
+  , "VerifyResetRequestPage.js"
+  , "UserSignupPage.js"
+  , "PublicMessageDisplayPage.js"
+  , "ContactPage.js"
 );
 
 

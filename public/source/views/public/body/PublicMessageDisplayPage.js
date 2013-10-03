@@ -2,15 +2,15 @@
 * Display content for showing the user a message on a page. Can be used for displaying an
 *   error message or a confirmation messsage
 *
-* - setupBodyContent()
+* - setupPageBody()
 * - setErrorMessage()
 * - setConfirmMessage()
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.PublicMessageDisplayContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'messageDisplayContent'
+    name: "Bootplate.PublicMessageDisplayPage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'messageDisplayPage'
     , authFlag: false
     , published: {
         contentComponent: null
@@ -19,8 +19,8 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupBodyContent: function(owner, renderFlag) {
-        console.log("Bootplate.MessageDisplayContent");
+    , setupPageBody: function(owner, renderFlag) {
+        console.log("Bootplate.MessageDisplayPage");
         this.insertFormSpace(owner);
 
         var displayClasses = "text-input-error-box form-field-left-margin";
@@ -39,14 +39,14 @@ enyo.ready(function() {
 
       // only call this on navigation, not initial load
         if (renderFlag) owner.render();
-    } // end setupBodyContent
+    } // end setupPageBody
     , setErrorMessage: function(newText) {
-        this.contentComponent.setContent(newText);
+        this.contentComponent.setPage(newText);
         this.contentComponent.removeClass("text-input-confirm-box");
         this.contentComponent.addClass("text-input-error-box");
     }
     , setConfirmMessage: function(newText) {
-        this.contentComponent.setContent(newText);
+        this.contentComponent.setPage(newText);
         this.contentComponent.removeClass("text-input-error-box");
         this.contentComponent.addClass("text-input-confirm-box");
     }

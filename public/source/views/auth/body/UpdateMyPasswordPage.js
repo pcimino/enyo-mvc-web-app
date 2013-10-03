@@ -1,13 +1,13 @@
 /**
-* UpdateMyPasswordContent kind for suthenticated user to update their password
+* UpdateMyPasswordPage kind for suthenticated user to update their password
 *
-* - setupBodyContent() Implemented setup method
+* - setupPageBody() Implemented setup method
 */
 enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.UpdateMyPasswordContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'updateMyPasswordContent'
+    name: "Bootplate.UpdateMyPasswordPage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'updateMyPasswordPage'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
        onUpdateUserStatus: 'updateUserStatus'
@@ -19,7 +19,7 @@ enyo.ready(function () {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
         this.insertFormSpace(owner);
         owner.createComponent(
           { name: "cPassword",
@@ -68,7 +68,7 @@ enyo.ready(function () {
         );
 
         owner.render();
-      } // end setupBodyContent
+      } // end setupPageBody
   });
 });
 

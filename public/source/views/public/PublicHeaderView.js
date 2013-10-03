@@ -12,9 +12,9 @@ enyo.kind({
   , components: [
       {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "header-height header-width",
        components: [
-         {name:'headerLeftContent', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"},
-         {name:'headerCenterContent', content: "public header-center", fit: true, classes: "header-center"},
-         {name:'headerRightContent', content: "header-right", classes: "header-right", components: []}
+         {name:'headerLeftPage', kind: "enyo.Image", src: "img/translunar.png", classes: "header-left"},
+         {name:'headerCenterPage', content: "public header-center", fit: true, classes: "header-center"},
+         {name:'headerRightPage', content: "header-right", classes: "header-right", components: []}
        ]}
   ]
   , constructor: function(props) {

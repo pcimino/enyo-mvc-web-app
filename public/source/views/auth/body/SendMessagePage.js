@@ -1,16 +1,16 @@
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
-* SendMessageContent kind,
+* SendMessagePage kind,
 * used to create and send messages between users
 *
-* - setupBodyContent() Impemented method
+* - setupPageBody() Impemented method
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.SendMessageContent"
-    , kind: "Bootplate.ParentContent"
-    , id: 'sendMessageContent'
+    name: "Bootplate.SendMessagePage"
+    , kind: "Bootplate.ParentPage"
+    , id: 'sendMessagePage'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
       users:null
@@ -22,7 +22,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupBodyContent: function(owner) {
+    , setupPageBody: function(owner) {
 
         this.createComponent({content:'Search for Users', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
 
@@ -70,7 +70,7 @@ enyo.ready(function() {
             , owner: this
           });
           owner.render();
-    } // end setupBodyContent
+    } // end setupPageBody
     , setupRow: function(inSender, inEvent) {
         inEvent.template={components: [
           { kind: "FittableColumns", components: [

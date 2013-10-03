@@ -5,7 +5,7 @@
 * TODO Is there an equivalent to routing with an argument. I could strip args off in the pre handler, but this
 * makes the app interdependent on specialized server code
 *
-* - loadBodyContent(kindByName, renderFlag, skipWaterfallFlag)
+* - loadBodyPage(kindByName, renderFlag, skipWaterfallFlag)
 * - logout()
 * - message()
 * - systemMessage()
@@ -91,14 +91,14 @@ enyo.kind({
         , handler: 'contactPublic'
     }
   ]
-  , loadBodyContent: function (kindByName, renderFlag, skipWaterfallFlag) {
+  , loadBodyPage: function (kindByName, renderFlag, skipWaterfallFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
-        console.log("loadBodyContent " + kindByName);
+        console.log("loadBodyPage " + kindByName);
         var owner = mvcApp.view.$.bodyContainer;
         owner.destroyClientControls();
-        mvcApp.view.body = owner.createComponent({kind: kindByName, name:'bodyContent'});
+        mvcApp.view.body = owner.createComponent({kind: kindByName, name:'bodyPage'});
         mvcApp.view.body.render();
-        owner.$.bodyContent.setupBodyContent(owner, renderFlag);
+        owner.$.bodyPage.setupPageBody(owner, renderFlag);
     }
     // every navigation check the user validation
     // if they try to navigate to a page with out proper access, they get redirected
@@ -112,78 +112,78 @@ enyo.kind({
   }
   , adminSystemMessage: function () {
       console.log("adminSystemMessage router");
-      this.loadBodyContent('Bootplate.AdminSystemMessageContent', false);
+      this.loadBodyPage('Bootplate.AdminSystemMessagePage', false);
   }
   , adminUserManagementInfo: function () {
       console.log("userManagementInfo router");
-      this.loadBodyContent('Bootplate.AdminUserManagementContent', false);
+      this.loadBodyPage('Bootplate.AdminUserManagementPage', false);
   }
   , adminUpdateUser: function () {
       console.log("adminUpdateUser router");
-      this.loadBodyContent('Bootplate.AdminUpdateUserContent', false);
+      this.loadBodyPage('Bootplate.AdminUpdateUserPage', false);
   }
   , message: function () {
       console.log("message router");
-      this.loadBodyContent('Bootplate.MessageContent', true);
+      this.loadBodyPage('Bootplate.MessagePage', true);
   }
   , sendMessage: function () {
       console.log("sendMessage router");
-      this.loadBodyContent('Bootplate.SendMessageContent', true);
+      this.loadBodyPage('Bootplate.SendMessagePage', true);
   }
   , updateMyUserInfo: function () {
       console.log("updateMyUserInfo router");
-      this.loadBodyContent('Bootplate.UpdateMyUserInfoContent', false);
+      this.loadBodyPage('Bootplate.UpdateMyUserInfoPage', false);
   }
   , updateMyPassword: function () {
       console.log("updateMyPassword router");
-      this.loadBodyContent('Bootplate.UpdateMyPasswordContent', false);
+      this.loadBodyPage('Bootplate.UpdateMyPasswordPage', false);
   }
   , home: function () {
     console.log("home router ");
-      this.loadBodyContent('Bootplate.HomeContent', false);
+      this.loadBodyPage('Bootplate.HomePage', false);
   }
   // this is triggered by the isUserValidated event, purpose is to avoid loops
   , homeEvent: function () {
     console.log("homeEvent router ");
-      this.loadBodyContent('Bootplate.HomeContent', false, true);
+      this.loadBodyPage('Bootplate.HomePage', false, true);
   }
   , checkLogin: function () {
     //  console.log("checkLogin router");
     // TODO if logged in go to /home, otherwise to /login
-      this.loadBodyContent('Bootplate.LoginContent', true);
+      this.loadBodyPage('Bootplate.LoginPage', true);
   }
   , login: function () {
       console.log("login router");
-      this.loadBodyContent('Bootplate.LoginContent', true);
+      this.loadBodyPage('Bootplate.LoginPage', true);
   }
   // this is triggered by the isUserValidated event, purpose is to avoid loops
   , loginEvent: function () {
       console.log("loginEvent router");
-      this.loadBodyContent('Bootplate.LoginContent', true, true);
+      this.loadBodyPage('Bootplate.LoginPage', true, true);
   }
   , userSignup: function () {
       console.log("userSignup router");
-      this.loadBodyContent('Bootplate.UserSignupContent', false);
+      this.loadBodyPage('Bootplate.UserSignupPage', false);
   }
   , forgotPassword: function () {
       console.log("forgotPassword router");
-      this.loadBodyContent('Bootplate.VerifyResetRequestContent', false);
+      this.loadBodyPage('Bootplate.VerifyResetRequestPage', false);
   }
   , resendEmail: function () {
       console.log("resendEmail router");
-      this.loadBodyContent('Bootplate.VerifyResetRequestContent', false);
+      this.loadBodyPage('Bootplate.VerifyResetRequestPage', false);
   }
   , publicBroadcastMessage: function () {
       console.log("publicBroadcastMessage router");
-      this.loadBodyContent('Bootplate.PublicMessageDisplayContent', true);
+      this.loadBodyPage('Bootplate.PublicMessageDisplayPage', true);
   }
   , authenticate: function () {
       console.log("authenticate router");
-      this.loadBodyContent('Bootplate.HomeContent', true);
+      this.loadBodyPage('Bootplate.HomePage', true);
   }
   , contactPublic: function () {
       console.log("contactPublic router");
-      this.loadBodyContent('Bootplate.ContactContent', true);
+      this.loadBodyPage('Bootplate.ContactPage', true);
   }
 
 });
