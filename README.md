@@ -19,7 +19,7 @@ Clone this repository and go to the home directory.
 1. Pull the required submodules  
 1.1 /scripts/update-git-modules[.sh|.bat]
 2. Run the Node setup script
-2.1 /scripts/insdtall-npm-modules[.sh|.bat]
+2.1 /scripts/install-npm-modules[.sh|.bat]
 3. Build the Enyo application
 3.1 (TBD)
 4. Start the REST Server
@@ -28,8 +28,8 @@ Clone this repository and go to the home directory.
 4.3 scripts/start-node[.bat | .sh]   
 5. Start the Enyo application server
 5.1 (TBD)
-6. Navigate to the Enyo app in your browser on port 8080
-6.1 <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>
+6. Navigate to the Enyo app in your browser on port 8888
+6.1 <a href="http://localhost:8080" target="_blank">http://localhost:8888</a>
 
 # [Project Wiki](https://github.com/pcimino/enyo-mvc-app/wiki)
 [More detailed walk through for this app is here.](https://github.com/pcimino/enyo-mvc-app/wiki). Much easier to follow than sticking everything in the README.
