@@ -12,7 +12,6 @@ enyo.kind({
   , classes: "onyx"
   , tag: 'body'
   , fit: true
-  , classes: "onyx"
   , published : {
       header : {}
     , footer: {}

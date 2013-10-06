@@ -30,6 +30,7 @@ enyo.kind({
   , publicView:''
   , authView:''
   , create: function() {
+      this.inherited(arguments);
       this.publicView = new Bootplate.PublicView({name: "publicView"});
       this.authView = new Bootplate.HomeView({name: "homeView"});
   }
