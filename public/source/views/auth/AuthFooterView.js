@@ -26,7 +26,7 @@ enyo.kind({
         var webSocket = io.connect(host);
         webSocket.on('connect', function() {
           webSocket.on('timestamp', function (data) {
-            footerPage.setPage('Server time via web socket: ' + JSON.parse(data));
+            footerPage.setContent('Server time via web socket: ' + JSON.parse(data));
           });
         });
       }
@@ -35,6 +35,7 @@ enyo.kind({
       this.$.webSocket.emit('close');
   }
 });
+
 
 
 

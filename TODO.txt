@@ -1,10 +1,7 @@
-AJAX/JSONP calls, allow optional err callback, structure for the show message stuff
-see AJAXUpdateMessageThread
+AJAX/JSONP response handlers, can I make them more generic by claling a parent helper method?
 
+look at AJAX.UpdateMessageThread what happens if response sucecss but bad data ?
 
-don't store variables in mvcApp when calling event, pass as parameters
-
-need send and reply function
 
 Admin page
    Search for users
@@ -53,6 +50,8 @@ http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updatin
 
 git submodule add -f https://github.com/LearnBoost/socket.io.git ./public/lib/socket.io
 git rm –cached ./public/lib/socket.io
+
+
 
 
 
