@@ -6,6 +6,7 @@
 * - setupPageBody() should be implemented by each child
 * - setupFooterPage() should be implemented by each child
 */
+var AAA={}
 enyo.kind({
   name: 'Bootplate.ParentView'
   , kind: "enyo.FittableRows"
@@ -21,7 +22,8 @@ enyo.kind({
     , notificationPop: {}
   }
   , handlers: {
-     onShowSystemMessage: 'systemMessage'
+     onRemoveAllNotifications: 'removeAllNotifications'
+     , onShowSystemMessage: 'systemMessage'
      , onShowErrorMessage: 'showErrorMessage'
      , onShowWarningMessage: 'showWarningMessage'
      , onShowInfoMessage: 'showInfoMessage'
@@ -38,6 +40,10 @@ enyo.kind({
   }
   , setupFooterPage: function() {
       this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
+  }
+  , removeAllNotifications: function(inSender, inEvent) {
+      //this.notification.removeAllNotifications(inEvent.onlyStay);
+    AAA=this.notification
   }
   , systemMessage: function(inSender, inEvent) {
       this.notification.sendNotification({
@@ -86,18 +92,16 @@ enyo.kind({
   }
   // Display system messages
   , getSystemMessagesResult: function(inSender, inEvent) {
-    // mvcApp.view.body.waterfall('onNewUsernameStatus', inEvent);
-    // TODO want to clear the notifications programmatically before reloading
-    // checking to see if any are loaded to avoid duplicates
-    // this means messages get loaded once per session, unless the user archives them all
-    if (this.notification.pending.length === 0) {
-      for (var i = 0; i < inEvent.length; i++) {
-        mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message, inEvent[i]._id);
-      }
+    // clear the notifications programmatically before reloading
+    mvcApp.removeAllNotifications(true);
+    for (var i = 0; i < inEvent.length; i++) {
+      mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message, inEvent[i]._id);
     }
+
     return true;
   }
 });
+
 
 
 

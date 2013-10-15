@@ -60,6 +60,9 @@ enyo.kind({
       }}}}}}
       return false;
   }
+  , removeAllNotifications: function(onlyStay) {
+      mvcApp.view.waterfall('onRemoveAllNotifications', {onlyStay: onlyStay});
+  }
   , showErrorMessage: function(title, messageText) {
       mvcApp.view.waterfall('onShowErrorMessage', {title: title, message: messageText});
   }
@@ -87,6 +90,7 @@ enyo.kind({
       mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
 
 
 
