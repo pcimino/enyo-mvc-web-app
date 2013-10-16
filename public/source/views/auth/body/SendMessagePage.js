@@ -12,9 +12,6 @@ enyo.ready(function() {
     , kind: "Bootplate.ParentPage"
     , id: 'sendMessagePage'
     , authFlag: true // used to help determine if user has access to this page
-    , published : {
-      users:null
-    }
     , handlers: {
       onLoadUserScreen: 'loadUserScreen'
     }
@@ -23,7 +20,12 @@ enyo.ready(function() {
         this.inherited(arguments);
     }
     , setupPageBody: function(owner) {
-
+        this.createComponent(
+          { name: "messagingDialog"
+            , kind: "Bootplate.NewMessageDialog"
+            , owner: this
+          }
+        );
         this.createComponent({content:'Search for Users', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
 
         this.createComponent({ kind: "FittableColumns", style: "margin-left: 10%;", components: [
@@ -83,22 +85,28 @@ enyo.ready(function() {
     }
     , searchForUser: function() {
         // load the user list
-        var jsonpGetUserList = new JSONP.GetUserList({owner:this, fireEvent:'onLoadUserScreen'});
-      console.log("searchForUser")
+        var jsonpGetUserList = new JSONP.GetUserList({owner:this, fireEvent:'onLoadUserScreen', errorEvent:'onErrorSystemMessages'});
         jsonpGetUserList.makeRequest({username:this.$.usernameSearch.value, email:this.$.emailSearch.value, name:this.$.nameSearch.value, itemsPerPage:-1, pageNumber:'',pages:1, sortField:'', ascendingSortFlag:true});
     }
     // Display system messages
     , loadUserScreen: function(inSender, inEvent) {
-        this.$.userList.setItems(inEvent.users);
-        this.users = inEvent.users;
+        var itemArr = [];
+        for (var i = 0; i < inEvent.users.length; i++) {
+          if (inEvent.users[i].username != mvcApp.data.user.username) itemArr.push(inEvent.users[i]);
+        }
+        this.$.userList.setItems(itemArr);
         return true;
     }
     , userTap: function(inSender, inEvent) {
+        var userInfo = inSender.rows[inEvent.index].source;
 
-      console.log("User Tap ", this.users[inEvent.index])
+        // show the message dialog
+        this.$.messagingDialog.setupDialog({toUsername:userInfo.username, toUserId:userInfo._id});
+        this.$.messagingDialog.show();
     }
   });
 });
+
 
 
 

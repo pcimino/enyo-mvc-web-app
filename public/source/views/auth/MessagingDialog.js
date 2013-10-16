@@ -101,7 +101,6 @@ enyo.ready(function() {
         this.inherited(arguments);
     }
     , replyMessage: function() {
-        console.log("replyMessage");
         var messageText = this.$.messageText.getValue();
         if (messageText && messageText.length > 0) {
           // messages array contains object {from:'', message:''}
@@ -116,14 +115,12 @@ enyo.ready(function() {
         }
     }
     , archiveMessage: function() {
-        console.log("archiveMessage " + this.messageThread);
         // archive the message thread
         var ajaxMessage = new AJAX.ArchiveMessageThread({owner:this, fireEvent:'onGetMessageThreadsUserScreen'});
         ajaxMessage.makeRequest({messageThreadId: this.messageThread._id});
         this.hide();
     }
     , unarchiveMessage: function() {
-        console.log("unarchiveMessage");
         if (mvcApp.data.user._id == this.messageThread.fromUserId && this.messageThread.fromArchiveFlag) {
           this.messageThread.fromArchiveFlag = false;
         } else if (mvcApp.data.user._id == this.messageThread.toUserId && this.messageThread.toArchiveFlag) {
@@ -135,7 +132,6 @@ enyo.ready(function() {
         this.hide();
     }
     , cancel: function() {
-        console.log("cancel");
         this.hide();
     }
   })

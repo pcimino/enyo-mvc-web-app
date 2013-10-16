@@ -5,9 +5,10 @@ enyo.depends(
   , "UpdateMyUserInfoPage.js"
   , "UpdateMyPasswordPage.js"
   , "AdminSystemMessagePage.js"
-  , "MessagePage.js"
+  , "MessageCenterPage.js"
   , "SendMessagePage.js"
 );
+
 
 
 
