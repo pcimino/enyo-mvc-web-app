@@ -2,9 +2,6 @@
 /**
 * SendSystemMessage AJAX requests: create a system message
 * takes parameters subject & message
-*
-* - processResponse()
-* - processError()
 */
 enyo.kind({
   name: 'AJAX.SendSystemMessage'
@@ -12,5 +9,6 @@ enyo.kind({
   , method:'POST'
   , rest:'/api/v1/systemMessage'
 });
+
 
 

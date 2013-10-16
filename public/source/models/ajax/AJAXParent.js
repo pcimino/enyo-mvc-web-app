@@ -47,13 +47,12 @@ enyo.kind({
       return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
   }
   , processResponse: function(inSender, inResponse) {
-      this.owner.bubble(this.fireEvent);
-      if (inResponse) {
-       if (this.fireEvent) {
-         this.owner.bubble(this.fireEvent, inResponse);
+      if (this.fireEvent) {
+        if (inResponse) {
+          this.owner.bubble(this.fireEvent, inResponse);
+        } else {
+          this.owner.bubble(this.fireEvent, inSender.xhrResponse);
         }
-      } else {
-        this.owner.bubble(this.fireEvent, inSender.xhrResponse);
       }
   }
   , processError: function(inSender, inResponse) {
@@ -70,6 +69,8 @@ enyo.kind({
       if (this.errorEvent) this.owner.bubble(this.errorEvent, {response: responseContent, title: titleText, message: messageText});
   }
 });
+
+
 
 
 

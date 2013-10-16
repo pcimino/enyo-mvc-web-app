@@ -124,7 +124,7 @@ enyo.kind({
   }
   , message: function () {
       console.log("message router");
-      this.loadBodyPage('Bootplate.MessagePage', true);
+      this.loadBodyPage('Bootplate.MessageCenterPage', true);
   }
   , sendMessage: function () {
       console.log("sendMessage router");
@@ -187,6 +187,7 @@ enyo.kind({
   }
 
 });
+
 
 
 

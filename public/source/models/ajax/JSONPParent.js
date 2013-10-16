@@ -38,7 +38,11 @@ enyo.kind({
   }
   , processResponse: function(inSender, inResponse) {
       if (this.fireEvent) {
-        this.owner.bubble(this.fireEvent, {response: '200'});
+        if (inResponse) {
+          this.owner.bubble(this.fireEvent, inResponse);
+        } else {
+          this.owner.bubble(this.fireEvent, inSender.xhrResponse);
+        }
       }
   }
   , processError: function(inSender, inResponse) {
@@ -55,6 +59,7 @@ enyo.kind({
       if (this.errorEvent) this.owner.bubble(this.errorEvent, {response: responseContent, title: titleText, message: messageText});
   }
 });
+
 
 
 

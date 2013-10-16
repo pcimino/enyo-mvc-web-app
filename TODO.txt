@@ -1,10 +1,8 @@
-AJAX/JSONP response handlers, can I make them more generic by calling a parent helper method?
+user send message dialog
 
 fix system notification list
 
 messagedialog doesn't show errors
-
-look at AJAX.UpdateMessageThread what happens if response sucecss but bad data ?
 
 refactor project structure more inline with mvc bootplate
 
