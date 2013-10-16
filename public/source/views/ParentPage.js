@@ -23,6 +23,9 @@ enyo.ready(function() {
           mvcApp.authView.waterfall('onGetSystemMessages');
         }
     }
+    , handlers: {
+      onErrorSystemMessages: 'errorSystemMessages'
+    }
     , insertFormSpace: function(owner, paddingInPx) {
         var padHeight = "padding-top:";
         if (paddingInPx) {
@@ -86,8 +89,12 @@ enyo.ready(function() {
         }
         return url + "?r=" + enyo.irand(50000);
     }
+    , errorSystemMessages: function(inSender, inEvent) {
+        mvcApp.showErrorMessage(inEvent.title, inEvent.message);
+    }
   });
 });
+
 
 
 

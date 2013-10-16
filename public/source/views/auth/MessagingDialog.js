@@ -80,7 +80,7 @@ enyo.ready(function() {
             this.$.messageText.setDisabled(false);
             this.$.UnarchiveMessageThread.setDisabled(true);
         }
-        this.$.subjectLine.setPage('Subject: ' + messageThreadData.subject);
+        this.$.subjectLine.setContent('Subject: ' + messageThreadData.subject);
 
         // build message list
         this.$.messages.destroyComponents();
@@ -130,7 +130,7 @@ enyo.ready(function() {
           this.messageThread.toArchiveFlag = false;
         }
         // unarchive the message thread
-        var ajaxMessage = new AJAX.UpdateMessageThread({owner:this, fireEvent:'onGetMessageThreadsUserScreen', errorEvent:'onShowWarningMessage'});
+        var ajaxMessage = new AJAX.UpdateMessageThread({owner:this, fireEvent:'onGetMessageThreadsUserScreen', errorEvent:'onErrorSystemMessages'});
         ajaxMessage.makeRequest(this.messageThread);
         this.hide();
     }
@@ -140,4 +140,6 @@ enyo.ready(function() {
     }
   })
 });
+
+
 

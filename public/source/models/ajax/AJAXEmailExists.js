@@ -13,17 +13,15 @@ enyo.kind({
       // console.log(this.fireEvent)
   }
   , processResponse: function(inSender, inResponse) {
-      console.log('AJAX.EmailExists processResponse ');
       this.owner.bubble(this.fireEvent, {exists: false, response: inSender.xhrResponse, message: 'Email is available.'});
-      //console.log(JSON.stringify(inResponse, null, 2));
   }
   , processError: function(inSender, inResponse) {
-      console.log('AJAX.EmailExists processError ' + this.fireEvent);
       if (this.fireEvent) {
         this.owner.bubble(this.fireEvent, {exists: true, response: inSender.xhrResponse, response: inResponse, message: 'Problem checking Email with server.'});
       }
   }
 });
+
 
 
 

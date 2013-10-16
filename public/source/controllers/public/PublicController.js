@@ -112,7 +112,7 @@ enyo.kind({
       if (!inEvent.exists && mvcApp.data.createNewUser) {
         mvcApp.data.createNewUser = '';
         // create the user
-        var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult'});
+        var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult', errorEvent:'onErrorSystemMessages'});
         ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword});
       }
       mvcApp.view.body.waterfall('onUsernameStatus', inEvent);
@@ -131,9 +131,9 @@ enyo.kind({
   }
   // UserSignup
   , userSignup: function(inSender, inEvent) {
-    console.log("PublicController userSignup");
+    console.log("PublicController userSignup ");
       mvcApp.data.createNewUser = true;
-      this.checkUsername();
+      this.checkUsername(inSender, inEvent);
   }
   // UserSignupResult
   , userSignupResult: function(inSender, inEvent) {
@@ -166,6 +166,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 

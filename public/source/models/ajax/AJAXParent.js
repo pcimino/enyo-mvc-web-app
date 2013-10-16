@@ -48,11 +48,29 @@ enyo.kind({
   }
   , processResponse: function(inSender, inResponse) {
       this.owner.bubble(this.fireEvent);
+      if (inResponse) {
+       if (this.fireEvent) {
+         this.owner.bubble(this.fireEvent, inResponse);
+        }
+      } else {
+        this.owner.bubble(this.fireEvent, inSender.xhrResponse);
+      }
   }
   , processError: function(inSender, inResponse) {
-      this.owner.bubble(this.fireEvent);
+      this.processErrorMessage(inSender, inResponse, 'System Error', 'System Error');
+  }
+  , processErrorMessage: function(inSender, inResponse, titleText, messageText) {
+      var responseContent = inResponse;
+      if (inSender.xhrResponse && inSender.xhrResponse.body) {
+        responseContent = inSender.xhrResponse;
+        var tmpMessage = JSON.parse(inSender.xhrResponse.body).message;
+        if (tmpMessage) messageText = tmpMessage;
+      }
+      if (this.fireEvent) this.owner.bubble(this.fireEvent, {response: responseContent, title: titleText, message: messageText});
+      if (this.errorEvent) this.owner.bubble(this.errorEvent, {response: responseContent, title: titleText, message: messageText});
   }
 });
+
 
 
 
