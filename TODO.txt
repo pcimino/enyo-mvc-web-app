@@ -1,4 +1,3 @@
-user send message dialog
 
 fix system notification list
 
