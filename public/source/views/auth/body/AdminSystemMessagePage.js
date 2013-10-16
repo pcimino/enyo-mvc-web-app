@@ -77,8 +77,11 @@ enyo.ready(function() {
         this.getSystemMessagesAdminScreen();
     }
     , getSystemMessagesAdminScreen: function() {
+        // clear inputs
+        this.$.subject.setValue('');
+        this.$.message.setValue('');
         // load the system message
-        var jsonpGetSysMessages = new JSONP.GetSystemMessages({owner:this, fireEvent:'onLoadSystemMessagesAdminScreen'});
+        var jsonpGetSysMessages = new JSONP.GetSystemMessages({owner:this, fireEvent:'onLoadSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
         jsonpGetSysMessages.makeRequest({archiveFlag: this.$.showArchivedCheckbox.getChecked()});
     }
     // Dsiplay system messages
@@ -106,13 +109,13 @@ enyo.ready(function() {
     , archiveMessage: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessage_') + ("archiveMessage_").length)).trim();
         // archive the system message
-        var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen'});
+        var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
         ajaxArchiveSysMessage.makeRequest({systemMessageId: objId});
     }
     , deleteMessage: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('deleteMessage_') + ("deleteMessage_").length)).trim();
         // delete the system message
-        var ajaxDeleteSysMessage = new AJAX.DeleteSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen'});
+        var ajaxDeleteSysMessage = new AJAX.DeleteSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
         ajaxDeleteSysMessage.makeRequest({systemMessageId: objId});
     }
     , sendSysMessage: function(inSender, inEvent) {
@@ -121,7 +124,7 @@ enyo.ready(function() {
         if (subject && subject)
         // send the system message
         if (subject && subject.length > 0 && message && message.length > 0) {
-          var ajaxSysMessage = new AJAX.SendSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen'});
+          var ajaxSysMessage = new AJAX.SendSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
           ajaxSysMessage.makeRequest({subject: subject, message:message });
         } else {
           mvcApp.showErrorMessage('Missing Data', 'Enter the subject and message before sending.');
@@ -130,6 +133,12 @@ enyo.ready(function() {
 
   });
 });
+
+
+
+
+
+
 
 
 

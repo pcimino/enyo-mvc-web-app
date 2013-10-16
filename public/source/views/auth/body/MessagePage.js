@@ -87,7 +87,7 @@ enyo.ready(function() {
     }
     , getMessageThreadsUserScreen: function() {
         // load the system message
-        var jsonpGetMessageThreads = new JSONP.GetMessageThreads({owner:this, fireEvent:'onLoadMessageThreadsUserScreen'});
+      var jsonpGetMessageThreads = new JSONP.GetMessageThreads({owner:this, fireEvent:'onLoadMessageThreadsUserScreen', errorEvent:'onErrorSystemMessages'});
         jsonpGetMessageThreads.makeRequest({archiveFlag: this.$.showArchivedThreadsCheckbox.getChecked()});
     }
     // Display message threads
@@ -159,7 +159,7 @@ enyo.ready(function() {
     }
     , getSystemMessagesUserScreen: function() {
         // load the system message
-        var jsonpGetSysMessages = new JSONP.GetSystemMessages({owner:this, fireEvent:'onLoadSystemMessagesUserScreen'});
+        var jsonpGetSysMessages = new JSONP.GetSystemMessages({owner:this, fireEvent:'onLoadSystemMessagesUserScreen', errorEvent:'onErrorSystemMessages'});
         jsonpGetSysMessages.makeRequest({archiveFlag: this.$.showArchivedCheckbox.getChecked()});
     }
     // Display system messages
@@ -185,11 +185,12 @@ enyo.ready(function() {
     , archiveMessage: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessage_') + ("archiveMessage_").length)).trim();
         // archive the system message
-        var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onGetSystemMessagesUserScreen'});
+        var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onGetSystemMessagesUserScreen', errorEvent:'onErrorSystemMessages'});
         ajaxArchiveSysMessage.makeRequest({systemMessageId: objId});
     }
   });
 });
+
 
 
 

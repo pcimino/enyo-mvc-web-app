@@ -31,7 +31,7 @@ enyo.ready(function() {
              onclick: 'updateUser'
            },
            updateUser: function() {
-             mvcApp.waterfall('onUserUpdate');
+             mvcApp.waterfall('onUserUpdate', {errorEvent:'onErrorSystemMessages'});
              return true;
            }
           }
@@ -41,6 +41,7 @@ enyo.ready(function() {
       } // end setupPageBody
   });
 });
+
 
 
 

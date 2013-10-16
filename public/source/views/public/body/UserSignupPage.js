@@ -67,7 +67,6 @@ enyo.ready(function() {
           * If longer than 3 characters, check availability, bubble the event up to the PublicController
           */
           , usernameChanged: function(inSender, inEvent) {
-              mvcApp.data.username = this.value;
               if (!this.value || this.value.length < 4) {
                 this.removeClass("text-input-confirm-box");
                 this.removeClass("text-input-error-box");
@@ -115,7 +114,7 @@ enyo.ready(function() {
                 this.removeClass("text-input-confirm-box");
                 this.removeClass("text-input-error-box");
               } else {
-                mvcApp.waterfall('onCheckEmail', {email:owner.$.email.value, newEmail:owner.$.email.value});
+                mvcApp.waterfall('onCheckEmail', {email:owner.$.email.value, newEmail:owner.$.email.value, errorEvent:'onErrorSystemMessages'});
               }
               return true;
           }
@@ -154,7 +153,7 @@ enyo.ready(function() {
            onclick: 'signup'
          },
          signup: function() {
-           mvcApp.waterfall('onUserSignup');
+           mvcApp.waterfall('onUserSignup', {username:owner.$.username.value, errorEvent:'onErrorSystemMessages'});
            return true;
          }
         }
@@ -168,6 +167,7 @@ enyo.ready(function() {
     } // end setupPageBody
   });
 });
+
 
 
 

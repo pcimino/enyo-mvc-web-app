@@ -6,11 +6,6 @@ enyo.kind({
   , kind: 'AJAX.Parent'
   , method:'POST'
   , rest:'/api/v1/user'
-  , constructor: function(props) {
-      this.inherited(arguments);
-      // properties mapped to published attributes get set
-      // console.log(this.fireEvent)
-  }
   , processResponse: function(inSender, inResponse) {
       console.log('AJAX.UserSignup processResponse ');
       if (inResponse) {
@@ -22,17 +17,8 @@ enyo.kind({
       }
       // console.log(JSON.stringify(inResponse, null, 2));
   }
-  , processError: function(inSender, inResponse) {
-      console.log('AJAX.UserSignup processError');
-      if (this.fireEvent) {
-        var messageStr = 'Problem creating this user.';
-        if (inSender.xhrResponse && inSender.xhrResponse.body) {
-          messageStr = JSON.parse(inSender.xhrResponse.body).message;
-        }
-        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, message: messageStr});
-      }
-  }
 });
+
 
 
 

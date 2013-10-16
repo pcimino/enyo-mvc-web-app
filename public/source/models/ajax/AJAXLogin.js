@@ -18,7 +18,7 @@ enyo.kind({
       console.log('AJAX.Login processResponse ');
       if (inResponse) {
        if (this.fireEvent) {
-         this.owner.bubble(this.fireEvent, {userdata: inResponse, authenticated: true});
+         this.owner.bubble(this.fireEvent, {authenticated: true, userdata: inResponse});
         }
       } else {
         this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, message: 'Problem contacting the server, please try again later.'});
@@ -26,19 +26,10 @@ enyo.kind({
       // console.log(JSON.stringify(inResponse, null, 2));
   }
   , processError: function(inSender, inResponse) {
-      console.log('AJAX.Login processError');
-      if (this.fireEvent) {
-        var messageStr = 'Problem authenticating this username and password.';
-        if (inSender.xhrResponse && inSender.xhrResponse.body) {
-          messageStr = JSON.parse(inSender.xhrResponse.body).message;
-          if (messageStr.length == 0) {
-            messageStr = 'Database error, please check that this is not a duplicate Username.';
-          }
-        };
-        this.owner.bubble(this.fireEvent, {authenticated: false, response: inSender.xhrResponse, response: inResponse, message: messageStr});
-      }
+      this.processErrorMessage(inSender, inResponse, 'Login Error', 'Problem authenticating this username and password.');
   }
 });
+
 
 
 
