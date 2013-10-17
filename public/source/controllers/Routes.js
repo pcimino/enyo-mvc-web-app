@@ -78,9 +78,6 @@ enyo.kind({
     , { path: '/adminUserManagementInfo'
         , handler: 'adminUserManagementInfo'
     }
-    , { path: '/adminUpdateUser'
-        , handler: 'adminUpdateUser'
-    }
     , { path: '/updateMyUserInfo'
         , handler: 'updateMyUserInfo'
     }
@@ -117,10 +114,6 @@ enyo.kind({
   , adminUserManagementInfo: function () {
       console.log("userManagementInfo router");
       this.loadBodyPage('Bootplate.AdminUserManagementPage', false);
-  }
-  , adminUpdateUser: function () {
-      console.log("adminUpdateUser router");
-      this.loadBodyPage('Bootplate.AdminUpdateUserPage', false);
   }
   , message: function () {
       console.log("message router");

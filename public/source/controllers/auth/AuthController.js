@@ -25,6 +25,7 @@ enyo.ready(function() {
     , handlers: {
         onLogout: 'logout'
         , onUserDetails: 'userDetails'
+        , onUserDetailsResult: 'userDetailsResult'
         , onUserUpdate: 'updateuserInfo'
         , onUserUpdateResult: 'userUpdateResult'
         , onCheckNewUsername: 'checkNewUsername'
@@ -48,12 +49,13 @@ enyo.ready(function() {
     }
     , userDetails: function(inSender, inEvent) {
         // load the user's information
-        var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetails'});
+console.log('AAAAAAAAAAAAAAAAAA ParentController.userDetails is this ever called?')
+        var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetailsResult'});
         ajaxUserDetails.makeRequest({id:inEvent.id});
     }
     , userDetailsResult: function(inSender, inEvent) {
         if (inEvent.userDetails) {
-          mvcApp.data.userDetails = inEvent.userDetails;
+          mvcApp.data.user = inEvent.userDetails;
         }
     }
     , updateuserInfo: function(inSender, inEvent) {
@@ -102,6 +104,7 @@ enyo.ready(function() {
     }
   });
 });
+
 
 
 

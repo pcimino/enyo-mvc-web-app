@@ -13,6 +13,9 @@
   font-weight:bold;
 }
 
+.page-left-justified {
+  margin-left:10%;
+}
 .form-field-left-margin {
   margin-top: 15px;
   margin-left:40%;
@@ -164,6 +167,7 @@
 .bold-text {
   font-weight:bold;
 }
+
 
 
 

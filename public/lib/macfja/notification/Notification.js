@@ -175,7 +175,7 @@ enyo.kind({
 			}
 		}
 	},
-
+	
 	/**
 	 * Remove all pending noification
 	 * @function
@@ -189,7 +189,7 @@ enyo.kind({
 			}
 		}
 	},
-
+	
 	/**
 	 * Remove a particular notification
 	 * @function
@@ -200,14 +200,13 @@ enyo.kind({
 		//Search the notification by its uid
 		for(var tour=0,size=this.pending.length;tour<size;tour++) {
 			if(this.pending[tour].uid == uid) {
-        console.log("DEBUG " + uid)
 				this.pending[tour].theme.removeNotification(this.pending[tour].uid);
 				enyo.remove(this.pending[tour], this.pending);//Remove the pending notification
 				return;//Exit the function
 			}
 		}
 	},
-
+	
 	/**
 	 * Return an associative array of all pending notification<br />
 	 * Key = Uid<br />
@@ -218,7 +217,7 @@ enyo.kind({
 	 */
 	getPendingNotification: function() {
 		var result = {};
-
+		
 		for(var tour=0,size=this.pending.length;tour<size;tour) {
 			result[this.pending[tour].uid] = this.pending[tour].notification;
 		}
