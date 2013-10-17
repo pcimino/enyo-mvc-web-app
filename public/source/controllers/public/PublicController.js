@@ -26,10 +26,6 @@ enyo.kind({
   , handlers: {
      onLogin: 'login'
      , onLoginResult: 'loginResult'
-     , onCheckUsername: 'checkUsername'
-     , onCheckUsernameResult: 'checkUsernameResult'
-     , onCheckEmail: 'checkEmail'
-     , onCheckEmailResult: 'checkEmailResult'
      , onForgotPassword: 'forgotPassword'
      , onForgotPasswordResult: 'forgotPasswordResult'
      , onResendEmail: 'resendEmail'
@@ -46,7 +42,7 @@ enyo.kind({
   }
   , loginResult: function(inSender, inEvent) {
       if (inEvent.authenticated) {
-        mvcApp.data.userData = inEvent.userdata;
+        mvcApp.data.user = inEvent.userdata;
         mvcApp.username = mvcApp.data.username;
         mvcApp.data.username = '';
         mvcApp.data.password = '';
@@ -100,35 +96,6 @@ enyo.kind({
       mvcApp.showErrorMessage("Email Problem", "We had trouble sending your email. Please try again later or contact your system administrator.");
     }
   }
-  // Check Username availability
-  , checkUsername: function(inSender, inEvent) {
-      mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
-      var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
-      ajaxUsernameExists.makeRequest({username:inEvent.username});
-  }
-  // Check Username Result
-  , checkUsernameResult: function(inSender, inEvent) {
-      // TODO Kludgey, need to change how the user gets created, shouldn't be in this method
-      if (!inEvent.exists && mvcApp.data.createNewUser) {
-        mvcApp.data.createNewUser = '';
-        // create the user
-        var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult', errorEvent:'onErrorSystemMessages'});
-        ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword});
-      }
-      mvcApp.view.body.waterfall('onUsernameStatus', inEvent);
-      return true;
-  }
-  // Check Email availability
-  , checkEmail: function(inSender, inEvent) {
-      mvcApp.waterfall('onCheckEmailResult', {exists:'reset'});
-      var ajaxEmailExists = new AJAX.EmailExists({owner:this, fireEvent:'onCheckEmailResult'});
-      ajaxEmailExists.makeRequest({email:inEvent.email, newEmail:inEvent.newEmail});
-  }
-  // Check Email Result
-  , checkEmailResult: function(inSender, inEvent) {
-      mvcApp.view.body.waterfall('onEmailStatus', inEvent);
-      return true;
-  }
   // UserSignup
   , userSignup: function(inSender, inEvent) {
     console.log("PublicController userSignup ");
@@ -166,6 +133,7 @@ enyo.kind({
       }
   }
 });
+
 
 
 

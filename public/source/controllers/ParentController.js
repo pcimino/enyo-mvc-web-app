@@ -28,6 +28,10 @@ enyo.kind({
      , onCheckAdmin: 'checkAdmin'
      , onCheckAdminResult: 'checkAdminResult'
      , onReloadUser: 'reloadUser'
+     , onCheckUsername: 'checkUsername'
+     , onCheckUsernameResult: 'checkUsernameResult'
+     , onCheckEmail: 'checkEmail'
+     , onCheckEmailResult: 'checkEmailResult'
   }
   // see if the user is already logged in
   //TODO Causing a loop, since the result can cause the /home or /login call, which calls routes which calls this...hmmmmm
@@ -78,23 +82,55 @@ enyo.kind({
         mvcApp.authView.waterfall('onSetupGravatar');
         // reload admin rights
         var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
+        console.log('checkadmin reload')
         checkAdmin.makeRequest({});
       }
 
   }
   // check database connection
   , checkAdmin: function(inSender, inEvent) {
+  console.log('checkadmin')
       var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
       checkAdmin.makeRequest({});
   }
   , checkAdminResult: function(inSender, inEvent) {
-      if (inEvent.response == '200') {
+      if (inEvent.message == 'Success') {
         mvcApp.setAdminFlag(true);
       } else {
         mvcApp.setAdminFlag(false);
       }
   }
+  // Check Username availability
+  , checkUsername: function(inSender, inEvent) {
+      mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
+      var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameResult'});
+      ajaxUsernameExists.makeRequest({username:inEvent.username});
+  }
+  // Check Username Result
+  , checkUsernameResult: function(inSender, inEvent) {
+      // TODO Kludgey, need to change how the user gets created, shouldn't be in this method
+      if (!inEvent.exists && mvcApp.data.createNewUser) {
+        mvcApp.data.createNewUser = '';
+        // create the user
+        var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult', errorEvent:'onErrorSystemMessages'});
+        ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword});
+      }
+      mvcApp.view.body.waterfall('onUsernameStatus', inEvent);
+      return true;
+  }
+  // Check Email availability
+  , checkEmail: function(inSender, inEvent) {
+      mvcApp.waterfall('onCheckEmailResult', {exists:'reset'});
+      var ajaxEmailExists = new AJAX.EmailExists({owner:this, fireEvent:'onCheckEmailResult'});
+      ajaxEmailExists.makeRequest({email:inEvent.email, newEmail:inEvent.newEmail});
+  }
+  // Check Email Result
+  , checkEmailResult: function(inSender, inEvent) {
+      mvcApp.view.body.waterfall('onEmailStatus', inEvent);
+      return true;
+  }
 });
+
 
 
 

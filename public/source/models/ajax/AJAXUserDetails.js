@@ -12,6 +12,7 @@ enyo.kind({
   , processResponse: function(inSender, inResponse) {
       console.log('AJAX.UserDetails processResponse ');
       if (inResponse) {
+        console.log(JSON.stringify(inResponse))
        if (this.fireEvent) {
          this.owner.bubble(this.fireEvent, {userdata: inResponse, authenticated: true});
         }
@@ -21,6 +22,7 @@ enyo.kind({
       // console.log(JSON.stringify(inResponse, null, 2));
   }
 });
+
 
 
 

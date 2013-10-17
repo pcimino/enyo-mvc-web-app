@@ -6,7 +6,6 @@
 * - setupPageBody() should be implemented by each child
 * - setupFooterPage() should be implemented by each child
 */
-var AAA={}
 enyo.kind({
   name: 'Bootplate.ParentView'
   , kind: "enyo.FittableRows"
@@ -42,8 +41,7 @@ enyo.kind({
       this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
   }
   , removeAllNotifications: function(inSender, inEvent) {
-      //this.notification.removeAllNotifications(inEvent.onlyStay);
-    AAA=this.notification
+      this.notification.removeAllNotifications(inEvent.onlyStay);
   }
   , systemMessage: function(inSender, inEvent) {
       this.notification.sendNotification({
@@ -93,9 +91,10 @@ enyo.kind({
   // Display system messages
   , getSystemMessagesResult: function(inSender, inEvent) {
     // clear the notifications programmatically before reloading
-    mvcApp.removeAllNotifications(true);
+    this.notification.removeAllNotifications();
     for (var i = 0; i < inEvent.length; i++) {
       mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message, inEvent[i]._id);
+      //this.systemMessage(null, inEvent[i])
     }
 
     return true;
