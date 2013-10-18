@@ -5,6 +5,7 @@ enyo.depends(
   , "AJAXUserDetails.js"
   , "AJAXUsernameExists.js"
   , "AJAXAdminUserUpdate.js"
+  , "AJAXAdminDeleteUser.js"
   , "AJAXUserUpdate.js"
   , "AJAXLogout.js"
   , "AJAXArchiveMessageThread.js"
@@ -24,6 +25,7 @@ enyo.depends(
   , "JSONPGetMessageThreads.js"
   , "JSONPGetUserList.js"
 );
+
 
 
 
