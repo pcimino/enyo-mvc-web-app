@@ -168,6 +168,14 @@ enyo.ready(function () {
         );
         emailContainer.createComponent({content:'', name: "currentEmail", owner:this});
 
+        this.createComponent(
+          {kind: "onyx.RadioGroup", name:'roleRadioGroup',  onActivate:"radioActivated", owner: this, style: "margin-left: 11%;margin-top: 10px;", components: [
+            {content: "User", name: "userButton", active: true, owner: this},
+            {content: "Subscriber", name: "subscriberButton", owner: this},
+            {content: "Admin", name: "adminButton", owner: this}
+		      ]});
+        this.insertBreak(this);
+
         this.bindDetailData(this.$.email);
         this.createComponent(
           { name: "password"
@@ -180,6 +188,7 @@ enyo.ready(function () {
         );
         this.bindDetailData(this.$.password);
         this.insertBreak(this);
+
         this.createComponent(
           { name: "vPassword"
             , kind: "onyx.Input"
@@ -257,6 +266,13 @@ enyo.ready(function () {
           this.$.currentName.setContent(' Current name: ' + inEvent.userdata.name);
           this.$.currentUsername.setContent(' Current username: ' + inEvent.userdata.username);
           this.$.currentEmail.setContent(' Current email: ' + inEvent.userdata.email);
+          if (inEvent.userdata.role == 'User') {
+            this.$.userButton.setActive(true);
+          } else if (inEvent.userdata.role == 'Subscriber') {
+            this.$.subscriberButton.setActive(true);
+          } else if (inEvent.userdata.role == 'Admin') {
+            this.$.adminButton.setActive(true);
+          }
         }
     }
     , bindDetailData: function(bindOwner) {
@@ -304,6 +320,7 @@ enyo.ready(function () {
         if (mvcApp.adminUserDetails.email) data.email = mvcApp.adminUserDetails.email;
         if (mvcApp.adminUserDetails.password) data.password = mvcApp.adminUserDetails.password;
         if (mvcApp.adminUserDetails.vPassword) data.vPassword = mvcApp.adminUserDetails.vPassword;
+        if (mvcApp.adminUserDetails.role) data.role = mvcApp.adminUserDetails.role;
 
         ajaxUserUpdate.makeRequest(data);
     }
@@ -365,6 +382,13 @@ enyo.ready(function () {
         this.$.usernameSearch.setValue('');
         this.$.emailSearch.setValue('');
         this.searchForUser();
+    }
+    ,	ordinals: ["User", "Subscriber", "Admin"]
+    ,	radioActivated: function(inSender, inEvent) {
+      if (inEvent.originator.getActive()) {
+        console.log("The \"" + inEvent.originator.getContent() + "\" radio button is selected.");
+        mvcApp.adminUserDetails.role = inEvent.originator.getContent();
+      }
     }
   });
 });
