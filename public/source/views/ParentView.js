@@ -21,8 +21,7 @@ enyo.kind({
     , notificationPop: {}
   }
   , handlers: {
-     onRemoveAllNotifications: 'removeAllNotifications'
-     , onShowSystemMessage: 'systemMessage'
+     onShowSystemMessage: 'systemMessage'
      , onShowErrorMessage: 'showErrorMessage'
      , onShowWarningMessage: 'showWarningMessage'
      , onShowInfoMessage: 'showInfoMessage'
@@ -39,9 +38,6 @@ enyo.kind({
   }
   , setupFooterPage: function() {
       this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
-  }
-  , removeAllNotifications: function(inSender, inEvent) {
-      this.notification.removeAllNotifications(inEvent.onlyStay);
   }
   , systemMessage: function(inSender, inEvent) {
       this.notification.sendNotification({
@@ -94,12 +90,12 @@ enyo.kind({
     this.notification.removeAllNotifications();
     for (var i = 0; i < inEvent.length; i++) {
       mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message, inEvent[i]._id);
-      //this.systemMessage(null, inEvent[i])
     }
 
     return true;
   }
 });
+
 
 
 
