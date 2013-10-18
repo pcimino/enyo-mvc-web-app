@@ -15,6 +15,17 @@ enyo.ready(function() {
         this.setupPageBody();
         this.setupFooterPage();
     }
+    , handlers: {
+        onDisplayTimeout: 'displayTimeout'
+        , onGetSessionTimeout: 'getSessionTimeout'
+        , onGetSessionTimeoutResult: 'getSessionTimeoutResult'
+    }
+    , rendered: function() {
+        this.inherited(arguments);
+
+        // retrieve system messages
+        this.getSessionTimeout();
+    }
     , setupHeaderPage: function() {
         this.inherited(arguments);
         if (this.$.headerContainer) this.$.headerContainer.destroy();
@@ -22,6 +33,12 @@ enyo.ready(function() {
     }
     , setupPageBody: function() {
         this.inherited(arguments);
+        this.createComponent(
+          { name: "timeoutDialog"
+            , kind: "Bootplate.SessionTimeoutDialog"
+            , owner: this
+          }
+        );
         this.pageContainer = this.createComponent({name:'pageContainer', fit: true, classes: "enyo-center container-height", owner: this});
 
         this.navigation = this.header.createComponent({name:'topNav', kind: 'Bootplate.AuthNavigation', owner: this});
@@ -42,8 +59,36 @@ enyo.ready(function() {
         if (this.$.footerContainer) this.$.footerContainer.destroy();
         this.footer = this.pageContainer.createComponent({name: 'footerContainer', kind: 'Bootplate.AuthFooterView', owner: this.pageContainer});
     }
+    , getSessionTimeout: function(inSender, inEvent) {
+        clearInterval(mvcApp.sessionIntervalKey);
+        mvcApp.sessionIntervalKey = '';
+        // load the system message
+        var jsonpGetSessionTimeout = new JSONP.GetSessionTimeout({owner:this, fireEvent:'onGetSessionTimeoutResult'});
+        jsonpGetSessionTimeout.makeRequest({});
+    }
+    , getSessionTimeoutResult: function(inSender, inEvent) {
+         mvcApp.sessionTimeout = inEvent.timeout;
+         mvcApp.sessionTimeRemaining = inEvent.timeout;
+         if (!mvcApp.sessionIntervalKey) {
+           clearInterval(mvcApp.sessionIntervalKey);
+           mvcApp.sessionIntervalKey = setInterval(function(){ mvcApp.authView.checkRemainingSessionTime() }, mvcApp.sessionCheckInterval);
+         }
+    }
+    , checkRemainingSessionTime: function(inSender, inEvent) {
+        mvcApp.sessionTimeRemaining -= mvcApp.sessionCheckInterval;
+        if (mvcApp.sessionTimeRemaining <= 60000) {
+            clearInterval(mvcApp.sessionIntervalKey);
+            this.displayTimeout();
+        }
+    }
+    , displayTimeout: function() {
+        this.$.timeoutDialog.show();
+        this.$.timeoutDialog.startTimer();
+    }
   });
 });
+
+
 
 
 

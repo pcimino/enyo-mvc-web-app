@@ -15,14 +15,13 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
 
-        // retrieve system messages
-        mvcApp.authView.waterfall('onGetSystemMessages');
     }
     , setupPageBody: function(owner) {
         owner.render();
     } // end setupPageBody
   });
 });
+
 
 
 

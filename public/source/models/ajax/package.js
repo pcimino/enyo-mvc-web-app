@@ -24,7 +24,9 @@ enyo.depends(
   , "JSONPGetSystemMessages.js"
   , "JSONPGetMessageThreads.js"
   , "JSONPGetUserList.js"
+  , "JSONPGetSessionTimeout.js"
 );
+
 
 
 

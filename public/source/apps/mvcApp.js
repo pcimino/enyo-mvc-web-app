@@ -14,6 +14,11 @@ enyo.kind({
         , broadcast: {displayClass:'', message: ''}
         , wsSocketURL: 'ws://localhost'
         , wsSocketPort: '3000'
+        , sessionCookieName: 'session'
+        , sessionTimeout: 99999999999
+        , sessionTimeRemaining: 99999999999
+        , sessionCheckInterval: 10000
+        , sessionIntervalKey: ''
     }
     , controllers: [
         {  name: "publicController",
@@ -87,6 +92,8 @@ enyo.kind({
       mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
+
 
 
 
