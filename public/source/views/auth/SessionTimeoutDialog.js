@@ -38,12 +38,6 @@ enyo.ready(function() {
         }
 
     ]
-    , focus: function() {
-        this.inherited(arguments);
-        // if timer still running don't allow hide
-      console.log(this.intervalKey +":"+ this.timeRemaining +":" + this.timeRemaining > 0)
-        if (this.intervalKey && this.timeRemaining > 0) this.show();
-    }
     , startTimer: function() {
         this.timeRemaining = mvcApp.sessionTimeRemaining;
         if (this.intervalKey) clearInterval(this.intervalKey);
