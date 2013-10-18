@@ -1,14 +1,10 @@
 
-move socket.io to lib directory
-add README in lib explaining which libs re not submodules
-
-messagedialog doesn't show errors
 
 refactor project structure more inline with mvc bootplate
 
 
 Admin page
-   Delete a user
+   Add ROLE select
 
 
 Session seems to timeout despite activity, how to renew timestamp?

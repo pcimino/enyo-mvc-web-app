@@ -15,6 +15,7 @@ enyo.ready(function () {
         , onUsernameStatus: 'usernameStatus'
         , onEmailStatus: 'emailStatus'
         , onAdminUserUpdateResult: 'adminUserUpdateResult'
+        , onUserDeleteResult: 'userDeleteResult'
     }
     , published: {
       usernameRef : {}
@@ -235,7 +236,10 @@ enyo.ready(function () {
     , loadUserDetailList: function(inSender, inEvent) {
         var itemArr = [];
         for (var i = 0; i < inEvent.users.length; i++) {
-          if (inEvent.users[i].username != mvcApp.data.user.username) itemArr.push(inEvent.users[i]);
+          // admin won't see their own account
+          if (inEvent.users[i].username != mvcApp.data.user.username) {
+            itemArr.push(inEvent.users[i]);
+          }
         }
         this.$.userList.setItems(itemArr);
         return true;
@@ -304,28 +308,19 @@ enyo.ready(function () {
         ajaxUserUpdate.makeRequest(data);
     }
     , deleteUser: function(inSender, inEvent) {
-      console.log('deleteUser');
         this.$.confirmationPopup.show();
     }
     , confirmClick: function(inSender, inEvent) {
-console.log('confirmClick');
+        var ajaxDelUser = new AJAX.AdminDeleteUser({owner:this, fireEvent:'onUserDeleteResult', errorEvent:'onErrorSystemMessages'});
+        ajaxDelUser.makeRequest({id:mvcApp.adminUserDetails._id});
         this.$.confirmationPopup.hide();
     }
     , cancelClick: function(inSender, inEvent) {
         this.$.confirmationPopup.hide();
     }
     , cancel: function(inSender, inEvent) {
-        mvcApp.adminUserDetails = {};
-        this.$.nameSearch.setValue('');
-        this.$.usernameSearch.setValue('');
-        this.$.emailSearch.setValue('');
-        this.$.name.setValue('');
-        this.$.username.setValue('');
-        this.$.email.setValue('');
-        this.$.currentName.setContent('');
-        this.$.currentUsername.setContent('');
-        this.$.currentEmail.setContent('');
-        this.searchForUser();
+        this.clearData();
+        this.clearSearch();
     }
     , updateuserInfo: function(inSender, inEvent) {
         // load the user's information
@@ -352,8 +347,28 @@ console.log('confirmClick');
             mvcApp.showErrorMessage("Error", inEvent.message);
         }
     }
+    , userDeleteResult: function(inSender, inEvent) {
+        this.clearData();
+        this.searchForUser();
+    }
+    , clearData: function() {
+        mvcApp.adminUserDetails = {};
+        this.$.name.setValue('');
+        this.$.username.setValue('');
+        this.$.email.setValue('');
+        this.$.currentName.setContent('');
+        this.$.currentUsername.setContent('');
+        this.$.currentEmail.setContent('');
+    }
+    , clearSearch: function() {
+        this.$.nameSearch.setValue('');
+        this.$.usernameSearch.setValue('');
+        this.$.emailSearch.setValue('');
+        this.searchForUser();
+    }
   });
 });
+
 
 
 
