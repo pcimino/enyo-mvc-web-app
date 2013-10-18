@@ -386,7 +386,6 @@ enyo.ready(function () {
     ,	ordinals: ["User", "Subscriber", "Admin"]
     ,	radioActivated: function(inSender, inEvent) {
       if (inEvent.originator.getActive()) {
-        console.log("The \"" + inEvent.originator.getContent() + "\" radio button is selected.");
         mvcApp.adminUserDetails.role = inEvent.originator.getContent();
       }
     }

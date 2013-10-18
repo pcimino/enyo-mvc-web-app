@@ -24,7 +24,7 @@ enyo.ready(function() {
         }
     }
     , handlers: {
-      onErrorSystemMessages: 'errorSystemMessages'
+        onErrorSystemMessages: 'errorSystemMessages'
     }
     , insertFormSpace: function(owner, paddingInPx) {
         var padHeight = "padding-top:";
@@ -94,6 +94,7 @@ enyo.ready(function() {
     }
   });
 });
+
 
 
 

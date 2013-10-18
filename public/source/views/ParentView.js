@@ -79,22 +79,22 @@ enyo.kind({
   }
   // Retrieve system messages
   , getSystemMessages: function(inSender, inEvent) {
-    // load the system message
-    var jsonpGetSysMessages = new JSONP.GetSystemMessages({owner:this, fireEvent:'onGetSystemMessagesResult'});
-    jsonpGetSysMessages.makeRequest({});
-
+      // load the system message
+      var jsonpGetSysMessages = new JSONP.GetSystemMessages({owner:this, fireEvent:'onGetSystemMessagesResult'});
+      jsonpGetSysMessages.makeRequest({});
   }
   // Display system messages
   , getSystemMessagesResult: function(inSender, inEvent) {
-    // clear the notifications programmatically before reloading
-    this.notification.removeAllNotifications();
-    for (var i = 0; i < inEvent.length; i++) {
-      mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message, inEvent[i]._id);
-    }
+      // clear the notifications programmatically before reloading
+      this.notification.removeAllNotifications();
+      for (var i = 0; i < inEvent.length; i++) {
+        mvcApp.showSystemMessage(inEvent[i].subject, inEvent[i].message, inEvent[i]._id);
+      }
 
-    return true;
+      return true;
   }
 });
+
 
 
 

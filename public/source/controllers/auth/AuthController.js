@@ -46,6 +46,7 @@ enyo.ready(function() {
             mvcApp.controllers.routes.trigger({location:'/login'});
             mvcApp.setPublicView();
 		    }, 300);
+        clearInterval(mvcApp.sessionIntervalKey);
     }
     , userDetails: function(inSender, inEvent) {
         // load the user's information
@@ -104,6 +105,7 @@ console.log('AAAAAAAAAAAAAAAAAA ParentController.userDetails is this ever called
     }
   });
 });
+
 
 
 

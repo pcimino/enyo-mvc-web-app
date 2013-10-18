@@ -5,7 +5,9 @@ enyo.depends(
   , "AuthNavigation.js"
   , "MessagingDialog.js"
   , "NewMessageDialog.js"
+  , "SessionTimeoutDialog.js"
   , "body"
 );
+
 
 
