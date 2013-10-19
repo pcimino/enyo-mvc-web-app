@@ -19,6 +19,7 @@ enyo.kind({
         , sessionTimeRemaining: 99999999999
         , sessionCheckInterval: 10000
         , sessionIntervalKey: ''
+        , showDeveloperTools: true
     }
     , controllers: [
         {  name: "publicController",

@@ -87,6 +87,9 @@ enyo.kind({
     , { path: '/contactPublic'
         , handler: 'contactPublic'
     }
+    , { path: '/developer'
+        , handler: 'developer'
+    }
   ]
   , loadBodyPage: function (kindByName, renderFlag, skipWaterfallFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
@@ -177,6 +180,9 @@ enyo.kind({
   , contactPublic: function () {
       console.log("contactPublic router");
       this.loadBodyPage('Bootplate.ContactPage', true);
+  }
+  , developer: function () {
+      this.loadBodyPage('Bootplate.DeveloperPage', true);
   }
 
 });

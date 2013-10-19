@@ -26,6 +26,8 @@ enyo.kind({
       var bottomNavToolbar = owner.createComponent({kind: "onyx.Toolbar", fit: true, name: 'bottomNavToolbar', owner: owner});
 
       // need to create buttons that behave as links
+      if (mvcApp.showDeveloperTools) this.createLinkButton(bottomNavToolbar, 'developer', 'Developer', 'button-float-right');
+
       this.createLinkButton(bottomNavToolbar, 'resendEmail', 'Resend My Verification Email');
       this.createLinkButton(bottomNavToolbar, 'forgotPassword', 'Reset My Password');
   }
