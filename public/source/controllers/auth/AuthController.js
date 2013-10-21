@@ -35,7 +35,6 @@ enyo.ready(function() {
     }
     // Logout
     , logout: function() {
-        console.log("logout handler");
         // clear out the session data
         mvcApp.data = {};
         var ajaxLogout = new AJAX.Logout({owner:this, fireEvent:'onIsUserValidated'});

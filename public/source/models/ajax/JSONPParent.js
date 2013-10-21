@@ -18,14 +18,21 @@ enyo.kind({
   }
   , constructor: function(props) {
       this.inherited(arguments);
-      // properties mapped to published attributes get set
-      // console.log(this.fireEvent)
+      if (mvcApp.debugNetworkCalls) {
+        console.log('JSONP.Parent constructor ' + this.method + ":" + this.rest);
+        console.log('Properties ', props);
+      }
   }
   , buildBaseURL: function() {
       return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
   }
   // check database connection
   , makeRequest: function(params) {
+      if (mvcApp.debugNetworkCalls) {
+        console.log('JSONP.Parent makeRequest ' + this.method + ":" + this.rest);
+        console.log('Parameters ' + JSON.stringify(params));
+      }
+
       this.url = this.buildBaseURL() + this.rest;
 
       // attach responders to the transaction object
@@ -44,9 +51,19 @@ enyo.kind({
           this.owner.bubble(this.fireEvent, inSender.xhrResponse);
         }
       }
+      if (mvcApp.debugNetworkCalls) {
+        console.log('JSONP.Parent processResponse ' + this.method + ":" + this.rest);
+        console.log(inResponse);
+        console.log(inSender.xhrResponse);
+      }
   }
   , processError: function(inSender, inResponse) {
       this.processErrorMessage(inSender, inResponse, 'System Error', 'System Error');
+      if (mvcApp.debugNetworkCalls) {
+        console.log('JSONP.Parent processError ' + this.method + ":" + this.rest);
+        console.log(inResponse);
+        console.log(inSender.xhrResponse);
+      }
   }
   , processErrorMessage: function(inSender, inResponse, titleText, messageText) {
       var responseContent = inResponse;
@@ -57,8 +74,16 @@ enyo.kind({
       }
       if (this.fireEvent) this.owner.bubble(this.fireEvent, {response: responseContent, title: titleText, message: messageText});
       if (this.errorEvent) this.owner.bubble(this.errorEvent, {response: responseContent, title: titleText, message: messageText});
+
+      if (mvcApp.debugNetworkCalls) {
+        console.log('JSONP.Parent processErrorMessage ' + this.method + ":" + this.rest);
+        console.log('JSONP.Parent processErrorMessage ' + titleText + ":" + messageText);
+        console.log(JSON.stringify(responseContent, null, 2));
+      }
   }
 });
+
+
 
 
 

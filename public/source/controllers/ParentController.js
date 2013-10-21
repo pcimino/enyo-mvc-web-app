@@ -82,14 +82,12 @@ enyo.kind({
         mvcApp.authView.waterfall('onSetupGravatar');
         // reload admin rights
         var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
-        console.log('checkadmin reload')
         checkAdmin.makeRequest({});
       }
 
   }
   // check database connection
   , checkAdmin: function(inSender, inEvent) {
-  console.log('checkadmin')
       var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
       checkAdmin.makeRequest({});
   }
@@ -130,6 +128,7 @@ enyo.kind({
       return true;
   }
 });
+
 
 
 

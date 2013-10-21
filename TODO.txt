@@ -1,21 +1,17 @@
 autologout:
-  is timer starting properly?
-  need message and button
+  Is cookie updating properly? Doesn't look like it.
+
+Terms and conditions
+
+What is the point of the render flag? Only on Login Page and Public Message Page, can it be cleaned up?
 
 
 refactor project structure more inline with mvc bootplate
 
 
-Session seems to timeout despite activity, how to renew timestamp?
-Set session to 'forever' if remember me is used
-
-TOOLTIP with dev comments??
-http://forums.enyojs.com/discussion/1384/trying-to-use-tooltips-and-tooltipdecorator-inside-a-list-and-defaultkind-is-component
-
-{kind: "onyx.TooltipDecorator", components: [
-    {kind: "onyx.Button", content: "Tooltip"},
-    {kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
-]}
+Features I'd like to add:
+- Passport
+- Set session to 'forever' if remember me is used
 
 
 quick start modify admin role
@@ -48,6 +44,7 @@ http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updatin
 
 git submodule add -f https://github.com/LearnBoost/socket.io.git ./public/lib/socket.io
 git rm –cached ./public/lib/socket.io
+
 
 
 

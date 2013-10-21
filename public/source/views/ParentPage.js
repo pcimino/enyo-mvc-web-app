@@ -71,7 +71,6 @@ enyo.ready(function() {
           bindOwner.refreshBindings();
        */
        bindOwner.setData = function(inSender, inEvent) {
-         console.log('bindOwner ' + inSender.name + ":" + mvcApp.data[inSender.name]);
          mvcApp.data[inSender.name] = this.value;
          return true;
        };

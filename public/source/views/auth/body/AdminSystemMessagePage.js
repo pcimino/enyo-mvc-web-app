@@ -109,14 +109,18 @@ enyo.ready(function() {
     , archiveMessage: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessage_') + ("archiveMessage_").length)).trim();
         // archive the system message
-        var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
-        ajaxArchiveSysMessage.makeRequest({systemMessageId: objId});
+        if (objId) {
+          var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
+          ajaxArchiveSysMessage.makeRequest({systemMessageId: objId});
+        }
     }
     , deleteMessage: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('deleteMessage_') + ("deleteMessage_").length)).trim();
         // delete the system message
-        var ajaxDeleteSysMessage = new AJAX.DeleteSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
-        ajaxDeleteSysMessage.makeRequest({systemMessageId: objId});
+        if (objId) {
+          var ajaxDeleteSysMessage = new AJAX.DeleteSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
+          ajaxDeleteSysMessage.makeRequest({systemMessageId: objId});
+        }
     }
     , sendSysMessage: function(inSender, inEvent) {
         var subject = this.$.subject.getValue();
