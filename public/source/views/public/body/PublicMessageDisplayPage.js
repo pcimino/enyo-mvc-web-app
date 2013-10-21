@@ -19,7 +19,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupPageBody: function(owner, renderFlag) {
+    , setupPageBody: function(owner) {
         this.insertFormSpace(owner);
 
         var displayClasses = "text-input-error-box form-field-left-margin";
@@ -37,7 +37,7 @@ enyo.ready(function() {
         this.insertInternalLink(owner, this.rndLink('login'), 'User Login');
 
       // only call this on navigation, not initial load
-        if (renderFlag) owner.render();
+        owner.render();
     } // end setupPageBody
     , setErrorMessage: function(newText) {
         this.contentComponent.setPage(newText);

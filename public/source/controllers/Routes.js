@@ -5,7 +5,7 @@
 * TODO Is there an equivalent to routing with an argument. I could strip args off in the pre handler, but this
 * makes the app interdependent on specialized server code
 *
-* - loadBodyPage(kindByName, renderFlag, skipWaterfallFlag)
+* - loadBodyPage(kindByName, skipWaterfallFlag)
 * - logout()
 * - message()
 * - systemMessage()
@@ -88,13 +88,13 @@ enyo.kind({
         , handler: 'contactPublic'
     }
   ]
-  , loadBodyPage: function (kindByName, renderFlag, skipWaterfallFlag) {
+  , loadBodyPage: function (kindByName, skipWaterfallFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
         var owner = mvcApp.view.$.bodyContainer;
         owner.destroyClientControls();
         mvcApp.view.body = owner.createComponent({kind: kindByName, name:'bodyPage'});
         mvcApp.view.body.render();
-        owner.$.bodyPage.setupPageBody(owner, renderFlag);
+        owner.$.bodyPage.setupPageBody(owner);
     }
     // every navigation check the user validation
     // if they try to navigate to a page with out proper access, they get redirected
@@ -106,57 +106,57 @@ enyo.kind({
       return true;
   }
   , adminSystemMessage: function () {
-      this.loadBodyPage('Bootplate.AdminSystemMessagePage', false);
+      this.loadBodyPage('Bootplate.AdminSystemMessagePage');
   }
   , adminUserManagementInfo: function () {
-      this.loadBodyPage('Bootplate.AdminUserManagementPage', false);
+      this.loadBodyPage('Bootplate.AdminUserManagementPage');
   }
   , message: function () {
-      this.loadBodyPage('Bootplate.MessageCenterPage', true);
+      this.loadBodyPage('Bootplate.MessageCenterPage');
   }
   , sendMessage: function () {
-      this.loadBodyPage('Bootplate.SendMessagePage', true);
+      this.loadBodyPage('Bootplate.SendMessagePage');
   }
   , updateMyUserInfo: function () {
-      this.loadBodyPage('Bootplate.UpdateMyUserInfoPage', false);
+      this.loadBodyPage('Bootplate.UpdateMyUserInfoPage');
   }
   , updateMyPassword: function () {
-      this.loadBodyPage('Bootplate.UpdateMyPasswordPage', false);
+      this.loadBodyPage('Bootplate.UpdateMyPasswordPage');
   }
   , home: function () {
-      this.loadBodyPage('Bootplate.HomePage', false);
+      this.loadBodyPage('Bootplate.HomePage');
   }
   // this is triggered by the isUserValidated event, purpose is to avoid loops
   , homeEvent: function () {
-      this.loadBodyPage('Bootplate.HomePage', false, true);
+      this.loadBodyPage('Bootplate.HomePage', true);
   }
   , checkLogin: function () {
-      this.loadBodyPage('Bootplate.LoginPage', true);
+      this.loadBodyPage('Bootplate.LoginPage');
   }
   , login: function () {
-      this.loadBodyPage('Bootplate.LoginPage', true);
+      this.loadBodyPage('Bootplate.LoginPage');
   }
   // this is triggered by the isUserValidated event, purpose is to avoid loops
   , loginEvent: function () {
-      this.loadBodyPage('Bootplate.LoginPage', true, true);
+      this.loadBodyPage('Bootplate.LoginPage', true);
   }
   , userSignup: function () {
-      this.loadBodyPage('Bootplate.UserSignupPage', false);
+      this.loadBodyPage('Bootplate.UserSignupPage');
   }
   , forgotPassword: function () {
-      this.loadBodyPage('Bootplate.VerifyResetRequestPage', false);
+      this.loadBodyPage('Bootplate.VerifyResetRequestPage');
   }
   , resendEmail: function () {
-      this.loadBodyPage('Bootplate.VerifyResetRequestPage', false);
+      this.loadBodyPage('Bootplate.VerifyResetRequestPage');
   }
   , publicBroadcastMessage: function () {
-      this.loadBodyPage('Bootplate.PublicMessageDisplayPage', true);
+      this.loadBodyPage('Bootplate.PublicMessageDisplayPage');
   }
   , authenticate: function () {
-      this.loadBodyPage('Bootplate.HomePage', true);
+      this.loadBodyPage('Bootplate.HomePage');
   }
   , contactPublic: function () {
-      this.loadBodyPage('Bootplate.ContactPage', true);
+      this.loadBodyPage('Bootplate.ContactPage');
   }
 });
 

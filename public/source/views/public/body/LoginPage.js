@@ -34,7 +34,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , setupPageBody: function(owner, renderFlag) {
+    , setupPageBody: function(owner) {
         this.insertFormSpace(owner);
         owner.createComponent(
           { name: "username"
@@ -72,7 +72,7 @@ enyo.ready(function() {
         );
 
       // only call this on navigation, not initial load
-        if (renderFlag) owner.render();
+        owner.render();
     } // end setupPageBody
   });
 });
