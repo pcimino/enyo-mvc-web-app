@@ -20,7 +20,6 @@ enyo.ready(function() {
         this.inherited(arguments);
     }
     , setupPageBody: function(owner, renderFlag) {
-        console.log("Bootplate.MessageDisplayPage");
         this.insertFormSpace(owner);
 
         var displayClasses = "text-input-error-box form-field-left-margin";

@@ -43,14 +43,12 @@ enyo.kind({
       this.createLinkButton(this.adminNavToolbar, 'adminSystemMessage', 'System Message');
   }
   , showAdminOptions: function() {
-      console.log("showAdminOptions");
       if (this.adminNavToolbar) {
         this.adminNavToolbar.show();
         this.adminNavToolbar.render();
       }
     }
   , hideAdminOptions: function() {
-      console.log("hideAdminOptions");
       if (this.adminNavToolbar) {
         this.adminNavToolbar.hide();
         this.adminNavToolbar.render();

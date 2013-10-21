@@ -151,11 +151,11 @@ enyo.kind({
 	notifTap: function(inSender, inEvent) {
 		//Search the notification by its uid
 		for(var tour=0,size=this.pending.length;tour<size;tour++) {
-			if(this.pending[tour].uid == inEvent.uid) {
+			if((this.pending[tour]) && this.pending[tour].uid == inEvent.uid) {
 				this.pending[tour].callback(this.pending[tour].notification);//call the callback function
 				this.doTap(this.pending[tour].notification);//Send a onTap event
 				enyo.remove(this.pending[tour], this.pending);//Remove the pending notification
-				return true;//End the function
+        return true;//End the function
 			}
 		}
 	},
@@ -175,7 +175,7 @@ enyo.kind({
 			}
 		}
 	},
-	
+
 	/**
 	 * Remove all pending noification
 	 * @function
@@ -189,7 +189,7 @@ enyo.kind({
 			}
 		}
 	},
-	
+
 	/**
 	 * Remove a particular notification
 	 * @function
@@ -206,7 +206,7 @@ enyo.kind({
 			}
 		}
 	},
-	
+
 	/**
 	 * Return an associative array of all pending notification<br />
 	 * Key = Uid<br />
@@ -217,7 +217,7 @@ enyo.kind({
 	 */
 	getPendingNotification: function() {
 		var result = {};
-		
+
 		for(var tour=0,size=this.pending.length;tour<size;tour) {
 			result[this.pending[tour].uid] = this.pending[tour].notification;
 		}

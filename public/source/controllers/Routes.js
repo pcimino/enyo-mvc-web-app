@@ -90,7 +90,6 @@ enyo.kind({
   ]
   , loadBodyPage: function (kindByName, renderFlag, skipWaterfallFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
-        console.log("loadBodyPage " + kindByName);
         var owner = mvcApp.view.$.bodyContainer;
         owner.destroyClientControls();
         mvcApp.view.body = owner.createComponent({kind: kindByName, name:'bodyPage'});
@@ -102,83 +101,63 @@ enyo.kind({
     if (!skipWaterfallFlag) {mvcApp.waterfall('onIsUserValidated');}
   }
   , logout: function () {
-      console.log("logout router");
       mvcApp.data = {};
       mvcApp.waterfall('onLogout');
       return true;
   }
   , adminSystemMessage: function () {
-      console.log("adminSystemMessage router");
       this.loadBodyPage('Bootplate.AdminSystemMessagePage', false);
   }
   , adminUserManagementInfo: function () {
-      console.log("userManagementInfo router");
       this.loadBodyPage('Bootplate.AdminUserManagementPage', false);
   }
   , message: function () {
-      console.log("message router");
       this.loadBodyPage('Bootplate.MessageCenterPage', true);
   }
   , sendMessage: function () {
-      console.log("sendMessage router");
       this.loadBodyPage('Bootplate.SendMessagePage', true);
   }
   , updateMyUserInfo: function () {
-      console.log("updateMyUserInfo router");
       this.loadBodyPage('Bootplate.UpdateMyUserInfoPage', false);
   }
   , updateMyPassword: function () {
-      console.log("updateMyPassword router");
       this.loadBodyPage('Bootplate.UpdateMyPasswordPage', false);
   }
   , home: function () {
-    console.log("home router ");
       this.loadBodyPage('Bootplate.HomePage', false);
   }
   // this is triggered by the isUserValidated event, purpose is to avoid loops
   , homeEvent: function () {
-    console.log("homeEvent router ");
       this.loadBodyPage('Bootplate.HomePage', false, true);
   }
   , checkLogin: function () {
-    //  console.log("checkLogin router");
-    // TODO if logged in go to /home, otherwise to /login
       this.loadBodyPage('Bootplate.LoginPage', true);
   }
   , login: function () {
-      console.log("login router");
       this.loadBodyPage('Bootplate.LoginPage', true);
   }
   // this is triggered by the isUserValidated event, purpose is to avoid loops
   , loginEvent: function () {
-      console.log("loginEvent router");
       this.loadBodyPage('Bootplate.LoginPage', true, true);
   }
   , userSignup: function () {
-      console.log("userSignup router");
       this.loadBodyPage('Bootplate.UserSignupPage', false);
   }
   , forgotPassword: function () {
-      console.log("forgotPassword router");
       this.loadBodyPage('Bootplate.VerifyResetRequestPage', false);
   }
   , resendEmail: function () {
-      console.log("resendEmail router");
       this.loadBodyPage('Bootplate.VerifyResetRequestPage', false);
   }
   , publicBroadcastMessage: function () {
-      console.log("publicBroadcastMessage router");
       this.loadBodyPage('Bootplate.PublicMessageDisplayPage', true);
   }
   , authenticate: function () {
-      console.log("authenticate router");
       this.loadBodyPage('Bootplate.HomePage', true);
   }
   , contactPublic: function () {
-      console.log("contactPublic router");
       this.loadBodyPage('Bootplate.ContactPage', true);
   }
-
 });
 
 

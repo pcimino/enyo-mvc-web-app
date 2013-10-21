@@ -49,7 +49,6 @@ enyo.kind({
         // display the authenticated home page
         mvcApp.setAuthView();
       } else {
-        console.log(inEvent.message);
         mvcApp.showWarningMessage("Login failed", inEvent.message);
       };
   }
@@ -60,7 +59,6 @@ enyo.kind({
   }
   // Forgot Passsword Result
   , forgotPasswordResult: function(inSender, inEvent) {
-    console.log("forgotPasswordResult")
     if (inEvent.email && inEvent.email.length) {
       mvcApp.broadcast.displayClass = 'success';
 
@@ -82,7 +80,6 @@ enyo.kind({
   }
   // Resend  Verification Email Result
   , resendEmailResult: function(inSender, inEvent) {
-    console.log("PublicController resendEmailResult ");
     if (inEvent.email && inEvent.email.length) {
       mvcApp.broadcast.displayClass = 'success';
       var emailAddr = inEvent.email;
@@ -98,13 +95,11 @@ enyo.kind({
   }
   // UserSignup
   , userSignup: function(inSender, inEvent) {
-    console.log("PublicController userSignup ");
       mvcApp.data.createNewUser = true;
       this.checkUsername(inSender, inEvent);
   }
   // UserSignupResult
   , userSignupResult: function(inSender, inEvent) {
-    console.log("PublicController UserSignupResult");
       if (inEvent.userdata && inEvent.userdata.hashed_password) {
         mvcApp.broadcast.displayClass = 'success';
         mvcApp.broadcast.message = "You have successfully created your account " + mvcApp.data.username +". Please check your " + mvcApp.data.email + " email account to verify this address. You will then be able to login.";

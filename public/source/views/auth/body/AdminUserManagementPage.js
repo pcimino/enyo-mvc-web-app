@@ -277,7 +277,6 @@ enyo.ready(function () {
     }
     , bindDetailData: function(bindOwner) {
        bindOwner.setData = function(inSender, inEvent) {
-         console.log('bindOwner ' + inSender.name + ":" + mvcApp.adminUserDetails[inSender.name]);
          mvcApp.adminUserDetails[inSender.name] = this.value;
          return true;
        };

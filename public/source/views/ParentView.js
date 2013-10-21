@@ -40,27 +40,29 @@ enyo.kind({
       this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
   }
   , systemMessage: function(inSender, inEvent) {
-      this.notification.sendNotification({
+    if (inEvent.title && inEvent.message) {
+       this.notification.sendNotification({
 					title: inEvent.title
 					, message: inEvent.message
-					, icon: 'img/alert-yellow-64.png'
+					, icon: 'img/alert-yellow-32.png'
 					, theme: "notification.PageCurl"
           , messageId: inEvent.messageId
 					, stay: true
 					, duration: 10
 				}, enyo.bind(this, "archiveSystemMessage"));
+    }
   }
   , showErrorMessage: function(inSender, inEvent) {
-      this.showMessage(inEvent.title, inEvent.message, 'img/alert-red-64.png', 'notification.Pop');
+      this.showMessage(inEvent.title, inEvent.message, 'img/alert-red-32.png', 'notification.Pop');
   }
   , showWarningMessage: function(inSender, inEvent) {
-      this.showMessage(inEvent.title, inEvent.message, 'img/alert-yellow-64.png', 'notification.Pop');
+      this.showMessage(inEvent.title, inEvent.message, 'img/alert-yellow-32.png', 'notification.Pop');
   }
   , showInfoMessage: function(inSender, inEvent) {
-      this.showMessage(inEvent.title, inEvent.message, 'img/alert-green-64.png', 'notification.Pop');
+      this.showMessage(inEvent.title, inEvent.message, 'img/alert-green-32.png', 'notification.Pop');
   }
   , showMessage: function(title, message, icon, theme) {
-       this.notificationPop.sendNotification({
+      this.notificationPop.sendNotification({
 					title: title
 					, message: message
 					, icon: icon
@@ -71,8 +73,10 @@ enyo.kind({
   }
   , archiveSystemMessage: function(inSender, inEvent) {
         // archive the system message
-        var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onShowSystemMessage'});
-        ajaxArchiveSysMessage.makeRequest({systemMessageId: inSender.messageId});
+        if (inSender.messageId) {
+          var ajaxArchiveSysMessage = new AJAX.ArchiveSystemMessage({owner:this, fireEvent:'onShowSystemMessage'});
+          ajaxArchiveSysMessage.makeRequest({systemMessageId: inSender.messageId});
+        }
   }
   , dummy: function(inSender, inEvent) {
 
@@ -94,6 +98,8 @@ enyo.kind({
       return true;
   }
 });
+
+
 
 
 

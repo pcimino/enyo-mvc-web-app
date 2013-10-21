@@ -11,7 +11,6 @@ enyo.kind({
   , method:'PUT'
   , rest:'/api/v1/messageThread'
   , processResponse: function(inSender, inResponse) {
-      console.log('AJAX.UpdateMessageThread processResponse ');
       if (inResponse) {
        if (this.fireEvent) {
          this.owner.bubble(this.fireEvent, inResponse);
@@ -29,7 +28,6 @@ enyo.kind({
 
         this.owner.bubble(event, {response: inSender.xhrResponse, title: titleText, message: messageText});
       }
-      // console.log(JSON.stringify(inResponse, null, 2));
   }
 });
 

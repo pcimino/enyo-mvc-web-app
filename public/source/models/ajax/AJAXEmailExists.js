@@ -9,8 +9,6 @@ enyo.kind({
   , rest:'/api/v1/user/email/exists'
   , constructor: function(props) {
       this.inherited(arguments);
-      // properties mapped to published attributes get set
-      // console.log(this.fireEvent)
   }
   , processResponse: function(inSender, inResponse) {
       this.owner.bubble(this.fireEvent, {exists: false, response: inSender.xhrResponse, message: 'Email is available.'});

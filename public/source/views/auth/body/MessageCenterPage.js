@@ -143,7 +143,6 @@ enyo.ready(function() {
     }
     , messageThreadTap: function(inSender, inEvent) {
         var messageThread = inSender.rows[inEvent.index].source;
-        console.log('messageThreadTap ', messageThread )
 
         // show the message dialog
         this.$.messagingDialog.setupDialog(messageThread);
@@ -153,7 +152,6 @@ enyo.ready(function() {
     // System messages
     /////////////////////
     , checkboxChanged : function() {
-        console.log('Checkbox value ' + this.$.showArchivedCheckbox.getChecked());
         // reload the message list
         this.getSystemMessagesUserScreen();
     }

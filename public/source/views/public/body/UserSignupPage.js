@@ -19,9 +19,6 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
     }
-    , inputChange: function(inSender, inEvent){
-        console.log("inputChange", inSender.getValue(), inEvent);
-    }
     , usernameStatus: function(inSender, inEvent) {
         // more kludging
         if (inEvent.exists == 'reset') {

@@ -15,7 +15,6 @@ enyo.kind({
           this.owner.bubble(this.fireEvent, {dbAvailable: false});
         }
       }
-      // console.log(JSON.stringify(inResponse, null, 2));
   }
 });
 
