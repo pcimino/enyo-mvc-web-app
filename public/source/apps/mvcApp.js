@@ -20,6 +20,7 @@ enyo.kind({
         , sessionCheckInterval: 10000
         , sessionIntervalKey: ''
         , debugNetworkCalls: false
+        , showDeveloperTools: true
     }
     , controllers: [
         {  name: "publicController",
@@ -93,6 +94,7 @@ enyo.kind({
       mvcApp.authView.waterfall('onSetupGravatar');
   }
 });
+
 
 
 
