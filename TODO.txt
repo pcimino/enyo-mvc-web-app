@@ -1,4 +1,10 @@
 
+success/fail message on password and user info updates, user info getting wiped from memory
+
+user signup page format
+
+admin page update user not passing id
+
 Terms and conditions
 
 refactor project structure more inline with mvc bootplate
