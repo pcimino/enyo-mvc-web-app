@@ -1,12 +1,13 @@
-[submodule "public/enyo"]
-	path = public/enyo
+
+[submodule "enyo"]
+	path = enyo
 	url = https://git@github.com/enyojs/enyo.git
-[submodule "public/lib/layout"]
-	path = public/lib/layout
+[submodule "lib/layout"]
+	path = lib/layout
 	url = https://git@github.com/enyojs/layout.git
-[submodule "public/lib/onyx"]
-	path = public/lib/onyx
+[submodule "lib/onyx"]
+	path = lib/onyx
 	url = https://git@github.com/enyojs/onyx.git
-[submodule "public/lib/gravatar"]
-	path = public/lib/gravatar
+[submodule "lib/gravatar"]
+	path = lib/gravatar
 	url = https://github.com/pcimino/Gravatar.git
