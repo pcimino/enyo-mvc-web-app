@@ -76,9 +76,7 @@ enyo.ready(function() {
     }
     , checkRemainingSessionTime: function(inSender, inEvent) {
         mvcApp.sessionTimeRemaining -= mvcApp.sessionCheckInterval;
-        console.log("Tick " + mvcApp.sessionTimeRemaining)
         if (mvcApp.sessionTimeRemaining <= 60000) {
-        console.log("Tock");
             clearInterval(mvcApp.sessionIntervalKey);
             this.displayTimeout();
         }

@@ -13,6 +13,9 @@ enyo.depends(
   , "AJAXArchiveSystemMessage.js"
   , "AJAXDeleteSystemMessage.js"
   , "AJAXSendSystemMessage.js"
+  , "AJAXArchiveTermsAndConditions.js"
+  , "AJAXDeleteTermsAndConditions.js"
+  , "AJAXSendTermsAndConditions.js"
   , "AJAXSendMessage.js"
   , "AJAXEmailExists.js"
   , "JSONPParent.js"
@@ -25,6 +28,7 @@ enyo.depends(
   , "JSONPGetMessageThreads.js"
   , "JSONPGetUserList.js"
   , "JSONPGetSessionTimeout.js"
+  , "JSONPGetTermsAndConditions.js"
 );
 
 

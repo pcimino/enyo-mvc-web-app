@@ -69,6 +69,9 @@ enyo.kind({
     , { path: '/adminSystemMessage'
         , handler: 'adminSystemMessage'
     }
+    , { path: '/adminTermsAndConditions'
+        , handler: 'adminTermsAndConditions'
+    }
     , { path: '/home'
         , handler: 'home'
     }
@@ -110,6 +113,9 @@ enyo.kind({
   }
   , adminSystemMessage: function () {
       this.loadBodyPage('Bootplate.AdminSystemMessagePage');
+  }
+  , adminTermsAndConditions: function () {
+      this.loadBodyPage('Bootplate.AdminTermsAndConditionsPage');
   }
   , adminUserManagementInfo: function () {
       this.loadBodyPage('Bootplate.AdminUserManagementPage');
@@ -180,3 +186,4 @@ enyo.kind({
 
 
 
+

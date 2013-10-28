@@ -41,6 +41,7 @@ enyo.kind({
       /** Begin Admin navs, need a way to show/hide this*/
       this.createLinkButton(this.adminNavToolbar, 'adminUserManagementInfo', 'Manage User Info');
       this.createLinkButton(this.adminNavToolbar, 'adminSystemMessage', 'System Message');
+      this.createLinkButton(this.adminNavToolbar, 'adminTermsAndConditions', 'Terms & Conditions');
   }
   , showAdminOptions: function() {
       if (this.adminNavToolbar) {

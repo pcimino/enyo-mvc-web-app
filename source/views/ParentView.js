@@ -44,7 +44,7 @@ enyo.kind({
        this.notification.sendNotification({
 					title: inEvent.title
 					, message: inEvent.message
-					, icon: 'img/alert-yellow-32.png'
+					, icon: 'assets/img/alert-yellow-32.png'
 					, theme: "notification.PageCurl"
           , messageId: inEvent.messageId
 					, stay: true
@@ -53,13 +53,13 @@ enyo.kind({
     }
   }
   , showErrorMessage: function(inSender, inEvent) {
-      this.showMessage(inEvent.title, inEvent.message, 'img/alert-red-32.png', 'notification.Pop');
+      this.showMessage(inEvent.title, inEvent.message, 'assets/img/alert-red-32.png', 'notification.Pop');
   }
   , showWarningMessage: function(inSender, inEvent) {
-      this.showMessage(inEvent.title, inEvent.message, 'img/alert-yellow-32.png', 'notification.Pop');
+      this.showMessage(inEvent.title, inEvent.message, 'assets/img/alert-yellow-32.png', 'notification.Pop');
   }
   , showInfoMessage: function(inSender, inEvent) {
-      this.showMessage(inEvent.title, inEvent.message, 'img/alert-green-32.png', 'notification.Pop');
+      this.showMessage(inEvent.title, inEvent.message, 'assets/img/alert-green-32.png', 'notification.Pop');
   }
   , showMessage: function(title, message, icon, theme) {
       this.notificationPop.sendNotification({

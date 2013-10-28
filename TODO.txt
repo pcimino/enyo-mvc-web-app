@@ -25,6 +25,7 @@ auto logout when session done?
 forced logout warning pop
 
 
+http://www.slideshare.net/RoySutton/html5-apps-write-once-deploy-anywhere-with-enyo
 
 JS Utils: http://ntt.cc/2008/05/10/over-10-useful-javascript-regular-expression-functions-to-improve-your-web-applications-efficiency.html
 
@@ -61,3 +62,4 @@ git rm –cached ./public/lib/socket.io
 
 
 
+
