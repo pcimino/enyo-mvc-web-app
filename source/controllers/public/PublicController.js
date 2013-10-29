@@ -26,7 +26,6 @@ enyo.kind({
   , handlers: {
      onLogin: 'login'
      , onLoginResult: 'loginResult'
-     , onLoadTermsAndConditionsResult:'loadTermsAndConditionsResult'
      , onForgotPassword: 'forgotPassword'
      , onForgotPasswordResult: 'forgotPasswordResult'
      , onResendEmail: 'resendEmail'
@@ -52,13 +51,6 @@ enyo.kind({
       } else {
         mvcApp.showWarningMessage("Login failed", inEvent.message);
       };
-  }
-  , loadTermsAndConditionsResult: function(inSender, inEvent) {
-    console.log('AAAAAAAAAAAAAAAA')
-      mvcApp.data.terms = inEvent.length;
-      if (mvcApp.data.terms && mvcApp.data.terms > 0) {
-        mvcApp.controllers.routes.trigger({location:'/termsAndConditions'});
-      }
   }
   // ForgotPassword
   , forgotPassword: function(inSender, inEvent) {
@@ -136,6 +128,8 @@ enyo.kind({
       }
   }
 });
+
+
 
 
 
