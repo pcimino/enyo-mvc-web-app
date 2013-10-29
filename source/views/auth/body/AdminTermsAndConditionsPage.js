@@ -103,7 +103,6 @@ enyo.ready(function() {
               , {content: inEvent.context.message}
             ]}
             , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
-            , {kind: "onyx.Button", content: "Delete", ontap: 'deleteMessage', name: 'deleteMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
     , archiveMessage: function(inSender, inEvent) {
@@ -112,14 +111,6 @@ enyo.ready(function() {
         if (objId) {
           var ajaxArchiveSysMessage = new AJAX.ArchiveTermsAndConditions({owner:this, fireEvent:'onGetTermsAndConditionsAdminScreen', errorEvent:'onErrorTermsAndConditions'});
           ajaxArchiveSysMessage.makeRequest({termsAndConditionsId: objId});
-        }
-    }
-    , deleteMessage: function(inSender, inEvent) {
-        var objId = (inSender.id.substring(inSender.id.indexOf('deleteMessage_') + ("deleteMessage_").length)).trim();
-        // delete the system message
-        if (objId) {
-          var ajaxDeleteSysMessage = new AJAX.DeleteTermsAndConditions({owner:this, fireEvent:'onGetTermsAndConditionsAdminScreen', errorEvent:'onErrorTermsAndConditions'});
-          ajaxDeleteSysMessage.makeRequest({termsAndConditionsId: objId});
         }
     }
     , sendSysMessage: function(inSender, inEvent) {

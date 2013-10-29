@@ -14,7 +14,6 @@ enyo.depends(
   , "AJAXDeleteSystemMessage.js"
   , "AJAXSendSystemMessage.js"
   , "AJAXArchiveTermsAndConditions.js"
-  , "AJAXDeleteTermsAndConditions.js"
   , "AJAXSendTermsAndConditions.js"
   , "AJAXSendMessage.js"
   , "AJAXEmailExists.js"
