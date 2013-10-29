@@ -7,6 +7,7 @@ enyo.depends(
   , "AdminSystemMessagePage.js"
   , "MessageCenterPage.js"
   , "SendMessagePage.js"
+  , "TermsAndConditionsPage.js"
 );
 
 
