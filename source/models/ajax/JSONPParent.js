@@ -53,6 +53,8 @@ enyo.kind({
       }
       if (mvcApp.debugNetworkCalls) {
         console.log('JSONP.Parent processResponse ' + this.method + ":" + this.rest);
+        console.log(this.fireEvent);
+        console.log(this.errorEvent);
         console.log(inResponse);
         console.log(inSender.xhrResponse);
       }
@@ -60,7 +62,7 @@ enyo.kind({
   , processError: function(inSender, inResponse) {
       this.processErrorMessage(inSender, inResponse, 'System Error', 'System Error');
       if (mvcApp.debugNetworkCalls) {
-        console.log('JSONP.Parent processError ' + this.method + ":" + this.rest);
+        console.log('JSONP.Parent processError ' + "GET:" + this.rest);
         console.log(inResponse);
         console.log(inSender.xhrResponse);
       }
@@ -77,6 +79,8 @@ enyo.kind({
 
       if (mvcApp.debugNetworkCalls) {
         console.log('JSONP.Parent processErrorMessage ' + this.method + ":" + this.rest);
+        console.log(this.fireEvent);
+        console.log(this.errorEvent);
         console.log('JSONP.Parent processErrorMessage ' + titleText + ":" + messageText);
         console.log(JSON.stringify(responseContent, null, 2));
       }
@@ -95,3 +99,4 @@ enyo.kind({
 
 
 
+

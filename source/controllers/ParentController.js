@@ -32,6 +32,8 @@ enyo.kind({
      , onCheckUsernameResult: 'checkUsernameResult'
      , onCheckEmail: 'checkEmail'
      , onCheckEmailResult: 'checkEmailResult'
+     , onLoadTermsAndConditions:'loadTermsAndConditions'
+     , onLoadTermsAndConditionsResult:'loadTermsAndConditionsResult'
   }
   // see if the user is already logged in
   //TODO Causing a loop, since the result can cause the /home or /login call, which calls routes which calls this...hmmmmm
@@ -69,6 +71,17 @@ enyo.kind({
           mvcApp.controllers.routes.trigger({location:'/loginEvent'});
           mvcApp.showWarningMessage("Session Ended", "Your session has expired, please login.");
         }
+      }
+  }
+  , loadTermsAndConditions: function() {
+        // retrieve terms and conditions
+        var jsonpGetSysMessages = new JSONP.GetTermsAndConditions({owner:this, fireEvent:'onLoadTermsAndConditionsResult', errorEvent:'onErrorTermsAndConditions'});
+        jsonpGetSysMessages.makeRequest({archiveFlag: false});
+  }
+  , loadTermsAndConditionsResult: function(inSender, inEvent) {
+      mvcApp.data.terms = inEvent.length;
+      if (mvcApp.data.terms && mvcApp.data.terms > 0) {
+        mvcApp.controllers.routes.trigger({location:'/termsAndConditions'});
       }
   }
   , reloadUser: function(inSender, inEvent) {
@@ -128,6 +141,8 @@ enyo.kind({
       return true;
   }
 });
+
+
 
 
 

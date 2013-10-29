@@ -109,26 +109,15 @@ enyo.kind({
     // if they try to navigate to a page with out proper access, they get redirected
     if (!skipWaterfallFlag) {
       mvcApp.waterfall('onIsUserValidated');
-      this.checkTermsAndConditions();
-
     }
     // if the user has terms and conditions, they must accept before navigating site
-      console.log(mvcApp.isAuthView() )
-      console.log(mvcApp.isAuthView() && mvcApp.data)
-      console.log(mvcApp.isAuthView() && mvcApp.data && mvcApp.data.terms )
-      console.log(mvcApp.isAuthView() && mvcApp.data && mvcApp.data.terms && mvcApp.data.terms > 0 && kindByName != 'Bootplate.TermsAndConditionsPage')
-      console.log(mvcApp.data)
-      console.log(mvcApp.data.terms )
-      console.log(kindByName != 'Bootplate.TermsAndConditionsPage')
-      if (mvcApp.isAuthView() && mvcApp.data && kindByName != 'Bootplate.TermsAndConditionsPage') {
-        this.checkTermsAndConditions();
+    if (mvcApp.isAuthView() && mvcApp.data && kindByName != 'Bootplate.TermsAndConditionsPage') {
+      if (mvcApp.data.terms && mvcApp.data.terms > 0) {
+        mvcApp.controllers.routes.trigger({location:'/termsAndConditions'});
+      } else {
+        mvcApp.waterfall('onLoadTermsAndConditions');
       }
-  }
-  , checkTermsAndConditions: function() {
-        // retrieve terms and conditions
-    console.log('here')
-        var jsonpGetSysMessages = new JSONP.GetTermsAndConditions({owner:this, fireEvent:'onLoadTermsAndConditionsResult', errorEvent:'onErrorTermsAndConditions'});
-        jsonpGetSysMessages.makeRequest({archiveFlag: false});
+    }
   }
   , logout: function () {
       mvcApp.data = {};
@@ -199,6 +188,8 @@ enyo.kind({
   }
 
 });
+
+
 
 
 
