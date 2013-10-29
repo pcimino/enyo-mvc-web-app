@@ -67,21 +67,32 @@ enyo.ready(function() {
               , {content: inEvent.context.subject}
               , {content: "Message: ", classes:'list-item-margin bold-text'}
               , {content: inEvent.context.message}
+              , {content: "Accepted on: ", classes:'list-item-margin bold-text'}
+              , {content: inEvent.context.acceptedDate}
             ]}
-            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+          , {kind: "onyx.Button", content: "Accept", ontap: 'archiveMessage', accepted:inEvent.context.acceptedDate, id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
     , archiveMessage: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessage_') + ("archiveMessage_").length)).trim();
+      console.log(objId)
         // archive the system message
         if (objId) {
+          if (!inSender.accepted) {
+            console.log(1)
           var ajaxArchiveSysMessage = new AJAX.ArchiveTermsAndConditions({owner:this, fireEvent:'onGetTermsAndConditionsScreen', errorEvent:'onErrorTermsAndConditions'});
           ajaxArchiveSysMessage.makeRequest({termsAndConditionsId: objId});
+          } else {
+            console.log(2)
+            this.getTermsAndConditionsScreen();
+          }
         }
     }
 
   });
 });
+
+
 
 
 
