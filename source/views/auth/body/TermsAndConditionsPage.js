@@ -1,56 +1,33 @@
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
-* MessagePage kind,
-* used to create and send messages between users
+* This TermsAndConditionsPage kind,
 *
 * - setupPageBody() Impemented method
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.MessageCenterPage"
+    name: "Bootplate.TermsAndConditionsPage"
     , kind: "Bootplate.ParentPage"
-    , id: 'messagePage'
+    , id: 'termsAndConditionsPage'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
       listRef:''
     }
     , handlers: {
-        onGetTermsAndConditionssUserScreen: 'getTermsAndConditionssUserScreen'
-        , onLoadTermsAndConditionssUserScreen: 'loadTermsAndConditionssUserScreen'
+       onGetTermsAndConditionsScreen: 'getTermsAndConditionsScreen'
+      , onLoadTermsAndConditionsScreen: 'loadTermsAndConditionsScreen'
     }
+
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
     }
     , setupPageBody: function(owner) {
-        this.createComponent(
-          { name: "messagingDialog"
-            , kind: "Bootplate.MessagingDialog"
-            , owner: this
-          }
-        );
-        this.createComponent({content:'Send a New Message', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
-        this.createComponent({ kind: "onyx.Button"
-            , content: "Send a Message"
-            , name: "SendNewMessage"
-            , classes: "onyx-blue button-link "
-            , style: "margin-left:10%; "
-            , owner: owner
-            , tag: 'a'
-            , attributes: {
-              href: '#/sendMessage'
-            }
-        });
-        this.insertBreak(owner);
+        this.createComponent({content:'Terms & Conditions', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
 
         this.insertBreak(this);
-
-    /////////////////////
-    // T&C messages
-    /////////////////////
-        this.createComponent({content:'Terms & Conditions', style: "margin-left: 10%;margin-bottom: 10px;padding-top: 30px;", owner:this});
-        this.createComponent({kind: enyo.Checkbox, name: 'showArchivedCheckbox', onActivate: 'checkboxChanged', content:'Show Archived Messages', style: "margin-left: 10%;margin-bottom: 10px;", owner:this});
+        this.createComponent({kind: enyo.Checkbox, name: 'showArchivedCheckbox', onActivate: 'checkboxChanged', content:'Show Accepted T&Cs', style: "margin-left: 10%;margin-bottom: 10px;", owner:this});
         this.createComponent({name: "termsAndConditionsList"
             , kind: "macfja.DynamicList"
             , defaultRowHeight: 20
@@ -59,29 +36,27 @@ enyo.ready(function() {
             , classes:"form-input-box form-top-margin"
             , owner: this
           });
-          owner.render();
-
+        owner.render();
         // populate the list
-        this.getTermsAndConditionssUserScreen();
+        this.getTermsAndConditionsScreen();
     } // end setupPageBody
-    /////////////////////
-    // T&C messages
-    /////////////////////
     , checkboxChanged : function() {
         // reload the message list
-        this.getTermsAndConditionssUserScreen();
+        this.getTermsAndConditionsScreen();
     }
-    , getTermsAndConditionssUserScreen: function() {
+    , getTermsAndConditionsScreen: function() {
         // load the system message
-        var jsonpGetSysMessages = new JSONP.GetTermsAndConditionss({owner:this, fireEvent:'onLoadTermsAndConditionssUserScreen', errorEvent:'onErrorTermsAndConditionss'});
+        var jsonpGetSysMessages = new JSONP.GetTermsAndConditions({owner:this, fireEvent:'onLoadTermsAndConditionsScreen', errorEvent:'onErrorTermsAndConditions'});
         jsonpGetSysMessages.makeRequest({archiveFlag: this.$.showArchivedCheckbox.getChecked()});
     }
-    // Display system messages
-    , loadTermsAndConditionssUserScreen: function(inSender, inEvent) {
+    // Dsiplay system messages
+    , loadTermsAndConditionsScreen: function(inSender, inEvent) {
         this.$.termsAndConditionsList.setItems(inEvent);
+        mvcApp.data.terms = inEvent.length;
         return true;
     }
     , setupRow: function(inSender, inEvent) {
+        inEvent.template="<div style=\"border: 2px solid #000; font-size: 20px; padding: 10px;\">{$label}</div>";
         inEvent.template={components: [
           { kind: "FittableColumns", components: [
               {content: "Created: ", classes:'list-item-margin bold-text'}
@@ -99,9 +74,12 @@ enyo.ready(function() {
     , archiveMessage: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessage_') + ("archiveMessage_").length)).trim();
         // archive the system message
-        var ajaxArchiveSysMessage = new AJAX.ArchiveTermsAndConditions({owner:this, fireEvent:'onGetTermsAndConditionssUserScreen', errorEvent:'onErrorTermsAndConditionss'});
-        ajaxArchiveSysMessage.makeRequest({termsAndConditionsId: objId});
+        if (objId) {
+          var ajaxArchiveSysMessage = new AJAX.ArchiveTermsAndConditions({owner:this, fireEvent:'onGetTermsAndConditionsScreen', errorEvent:'onErrorTermsAndConditions'});
+          ajaxArchiveSysMessage.makeRequest({termsAndConditionsId: objId});
+        }
     }
+
   });
 });
 
@@ -122,5 +100,4 @@ enyo.ready(function() {
 
 
 
-
-
+

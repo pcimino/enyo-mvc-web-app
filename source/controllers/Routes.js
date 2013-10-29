@@ -72,6 +72,9 @@ enyo.kind({
     , { path: '/adminTermsAndConditions'
         , handler: 'adminTermsAndConditions'
     }
+    , { path: '/termsAndConditions'
+        , handler: 'termsAndConditions'
+    }
     , { path: '/home'
         , handler: 'home'
     }
@@ -104,7 +107,28 @@ enyo.kind({
     }
     // every navigation check the user validation
     // if they try to navigate to a page with out proper access, they get redirected
-    if (!skipWaterfallFlag) {mvcApp.waterfall('onIsUserValidated');}
+    if (!skipWaterfallFlag) {
+      mvcApp.waterfall('onIsUserValidated');
+      this.checkTermsAndConditions();
+
+    }
+    // if the user has terms and conditions, they must accept before navigating site
+      console.log(mvcApp.isAuthView() )
+      console.log(mvcApp.isAuthView() && mvcApp.data)
+      console.log(mvcApp.isAuthView() && mvcApp.data && mvcApp.data.terms )
+      console.log(mvcApp.isAuthView() && mvcApp.data && mvcApp.data.terms && mvcApp.data.terms > 0 && kindByName != 'Bootplate.TermsAndConditionsPage')
+      console.log(mvcApp.data)
+      console.log(mvcApp.data.terms )
+      console.log(kindByName != 'Bootplate.TermsAndConditionsPage')
+      if (mvcApp.isAuthView() && mvcApp.data && kindByName != 'Bootplate.TermsAndConditionsPage') {
+        this.checkTermsAndConditions();
+      }
+  }
+  , checkTermsAndConditions: function() {
+        // retrieve terms and conditions
+    console.log('here')
+        var jsonpGetSysMessages = new JSONP.GetTermsAndConditions({owner:this, fireEvent:'onLoadTermsAndConditionsResult', errorEvent:'onErrorTermsAndConditions'});
+        jsonpGetSysMessages.makeRequest({archiveFlag: false});
   }
   , logout: function () {
       mvcApp.data = {};
@@ -116,6 +140,9 @@ enyo.kind({
   }
   , adminTermsAndConditions: function () {
       this.loadBodyPage('Bootplate.AdminTermsAndConditionsPage');
+  }
+  , termsAndConditions: function () {
+      this.loadBodyPage('Bootplate.TermsAndConditionsPage');
   }
   , adminUserManagementInfo: function () {
       this.loadBodyPage('Bootplate.AdminUserManagementPage');
@@ -172,6 +199,8 @@ enyo.kind({
   }
 
 });
+
+
 
 
 

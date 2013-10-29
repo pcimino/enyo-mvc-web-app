@@ -24,8 +24,6 @@ enyo.ready(function() {
     , kind: "Bootplate.ParentController"
     , handlers: {
         onLogout: 'logout'
-        , onUserDetails: 'userDetails'
-        , onUserDetailsResult: 'userDetailsResult'
         , onUserUpdate: 'updateuserInfo'
         , onUserUpdateResult: 'userUpdateResult'
         , onCheckNewUsername: 'checkNewUsername'
@@ -46,17 +44,6 @@ enyo.ready(function() {
             mvcApp.setPublicView();
 		    }, 300);
         clearInterval(mvcApp.sessionIntervalKey);
-    }
-    , userDetails: function(inSender, inEvent) {
-        // load the user's information
-console.log('AAAAAAAAAAAAAAAAAA ParentController.userDetails is this ever called?')
-        var ajaxUserDetails = new AJAX.UserDetails({owner:this, fireEvent:'onUserDetailsResult'});
-        ajaxUserDetails.makeRequest({id:inEvent.id});
-    }
-    , userDetailsResult: function(inSender, inEvent) {
-        if (inEvent.userDetails) {
-          mvcApp.data.user = inEvent.userDetails;
-        }
     }
     , updateuserInfo: function(inSender, inEvent) {
         // load the user's information
@@ -120,3 +107,4 @@ console.log('AAAAAAAAAAAAAAAAAA ParentController.userDetails is this ever called
 
 
 
+

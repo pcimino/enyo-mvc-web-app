@@ -3,16 +3,12 @@ success/fail message on password and user info updates, user info getting wiped 
 
 user signup page format
 
-admin page update user not passing id
 
 Terms and conditions
 
-refactor project structure more inline with mvc bootplate
 
 
-Features I'd like to add:
-- Passport
-- Set session to 'forever' if remember me is used
+
 
 
 quick start modify admin role
@@ -46,6 +42,8 @@ http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updatin
 
 git submodule add -f https://github.com/LearnBoost/socket.io.git ./public/lib/socket.io
 git rm –cached ./public/lib/socket.io
+
+
 
 
 
