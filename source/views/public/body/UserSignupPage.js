@@ -10,10 +10,12 @@ enyo.ready(function() {
     , handlers: {
        onUsernameStatus: 'usernameStatus'
       , onEmailStatus: 'emailStatus'
+      , onShowBetaSignup: 'showBetaSignup'
     }
     , published: {
-      usernameRef : {}
-      , emailRef : {}
+        usernameRef : {}
+        , emailRef : {}
+        , betaCode : {}
     }
     // This checks to see if the user is allowed on this page
     , rendered: function() {
@@ -76,11 +78,12 @@ enyo.ready(function() {
       );
       this.bindInputData(owner.$.username);
       // TODO figure out and clean this up
-      // Why doesn't the "handlers : {}"" definition above work?
+      // Why doesn't the "handlers : {}" definition above work?
       // presumably the ownership chain on the dynamic components
       owner.handlers.onUsernameStatus = this.usernameStatus;
       owner.handlers.onEmailStatus = this.emailStatus;
 
+      this.insertBreak(owner);
       owner.createComponent(
         { name: "name"
           , kind: "onyx.Input"
@@ -91,6 +94,7 @@ enyo.ready(function() {
       );
       this.bindInputData(owner.$.name);
 
+      this.insertBreak(owner);
       this.emailRef = owner.createComponent(
         { name: "email"
           , kind: "onyx.Input"
@@ -118,6 +122,18 @@ enyo.ready(function() {
         }
       );
       this.bindInputData(owner.$.email);
+
+      this.insertBreak(owner);
+      this.betaCode = owner.createComponent(
+        { name: "betaCode"
+          , kind: "onyx.Input"
+          , classes:"form-input-box form-field-left-margin"
+          , placeholder: "Beta Invite Code"
+          , owner: owner
+          , showing: false
+        }
+      );
+      this.bindInputData(owner.$.betaCode);
 
       // bind taken care of in usernameChanged() : this.bindInputData(owner.$.username);
       this.insertBreak(owner);
@@ -162,6 +178,21 @@ enyo.ready(function() {
 
       owner.render();
     } // end setupPageBody
+    , showBetaSignup: function() {
+
+      console.log(11)
+        if (mvcApp.betaSiteSignup) {
+          console.log(22)
+          this.betaCode.show();
+        } else {
+          console.log(33)
+          this.betaCode.hide();
+        }
+      console.log(44)
+        this.betaCode.render();
+      console.log(55)
+
+    }
   });
 });
 
@@ -177,3 +208,6 @@ enyo.ready(function() {
 
 
 
+
+
+

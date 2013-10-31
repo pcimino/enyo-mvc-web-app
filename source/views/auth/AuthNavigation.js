@@ -15,6 +15,7 @@ enyo.kind({
   , handlers: {
       onShowAdminOptions: 'showAdminOptions'
       , onHideAdminOptions: 'hideAdminOptions'
+      , onUpdateBetaSettings: 'updateBetaSettings'
   }
   , published: {
       adminNavToolbar : ''
@@ -31,8 +32,6 @@ enyo.kind({
 
       this.createLinkButton(topNavToolbar, 'home', 'Home');
       this.createLinkButton(topNavToolbar, 'message', 'Message Center');
-
-
   }
   , setupBottomNav: function(owner) {
       this.inherited(arguments);
@@ -42,6 +41,8 @@ enyo.kind({
       this.createLinkButton(this.adminNavToolbar, 'adminUserManagementInfo', 'Manage User Info');
       this.createLinkButton(this.adminNavToolbar, 'adminSystemMessage', 'System Message');
       this.createLinkButton(this.adminNavToolbar, 'adminTermsAndConditions', 'Terms & Conditions');
+      this.createLinkButton(this.adminNavToolbar, 'betaSiteManagement', 'Manage Beta');
+      this.updateBetaSettings();
   }
   , showAdminOptions: function() {
       if (this.adminNavToolbar) {
@@ -54,7 +55,14 @@ enyo.kind({
         this.adminNavToolbar.hide();
         this.adminNavToolbar.render();
       }
-    }
+  }
+  , updateBetaSettings: function() {
+      if (mvcApp.betaTools == true || mvcApp.betaSiteSignup == true) {
+        this.adminNavToolbar.$.betaSiteManagement.show();
+      } else {
+        this.adminNavToolbar.$.betaSiteManagement.hide();
+      }
+  }
 });
 
 
@@ -70,3 +78,6 @@ enyo.kind({
 
 
 
+
+
+

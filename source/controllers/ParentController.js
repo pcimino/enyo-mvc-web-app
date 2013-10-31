@@ -34,6 +34,8 @@ enyo.kind({
      , onCheckEmailResult: 'checkEmailResult'
      , onLoadTermsAndConditions:'loadTermsAndConditions'
      , onLoadTermsAndConditionsResult:'loadTermsAndConditionsResult'
+     , onCheckBetaStatus: 'checkBetaStatus'
+     , onCheckBetaStatusResult: 'checkBetaStatusResult'
   }
   // see if the user is already logged in
   //TODO Causing a loop, since the result can cause the /home or /login call, which calls routes which calls this...hmmmmm
@@ -72,6 +74,7 @@ enyo.kind({
           mvcApp.showWarningMessage("Session Ended", "Your session has expired, please login.");
         }
       }
+      this.checkBetaStatus();
   }
   , loadTermsAndConditions: function() {
         // retrieve terms and conditions
@@ -140,7 +143,18 @@ enyo.kind({
       mvcApp.view.body.waterfall('onEmailStatus', inEvent);
       return true;
   }
+  , checkBetaStatus: function() {
+      var ajaxMessage = new JSONP.GetBetaStatus({owner:this, fireEvent:'onCheckBetaStatusResult', errorEvent:'onErrorSystemMessages'});
+      ajaxMessage.makeRequest({});
+  }
+  , checkBetaStatusResult: function(inSender, inEvent) {
+      mvcApp.setBetaSiteSignup(inEvent.status);
+  }
 });
+
+
+
+
 
 
 

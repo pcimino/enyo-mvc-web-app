@@ -9,6 +9,10 @@
 * - logout()
 * - message()
 * - systemMessage()
+* - adminSystemMessage()
+* - adminTermsAndConditions()
+* - termsAndConditions()
+* - betaSite()
 * - userManagementInfo()
 * - updateMyUserInfo()
 * - updateMyPassword()
@@ -22,6 +26,9 @@
 * - resendEmail()
 * - publicBroadcastMessage()
 * - authenticate()
+* - contactPublic()
+* - developer()
+* - betaSite
 */
 enyo.kind({
     kind: 'enyo.Router'
@@ -95,6 +102,9 @@ enyo.kind({
     }
     , { path: '/developer'
         , handler: 'developer'
+    }
+    , { path: '/betaSiteManagement'
+        , handler: 'betaSiteManagement'
     }
   ]
   , loadBodyPage: function (kindByName, skipWaterfallFlag) {
@@ -186,8 +196,13 @@ enyo.kind({
   , developer: function () {
       this.loadBodyPage('Bootplate.DeveloperPage');
   }
+  , betaSiteManagement: function () {
+      this.loadBodyPage('Bootplate.BetaSiteManagementPage');
+  }
 
 });
+
+
 
 
 
