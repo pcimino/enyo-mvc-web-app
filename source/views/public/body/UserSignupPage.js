@@ -179,19 +179,12 @@ enyo.ready(function() {
       owner.render();
     } // end setupPageBody
     , showBetaSignup: function() {
-
-      console.log(11)
         if (mvcApp.betaSiteSignup) {
-          console.log(22)
           this.betaCode.show();
         } else {
-          console.log(33)
           this.betaCode.hide();
         }
-      console.log(44)
         this.betaCode.render();
-      console.log(55)
-
     }
   });
 });

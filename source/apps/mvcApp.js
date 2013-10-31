@@ -96,15 +96,12 @@ enyo.kind({
       mvcApp.authView.waterfall('onSetupGravatar');
   }
   , betaSiteSignupChanged: function(oldVal) {
-        mvcApp.publicView.waterfall('onShowBetaSignup'); //TODO not working
-        mvcApp.publicView.waterfallDown('onShowBetaSignup'); //TODO not working
-        mvcApp.publicView.bubble('onShowBetaSignup'); //TODO not working
-        mvcApp.publicView.bubbleUp('onShowBetaSignup'); //TODO not working
+        mvcApp.view.waterfall('onShowBetaSignup');
 
-        mvcApp.authView.waterfall('onUpdateBetaSettings');
+        mvcApp.view.waterfall('onUpdateBetaSettings');
   }
   , betaToolsChanged: function(oldVal) {
-      mvcApp.authView.waterfall('onUpdateBetaSettings');
+      mvcApp.view.waterfall('onUpdateBetaSettings');
   }
 });
 

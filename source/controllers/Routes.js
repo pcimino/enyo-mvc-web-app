@@ -177,6 +177,11 @@ enyo.kind({
   }
   , userSignup: function () {
       this.loadBodyPage('Bootplate.UserSignupPage');
+
+      setTimeout(function() {
+            // Kludgey: Timing issue
+              mvcApp.view.waterfall('onShowBetaSignup');
+		    }, 300);
   }
   , forgotPassword: function () {
       this.loadBodyPage('Bootplate.VerifyResetRequestPage');
@@ -201,6 +206,8 @@ enyo.kind({
   }
 
 });
+
+
 
 
 

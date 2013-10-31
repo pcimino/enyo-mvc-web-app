@@ -108,6 +108,7 @@ enyo.kind({
         mvcApp.data.email = '';
         mvcApp.data.password = '';
         mvcApp.data.vPassword = '';
+        mvcApp.data.betaCode = '';
         mvcApp.controllers.routes.trigger({location:'/publicBroadcastMessage'});
       } else {
         mvcApp.showInfoMessage(inEvent.message);
