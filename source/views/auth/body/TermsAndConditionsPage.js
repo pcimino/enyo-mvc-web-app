@@ -18,7 +18,6 @@ enyo.ready(function() {
        onGetTermsAndConditionsScreen: 'getTermsAndConditionsScreen'
       , onLoadTermsAndConditionsScreen: 'loadTermsAndConditionsScreen'
     }
-
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
@@ -75,15 +74,12 @@ enyo.ready(function() {
     }
     , archiveMessage: function(inSender, inEvent) {
         var objId = (inSender.id.substring(inSender.id.indexOf('archiveMessage_') + ("archiveMessage_").length)).trim();
-      console.log(objId)
         // archive the system message
         if (objId) {
           if (!inSender.accepted) {
-            console.log(1)
           var ajaxArchiveSysMessage = new AJAX.ArchiveTermsAndConditions({owner:this, fireEvent:'onGetTermsAndConditionsScreen', errorEvent:'onErrorTermsAndConditions'});
           ajaxArchiveSysMessage.makeRequest({termsAndConditionsId: objId});
           } else {
-            console.log(2)
             this.getTermsAndConditionsScreen();
           }
         }
@@ -91,6 +87,10 @@ enyo.ready(function() {
 
   });
 });
+
+
+
+
 
 
 

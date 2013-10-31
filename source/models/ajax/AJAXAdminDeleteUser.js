@@ -1,5 +1,5 @@
 /**
-* AdminDeleteUser Ajax POST for creating a new user
+* AdminDeleteUser Ajax DELETE for deleting a new user
 */
 enyo.kind({
   name: 'AJAX.AdminDeleteUser'
@@ -29,3 +29,4 @@ enyo.kind({
 
 
 
+

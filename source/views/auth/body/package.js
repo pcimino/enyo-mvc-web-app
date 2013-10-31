@@ -8,6 +8,7 @@ enyo.depends(
   , "MessageCenterPage.js"
   , "SendMessagePage.js"
   , "TermsAndConditionsPage.js"
+  , "BetaSiteManagementPage.js"
 );
 
 
@@ -19,3 +20,4 @@ enyo.depends(
 
 
 
+

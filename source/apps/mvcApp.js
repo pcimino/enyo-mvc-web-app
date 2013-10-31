@@ -21,6 +21,8 @@ enyo.kind({
         , sessionIntervalKey: ''
         , debugNetworkCalls: false
         , showDeveloperTools: true
+        , betaTools: false  // if false, hide the Beta button UNLESS beta is active, then overridden by betaSiteSignup
+        , betaSiteSignup: false // set to true if beta is active, shows the beta code entry on user signup
     }
     , controllers: [
         {  name: "publicController",
@@ -93,7 +95,22 @@ enyo.kind({
   , gravatarEmailChanged: function(oldVal) {
       mvcApp.authView.waterfall('onSetupGravatar');
   }
+  , betaSiteSignupChanged: function(oldVal) {
+        mvcApp.publicView.waterfall('onShowBetaSignup'); //TODO not working
+        mvcApp.publicView.waterfallDown('onShowBetaSignup'); //TODO not working
+        mvcApp.publicView.bubble('onShowBetaSignup'); //TODO not working
+        mvcApp.publicView.bubbleUp('onShowBetaSignup'); //TODO not working
+
+        mvcApp.authView.waterfall('onUpdateBetaSettings');
+  }
+  , betaToolsChanged: function(oldVal) {
+      mvcApp.authView.waterfall('onUpdateBetaSettings');
+  }
 });
+
+
+
+
 
 
 

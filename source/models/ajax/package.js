@@ -17,6 +17,9 @@ enyo.depends(
   , "AJAXSendTermsAndConditions.js"
   , "AJAXSendMessage.js"
   , "AJAXEmailExists.js"
+  , "AJAXUpdateBetaStatus.js"
+  , "AJAXSendBetaInvite.js"
+  , "AJAXDeleteBetaInvite.js"
   , "JSONPParent.js"
   , "JSONPCheckDB.js"
   , "JSONPCheckAuth.js"
@@ -28,6 +31,7 @@ enyo.depends(
   , "JSONPGetUserList.js"
   , "JSONPGetSessionTimeout.js"
   , "JSONPGetTermsAndConditions.js"
+  , "JSONPGetBetaStatus.js"
 );
 
 
@@ -47,3 +51,8 @@ enyo.depends(
 
 
 
+
+
+
+
+
