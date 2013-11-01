@@ -6,7 +6,7 @@
 * - setErrorMessage()
 * - setConfirmMessage()
 */
-var AAA={}
+var AAA ={}
 enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.DeveloperPage"
@@ -75,10 +75,10 @@ enyo.ready(function() {
         this.createComponent(
           {kind: "enyo.FittableColumns", style: "margin-left: 10%;margin-bottom: 5px;", owner: this, components: [
             { content: "Web Socket Base URL", style:'width:20%'}
-            , { name: "wsSocketURL"
+              , { name: "wsSocketURL"
               , kind: "onyx.Input"
               , classes:"form-input-box"
-              , owner: owner  // http://jsfiddle.net/pcimino/Cxa2U
+              , owner: this  // http://jsfiddle.net/pcimino/Cxa2U
               , placeholder: mvcApp.wsSocketURL
             , style:'width:20%'}
           ]});
@@ -86,12 +86,12 @@ enyo.ready(function() {
         this.createComponent(
           {kind: "enyo.FittableColumns", style: "margin-left: 10%;margin-bottom: 5px;", owner: this, components: [
             { content: "Web Socket Port", style:'width:20%'}
-            , { name: "wsSocketPort",
-            kind: "onyx.Input",
-            classes:"form-input-box",
-            placeholder: mvcApp.wsSocketPort,
-            owner: this
-          , style:'width:20%'}
+            , { name: "wsSocketPort"
+            , kind: "onyx.Input"
+            , classes:"form-input-box"
+            , placeholder: mvcApp.wsSocketPort
+            , owner: this
+            , style:'width:20%'}
           ]}
         );
 
@@ -133,14 +133,15 @@ enyo.ready(function() {
         );
 
       // only call this on navigation, not initial load
-        if (renderFlag) owner.render();
+        owner.render();
     } // end setupPageBody
     , saveChanges: function() {
+      AAA=this
         // could have bound the values but decided against it, prefer to be explicit
         if (this.$.ajaxBaseURL.getValue()) mvcApp.setAjaxBaseURL(this.$.ajaxBaseURL.getValue());
         if (this.$.ajaxBasePort.getValue()) mvcApp.setAjaxBasePort(this.$.ajaxBasePort.getValue());
-        if (this.$.wsSocketURL.getValue()) mvcApp.setwWSocketURL(this.$.wsSocketURL.getValue());
-        if (this.$.wsSocketPort.getValue()) mvcApp.setwWSocketPort(this.$.wsSocketPort.getValue());
+        if (this.$.wsSocketURL.getValue()) mvcApp.setWsSocketURL(this.$.wsSocketURL.getValue());
+        if (this.$.wsSocketPort.getValue()) mvcApp.setWsSocketPort(this.$.wsSocketPort.getValue());
 
         mvcApp.controllers.authController.logout();
     }
@@ -194,6 +195,7 @@ enyo.ready(function() {
 
   });
 });
+
 
 
 
