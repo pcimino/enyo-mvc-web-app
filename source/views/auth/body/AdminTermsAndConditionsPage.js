@@ -8,8 +8,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.AdminTermsAndConditionsPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.AdminTermsAndConditionsPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'adminTermsAndConditionsPage'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
@@ -146,3 +146,4 @@ enyo.ready(function() {
 
 
 
+

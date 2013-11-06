@@ -5,8 +5,8 @@
 */
 enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.AdminUserManagementPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.AdminUserManagementPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'adminUserManagementPage'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
@@ -402,3 +402,4 @@ enyo.ready(function () {
 
 
 
+

@@ -8,8 +8,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.SendMessagePage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.SendMessagePage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'sendMessagePage'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
@@ -126,3 +126,4 @@ enyo.ready(function() {
 
 
 
+

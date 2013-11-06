@@ -3,8 +3,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.UserSignupPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.UserSignupPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'userSignupPage'
     , authFlag: false
     , handlers: {
@@ -188,6 +188,8 @@ enyo.ready(function() {
     }
   });
 });
+
+
 
 
 

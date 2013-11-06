@@ -4,15 +4,15 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.VerifyResetRequestPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.VerifyResetRequestPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'forgotPasswordPage'
     , authFlag: false
     , bindings: [
       {
-        from: ".$.username.value",
-        to: ".mvcApp.data",
-        kind: "enyo.InputBinding"
+        from: '.$.username.value',
+        to: '.mvcApp.data',
+        kind: 'enyo.InputBinding'
       }
     ]
     // This checks to see if the user is allowed on this page
@@ -79,3 +79,4 @@ enyo.ready(function() {
 
 
 
+

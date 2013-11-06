@@ -6,8 +6,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.UpdateMyUserInfoPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.UpdateMyUserInfoPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'updateMyUserInfoPage'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
@@ -152,3 +152,4 @@ enyo.ready(function() {
 
 
 
+

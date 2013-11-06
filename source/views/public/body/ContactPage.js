@@ -5,8 +5,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.ContactPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.ContactPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'contactPage'
     , authFlag: false
     , published: {
@@ -34,7 +34,6 @@ enyo.ready(function() {
         this.insertBreak(owner);
         this.insertInternalLink(owner, this.rndLink('login'), 'User Login');
 
-        // only call this on navigation, not initial load
         owner.render();
     } // end setupPageBody
   });
@@ -45,3 +44,4 @@ enyo.ready(function() {
 
 
 
+

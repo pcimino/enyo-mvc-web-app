@@ -5,12 +5,12 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.SessionTimeoutDialog"
-    , kind: "onyx.Popup"
+    name: 'Bootplate.SessionTimeoutDialog'
+    , kind: 'onyx.Popup'
     , centered: true
     , float: true
     , id: 'sessionTimeoutDialog'
-    , style: "height:45%; width:45%; "
+    , style: 'height:45%; width:45%; '
     , autoDismiss: false
     , published : {
         timeRemaining: 60000
@@ -69,3 +69,4 @@ enyo.ready(function() {
 
 
 
+

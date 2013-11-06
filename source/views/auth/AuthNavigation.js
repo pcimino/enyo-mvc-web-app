@@ -8,7 +8,7 @@
 */
 enyo.kind({
   name: 'Bootplate.AuthNavigation'
-  , kind: "Bootplate.Navigation"
+  , kind: 'Bootplate.Navigation'
   , create: function() {
       this.inherited(arguments);
   }
@@ -83,3 +83,6 @@ enyo.kind({
 
 
 
+
+
+

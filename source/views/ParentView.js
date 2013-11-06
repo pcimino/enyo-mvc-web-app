@@ -8,8 +8,8 @@
 */
 enyo.kind({
   name: 'Bootplate.ParentView'
-  , kind: "enyo.FittableRows"
-  , classes: "onyx"
+  , kind: 'enyo.FittableRows'
+  , classes: 'onyx'
   , tag: 'body'
   , fit: true
   , published : {
@@ -116,3 +116,4 @@ enyo.kind({
 
 
 
+

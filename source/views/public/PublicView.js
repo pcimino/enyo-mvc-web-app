@@ -10,7 +10,7 @@
 */
 enyo.kind({
   name: 'Bootplate.PublicView'
-  , kind: "Bootplate.ParentView"
+  , kind: 'Bootplate.ParentView'
   , create: function() {
       this.inherited(arguments);
       this.setupHeaderPage();
@@ -69,3 +69,4 @@ enyo.kind({
 
 
 
+

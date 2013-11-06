@@ -1,4 +1,4 @@
-
+Controllers ref in mvcApp deprecated? Use Components? Verify/change
 
 
 Documentation
@@ -26,6 +26,8 @@ http://chrisjean.com/2009/04/20/git-submodules-adding-using-removing-and-updatin
 
 git submodule add -f https://github.com/LearnBoost/socket.io.git ./public/lib/socket.io
 git rm –cached ./public/lib/socket.io
+
+
 
 
 

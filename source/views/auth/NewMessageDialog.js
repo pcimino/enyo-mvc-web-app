@@ -6,12 +6,12 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.NewMessageDialog"
-    , kind: "onyx.Popup"
+    name: 'Bootplate.NewMessageDialog'
+    , kind: 'onyx.Popup'
     , centered: true
     , float: true
     , id: 'newMessageDialog'
-    , style: "height:55%; width:75%; "
+    , style: 'height:55%; width:75%; '
     , published : {
         messageThread:''
     }
@@ -90,3 +90,4 @@ enyo.ready(function() {
 
 
 
+
