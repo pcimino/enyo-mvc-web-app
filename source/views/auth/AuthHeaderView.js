@@ -6,11 +6,11 @@
 *      so there are probably some unnecessary calls to this method that can be cleaned up at some point
 */
 enyo.kind({
-  name: "Bootplate.AuthHeaderView"
-  , kind: "enyo.FittableRows"
+  name: 'Bootplate.AuthHeaderView'
+  , kind: 'enyo.FittableRows'
   , id: 'headerView'
   , tag: 'header' // give it a specific html tag
-  , classes: "onyx"
+  , classes: 'onyx'
   , fit: true
   , components: [
       {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "header-height header-width"
@@ -41,3 +41,4 @@ enyo.kind({
 
 
 
+

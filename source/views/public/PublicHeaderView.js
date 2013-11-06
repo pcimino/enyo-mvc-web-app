@@ -3,11 +3,11 @@
 *
 */
 enyo.kind({
-  name: "Bootplate.PublicHeaderView"
-  , kind: "enyo.FittableRows"
+  name: 'Bootplate.PublicHeaderView'
+  , kind: 'enyo.FittableRows'
   , id: 'headerView'
   , tag: 'header' // give it a specific html tag
-  , classes: "onyx"
+  , classes: 'onyx'
   , fit: true
   , components: [
       {name: 'headerContainer', kind: "FittableColumns", fit: true, classes: "header-height header-width",
@@ -24,3 +24,4 @@ enyo.kind({
 
 
 
+

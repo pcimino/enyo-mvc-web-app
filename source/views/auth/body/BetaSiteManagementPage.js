@@ -6,8 +6,8 @@
 var AAA={}
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.BetaSiteManagementPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.BetaSiteManagementPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'betaSiteManagementPage'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
@@ -81,5 +81,7 @@ enyo.ready(function() {
 
   });
 });
+
+
 
 

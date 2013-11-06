@@ -7,8 +7,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.HomeView"
-    , kind: "Bootplate.ParentView"
+    name: 'Bootplate.HomeView'
+    , kind: 'Bootplate.ParentView'
     , create: function() {
         this.inherited(arguments);
         this.setupHeaderPage();
@@ -22,7 +22,7 @@ enyo.ready(function() {
     }
     , rendered: function() {
         this.inherited(arguments);
-        
+
         // setup logout timer
         this.getSessionTimeout();
     }
@@ -101,3 +101,4 @@ enyo.ready(function() {
 
 
 
+

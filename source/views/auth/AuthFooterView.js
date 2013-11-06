@@ -3,10 +3,10 @@
 */
 enyo.kind({
   name: 'Bootplate.AuthFooterView'
-  , kind: "enyo.FittableRows"
+  , kind: 'enyo.FittableRows'
   , id: 'footerView'
   , tag: 'footer' // give it a specific html tag
-  , classes: "onyx"
+  , classes: 'onyx'
   , fit: true
   , components: [
       {name: 'footerContainer', kind: "FittableColumns", fit: true, classes: "footer-height footer-width reverse-text", components: [
@@ -42,3 +42,4 @@ enyo.kind({
 
 
 
+

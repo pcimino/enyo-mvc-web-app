@@ -5,8 +5,8 @@
 */
 enyo.ready(function () {
   enyo.kind({
-    name: "Bootplate.UpdateMyPasswordPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.UpdateMyPasswordPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'updateMyPasswordPage'
     , authFlag: true // used to help determine if user has access to this page
     , handlers: {
@@ -85,3 +85,4 @@ enyo.ready(function () {
 
 
 
+

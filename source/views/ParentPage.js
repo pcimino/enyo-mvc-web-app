@@ -12,8 +12,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.ParentPage"
-    , kind: "enyo.Control"
+    name: 'Bootplate.ParentPage'
+    , kind: 'enyo.Control'
     , id: 'parentPage'
     // This checks to see if the user is allowed on this page
     , rendered: function() {
@@ -104,3 +104,4 @@ enyo.ready(function() {
 
 
 
+

@@ -14,8 +14,8 @@
 */
 enyo.kind({
   name: 'Bootplate.Navigation'
-  , kind: "enyo.Component"
-  , style:"z-index:1;" // need this because the system notification is bigger than visible and overlaps the nav bar
+  , kind: 'enyo.Component'
+  , style:'z-index:1;' // need this because the system notification is bigger than visible and overlaps the nav bar
   , create: function() {
       this.inherited(arguments);
   }
@@ -81,6 +81,8 @@ enyo.kind({
   , setupBottomNav: function(owner) {
   }
 });
+
+
 
 
 

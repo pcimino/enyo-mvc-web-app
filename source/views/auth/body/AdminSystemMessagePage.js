@@ -8,8 +8,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.AdminSystemMessagePage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.AdminSystemMessagePage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'adminSystemMessagePage'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
@@ -155,3 +155,4 @@ enyo.ready(function() {
 
 
 
+

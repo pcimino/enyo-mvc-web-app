@@ -6,11 +6,10 @@
 * - setErrorMessage()
 * - setConfirmMessage()
 */
-var AAA ={}
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.DeveloperPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.DeveloperPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'developerPage'
     , authFlag: false
     // This checks to see if the user is allowed on this page
@@ -136,7 +135,6 @@ enyo.ready(function() {
         owner.render();
     } // end setupPageBody
     , saveChanges: function() {
-      AAA=this
         // could have bound the values but decided against it, prefer to be explicit
         if (this.$.ajaxBaseURL.getValue()) mvcApp.setAjaxBaseURL(this.$.ajaxBaseURL.getValue());
         if (this.$.ajaxBasePort.getValue()) mvcApp.setAjaxBasePort(this.$.ajaxBasePort.getValue());
@@ -200,3 +198,4 @@ enyo.ready(function() {
 
 
 
+

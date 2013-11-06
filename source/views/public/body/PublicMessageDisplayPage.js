@@ -8,8 +8,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.PublicMessageDisplayPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.PublicMessageDisplayPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'messageDisplayPage'
     , authFlag: false
     , published: {
@@ -56,3 +56,4 @@ enyo.ready(function() {
 
 
 
+

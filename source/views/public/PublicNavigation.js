@@ -6,7 +6,7 @@
 */
 enyo.kind({
   name: 'Bootplate.PublicNavigation'
-  , kind: "Bootplate.Navigation"
+  , kind: 'Bootplate.Navigation'
   , create: function() {
       this.inherited(arguments);
   }
@@ -42,3 +42,4 @@ enyo.kind({
 
 
 
+

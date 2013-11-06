@@ -7,8 +7,8 @@
 */
 enyo.ready(function() {
   enyo.kind({
-    name: "Bootplate.TermsAndConditionsPage"
-    , kind: "Bootplate.ParentPage"
+    name: 'Bootplate.TermsAndConditionsPage'
+    , kind: 'Bootplate.ParentPage'
     , id: 'termsAndConditionsPage'
     , authFlag: true // used to help determine if user has access to this page
     , published : {
@@ -87,6 +87,8 @@ enyo.ready(function() {
 
   });
 });
+
+
 
 
 
