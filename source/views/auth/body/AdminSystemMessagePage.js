@@ -102,7 +102,7 @@ enyo.ready(function() {
               , {content: "Message: ", classes:'list-item-margin bold-text'}
               , {content: inEvent.context.message}
             ]}
-            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+          , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', disabled:inEvent.context.archiveFlag, id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
             , {kind: "onyx.Button", content: "Delete", ontap: 'deleteMessage', name: 'deleteMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
@@ -137,6 +137,8 @@ enyo.ready(function() {
 
   });
 });
+
+
 
 
 
