@@ -3,3 +3,7 @@ npm-debug.log
 output
 build
 deploy
+enyo
+lib/layout
+lib/gravatar
+lib/onyx
