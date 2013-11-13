@@ -29,7 +29,6 @@ enyo.ready(function() {
     name: 'Bootplate.LoginPage'
     , kind: 'Bootplate.PublicPage'
     , id: 'loginPage'
-    // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
     }
@@ -45,25 +44,48 @@ enyo.ready(function() {
         );
 
         this.insertBreak(owner);
+
+        owner.createComponent({kind: enyo.Checkbox
+          , checked:true
+          , name: 'showPassword'
+          , onActivate: 'passwordCheckboxChanged'
+          , content:'Hide Password'
+          , classes:"form-input-box form-field-left-margin"
+          , owner:owner
+          , handlers: {
+             onActivate: 'passwordCheckboxChanged' // TODO the onActivate defined above should work, not sure why I had to add the handler here
+          }
+          , passwordCheckboxChanged: function() {
+              var ch = owner.$.showPassword.getChecked();
+              if (ch) {
+                owner.$.password.setType('password');
+              } else {
+                owner.$.password.setType('text');
+              }
+            }
+        });
+
+        this.insertBreak(owner);
         owner.createComponent(
-          { name: "password",
-            kind: "onyx.Input",
-            classes:"form-input-box form-field-left-margin",
-            placeholder: "Password",
-            owner: owner
+          { name: "password"
+            , type: 'password'
+            , kind: "onyx.Input"
+            , classes:"form-input-box form-field-left-margin"
+            , placeholder: "Password"
+            , owner: owner
           }
         );
 
         this.insertBreak(owner);
         owner.createComponent(
-          { kind: "onyx.Button",
-            content: "Login",
-            classes: "onyx-blue form-field-left-margin",
-            owner: owner,
-            handlers: {
+          { kind: "onyx.Button"
+            , content: "Login"
+            , classes: "onyx-blue form-field-left-margin"
+            ,  owner: owner
+            , handlers: {
               onclick: 'login'
-            },
-            login: function() {
+            }
+            , login: function() {
               mvcApp.waterfall('onLogin', {username: owner.$.username.value, password: owner.$.password.value});
               return true;
             }
@@ -75,6 +97,8 @@ enyo.ready(function() {
     } // end setupPageBody
   });
 });
+
+
 
 
 

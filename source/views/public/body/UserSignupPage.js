@@ -133,40 +133,68 @@ enyo.ready(function() {
         }
       );
       this.bindInputData(owner.$.betaCode);
+      this.insertBreak(owner);
+
+      owner.createComponent({kind: enyo.Checkbox
+        , checked:true
+        , name: 'showPassword'
+        , onActivate: 'passwordCheckboxChanged'
+        , content:'Hide Password'
+        , classes:"form-input-box form-field-left-margin"
+        , owner:owner
+        , handlers: {
+           onActivate: 'passwordCheckboxChanged' // TODO the onActivate defined above should work, not sure why I had to add the handler here
+        }
+        , passwordCheckboxChanged: function() {
+            var ch = owner.$.showPassword.getChecked();
+            if (ch) {
+              owner.$.password.setType('password');
+              owner.$.vPassword.setType('password');
+            } else {
+              owner.$.password.setType('text');
+              owner.$.vPassword.setType('text');
+            }
+          }
+      });
 
       // bind taken care of in usernameChanged() : this.bindInputData(owner.$.username);
       this.insertBreak(owner);
       owner.createComponent(
-        { name: "password",
-          kind: "onyx.Input",
-          classes:"form-input-box form-field-left-margin",
-          placeholder: "Password",
-          owner: owner
+        { name: "password"
+          , kind: "onyx.Input"
+          , type:'password'
+          , classes:"form-input-box form-field-left-margin"
+          , placeholder: "Password"
+          , owner: owner
         }
       );
+
       this.bindInputData(owner.$.password);
       this.insertBreak(owner);
       owner.createComponent(
-        { name: "vPassword",
-          kind: "onyx.Input",
-          classes:"form-input-box form-field-left-margin",
-          placeholder: "Verify Password",
-          owner: owner
+        { name: "vPassword"
+          , kind: "onyx.Input"
+          , type:'password'
+          , classes:"form-input-box form-field-left-margin"
+          , placeholder: "Verify Password"
+          , owner: owner
         }
       );
       this.bindInputData(owner.$.vPassword);
-      this.insertBreak(owner);
+
+      this.insertBreak(this);
+
       owner.createComponent(
-        { kind: "onyx.Button",
-         content: "Sign Up",
-         classes: "onyx-blue form-field-left-margin",
-         owner: owner,
-         handlers: {
+        { kind: "onyx.Button"
+         , content: "Sign Up"
+         , classes: "onyx-blue form-field-left-margin"
+         , owner: owner
+         , handlers: {
            onclick: 'signup'
-         },
-         signup: function() {
-           mvcApp.waterfall('onUserSignup', {username:owner.$.username.value, errorEvent:'onErrorSystemMessages'});
-           return true;
+         }
+         , signup: function() {
+             mvcApp.waterfall('onUserSignup', {username:owner.$.username.value, errorEvent:'onErrorSystemMessages'});
+             return true;
          }
         }
       );
@@ -187,6 +215,8 @@ enyo.ready(function() {
     }
   });
 });
+
+
 
 
 
