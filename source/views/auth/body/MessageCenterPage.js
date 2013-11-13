@@ -9,9 +9,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.MessageCenterPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.AuthPage'
     , id: 'messagePage'
-    , authFlag: true // used to help determine if user has access to this page
     , published : {
       listRef:''
     }
@@ -177,7 +176,7 @@ enyo.ready(function() {
               , {content: "Message: ", classes:'list-item-margin bold-text'}
               , {content: inEvent.context.message}
             ]}
-            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', disabled:inEvent.context.archiveFlag, id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+          , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', disabled:inEvent.context.archiveFlag, id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
     , archiveMessage: function(inSender, inEvent) {
@@ -188,23 +187,6 @@ enyo.ready(function() {
     }
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

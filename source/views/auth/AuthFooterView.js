@@ -21,12 +21,12 @@ enyo.kind({
   }
   , startSocket: function() {
       if (io) {
-        var footerPage = this.$.footerCenterPage;
+        var footer = this.$.footerCenterPage;
         var host = mvcApp.wsSocketURL + ":" + mvcApp.wsSocketPort;
         var webSocket = io.connect(host);
         webSocket.on('connect', function() {
           webSocket.on('timestamp', function (data) {
-            footerPage.setContent('Server time via web socket: ' + JSON.parse(data));
+            footer.setContent('Server time via web socket: ' + JSON.parse(data));
           });
         });
       }

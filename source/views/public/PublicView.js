@@ -4,18 +4,18 @@
 *    is using is as an authenticated browser app, a refresh will load the default view and wipe out the browser session data
 *    but the user is still logged in, so we check, if authenticated, reload the user data and redirect to the user's hoe page
 *
-* - setupHeaderPage() sets up the header
+* - setupHeader() sets up the header
 * - setupPageBody() sets up the body
-* - setupFooterPage() sets up the footer
+* - setupFooter() sets up the footer
 */
 enyo.kind({
   name: 'Bootplate.PublicView'
   , kind: 'Bootplate.ParentView'
   , create: function() {
       this.inherited(arguments);
-      this.setupHeaderPage();
+      this.setupHeader();
       this.setupPageBody();
-      this.setupFooterPage();
+      this.setupFooter();
   }
   , bindings: [
       /* Was trying to bind and it did appear to work initially, now broken
@@ -29,14 +29,13 @@ enyo.kind({
       mvcApp.waterfall('onCheckDB');
       mvcApp.waterfall('onIsUserValidated');
   }
-  , setupHeaderPage: function() {
+  , setupHeader: function() {
       this.inherited(arguments);
       if (this.$.headerContainer) this.$.headerContainer.destroy();
       this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
   }
   , setupPageBody: function() {
       this.inherited(arguments);
-
 
       this.pageContainer = this.createComponent({name:'pageContainer', fit: true, classes: "enyo-center container-height", owner: this});
 
@@ -48,7 +47,7 @@ enyo.kind({
       var bodyPage = bodyContainer.createComponent({name:'bodyPage', kind: 'Bootplate.LoginPage'});
       bodyPage.setupPageBody(bodyContainer);
   }
-  , setupFooterPage: function() {
+  , setupFooter: function() {
       this.inherited(arguments);
 
       this.navigation.setupRightNav(this.pageContainer);
@@ -58,6 +57,8 @@ enyo.kind({
       this.footer = this.pageContainer.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView', owner: this.pageContainer});
   }
 });
+
+
 
 
 

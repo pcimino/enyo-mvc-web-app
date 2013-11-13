@@ -6,9 +6,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.ContactPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.PublicPage'
     , id: 'contactPage'
-    , authFlag: false
     , published: {
         contentComponent: null
     }
@@ -17,7 +16,6 @@ enyo.ready(function() {
         this.inherited(arguments);
     }
     , setupPageBody: function(owner) {
-
         this.insertFormSpace(owner);
         owner.createComponent({
           tag: 'a'

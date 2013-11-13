@@ -9,9 +9,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.AdminSystemMessagePage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.AuthPage'
     , id: 'adminSystemMessagePage'
-    , authFlag: true // used to help determine if user has access to this page
     , published : {
       listRef:''
     }
@@ -102,7 +101,7 @@ enyo.ready(function() {
               , {content: "Message: ", classes:'list-item-margin bold-text'}
               , {content: inEvent.context.message}
             ]}
-          , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', disabled:inEvent.context.archiveFlag, id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', disabled:inEvent.context.archiveFlag, id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
             , {kind: "onyx.Button", content: "Delete", ontap: 'deleteMessage', name: 'deleteMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
@@ -137,24 +136,6 @@ enyo.ready(function() {
 
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

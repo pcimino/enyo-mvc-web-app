@@ -6,9 +6,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.HomePage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.AuthPage'
     , id: 'homePage'
-    , authFlag: true // used to help determine if user has access to this page
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);

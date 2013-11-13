@@ -4,9 +4,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.UserSignupPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.PublicPage'
     , id: 'userSignupPage'
-    , authFlag: false
     , handlers: {
        onUsernameStatus: 'usernameStatus'
       , onEmailStatus: 'emailStatus'

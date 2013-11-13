@@ -5,9 +5,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.VerifyResetRequestPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.PublicPage'
     , id: 'forgotPasswordPage'
-    , authFlag: false
     , bindings: [
       {
         from: '.$.username.value',

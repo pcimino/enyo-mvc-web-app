@@ -8,9 +8,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.TermsAndConditionsPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.AuthPage'
     , id: 'termsAndConditionsPage'
-    , authFlag: true // used to help determine if user has access to this page
     , published : {
       listRef:''
     }

@@ -9,9 +9,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.DeveloperPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.PublicPage'
     , id: 'developerPage'
-    , authFlag: false
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
@@ -20,7 +19,6 @@ enyo.ready(function() {
     }
     , setupPageBody: function(owner, renderFlag) {
         this.insertFormSpace(owner);
-
         this.createComponent(
           { content: "This page and navigation button can be disabled in the source by setting:"
             , style: "margin-left: 10%;margin-bottom: 5px;margin-top: 30px;"

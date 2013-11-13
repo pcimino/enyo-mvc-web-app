@@ -9,9 +9,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.SendMessagePage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.AuthPage'
     , id: 'sendMessagePage'
-    , authFlag: true // used to help determine if user has access to this page
     , handlers: {
       onLoadUserScreen: 'loadUserScreen'
     }

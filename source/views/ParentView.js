@@ -2,9 +2,9 @@
 /**
 * This is the parent view for all view kinds
 * - showMessage() calls the popup
-* - setupHeaderPage() should be implemented by each child
+* - setupHeader() should be implemented by each child
 * - setupPageBody() should be implemented by each child
-* - setupFooterPage() should be implemented by each child
+* - setupFooter() should be implemented by each child
 */
 enyo.kind({
   name: 'Bootplate.ParentView'
@@ -31,12 +31,12 @@ enyo.kind({
   , rendered: function() {
       this.inherited(arguments);
   }
-  , setupHeaderPage: function() {
+  , setupHeader: function() {
   }
   , setupPageBody: function() {
       this.notification = this.createComponent({kind: "Notification", name: "notif", owner: this});
   }
-  , setupFooterPage: function() {
+  , setupFooter: function() {
       this.notificationPop = this.$.pageContainer.createComponent({kind: "Notification", name: "notifPop", owner: this.$.pageContainer});
   }
   , systemMessage: function(inSender, inEvent) {

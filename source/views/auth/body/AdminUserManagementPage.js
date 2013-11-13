@@ -6,9 +6,8 @@
 enyo.ready(function () {
   enyo.kind({
     name: 'Bootplate.AdminUserManagementPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.AuthPage'
     , id: 'adminUserManagementPage'
-    , authFlag: true // used to help determine if user has access to this page
     , handlers: {
         onLoadUserDetailList: 'loadUserDetailList'
         , onAdminUserDetailsResult: 'adminUserDetailsResult'

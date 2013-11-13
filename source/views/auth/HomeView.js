@@ -1,9 +1,9 @@
 /**
 * This is the authenticated view kind.
 *
-* - setupHeaderPage() sets up the header
+* - setupHeader() sets up the header
 * - setupPageBody() sets up the body
-* - setupFooterPage() sets up the footer
+* - setupFooter() sets up the footer
 */
 enyo.ready(function() {
   enyo.kind({
@@ -11,9 +11,9 @@ enyo.ready(function() {
     , kind: 'Bootplate.ParentView'
     , create: function() {
         this.inherited(arguments);
-        this.setupHeaderPage();
+        this.setupHeader();
         this.setupPageBody();
-        this.setupFooterPage();
+        this.setupFooter();
     }
     , handlers: {
         onDisplayTimeout: 'displayTimeout'
@@ -26,7 +26,7 @@ enyo.ready(function() {
         // setup logout timer
         this.getSessionTimeout();
     }
-    , setupHeaderPage: function() {
+    , setupHeader: function() {
         this.inherited(arguments);
         if (this.$.headerContainer) this.$.headerContainer.destroy();
         this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthHeaderView'});
@@ -50,7 +50,7 @@ enyo.ready(function() {
         bodyPage.setupPageBody(bodyContainer);
 
     }
-    , setupFooterPage: function() {
+    , setupFooter: function() {
         this.inherited(arguments);
 
         this.navigation.setupRightNav(this.pageContainer);

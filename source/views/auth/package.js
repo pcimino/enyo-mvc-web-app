@@ -1,5 +1,6 @@
 enyo.depends(
   "HomeView.js"
+  , "AuthPage.js"
   , "AuthHeaderView.js"
   , "AuthFooterView.js"
   , "AuthNavigation.js"

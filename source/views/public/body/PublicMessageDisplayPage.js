@@ -9,9 +9,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.PublicMessageDisplayPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.PublicPage'
     , id: 'messageDisplayPage'
-    , authFlag: false
     , published: {
         contentComponent: null
     }

@@ -27,9 +27,8 @@ It should be, then you would call this.refreshBindings();
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.LoginPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.PublicPage'
     , id: 'loginPage'
-    , authFlag: false
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);

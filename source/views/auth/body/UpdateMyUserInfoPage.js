@@ -7,9 +7,8 @@
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.UpdateMyUserInfoPage'
-    , kind: 'Bootplate.ParentPage'
+    , kind: 'Bootplate.AuthPage'
     , id: 'updateMyUserInfoPage'
-    , authFlag: true // used to help determine if user has access to this page
     , handlers: {
         onNewUsernameStatus: 'newUsernameStatus'
         , onNewEmailStatus: 'newEmailStatus'
