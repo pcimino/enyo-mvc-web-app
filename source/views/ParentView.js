@@ -9,6 +9,12 @@
 enyo.kind({
   name: 'Bootplate.ParentView'
   , kind: 'enyo.FittableRows'
+  , create: function() {
+      this.inherited(arguments);
+      this.setupHeader();
+      this.setupPageBody();
+      this.setupFooter();
+  }
   , classes: 'onyx'
   , tag: 'body'
   , fit: true
@@ -98,6 +104,8 @@ enyo.kind({
       return true;
   }
 });
+
+
 
 
 

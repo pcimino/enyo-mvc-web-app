@@ -9,12 +9,6 @@ enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.HomeView'
     , kind: 'Bootplate.ParentView'
-    , create: function() {
-        this.inherited(arguments);
-        this.setupHeader();
-        this.setupPageBody();
-        this.setupFooter();
-    }
     , handlers: {
         onDisplayTimeout: 'displayTimeout'
         , onGetSessionTimeout: 'getSessionTimeout'
@@ -87,6 +81,8 @@ enyo.ready(function() {
     }
   });
 });
+
+
 
 
 

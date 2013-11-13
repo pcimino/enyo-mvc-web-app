@@ -11,12 +11,6 @@
 enyo.kind({
   name: 'Bootplate.PublicView'
   , kind: 'Bootplate.ParentView'
-  , create: function() {
-      this.inherited(arguments);
-      this.setupHeader();
-      this.setupPageBody();
-      this.setupFooter();
-  }
   , bindings: [
       /* Was trying to bind and it did appear to work initially, now broken
       , {
@@ -57,6 +51,8 @@ enyo.kind({
       this.footer = this.pageContainer.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView', owner: this.pageContainer});
   }
 });
+
+
 
 
 
