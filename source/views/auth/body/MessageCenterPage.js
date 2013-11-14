@@ -111,6 +111,14 @@ enyo.ready(function() {
         messagePage = messagePage + '{"kind":"FittableColumns","components": [';
         messagePage = messagePage + '{"content":"From: ","classes":"list-item-margin bold-text"}';
         messagePage = messagePage + ',{"content":"' + inEvent.context.messages[i].from + '"}';
+        messagePage = messagePage + ',{"content":"To: ","classes":"list-item-margin bold-text"}';
+        //TODO maybe each message should contain the from and to ?
+        if (inEvent.context.messages[i].from == inEvent.context.fromUsername) {
+           messagePage = messagePage + ',{"content":"' + inEvent.context.toUsername + '"}';
+        } else {
+           messagePage = messagePage + ',{"content":"' + inEvent.context.fromUsername + '"}';
+        }
+
         messagePage = messagePage + ',{"content":"Message: ","classes":"list-item-margin bold-text"}';
         messagePage = messagePage + ',{"content":"' + inEvent.context.messages[i].message + '"}';
         messagePage = messagePage + ']}';
@@ -194,4 +202,6 @@ enyo.ready(function() {
 
 
 
-
+
+
+
