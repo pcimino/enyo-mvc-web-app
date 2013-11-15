@@ -5,6 +5,8 @@
 * - setupHeader() should be implemented by each child
 * - setupPageBody() should be implemented by each child
 * - setupFooter() should be implemented by each child
+* - archiveSystemMessage
+* - getSystemMessages
 */
 enyo.kind({
   name: 'Bootplate.ParentView'
@@ -104,6 +106,8 @@ enyo.kind({
       return true;
   }
 });
+
+
 
 
 

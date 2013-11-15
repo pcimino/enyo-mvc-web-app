@@ -14,7 +14,7 @@ SET DEPLOY=%TOOLS%\deploy.js
 
 %NODE% %DEPLOY% package.js 
 
-cp mvcApp*.html ./deploy/enyo-mvc-app/.
+cp mvcApp*.html ./deploy/enyo-mvc-web-app/.
 GOTO :END
 
 :ERR

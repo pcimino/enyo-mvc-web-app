@@ -1,4 +1,4 @@
-
+Potential confusion may arise if the user changes their email but doesn't validate it. Might need to add a system notification on login. Then update AuthController.js.md
 
 http://www.slideshare.net/RoySutton/html5-apps-write-once-deploy-anywhere-with-enyo
 
@@ -51,3 +51,4 @@ git rm –cached ./public/lib/socket.io
 
 
 
+

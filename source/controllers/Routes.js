@@ -108,7 +108,6 @@ enyo.kind({
     }
   ]
   , loadBodyPage: function (kindByName, skipWaterfallFlag) {
-    console.log(kindByName)
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
         var owner = mvcApp.view.$.bodyContainer;
         owner.destroyClientControls();
@@ -207,6 +206,8 @@ enyo.kind({
   }
 
 });
+
+
 
 
 

@@ -22,7 +22,7 @@ enyo.ready(function() {
           , id: 'tag_contact'
           , attributes: {
               target: '_blank'
-            , href: 'https://github.com/pcimino/enyo-mvc-app'
+            , href: 'https://github.com/pcimino/enyo-mvc-web-app'
           }
           , content: "Github Repo for this project"
           , classes: "form-field-left-margin"
