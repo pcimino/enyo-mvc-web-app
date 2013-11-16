@@ -182,7 +182,7 @@ enyo.ready(function() {
       );
       this.bindInputData(owner.$.vPassword);
 
-      this.insertBreak(this);
+      this.insertBreak(owner);
 
       owner.createComponent(
         { kind: "onyx.Button"
@@ -215,6 +215,8 @@ enyo.ready(function() {
     }
   });
 });
+
+
 
 
 
