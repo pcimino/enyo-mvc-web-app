@@ -19,7 +19,7 @@ enyo.kind({
         , sessionTimeRemaining: 99999999999
         , sessionCheckInterval: 10000
         , sessionIntervalKey: ''
-        , debugNetworkCalls: false
+        , debugNetworkCalls: true
         , showDeveloperTools: true
         , betaTools: false  // if false, hide the Beta button UNLESS beta is active, then overridden by betaSiteSignup
         , betaSiteSignup: false // set to true if beta is active, shows the beta code entry on user signup
@@ -104,6 +104,8 @@ enyo.kind({
       mvcApp.view.waterfall('onUpdateBetaSettings');
   }
 });
+
+
 
 
 

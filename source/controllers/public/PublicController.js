@@ -32,6 +32,8 @@ enyo.kind({
      , onResendEmailResult: 'resendEmailResult'
      , onUserSignup: 'userSignup'
      , onUserSignupResult: 'userSignupResult'
+     , onCheckEmailForSignupResult: 'checkEmailForSignupResult'
+     , onCheckUsernameForSignupResult: 'checkUsernameForSignupResult'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
   }
@@ -96,10 +98,40 @@ enyo.kind({
   // UserSignup
   , userSignup: function(inSender, inEvent) {
       mvcApp.data.createNewUser = true;
-      this.checkUsername(inSender, inEvent);
+      this.checkEmailForSignup(inSender, inEvent);
+  }
+  // Check email availability
+  , checkEmailForSignup: function(inSender, inEvent) {
+      var ajaxEmailExists = new AJAX.EmailExists({owner:this, fireEvent:'onCheckEmailForSignupResult'});
+      ajaxEmailExists.makeRequest({email:mvcApp.data.email, newEmail:mvcApp.data.email});
+  }
+  , checkEmailForSignupResult: function(inSender, inEvent) {
+      if (!inEvent.exists && mvcApp.data.createNewUser) {
+        this.checkUsernameForSignup(inSender, inEvent);
+      } else {
+        mvcApp.showErrorMessage('Error creating account', 'Email already exists');
+      }
+  }
+  // Check Username availability
+  , checkUsernameForSignup: function(inSender, inEvent) {
+      mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
+      var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameForSignupResult'});
+      ajaxUsernameExists.makeRequest({username:mvcApp.data.name});
+  }
+  , checkUsernameForSignupResult: function(inSender, inEvent) {
+      if (!inEvent.exists && mvcApp.data.createNewUser) {
+        mvcApp.data.createNewUser = '';
+        // create the user
+        console.log('DDDDDDD')
+        var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult', errorEvent:'onErrorSystemMessages'});
+        ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword, betaCode:mvcApp.data.betaCode});
+      } else {
+        mvcApp.showErrorMessage('Error creating account', 'Username already exists');
+      }
   }
   // UserSignupResult
   , userSignupResult: function(inSender, inEvent) {
+    console.log('EEEEEEEE')
       if (inEvent.userdata && inEvent.userdata.hashed_password) {
         mvcApp.broadcast.displayClass = 'success';
         mvcApp.broadcast.message = "You have successfully created your account " + mvcApp.data.username +". Please check your " + mvcApp.data.email + " email account to verify this address. You will then be able to login.";
@@ -129,6 +161,8 @@ enyo.kind({
       }
   }
 });
+
+
 
 
 

@@ -12,6 +12,7 @@ enyo.kind({
   , autoLoad: true
   , published: {
      owner: null
+    , method: 'GET'
      , fireEvent: null
      , errorEvent: null
      , url: null
@@ -86,6 +87,8 @@ enyo.kind({
       }
   }
 });
+
+
 
 
 

@@ -122,13 +122,6 @@ enyo.kind({
   }
   // Check Username Result
   , checkUsernameResult: function(inSender, inEvent) {
-      // TODO Kludgey, need to change how the user gets created, shouldn't be in this method
-      if (!inEvent.exists && mvcApp.data.createNewUser) {
-        mvcApp.data.createNewUser = '';
-        // create the user
-        var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult', errorEvent:'onErrorSystemMessages'});
-        ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword, betaCode:mvcApp.data.betaCode});
-      }
       mvcApp.view.body.waterfall('onUsernameStatus', inEvent);
       return true;
   }
@@ -151,6 +144,8 @@ enyo.kind({
       mvcApp.setBetaSiteSignup(inEvent.status);
   }
 });
+
+
 
 
 
