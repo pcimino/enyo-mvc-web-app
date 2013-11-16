@@ -122,7 +122,6 @@ enyo.kind({
       if (!inEvent.exists && mvcApp.data.createNewUser) {
         mvcApp.data.createNewUser = '';
         // create the user
-        console.log('DDDDDDD')
         var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult', errorEvent:'onErrorSystemMessages'});
         ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword, betaCode:mvcApp.data.betaCode});
       } else {
@@ -131,7 +130,6 @@ enyo.kind({
   }
   // UserSignupResult
   , userSignupResult: function(inSender, inEvent) {
-    console.log('EEEEEEEE')
       if (inEvent.userdata && inEvent.userdata.hashed_password) {
         mvcApp.broadcast.displayClass = 'success';
         mvcApp.broadcast.message = "You have successfully created your account " + mvcApp.data.username +". Please check your " + mvcApp.data.email + " email account to verify this address. You will then be able to login.";
