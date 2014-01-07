@@ -4,6 +4,8 @@ enyo.depends(
 	, "$lib/onyx"
   , "$lib/gravatar"
   , "$lib/macfja"
+  , "$lib/canvas"
+  , "$lib/captcha"
 	// include application sources
 	, "css"
 	, "models"
@@ -13,4 +15,6 @@ enyo.depends(
 	// include our default entry point
 	, "start.js"
 );
+
+
 

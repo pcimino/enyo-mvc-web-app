@@ -184,6 +184,10 @@ enyo.ready(function() {
 
       this.insertBreak(owner);
 
+      owner.createComponent({name: 'enyoCaptcha', kind: tld.EnyoCaptcha, successDisplayText: 'Congratulations!', width:300, height:300, owner: owner});
+
+      this.insertBreak(owner);
+
       owner.createComponent(
         { kind: "onyx.Button"
          , content: "Sign Up"
@@ -236,4 +240,6 @@ enyo.ready(function() {
 
 
 
-
+
+
+

@@ -23,6 +23,7 @@
 enyo.kind({
   name: "Bootplate.PublicController"
   , kind: "Bootplate.ParentController"
+  , solved: false
   , handlers: {
      onLogin: 'login'
      , onLoginResult: 'loginResult'
@@ -36,6 +37,7 @@ enyo.kind({
      , onCheckUsernameForSignupResult: 'checkUsernameForSignupResult'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
+     , onPuzzleSolved: 'puzzleSolved'
   }
   // Login
   , login: function(inSender, inEvent) {
@@ -158,6 +160,11 @@ enyo.kind({
         // mvcApp.showInfoMessage("Database is up.", "Database is up.");
       }
   }
+  // Captch puzzle solved
+  , puzzleSolved: function(inSender, inEvent) {
+      this.$.solved = true;
+    console.log(this.$.solved)
+  }
 });
 
 
@@ -177,4 +184,6 @@ enyo.kind({
 
 
 
-
+
+
+
