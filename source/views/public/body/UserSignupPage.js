@@ -1,6 +1,7 @@
 /**
 * This is the UserSignupPage kind
 */
+var gUserSignupPage = {}; // hate globals, having issues with dynamic components
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.UserSignupPage'
@@ -10,6 +11,7 @@ enyo.ready(function() {
        onUsernameStatus: 'usernameStatus'
       , onEmailStatus: 'emailStatus'
       , onShowBetaSignup: 'showBetaSignup'
+      , onPuzzleSolved: 'puzzleSolved'
     }
     , published: {
         usernameRef : {}
@@ -19,6 +21,7 @@ enyo.ready(function() {
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
+        gUserSignupPage = this;
     }
     , usernameStatus: function(inSender, inEvent) {
         // more kludging
@@ -49,7 +52,18 @@ enyo.ready(function() {
         return true;
     }
     , setupPageBody: function(owner) {
-        this.insertFormSpace(this);
+        // this.insertFormSpace(this);
+
+        owner.createComponent({name: 'enyoCaptcha'
+                             , kind: 'tld.CaptchaMain'
+                             , successDisplayText: 'Captcha solved!'
+                             , styles:'margin-right:200px;'
+                             , width:300, height:200
+                             , owner: this
+                             , classes:"form-input-box form-field-left-margin"});
+
+        this.insertBreak(owner);
+
         this.usernameRef = owner.createComponent(
         { name: "username"
           , kind: "onyx.Input"
@@ -184,9 +198,6 @@ enyo.ready(function() {
 
       this.insertBreak(owner);
 
-      owner.createComponent({name: 'enyoCaptcha', kind: tld.EnyoCaptcha, successDisplayText: 'Congratulations!', width:300, height:300, owner: owner});
-
-      this.insertBreak(owner);
 
       owner.createComponent(
         { kind: "onyx.Button"
@@ -197,8 +208,13 @@ enyo.ready(function() {
            onclick: 'signup'
          }
          , signup: function() {
-             mvcApp.waterfall('onUserSignup', {username:owner.$.username.value, errorEvent:'onErrorSystemMessages'});
-             return true;
+             if (gUserSignupPage.$.enyoCaptcha.solved) {
+               mvcApp.waterfall('onUserSignup', {username:owner.$.username.value, errorEvent:'onErrorSystemMessages'});
+               return true;
+             } else {
+               mvcApp.showErrorMessage("Complete Captcha", "Please solve the puzzle so we know you're not a robot.");
+               return false;
+             }
          }
         }
       );
@@ -217,8 +233,13 @@ enyo.ready(function() {
         }
         this.betaCode.render();
     }
+    // Captch puzzle solved
+    , puzzleSolved: function(inSender, inEvent) {
+        // TODO having issues with dynamically created components firing events
+    }
   });
 });
+
 
 
 
