@@ -53,14 +53,14 @@ enyo.ready(function() {
     }
     , setupPageBody: function(owner) {
         // this.insertFormSpace(this);
+        var lWidth = window.innerWidth / 3;
 
         owner.createComponent({name: 'enyoCaptcha'
-                             , kind: 'tld.CaptchaMain'
+                             , kind: 'tld.Captcha'
                              , successDisplayText: 'Captcha solved!'
-                             , styles:'margin-right:200px;'
-                             , width:300, height:200
+                             , width:lWidth, height:250
                              , owner: this
-                             , classes:"form-input-box form-field-left-margin"});
+                             , classes:"form-input-box"});
 
         this.insertBreak(owner);
 
@@ -239,6 +239,7 @@ enyo.ready(function() {
     }
   });
 });
+
 
 
 
