@@ -18,6 +18,7 @@
 *       Params: newEmail
 * - onCheckNewEmailResult: function(inSender, inEvent)
 */
+var TT = {}
 enyo.ready(function() {
   enyo.kind({
     name: "Bootplate.AuthController"
@@ -46,12 +47,24 @@ enyo.ready(function() {
         clearInterval(mvcApp.sessionIntervalKey);
     }
     , updateuserInfo: function(inSender, inEvent) {
+        try {
+          // update Gravatar link
+          var grav = this.createComponent({kind: 'tld.Gravatar'});
+          grav.setEmail(inEvent.email);
+          grav.setImageSize(25);
+          inEvent.avatar = grav.newSrc();
+          grav.destroy();
+        } catch (err) { console.log("Gravatar err " + err);}
+console.log(JSON.stringify(inEvent));
+
         // load the user's information
         var ajaxUserUpdate = new AJAX.UserUpdate({owner:this, fireEvent:'onUserUpdateResult'});
         // ajaxUserUpdate.makeRequest({id:mvcApp.data.user._id, username:mvcApp.data.newUsername, name:mvcApp.data.newName, email:mvcApp.data.newEmail, cPassword:mvcApp.data.cPassword, password:mvcApp.data.newPassword, vPassword:mvcApp.data.vPassword});
         ajaxUserUpdate.makeRequest(inEvent);
     }
     , userUpdateResult: function(inSender, inEvent) {
+	console.log("TT contains userdata");
+	TT = inEvent;
         if (inEvent.userdata) {
             mvcApp.data.user = inEvent.userdata;
             mvcApp.setGravatarEmail(mvcApp.data.user.email);
@@ -109,4 +122,7 @@ enyo.ready(function() {
 
 
 
-
+
+
+
+
