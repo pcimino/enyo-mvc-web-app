@@ -4,10 +4,11 @@
 var port = process.argv[2] || 8888;
 var express = require('express');
 var app = express();
+var ip = '127.0.0.1';
 
 app.configure(function () {
     app.get('/ping', function (req, res) {
-      var ip = req.headers['x-forwarded-for'] || req.headers['X-Real-IP'] || req.headers['X-Originating-IP'] || req.headers['X-Remote-IP']  || req.connection.remoteAddress;
+      ip = req.headers['x-forwarded-for'] || req.headers['X-Real-IP'] || req.headers['X-Originating-IP'] || req.headers['X-Remote-IP']  || req.connection.remoteAddress;
       res.send({'server':ip});
     });
 
@@ -17,4 +18,7 @@ app.configure(function () {
     );
 });
 app.listen(port); //the port you want to use
-console.log("Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
+console.log("Static file server running at\n  => http://" + ip + ":" + port + "/\nCTRL + C to shutdown");
+
+
+
