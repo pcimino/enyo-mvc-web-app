@@ -11,3 +11,9 @@
 [submodule "lib/gravatar"]
 	path = lib/gravatar
 	url = https://github.com/pcimino/Gravatar.git
+[submodule "lib/captcha"]
+	path = lib/captcha
+	url = https://github.com/pcimino/EnyoCaptcha.git
+[submodule "lib/canvas"]
+	path = lib/canvas
+	url = https://github.com/enyojs/canvas

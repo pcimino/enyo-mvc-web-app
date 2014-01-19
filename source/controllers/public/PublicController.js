@@ -23,6 +23,7 @@
 enyo.kind({
   name: "Bootplate.PublicController"
   , kind: "Bootplate.ParentController"
+  , solved: false
   , handlers: {
      onLogin: 'login'
      , onLoginResult: 'loginResult'
@@ -36,6 +37,7 @@ enyo.kind({
      , onCheckUsernameForSignupResult: 'checkUsernameForSignupResult'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
+     , onPuzzleSolved: 'puzzleSolved'
   }
   // Login
   , login: function(inSender, inEvent) {
@@ -123,7 +125,19 @@ enyo.kind({
         mvcApp.data.createNewUser = '';
         // create the user
         var ajaxUserSignup = new AJAX.UserSignup({owner:this, fireEvent:'onUserSignupResult', errorEvent:'onErrorSystemMessages'});
-        ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword, betaCode:mvcApp.data.betaCode});
+        var avatar = "";
+
+        try {
+          // setup Gravatar
+          var grav = this.createComponent({kind: 'tld.Gravatar'});
+          grav.setEmail(mvcApp.data.email);
+          grav.setImageSize(25);
+          var avatar = grav.newSrc();
+          grav.destroy();
+        } catch (err) { console.log("Gravatar err " + err);}
+
+        // save user
+        ajaxUserSignup.makeRequest({username:mvcApp.data.username, name:mvcApp.data.name, avatar: avatar, email:mvcApp.data.email, password:mvcApp.data.password, vPassword:mvcApp.data.vPassword, betaCode:mvcApp.data.betaCode});
       } else {
         mvcApp.showErrorMessage('Error creating account', 'Username already exists');
       }
@@ -158,6 +172,11 @@ enyo.kind({
         // mvcApp.showInfoMessage("Database is up.", "Database is up.");
       }
   }
+  // Captch puzzle solved
+  , puzzleSolved: function(inSender, inEvent) {
+      this.$.solved = true;
+    console.log(this.$.solved)
+  }
 });
 
 
@@ -177,4 +196,7 @@ enyo.kind({
 
 
 
-
+
+
+
+
