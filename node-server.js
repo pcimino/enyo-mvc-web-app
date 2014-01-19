@@ -1,5 +1,4 @@
 // https://github.com/Kingdutch/NodeJS-Simple-Webserver
-
 // http://erichonorez.wordpress.com/2013/02/04/a-basic-web-server-with-node-js-and-express/
 var port = process.argv[2] || 8888;
 var express = require('express');
@@ -19,6 +18,8 @@ app.configure(function () {
 });
 app.listen(port); //the port you want to use
 console.log("Static file server running at\n  => http://" + ip + ":" + port + "/\nCTRL + C to shutdown");
+
+
 
 
 
