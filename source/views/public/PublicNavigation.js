@@ -19,6 +19,7 @@ enyo.kind({
       this.createLinkButton(topNavToolbar, 'login', 'Login', 'button-float-right');
       this.createLinkButton(topNavToolbar, 'contactPublic', 'Contact Us', 'button-float-right');
       this.createLinkButton(topNavToolbar, 'userSignup', 'New User Signup');
+      this.createLinkButton(topNavToolbar, 'demoAbout', 'About this Demo');
 
   }
   , setupBottomNav: function(owner) {
@@ -42,4 +43,5 @@ enyo.kind({
 
 
 
-
+
+

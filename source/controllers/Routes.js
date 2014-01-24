@@ -29,6 +29,7 @@
 * - contactPublic()
 * - developer()
 * - betaSite()
+* - demoAbout()
 */
 enyo.kind({
     kind: 'enyo.Router'
@@ -105,6 +106,9 @@ enyo.kind({
     }
     , { path: '/betaSiteManagement'
         , handler: 'betaSiteManagement'
+    }
+    , { path: '/demoAbout'
+        , handler: 'demoAbout'
     }
   ]
   , loadBodyPage: function (kindByName, skipWaterfallFlag) {
@@ -204,6 +208,9 @@ enyo.kind({
   , betaSiteManagement: function () {
       this.loadBodyPage('Bootplate.BetaSiteManagementPage');
   }
+  , demoAbout: function () {
+      this.loadBodyPage('Bootplate.DemoAboutPage');
+  }
 
 });
 
@@ -232,4 +239,5 @@ enyo.kind({
 
 
 
-
+
+

@@ -5,6 +5,7 @@ enyo.depends(
   , "PublicMessageDisplayPage.js"
   , "ContactPage.js"
   , "DeveloperPage.js"
+  , "DemoAboutPage.js"
 );
 
 

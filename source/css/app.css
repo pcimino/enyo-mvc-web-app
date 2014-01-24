@@ -5,7 +5,12 @@
 .nice-padding {
 	padding: 15px !important;
 }
-
+.center
+{
+margin-left:auto;
+margin-right:auto;
+width:50%;
+}
 .reverse-text {
   background: gray;
   font-family:arial;
