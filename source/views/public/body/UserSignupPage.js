@@ -56,7 +56,7 @@ enyo.ready(function() {
         var lWidth = window.innerWidth / 3;
 
         owner.createComponent({name: 'enyoCaptcha'
-                             , kind: 'tld.Captcha'
+                             , kind: 'tld.EnyoCaptcha'
                              , successDisplayText: 'Captcha solved!'
                              , width:lWidth, height:250
                              , owner: this
