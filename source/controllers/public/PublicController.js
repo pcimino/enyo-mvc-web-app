@@ -37,7 +37,7 @@ enyo.kind({
      , onCheckUsernameForSignupResult: 'checkUsernameForSignupResult'
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
-     , onPuzzleSolved: 'puzzleSolved'
+     , onPuzzleSolvedController: 'puzzleSolved'
   }
   // Login
   , login: function(inSender, inEvent) {
@@ -175,7 +175,8 @@ enyo.kind({
   // Captch puzzle solved
   , puzzleSolved: function(inSender, inEvent) {
       this.$.solved = true;
-    console.log(this.$.solved)
+    console.log("Public Controller puzzleSolved " + this.$.solved);
+    return false;
   }
 });
 

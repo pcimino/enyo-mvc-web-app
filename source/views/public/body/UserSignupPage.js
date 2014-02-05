@@ -60,6 +60,7 @@ enyo.ready(function() {
                              , successDisplayText: 'Captcha solved!'
                              , width:lWidth, height:250
                              , owner: this
+                             , callback: this.puzzleSolved
                              , classes:"form-input-box"});
 
         this.insertBreak(owner);
@@ -208,7 +209,8 @@ enyo.ready(function() {
            onclick: 'signup'
          }
          , signup: function() {
-             if (gUserSignupPage.$.enyoCaptcha.solved) {
+           console.log("AAAAAAAA " + gUserSignupPage.$.enyoCaptcha.getPassed());
+             if (gUserSignupPage.$.enyoCaptcha.getPassed()) {
                mvcApp.waterfall('onUserSignup', {username:owner.$.username.value, errorEvent:'onErrorSystemMessages'});
                return true;
              } else {
@@ -236,6 +238,8 @@ enyo.ready(function() {
     // Captch puzzle solved
     , puzzleSolved: function(inSender, inEvent) {
         // TODO having issues with dynamically created components firing events
+      console.log("UserSignupPage puzzleSolved");
+      this.bubble('onPuzzleSolvedController');
     }
   });
 });
