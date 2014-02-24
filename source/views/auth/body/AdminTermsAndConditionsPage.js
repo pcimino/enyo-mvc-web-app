@@ -48,7 +48,7 @@ enyo.ready(function() {
         this.insertBreak(owner);
         this.createComponent(
           { kind: "onyx.Button"
-            , content: "Send System Message"
+            , content: "Create Terms & Conditions"
             , classes: "onyx-blue "
             , owner: this
             , ontap: 'sendSysMessage'
@@ -101,7 +101,7 @@ enyo.ready(function() {
               , {content: "Message: ", classes:'list-item-margin bold-text'}
               , {content: inEvent.context.message}
             ]}
-            , {kind: "onyx.Button", content: "Archive", ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+            , {kind: "onyx.Button", content: "Accept", showing:(inEvent.context.acceptedDate == undefined), ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
     , archiveMessage: function(inSender, inEvent) {
@@ -145,4 +145,5 @@ enyo.ready(function() {
 
 
 
-
+
+

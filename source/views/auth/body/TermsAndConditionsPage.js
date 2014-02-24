@@ -68,7 +68,7 @@ enyo.ready(function() {
               , {content: "Accepted on: ", classes:'list-item-margin bold-text'}
               , {content: inEvent.context.acceptedDate}
             ]}
-          , {kind: "onyx.Button", content: "Accept", ontap: 'archiveMessage', accepted:inEvent.context.acceptedDate, id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+          , {kind: "onyx.Button", content: "Accept", showing:(inEvent.context.acceptedDate == undefined), ontap: 'archiveMessage', accepted:inEvent.context.acceptedDate, id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
     , archiveMessage: function(inSender, inEvent) {
@@ -112,4 +112,5 @@ enyo.ready(function() {
 
 
 
-
+
+

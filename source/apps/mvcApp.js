@@ -21,7 +21,7 @@ enyo.kind({
         , sessionIntervalKey: ''
         , debugNetworkCalls: true
         , showDeveloperTools: true
-        , betaTools: false  // if false, hide the Beta button UNLESS beta is active, then overridden by betaSiteSignup
+        , betaTools: true  // if false, hide the Beta button UNLESS beta is active, then overridden by betaSiteSignup
         , betaSiteSignup: false // set to true if beta is active, shows the beta code entry on user signup
     }
     , components: [
@@ -129,4 +129,5 @@ enyo.kind({
 
 
 
-
+
+
