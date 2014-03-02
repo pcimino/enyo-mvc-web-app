@@ -1,7 +1,7 @@
 {
     "name": "enyo-mvc-web-app"
   , "description": "An Enyo front end for the Restify demo:  https://github.com/pcimino/nodejs-restify-mongodb"
-  , "version": "1.0.1"
+  , "version": "1.0.3"
   , "private": false
   , "author": "Paul Cimino(https://github.com/pcimino)"
   , "engines": {
@@ -13,4 +13,5 @@
   }
   , "license": "Apache"
 }
+
 

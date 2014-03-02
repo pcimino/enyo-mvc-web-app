@@ -178,15 +178,7 @@ enyo.kind({
 		var value = inSender.value.toFixed(8);
 		this.$.bubble.applyStyle("opacity", value);
 
-		if(enyo.Layout.transform)//Enyo 2.0b3
-			{ enyo.Layout.transform(this.$.bubble, {"scale": value}); }
-		else if(enyo.dom.transformValue)//Enyo GitHub (22/04/2012)
-			{ enyo.dom.transformValue(this.$.bubble, "scale", value); }
-		/*
-			"toFixed(8)" is use to avoid some "flashing" bug when opacity is near 0 and the exponential notation is used,
-			i.e. 7.999999995789153e-9,
-			because CSS don't understand exponential notation
-		*/
+
 
 	},
 
@@ -200,19 +192,10 @@ enyo.kind({
 		var value = inSender.value.toFixed(8);
 		this.$.bubble.applyStyle("opacity", 1-value);
 
-		if(enyo.Layout.transform)//Enyo 2.0b3
-			{ enyo.Layout.transform(this.$.bubble, {"scale": 1+value*5}); }
-		else if(enyo.dom.transformValue)//Enyo GitHub (22/04/2012)
-			{ enyo.dom.transformValue(this.$.bubble, "scale", 1+value*5); }
-
 		var masterValue = 1-value*2;
 			if(masterValue < 0) masterValue = 0;
 		this.$.master.applyStyle("opacity", masterValue.toFixed(8));
-		/*
-			"toFixed(8)" is use to avoid some "flashing" bug when opacity is near 0 and the exponential notation is used,
-			i.e. 7.999999995789153e-9,
-			because CSS don't understand exponential notation
-		*/
+
 	},
 
 	/**
@@ -287,3 +270,4 @@ enyo.kind({
 		}
 	}
 });
+
