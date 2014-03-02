@@ -3,10 +3,10 @@ enyo.depends(
 	"$lib/layout"
 	, "$lib/onyx"
   , "$lib/gravatar"
-  , "$lib/macfja"
   , "$lib/canvas"
   , "$lib/captcha"
 	// include application sources
+  , "macfja"
 	, "css"
 	, "models"
 	, "controllers"
@@ -15,6 +15,7 @@ enyo.depends(
 	// include our default entry point
 	, "start.js"
 );
+
 
 
 
