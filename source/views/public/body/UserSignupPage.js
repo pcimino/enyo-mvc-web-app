@@ -17,6 +17,7 @@ enyo.ready(function() {
         usernameRef : {}
         , emailRef : {}
         , betaCode : {}
+        , formChildren: []
     }
     // This checks to see if the user is allowed on this page
     , rendered: function() {
@@ -63,7 +64,7 @@ enyo.ready(function() {
                              , callback: this.puzzleSolved
                              , classes:"form-input-box"});
 
-        this.insertBreak(owner);
+        this.formChildren.push(this.insertBreak(owner));
 
         this.usernameRef = owner.createComponent(
         { name: "username"
@@ -91,24 +92,33 @@ enyo.ready(function() {
         }
       );
       this.bindInputData(owner.$.username);
+      this.formChildren.push(this.usernameRef);
       // TODO figure out and clean this up
       // Why doesn't the "handlers : {}" definition above work?
       // presumably the ownership chain on the dynamic components
       owner.handlers.onUsernameStatus = this.usernameStatus;
       owner.handlers.onEmailStatus = this.emailStatus;
 
-      this.insertBreak(owner);
-      owner.createComponent(
+      this.formChildren.push(this.insertBreak(owner));
+      this.formChildren.push(owner.createComponent(
         { name: "name"
           , kind: "onyx.Input"
           , classes:"form-input-box form-field-left-margin"
           , placeholder: "Name"
           , owner: owner
         }
-      );
+      ));
       this.bindInputData(owner.$.name);
 
-      this.insertBreak(owner);
+      /*
+       * KLUDGE formChildren holds all the elements to be hidden and then shown when captcha Complete
+       * a better way would put the captcha in a panel and the form ina panel and then slide upon completion
+       * TODO Need to find a better way, one issue I had with panels is the dynamic creation of elements and ownership
+       *
+       * The whole point of doing this: When on a small mobile device, dragging the shapes in the canvas
+       * translates into screen scrolling. So by making the screen smaller, dragging works better
+       */
+      this.formChildren.push(this.insertBreak(owner));
       this.emailRef = owner.createComponent(
         { name: "email"
           , kind: "onyx.Input"
@@ -136,8 +146,8 @@ enyo.ready(function() {
         }
       );
       this.bindInputData(owner.$.email);
-
-      this.insertBreak(owner);
+      this.formChildren.push(this.emailRef);
+      this.formChildren.push(this.insertBreak(owner));
       this.betaCode = owner.createComponent(
         { name: "betaCode"
           , kind: "onyx.Input"
@@ -148,13 +158,15 @@ enyo.ready(function() {
         }
       );
       this.bindInputData(owner.$.betaCode);
-      this.insertBreak(owner);
+      this.formChildren.push(this.betaCode);
+      this.formChildren.push(this.insertBreak(owner));
 
-      owner.createComponent({kind: enyo.Checkbox
+      this.formChildren.push(owner.createComponent({kind: enyo.Checkbox
         , checked:true
         , name: 'showPassword'
         , onActivate: 'passwordCheckboxChanged'
         , content:'Hide Password'
+                                                    , hidden: true
         , classes:"form-input-box form-field-left-margin"
         , owner:owner
         , handlers: {
@@ -170,11 +182,12 @@ enyo.ready(function() {
               owner.$.vPassword.setType('text');
             }
           }
-      });
+      }));
+
 
       // bind taken care of in usernameChanged() : this.bindInputData(owner.$.username);
-      this.insertBreak(owner);
-      owner.createComponent(
+      this.formChildren.push(this.insertBreak(owner));
+      this.formChildren.push(owner.createComponent(
         { name: "password"
           , kind: "onyx.Input"
           , type:'password'
@@ -182,11 +195,11 @@ enyo.ready(function() {
           , placeholder: "Password"
           , owner: owner
         }
-      );
+      ));
 
       this.bindInputData(owner.$.password);
-      this.insertBreak(owner);
-      owner.createComponent(
+      this.formChildren.push(this.insertBreak(owner));
+      this.formChildren.push(owner.createComponent(
         { name: "vPassword"
           , kind: "onyx.Input"
           , type:'password'
@@ -194,13 +207,13 @@ enyo.ready(function() {
           , placeholder: "Verify Password"
           , owner: owner
         }
-      );
+      ));
       this.bindInputData(owner.$.vPassword);
 
-      this.insertBreak(owner);
+      this.formChildren.push(this.insertBreak(owner));
 
 
-      owner.createComponent(
+      this.formChildren.push(owner.createComponent(
         { kind: "onyx.Button"
          , content: "Sign Up"
          , classes: "onyx-blue form-field-left-margin"
@@ -209,7 +222,6 @@ enyo.ready(function() {
            onclick: 'signup'
          }
          , signup: function() {
-           console.log("AAAAAAAA " + gUserSignupPage.$.enyoCaptcha.getPassed());
              if (gUserSignupPage.$.enyoCaptcha.getPassed()) {
                mvcApp.waterfall('onUserSignup', {username:owner.$.username.value, errorEvent:'onErrorSystemMessages'});
                return true;
@@ -219,11 +231,13 @@ enyo.ready(function() {
              }
          }
         }
-      );
+      ));
 
-      this.insertBreak(owner);
-      this.insertBreak(owner);
+      this.formChildren.push(this.insertBreak(owner));
+      this.formChildren.push(this.insertBreak(owner));
       this.insertInternalLink(owner, this.rndLink('login'), 'Cancel');
+
+      this.formChildren.forEach(function(a) {a.hide();});
 
       owner.render();
     } // end setupPageBody
@@ -238,7 +252,7 @@ enyo.ready(function() {
     // Captch puzzle solved
     , puzzleSolved: function(inSender, inEvent) {
         // TODO having issues with dynamically created components firing events
-      console.log("UserSignupPage puzzleSolved");
+      gUserSignupPage.formChildren.forEach(function(a) {a.show();});
       this.bubble('onPuzzleSolvedController');
     }
   });

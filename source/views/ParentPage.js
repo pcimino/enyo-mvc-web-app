@@ -40,7 +40,7 @@ enyo.ready(function() {
         owner.createComponent({kind: enyo.Control, style: padHeight});
     }
     , insertBreak: function(owner, optionalName) {
-        owner.createComponent({ tag: "br", kind: 'enyo.Control', name: optionalName}); // optionalName used when fields need to be shown/hidden
+        return owner.createComponent({ tag: "br", kind: 'enyo.Control', name: optionalName}); // optionalName used when fields need to be shown/hidden
     }
     , insertInternalLink: function(owner, link, text, optionalName) {
         owner.createComponent({
@@ -104,4 +104,5 @@ enyo.ready(function() {
 
 
 
-
+
+
