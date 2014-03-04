@@ -161,12 +161,13 @@ enyo.ready(function() {
       this.formChildren.push(this.betaCode);
       this.formChildren.push(this.insertBreak(owner));
 
+      // TODO Why does a hidden checkbox still display the content ont he screen?
       this.formChildren.push(owner.createComponent({kind: enyo.Checkbox
         , checked:true
         , name: 'showPassword'
         , onActivate: 'passwordCheckboxChanged'
         , content:'Hide Password'
-                                                    , hidden: true
+        , hidden: true
         , classes:"form-input-box form-field-left-margin"
         , owner:owner
         , handlers: {
@@ -257,6 +258,7 @@ enyo.ready(function() {
     }
   });
 });
+
 
 
 
