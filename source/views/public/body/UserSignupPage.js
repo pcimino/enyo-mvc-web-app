@@ -254,6 +254,7 @@ enyo.ready(function() {
     , puzzleSolved: function(inSender, inEvent) {
         // TODO having issues with dynamically created components firing events
       gUserSignupPage.formChildren.forEach(function(a) {a.show();});
+      gUserSignupPage.showBetaSignup();
       this.bubble('onPuzzleSolvedController');
     }
   });
