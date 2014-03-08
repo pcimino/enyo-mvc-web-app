@@ -23,6 +23,8 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
         gUserSignupPage = this;
+      this.bubble('onPuzzleResetController');
+      console.log(22)
     }
     , usernameStatus: function(inSender, inEvent) {
         // more kludging
@@ -55,6 +57,10 @@ enyo.ready(function() {
     , setupPageBody: function(owner) {
         // this.insertFormSpace(this);
         var lWidth = window.innerWidth / 3;
+
+        // bubble and waterfall throwing an error
+        // TODO need to refactor this properly
+        mvcApp.controllers.publicController.puzzleReset();
 
         owner.createComponent({name: 'enyoCaptcha'
                              , kind: 'tld.EnyoCaptcha'
@@ -253,9 +259,13 @@ enyo.ready(function() {
     // Captch puzzle solved
     , puzzleSolved: function(inSender, inEvent) {
         // TODO having issues with dynamically created components firing events
+
       gUserSignupPage.formChildren.forEach(function(a) {a.show();});
       gUserSignupPage.showBetaSignup();
-      this.bubble('onPuzzleSolvedController');
+      //mvcApp.waterfallDown('onPuzzleSolvedController');
+      // bubble and waterfall throwing an error
+      // TODO need to refactor this properly
+      mvcApp.controllers.publicController.puzzleSolved();
     }
   });
 });

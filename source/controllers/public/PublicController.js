@@ -38,6 +38,7 @@ enyo.kind({
      , onCheckDB: 'checkDB'
      , onCheckDBResult: 'checkDBResult'
      , onPuzzleSolvedController: 'puzzleSolved'
+     , onPuzzleResetController: 'puzzleReset'
   }
   // Login
   , login: function(inSender, inEvent) {
@@ -175,8 +176,12 @@ enyo.kind({
   // Captch puzzle solved
   , puzzleSolved: function(inSender, inEvent) {
       this.$.solved = true;
-    console.log("Public Controller puzzleSolved " + this.$.solved);
-    return false;
+      return false;
+  }
+  // Captch puzzle reset
+  , puzzleReset: function(inSender, inEvent) {
+      this.$.solved = false;
+      return false;
   }
 });
 
