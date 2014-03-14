@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -118,7 +119,7 @@ enyo.kind({
 	 * @type Number
 	 */
 	addLevel: function(name) {
-		if(name == "") { return -1; }
+		if(name === "") { return -1; }
 		return this.addLevels([name])[0];
 	},
 
@@ -164,7 +165,7 @@ enyo.kind({
 		for(;tour<size;tour++)
 		{
 			var name = levels[tour];
-			if(name == "") { continue; }
+			if(name === "") { continue; }
 			this.uid++;//Increase the uid
 			//Create a new component
 			var node = this.$.scroller.createComponent({
@@ -356,7 +357,7 @@ enyo.kind({
 	_getItemBefore: function(id) {
 		for(var tour=0,size=this.items.length;tour<size;tour++) {
 			if(this.items[tour].uid == id) {
-				if(tour == 0) { return null; }//The first item
+				if(tour === 0) { return null; }//The first item
 				return this.items[tour-1];
 			}
 		}
@@ -394,7 +395,9 @@ enyo.kind({
 			tour = 0,
 			size = this.items.length;
 		for(;tour<size;tour++) {
-			if(this.items[tour].label == path) { items.push({"path": path, id: this.items[tour].uid}) }
+			if (this.items[tour].label == path) {
+        items.push({"path": path, id: this.items[tour].uid});
+      }
 		}
 
 		return items;
@@ -430,8 +433,8 @@ enyo.kind({
 	 * @function
 	 */
 	selectNextItem: function() {
-		var next = this._getItemAfter(this.selected)
-		this.selectItemById(next?next.uid:null)
+		var next = this._getItemAfter(this.selected);
+		this.selectItemById(next?next.uid:null);
 	},
 
 	/**
@@ -440,7 +443,7 @@ enyo.kind({
 	 * @function
 	 */
 	selectPreviousItem: function() {
-		var before = this._getItemBefore(this.selected)
-		this.selectItemById(before?before.uid:null)
+		var before = this._getItemBefore(this.selected);
+		this.selectItemById(before?before.uid:null);
 	}
 });

@@ -1,3 +1,4 @@
+
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
@@ -124,9 +125,9 @@ enyo.ready(function() {
     , sendSysMessage: function(inSender, inEvent) {
         var subject = this.$.subject.getValue();
         var message = this.$.message.getValue();
-        if (subject && subject)
+
         // send the system message
-        if (subject && subject.length > 0 && message && message.length > 0) {
+        if (subject !== undefined && subject.length > 0 && message !== undefined && message.length > 0) {
           var ajaxSysMessage = new AJAX.SendSystemMessage({owner:this, fireEvent:'onGetSystemMessagesAdminScreen', errorEvent:'onErrorSystemMessages'});
           ajaxSysMessage.makeRequest({subject: subject, message:message });
         } else {

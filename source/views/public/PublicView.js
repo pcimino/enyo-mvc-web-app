@@ -25,7 +25,7 @@ enyo.kind({
   }
   , setupHeader: function() {
       this.inherited(arguments);
-      if (this.$.headerContainer) this.$.headerContainer.destroy();
+      if (this.$.headerContainer) { this.$.headerContainer.destroy(); }
       this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.PublicHeaderView'});
   }
   , setupPageBody: function() {
@@ -47,7 +47,7 @@ enyo.kind({
       this.navigation.setupRightNav(this.pageContainer);
       this.navigation.setupBottomNav(this.pageContainer);
 
-      if (this.$.footerContainer) this.$.footerContainer.destroy();
+      if (this.$.footerContainer) { this.$.footerContainer.destroy(); }
       this.footer = this.pageContainer.createComponent({name: 'footerContainer', kind: 'Bootplate.PublicFooterView', owner: this.pageContainer});
   }
 });
@@ -66,4 +66,4 @@ enyo.kind({
 
 
 
-
+

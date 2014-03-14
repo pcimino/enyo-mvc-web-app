@@ -1,3 +1,4 @@
+
 /**
 * This is the authenticated view kind.
 *
@@ -22,7 +23,7 @@ enyo.ready(function() {
     }
     , setupHeader: function() {
         this.inherited(arguments);
-        if (this.$.headerContainer) this.$.headerContainer.destroy();
+        if (this.$.headerContainer) { this.$.headerContainer.destroy(); }
         this.header = this.createComponent({name: 'headerContainer', kind: 'Bootplate.AuthHeaderView'});
     }
     , setupPageBody: function() {
@@ -50,7 +51,7 @@ enyo.ready(function() {
         this.navigation.setupRightNav(this.pageContainer);
         this.navigation.setupBottomNav(this.pageContainer);
 
-        if (this.$.footerContainer) this.$.footerContainer.destroy();
+        if (this.$.footerContainer) { this.$.footerContainer.destroy(); }
         this.footer = this.pageContainer.createComponent({name: 'footerContainer', kind: 'Bootplate.AuthFooterView', owner: this.pageContainer});
     }
     , getSessionTimeout: function(inSender, inEvent) {
@@ -65,7 +66,7 @@ enyo.ready(function() {
          mvcApp.sessionTimeRemaining = inEvent.timeout - 60000;
          if (!mvcApp.sessionIntervalKey) {
            clearInterval(mvcApp.sessionIntervalKey);
-           mvcApp.sessionIntervalKey = setInterval(function(){ mvcApp.authView.checkRemainingSessionTime() }, mvcApp.sessionCheckInterval);
+           mvcApp.sessionIntervalKey = setInterval(function(){ mvcApp.authView.checkRemainingSessionTime(); }, mvcApp.sessionCheckInterval);
          }
     }
     , checkRemainingSessionTime: function(inSender, inEvent) {
@@ -97,4 +98,5 @@ enyo.ready(function() {
 
 
 
-
+
+

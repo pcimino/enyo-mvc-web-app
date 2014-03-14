@@ -1,3 +1,4 @@
+
 /**
 * This is the parent content kind, Pages are the main body of the page
 * - insertBreak() creates a newline in the page
@@ -31,7 +32,7 @@ enyo.ready(function() {
         if (paddingInPx) {
             padHeight = padHeight + paddingInPx;
             var last2 = (padHeight.substring(padHeight.length-2)).toLowerCase();
-            if (last2.localeCompare("px") != 0) {
+            if (last2.localeCompare("px") !== 0) {
               padHeight = padHeight + "px";
             }
         } else {

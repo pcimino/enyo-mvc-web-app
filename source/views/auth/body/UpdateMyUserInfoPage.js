@@ -1,3 +1,4 @@
+
 /**
 * This is the UpdateMyUserInfoPage for authenticated users
 *
@@ -24,7 +25,7 @@ enyo.ready(function() {
           this.usernameRef.removeClass("text-input-confirm-box");
           this.usernameRef.removeClass("text-input-error-box");
 
-          if (inEvent.exists == true) {
+          if (inEvent.exists === true) {
             this.usernameRef.addClass("text-input-error-box");
           } else {
             this.usernameRef.addClass("text-input-confirm-box");
@@ -35,7 +36,7 @@ enyo.ready(function() {
           this.emailRef.removeClass("text-input-confirm-box");
           this.emailRef.removeClass("text-input-error-box");
 
-          if (inEvent.exists == true) {
+          if (inEvent.exists === true) {
             this.emailRef.addClass("text-input-error-box");
           } else {
             this.emailRef.addClass("text-input-confirm-box");
@@ -151,4 +152,5 @@ enyo.ready(function() {
 
 
 
-
+
+

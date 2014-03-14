@@ -1,3 +1,4 @@
+
 /**
 * Parent for the JSONP requests, provides default success and error handlers
 *
@@ -7,28 +8,28 @@
 * - processError()
 */
 enyo.kind({
-  name: 'JSONP.Parent'
-  , kind: 'enyo.JsonpRequest'
-  , autoLoad: true
-  , published: {
-     owner: null
-    , method: 'GET'
-     , fireEvent: null
-     , errorEvent: null
-     , url: null
-  }
-  , constructor: function(props) {
+  name: 'JSONP.Parent',
+  kind: 'enyo.JsonpRequest',
+  autoLoad: true,
+  published: {
+     owner: null,
+     method: 'GET',
+     fireEvent: null,
+     errorEvent: null,
+     url: null
+  },
+  constructor: function(props) {
       this.inherited(arguments);
       if (mvcApp.debugNetworkCalls) {
         console.log('JSONP.Parent constructor ' + this.method + ":" + this.rest);
         console.log('Properties ', props);
       }
-  }
-  , buildBaseURL: function() {
+  },
+  buildBaseURL: function() {
       return mvcApp.getAjaxBaseURL() + ':' + mvcApp.getAjaxBasePort();
-  }
+  },
   // check database connection
-  , makeRequest: function(params) {
+  makeRequest: function(params) {
       if (mvcApp.debugNetworkCalls) {
         console.log('JSONP.Parent makeRequest ' + this.method + ":" + this.rest);
         console.log('Parameters ' + JSON.stringify(params));
@@ -43,8 +44,8 @@ enyo.kind({
       // send parameters the remote service using the 'go()' method
       // sending this in the body and on the URI
       this.go(params);
-  }
-  , processResponse: function(inSender, inResponse) {
+  },
+  processResponse: function(inSender, inResponse) {
       if (this.fireEvent) {
         if (inResponse) {
           this.owner.bubble(this.fireEvent, inResponse);
@@ -59,24 +60,24 @@ enyo.kind({
         console.log(inResponse);
         console.log(inSender.xhrResponse);
       }
-  }
-  , processError: function(inSender, inResponse) {
+  },
+  processError: function(inSender, inResponse) {
       this.processErrorMessage(inSender, inResponse, 'System Error', 'System Error');
       if (mvcApp.debugNetworkCalls) {
         console.log('JSONP.Parent processError ' + "GET:" + this.rest);
         console.log(inResponse);
         console.log(inSender.xhrResponse);
       }
-  }
-  , processErrorMessage: function(inSender, inResponse, titleText, messageText) {
+  },
+  processErrorMessage: function(inSender, inResponse, titleText, messageText) {
       var responseContent = inResponse;
       if (inSender.xhrResponse && inSender.xhrResponse.body) {
         responseContent = inSender.xhrResponse;
         var tmpMessage = JSON.parse(inSender.xhrResponse.body).message;
-        if (tmpMessage) messageText = tmpMessage;
+        if (tmpMessage) { messageText = tmpMessage; }
       }
-      if (this.fireEvent) this.owner.bubble(this.fireEvent, {response: responseContent, title: titleText, message: messageText});
-      if (this.errorEvent) this.owner.bubble(this.errorEvent, {response: responseContent, title: titleText, message: messageText});
+      if (this.fireEvent) { this.owner.bubble(this.fireEvent, {response: responseContent, title: titleText, message: messageText}); }
+      if (this.errorEvent) { this.owner.bubble(this.errorEvent, {response: responseContent, title: titleText, message: messageText}); }
 
       if (mvcApp.debugNetworkCalls) {
         console.log('JSONP.Parent processErrorMessage ' + this.method + ":" + this.rest);
@@ -102,4 +103,5 @@ enyo.kind({
 
 
 
-
+
+

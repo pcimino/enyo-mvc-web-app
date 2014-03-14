@@ -1,3 +1,4 @@
+
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
@@ -101,7 +102,7 @@ enyo.ready(function() {
               , {content: "Message: ", classes:'list-item-margin bold-text'}
               , {content: inEvent.context.message}
             ]}
-            , {kind: "onyx.Button", content: "Accept", showing:(inEvent.context.acceptedDate == undefined), ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
+            , {kind: "onyx.Button", content: "Accept", showing:(inEvent.context.acceptedDate === undefined), ontap: 'archiveMessage', id: 'archiveMessage_'+inEvent.context._id, owner: this, classes:'list-item-margin'}
         ]};
     }
     , archiveMessage: function(inSender, inEvent) {
@@ -115,9 +116,9 @@ enyo.ready(function() {
     , sendSysMessage: function(inSender, inEvent) {
         var subject = this.$.subject.getValue();
         var message = this.$.message.getValue();
-        if (subject && subject)
+
         // send the system message
-        if (subject && subject.length > 0 && message && message.length > 0) {
+        if (subject !== undefined && subject.length > 0 && message !== undefined && message.length > 0) {
           var ajaxSysMessage = new AJAX.SendTermsAndConditions({owner:this, fireEvent:'onGetTermsAndConditionsAdminScreen', errorEvent:'onErrorTermsAndConditions'});
           ajaxSysMessage.makeRequest({subject: subject, message:message });
         } else {

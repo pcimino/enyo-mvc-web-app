@@ -1,9 +1,8 @@
 enyo.depends(
-  "ParentPage.js"
-  , "ParentView.js"
-  , "Navigation.js"
-  , "auth"
-  , "public"
+  "ParentPage.js",
+  "ParentView.js",
+  "Navigation.js",
+  "auth",
+  "public"
 );
-
 

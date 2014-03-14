@@ -1,4 +1,3 @@
-
 /**
 * This is the parent view for all view kinds
 * - showMessage() calls the popup
@@ -128,4 +127,5 @@ enyo.kind({
 
 
 
-
+
+

@@ -1,3 +1,4 @@
+
 /**
 * Build the authenticated fooer
 */
@@ -42,4 +43,5 @@ enyo.kind({
 
 
 
-
+
+

@@ -1,3 +1,4 @@
+
 /**
 * UserDetails AJAX requests: Retrieve the user details
 *
@@ -5,11 +6,11 @@
 * - processError()
 */
 enyo.kind({
-  name: 'AJAX.UserDetails'
-  , kind: 'AJAX.Parent'
-  , method:'GET'
-  , rest:'/api/v1/user'
-  , processResponse: function(inSender, inResponse) {
+  name: 'AJAX.UserDetails',
+  kind: 'AJAX.Parent',
+  method:'GET',
+  rest:'/api/v1/user',
+  processResponse: function(inSender, inResponse) {
       if (inResponse) {
        if (this.fireEvent) {
          this.owner.bubble(this.fireEvent, {userdata: inResponse, authenticated: true});

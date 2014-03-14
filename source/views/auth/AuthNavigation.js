@@ -1,3 +1,4 @@
+
 /**
 * This is the Navigation kind when the user is authenticated
 *
@@ -57,7 +58,7 @@ enyo.kind({
       }
   }
   , updateBetaSettings: function() {
-      if (mvcApp.betaTools == true || mvcApp.betaSiteSignup == true) {
+      if (mvcApp.betaTools === true || mvcApp.betaSiteSignup === true) {
         this.adminNavToolbar.$.betaSiteManagement.show();
       } else {
         this.adminNavToolbar.$.betaSiteManagement.hide();
@@ -85,4 +86,5 @@ enyo.kind({
 
 
 
-
+
+

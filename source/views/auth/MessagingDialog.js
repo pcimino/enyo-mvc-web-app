@@ -1,4 +1,3 @@
-
 /**
 * MessagingDialog kind,
 * used to display a dialog for the user to archive, unarchive, reply to a message thread
@@ -86,7 +85,7 @@ enyo.ready(function() {
         this.$.messages.destroyComponents();
         var messagePage = "";
         for (var i = 0; i < messageThreadData.messages.length; i++) {
-          if ((i % 2) == 1) from = messageThreadData.toUsername;
+          if ((i % 2) == 1) { from = messageThreadData.toUsername; }
           this.$.messages.createComponent(
             {"kind":"FittableColumns","components": [
               {"content":"From: ","classes":"list-item-margin bold-text"}
@@ -95,7 +94,7 @@ enyo.ready(function() {
               ,{"content": messageThreadData.messages[i].message }
             ]});
         }
-      this.$.messages.render()
+      this.$.messages.render();
     }
     , componentsReady: function() {
         this.inherited(arguments);
@@ -134,9 +133,10 @@ enyo.ready(function() {
     , cancel: function() {
         this.hide();
     }
-  })
+  });
 });
 
 
 
-
+
+

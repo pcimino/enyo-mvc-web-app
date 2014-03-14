@@ -1,3 +1,4 @@
+
 /**
  * Enyo Core
  * @see http://enyojs.com
@@ -22,7 +23,7 @@ enyo.kind({
 
 	published: {
 		/** @lends enyo.GrowTextBox# */
-		
+
 		/**
 		 * The minimum number of rows to display.<br />
 		 * if the value is not a finite number and not > to 0 then the value is set to 1.
@@ -54,7 +55,7 @@ enyo.kind({
 		 * @default NaN
 		 */
 		maxCols: NaN,
-		
+
 	},
 
 	events: {
@@ -169,11 +170,11 @@ enyo.kind({
 		var intValue = parseInt(inValue);
 		if (
 			isNaN(intValue) ||
-			intValue == 0
+			intValue === 0
 		) {
 			return false;
 		}
-		
+
 		return true;
 	},
 	/**
@@ -243,13 +244,13 @@ enyo.kind({
 			minName = "min"+enyo.cap(attributeName),
 			minValue = parseInt(this[minName]),
 			maxValue = parseInt(this[minName]);
-		
+
 		if (!isFinite(minValue) || minValue < 1) {
 			this[minName] = 1;
 		}
-		
+
 		if (isFinite(maxValue) && maxValue < minValue) {
 			this[maxName] = NaN;
 		}
 	}
-})
+});

@@ -1,3 +1,4 @@
+
 //Here the only needed informations
 //Note that the theme is generate only one time and it owned by a enyo.Component subclass (enyo.Notification)
 
@@ -21,7 +22,7 @@ enyo.kind({
 			this.doTap({"notification": notification, "uid": uid});
 		*/
 	},
-	
+
 	removeNotification: function(uid) {
 		/*
 			The notification with the uid "uid" request the theme to

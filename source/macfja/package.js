@@ -1,4 +1,5 @@
+
 enyo.depends(
-	"notification"
-  , "macfja-tools"
+	"notification",
+  "macfja-tools"
 );

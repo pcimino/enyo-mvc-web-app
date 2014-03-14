@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -18,7 +19,7 @@ enyo.kind({
 
 	published: {
 		/** @lends onyx.MarqueeVerticalStrategy# */
-		
+
 		/**
 		 * Container object.
 		 * It contains all object and represent visible area
@@ -26,14 +27,14 @@ enyo.kind({
 		 * @default null
 		 */
 		visibleControl: null,
-		
+
 		/**
 		 * Sliding object, it's the object that slide
 		 * @type Object
 		 * @default null
 		 */
 		sliderControl: null,
-		
+
 		/**
 		 * The main text object.
 		 * @type Object
@@ -41,7 +42,7 @@ enyo.kind({
 		 */
 		textControl: null
 	},
-	
+
 	events: {
 		/** @lends onyx.MarqueeVerticalStrategy# */
 		/**
@@ -65,7 +66,7 @@ enyo.kind({
 	 */
 	create: function() {
 		this.inherited(arguments);
-		
+
 		this.sliderControl.setClasses("onyx-marquee-vertical-strategy");
 	},
 
@@ -76,7 +77,7 @@ enyo.kind({
 	animationStep: function(inSender) {
 		this.sliderControl.setBounds({top: "-"+inSender.value*this.endValue+"px"});
 	},
-	
+
 	/**
 	 * Handler for <q>onEnd</q> of the animator
 	 * @private
@@ -86,7 +87,7 @@ enyo.kind({
 
 		this.doEnd();
 	},
-	
+
 	/**
 	 * Inform if the text is clipped and, so, if the text need to slide
 	 * @return <tt>true</tt> if the text need to slide
@@ -95,26 +96,26 @@ enyo.kind({
 	 * @name onyx.MarqueeVerticalStrategy#needToSlide
 	 */
 	needToSlide: function() {
-		if(!this.isReady()) return false;
+    if(!this.isReady()) { return false;}
 
 		var refBound = this.visibleControl.getBounds(),
 			textBound = this.textControl.getBounds();
 
 		return (refBound.height < textBound.height);
 	},
-	
+
 	/**
 	 * Prepare the strategy and marquee element to the animation
 	 * @function
 	 * @name onyx.MarqueeVerticalStrategy#prepare
 	 */
 	prepare: function() {
-		if(!this.isReady()) return false;
+    if(!this.isReady()) {return false;}
 
 		var textBound = this.textControl.getBounds();
 		this.endValue = textBound.height + this.marge;
 	},
-	
+
 	/**
 	 * Inform if the strategy is ready to work
 	 * @private
@@ -124,7 +125,7 @@ enyo.kind({
 	isReady: function() {
 		return (this.visibleControl && this.textControl && this.sliderControl);
 	},
-	
+
 	/**
 	 * Stop the aniamtion, set sliding to 0
 	 * @function

@@ -1,7 +1,8 @@
+
 enyo.depends(
-  "Routes.js"
-  , "ParentController.js"
-  , "public"
-  , "auth"
+  "Routes.js",
+  "ParentController.js",
+  "public",
+  "auth"
 );
 

@@ -1,3 +1,4 @@
+
 /**
 * Public Controller kind
 * Common handlers for the public (unauth) pages
@@ -21,31 +22,31 @@
 * - checkDBResult: function(inSender, inEvent)
 */
 enyo.kind({
-  name: "Bootplate.PublicController"
-  , kind: "Bootplate.ParentController"
-  , solved: false
-  , handlers: {
-     onLogin: 'login'
-     , onLoginResult: 'loginResult'
-     , onForgotPassword: 'forgotPassword'
-     , onForgotPasswordResult: 'forgotPasswordResult'
-     , onResendEmail: 'resendEmail'
-     , onResendEmailResult: 'resendEmailResult'
-     , onUserSignup: 'userSignup'
-     , onUserSignupResult: 'userSignupResult'
-     , onCheckEmailForSignupResult: 'checkEmailForSignupResult'
-     , onCheckUsernameForSignupResult: 'checkUsernameForSignupResult'
-     , onCheckDB: 'checkDB'
-     , onCheckDBResult: 'checkDBResult'
-     , onPuzzleSolvedController: 'puzzleSolved'
-     , onPuzzleResetController: 'puzzleReset'
-  }
+  name: "Bootplate.PublicController",
+  kind: "Bootplate.ParentController",
+  solved: false,
+  handlers: {
+     onLogin: 'login',
+     onLoginResult: 'loginResult',
+     onForgotPassword: 'forgotPassword',
+     onForgotPasswordResult: 'forgotPasswordResult',
+     onResendEmail: 'resendEmail',
+     onResendEmailResult: 'resendEmailResult',
+     onUserSignup: 'userSignup',
+     onUserSignupResult: 'userSignupResult',
+     onCheckEmailForSignupResult: 'checkEmailForSignupResult',
+     onCheckUsernameForSignupResult: 'checkUsernameForSignupResult',
+     onCheckDB: 'checkDB',
+     onCheckDBResult: 'checkDBResult',
+     onPuzzleSolvedController: 'puzzleSolved',
+     onPuzzleResetController: 'puzzleReset'
+  },
   // Login
-  , login: function(inSender, inEvent) {
+  login: function(inSender, inEvent) {
       var ajaxLogin = new AJAX.Login({owner:this, fireEvent:'onLoginResult'});
       ajaxLogin.makeRequest({username:inEvent.username , password:inEvent.password});
-  }
-  , loginResult: function(inSender, inEvent) {
+  },
+  loginResult: function(inSender, inEvent) {
       if (inEvent.authenticated) {
         mvcApp.data.user = inEvent.userdata;
         mvcApp.username = mvcApp.data.username;
@@ -55,15 +56,15 @@ enyo.kind({
         mvcApp.setAuthView();
       } else {
         mvcApp.showWarningMessage("Login failed", inEvent.message);
-      };
-  }
+      }
+  },
   // ForgotPassword
-  , forgotPassword: function(inSender, inEvent) {
+  forgotPassword: function(inSender, inEvent) {
     var jsonpResetPassword = new JSONP.ResetPassword({owner:this, fireEvent:'onForgotPasswordResult'});
     jsonpResetPassword.makeRequest({username:inEvent.username});
-  }
+  },
   // Forgot Passsword Result
-  , forgotPasswordResult: function(inSender, inEvent) {
+  forgotPasswordResult: function(inSender, inEvent) {
     if (inEvent.email && inEvent.email.length) {
       mvcApp.broadcast.displayClass = 'success';
 
@@ -77,14 +78,14 @@ enyo.kind({
     } else {
       mvcApp.showErrorMessage("Email Problem", "We had trouble sending your email. Please try again later or contact your system administrator.");
     }
-  }
+  },
   // Resend  Verification Email
-  , resendEmail: function(inSender, inEvent) {
+  resendEmail: function(inSender, inEvent) {
       var jsonpResendVerificationEmail = new JSONP.ResendVerificationEmail({owner:this, fireEvent:'onResendEmailResult'});
       jsonpResendVerificationEmail.makeRequest({username:inEvent.username});
-  }
+  },
   // Resend  Verification Email Result
-  , resendEmailResult: function(inSender, inEvent) {
+  resendEmailResult: function(inSender, inEvent) {
     if (inEvent.email && inEvent.email.length) {
       mvcApp.broadcast.displayClass = 'success';
       var emailAddr = inEvent.email;
@@ -97,31 +98,31 @@ enyo.kind({
     } else {
       mvcApp.showErrorMessage("Email Problem", "We had trouble sending your email. Please try again later or contact your system administrator.");
     }
-  }
+  },
   // UserSignup
-  , userSignup: function(inSender, inEvent) {
+  userSignup: function(inSender, inEvent) {
       mvcApp.data.createNewUser = true;
       this.checkEmailForSignup(inSender, inEvent);
-  }
+  },
   // Check email availability
-  , checkEmailForSignup: function(inSender, inEvent) {
+  checkEmailForSignup: function(inSender, inEvent) {
       var ajaxEmailExists = new AJAX.EmailExists({owner:this, fireEvent:'onCheckEmailForSignupResult'});
       ajaxEmailExists.makeRequest({email:mvcApp.data.email, newEmail:mvcApp.data.email});
-  }
-  , checkEmailForSignupResult: function(inSender, inEvent) {
+  },
+  checkEmailForSignupResult: function(inSender, inEvent) {
       if (!inEvent.exists && mvcApp.data.createNewUser) {
         this.checkUsernameForSignup(inSender, inEvent);
       } else {
         mvcApp.showErrorMessage('Error creating account', 'Email already exists');
       }
-  }
+  },
   // Check Username availability
-  , checkUsernameForSignup: function(inSender, inEvent) {
+  checkUsernameForSignup: function(inSender, inEvent) {
       mvcApp.waterfall('onCheckUsernameResult', {exists:'reset'});
       var ajaxUsernameExists = new AJAX.UsernameExists({owner:this, fireEvent:'onCheckUsernameForSignupResult'});
       ajaxUsernameExists.makeRequest({username:mvcApp.data.name});
-  }
-  , checkUsernameForSignupResult: function(inSender, inEvent) {
+  },
+  checkUsernameForSignupResult: function(inSender, inEvent) {
       if (!inEvent.exists && mvcApp.data.createNewUser) {
         mvcApp.data.createNewUser = '';
         // create the user
@@ -133,7 +134,7 @@ enyo.kind({
           var grav = this.createComponent({kind: 'tld.Gravatar'});
           grav.setEmail(mvcApp.data.email);
           grav.setImageSize(25);
-          var avatar = grav.newSrc();
+          avatar = grav.newSrc();
           grav.destroy();
         } catch (err) { console.log("Gravatar err " + err);}
 
@@ -142,9 +143,9 @@ enyo.kind({
       } else {
         mvcApp.showErrorMessage('Error creating account', 'Username already exists');
       }
-  }
+  },
   // UserSignupResult
-  , userSignupResult: function(inSender, inEvent) {
+  userSignupResult: function(inSender, inEvent) {
       if (inEvent.userdata && inEvent.userdata.hashed_password) {
         mvcApp.broadcast.displayClass = 'success';
         mvcApp.broadcast.message = "You have successfully created your account " + mvcApp.data.username +". Please check your " + mvcApp.data.email + " email account to verify this address. You will then be able to login.";
@@ -158,28 +159,27 @@ enyo.kind({
       } else {
         mvcApp.showInfoMessage(inEvent.message);
       }
-
-  }
+  },
   // check database connection
-  , checkDB: function(inSender, inEvent) {
+  checkDB: function(inSender, inEvent) {
       var checkDB = new JSONP.CheckDB({owner:this, fireEvent:'onCheckDBResult'});
       checkDB.makeRequest({});
-  }
-  , checkDBResult: function(inSender, inEvent) {
+  },
+  checkDBResult: function(inSender, inEvent) {
       if (!inEvent.dbAvailable) {
         mvcApp.broadcast.displayClass = 'error';
         mvcApp.showErrorMessage("Cannot connect to the Database", "We're experiencing networking issues, please try again later.");
       } else {
         // mvcApp.showInfoMessage("Database is up.", "Database is up.");
       }
-  }
+  },
   // Captch puzzle solved
-  , puzzleSolved: function(inSender, inEvent) {
+  puzzleSolved: function(inSender, inEvent) {
       this.$.solved = true;
       return false;
-  }
+  },
   // Captch puzzle reset
-  , puzzleReset: function(inSender, inEvent) {
+  puzzleReset: function(inSender, inEvent) {
       this.$.solved = false;
       return false;
   }

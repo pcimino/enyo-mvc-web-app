@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -17,7 +18,7 @@ enyo.kind({
 	kind: "enyo.Control",
 
 	classes: "onyx-marquee",
-	
+
 	published: {
 		/** @lends onyx.Marquee# */
 
@@ -65,7 +66,7 @@ enyo.kind({
 			{kind: "enyo.Control", name: "second", content: "b", classes: "onyx-marquee-second", showing: false}
 		]}
 	],
-	
+
 	/**
 	 * Events handled by the control
 	 * @ignore
@@ -141,8 +142,8 @@ enyo.kind({
 		//Stop animator
 		this.$.slide.stop();
 		//Stop strategy
-		if(this.$.strategy) this.$.strategy.stop();
-		//Stop enyo job 
+    if(this.$.strategy) {this.$.strategy.stop();}
+		//Stop enyo job
 		enyo.job.stop(this.makeId+"-pause");
 	},
 
@@ -192,14 +193,14 @@ enyo.kind({
 		this.$.second.hide();
 		this.$.first.setContent(this.content);
 		this.$.second.setContent(this.content);
-		
-		if(this.autoStart) this.start();
+
+    if(this.autoStart) {this.start();}
 	},
 
 	/**
 	 * Handler for <q>kind_id-pause</q> job
 	 * @private
-	 */ 
+	 */
 	startAnim: function() {
 		this.$.slide.play();
 	},

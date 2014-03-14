@@ -1,3 +1,4 @@
+
 /**
 * UpdateMessageThread AJAX requests: update a Message Thread
 * takes parameter messageThreadId
@@ -6,17 +7,17 @@
 * - processError()
 */
 enyo.kind({
-  name: 'AJAX.UpdateMessageThread'
-  , kind: 'AJAX.Parent'
-  , method:'PUT'
-  , rest:'/api/v1/messageThread'
-  , processResponse: function(inSender, inResponse) {
+  name: 'AJAX.UpdateMessageThread',
+  kind: 'AJAX.Parent',
+  method:'PUT',
+  rest:'/api/v1/messageThread',
+  processResponse: function(inSender, inResponse) {
       if (inResponse) {
-       if (this.fireEvent) {
-         this.owner.bubble(this.fireEvent, inResponse);
+        if (this.fireEvent) {
+          this.owner.bubble(this.fireEvent, inResponse);
         }
       } else {
-        var event = this.fireEvent
+        var event = this.fireEvent;
         if (this.errorEvent) {
           event = this.errorEvent;
         }

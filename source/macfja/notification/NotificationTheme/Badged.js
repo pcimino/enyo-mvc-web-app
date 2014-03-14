@@ -1,3 +1,4 @@
+
 /**
  * Notification theme
  * @see http://enyojs.com
@@ -106,14 +107,14 @@ enyo.kind({
 			uid: uid,
 			notification: notification,
 		});
-		
+
 		if(this.pending.length == 1) {//If pending length is now 1, the "bubble" is not displayed
 			this.$.bubble.show();
 		}
 
 		this.displayNotification();//Display the next notification
 	},
-	
+
 	/**
 	 * Display the next notification
 	 * @function
@@ -121,20 +122,20 @@ enyo.kind({
 	 * @name notification.Badged#displayNotification
 	 */
 	displayNotification: function() {
-		if(this.pending.length == 0) return;
+    if(this.pending.length === 0) { return; }
 
 		var last = this.upNotif().notification;//Get data about notification to display
 
 		//Remove waiting job
-		if(!this.fifo) enyo.job.stop("hideNotification-Badged");
-		
+    if(!this.fifo) { enyo.job.stop("hideNotification-Badged"); }
+
 		//Update data
 		this.$.badge.setContent(this.pending.length);
-			this.$.badge.setShowing(this.pending.length > 1);
+	this.$.badge.setShowing(this.pending.length > 1);
 		this.$.title.setContent(last.title);
 		this.$.message.setContent(last.message);
 		this.$.icon.applyStyle('background-image', "url('"+last.icon+"')");
-		
+
 		if(!last.stay) {
 			enyo.job(//Close the notification in x seconde
 				"hideNotification-Badged",
@@ -143,7 +144,7 @@ enyo.kind({
 			);
 		}
 	},
-	
+
 	/**
 	 * Hide the current notification
 	 * @function
@@ -154,9 +155,9 @@ enyo.kind({
 	hideNotification: function(isTap) {
 		enyo.job.stop("hideNotification-Badged");
 		if(!isTap) { this.doClose({notification: this.upNotif().notification, uid: this.upNotif().uid}); }
-		
+
 		enyo.remove(this.upNotif(), this.pending);
-		
+
 		if(this.pending.length > 0) {
 			this.displayNotification();
 		}
@@ -164,17 +165,17 @@ enyo.kind({
 			this.$.bubble.hide();
 		}
 	},
-	
+
 	/**
 	 * Handler for <q>onTap</q> event
 	 * @function
 	 * @private
 	 */
 	notifTap: function() {
-		this.doTap({notification: this.upNotif().notification, uid: this.upNotif().uid})
+		this.doTap({notification: this.upNotif().notification, uid: this.upNotif().uid});
 		this.hideNotification();
 	},
-	
+
 	/**
 	 * Return the notification displayed or to display, according to FIFO or not
 	 * @function
@@ -186,7 +187,7 @@ enyo.kind({
 	upNotif: function() {
 		return this.fifo?this.pending[0]:this.pending[this.pending.length-1];
 	},
-	
+
 	/**
 	 * Remove a notification
 	 * @function
@@ -196,7 +197,7 @@ enyo.kind({
 	removeNotification: function(uid) {
 		var lap = 0,
 			total = this.pending.length;
-			
+
 		for(;lap<total;lap++) {
 			if(this.upNotif().uid == uid) {
 				this.hideNotification(true);
@@ -208,7 +209,7 @@ enyo.kind({
 			}
 		}
 	},
-	
+
 	/**
 	 * Return a notification by a its Uid
 	 * @function
@@ -220,9 +221,9 @@ enyo.kind({
 	getNotificationFromUid: function(uid) {
 		var lap = 0,
 			total = this.pending.length;
-			
+
 		for(;lap<total;lap++) {
-			if(this.pending[lap].uid == uid) return this.pending[lap];
+      if(this.pending[lap].uid == uid) {return this.pending[lap];}
 		}
 	}
 });

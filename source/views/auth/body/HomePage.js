@@ -1,3 +1,4 @@
+
 /**
 * This is the HomePage kind, displays the authenticated user's home page
 *
@@ -33,4 +34,5 @@ enyo.ready(function() {
 
 
 
-
+
+

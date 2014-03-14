@@ -1,3 +1,4 @@
+
 /**
 * UpdateMyPasswordPage kind for suthenticated user to update their password
 *
@@ -115,4 +116,5 @@ enyo.ready(function () {
 
 
 
-
+
+

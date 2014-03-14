@@ -1,3 +1,4 @@
+
 enyo.depends(
 	"css/Badged.css",
 	"Badged.js",
@@ -10,7 +11,7 @@ enyo.depends(
 
 	"css/Pop.css",
 	"Pop.js",
-	
+
 	"css/PageCurl.css",
 	"PageCurl.js"
 );

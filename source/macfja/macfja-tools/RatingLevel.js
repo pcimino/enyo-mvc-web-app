@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -18,7 +19,7 @@ enyo.kind({
 	kind: "onyx.LevelProgress",
 	classes: "enyo-unselectable onyx-rating-bar",
 
-	
+
 	/**
 	 * create function, init the object
 	 * @private

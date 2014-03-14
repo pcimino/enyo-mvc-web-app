@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -149,8 +150,10 @@ enyo.kind({
 	 * @name onyx.DynamicList#renderRows
 	 */
 	renderRows: function(from, to, forceRender) {
-		if(from < 0) from = 0;
-		if(to >= this.rows.length) to = this.rows.length-1;
+    if(from < 0) {from = 0;}
+		if (to >= this.rows.length) {
+      to = this.rows.length-1;
+    }
 		for(var tour=from;tour<=to;tour++) {
 			var theRow = this.rows[tour];
 			if(forceRender || !theRow.generated) {//If the row isn't generated
@@ -200,7 +203,7 @@ enyo.kind({
 		//Get visible rows
 		lastToDisplay = this.indexAtHeight(top+visibleHeight+1);//One after
 		firstToDisplay = lastToDisplay-visibleRow-1;//this.indexAtHeight(top)-1;//One before
-		if(firstToDisplay < 0) firstToDisplay = 0;
+    if(firstToDisplay < 0) {firstToDisplay = 0;}
 
 		this.renderRows(firstToDisplay, lastToDisplay);
 	},
@@ -273,7 +276,7 @@ enyo.kind({
 		for(;tour<size;tour++) {
 			calcHeight+= this.heights[tour];//Get the sum height from 0 to "tour"
 
-			if(calcHeight >= height) return tour;//If the sum of height is sup or equal then return "tour"
+      if(calcHeight >= height) {return tour;}//If the sum of height is sup or equal then return "tour"
 		}
 		return size-1;//Return the last index
 	},
@@ -330,9 +333,9 @@ enyo.kind({
 	resetHeights: function() {
 		this.heights = [];
 		var tour = 0,
-			size = this.rows.length;
+		size = this.rows.length;
 		for(;tour<size;tour++) {
-			this.heights.push(this.defaultRowHeight)
+			this.heights.push(this.defaultRowHeight);
 		}
 	}
 });

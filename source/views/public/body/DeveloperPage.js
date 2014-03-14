@@ -1,3 +1,4 @@
+
 /**
 * Display content for showing the user a message on a page. Can be used for displaying an
 *   error message or a confirmation messsage
@@ -134,10 +135,10 @@ enyo.ready(function() {
     } // end setupPageBody
     , saveChanges: function() {
         // could have bound the values but decided against it, prefer to be explicit
-        if (this.$.ajaxBaseURL.getValue()) mvcApp.setAjaxBaseURL(this.$.ajaxBaseURL.getValue());
-        if (this.$.ajaxBasePort.getValue()) mvcApp.setAjaxBasePort(this.$.ajaxBasePort.getValue());
-        if (this.$.wsSocketURL.getValue()) mvcApp.setWsSocketURL(this.$.wsSocketURL.getValue());
-        if (this.$.wsSocketPort.getValue()) mvcApp.setWsSocketPort(this.$.wsSocketPort.getValue());
+        if (this.$.ajaxBaseURL.getValue()) { mvcApp.setAjaxBaseURL(this.$.ajaxBaseURL.getValue()); }
+        if (this.$.ajaxBasePort.getValue()) { mvcApp.setAjaxBasePort(this.$.ajaxBasePort.getValue()); }
+        if (this.$.wsSocketURL.getValue()) { mvcApp.setWsSocketURL(this.$.wsSocketURL.getValue()); }
+        if (this.$.wsSocketPort.getValue()) { mvcApp.setWsSocketPort(this.$.wsSocketPort.getValue()); }
 
         mvcApp.controllers.authController.logout();
     }
@@ -196,4 +197,5 @@ enyo.ready(function() {
 
 
 
-
+
+

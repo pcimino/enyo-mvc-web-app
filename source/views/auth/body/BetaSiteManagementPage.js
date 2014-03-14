@@ -1,9 +1,9 @@
+
 /**
 * This is the page for managing beta mode on the site kind, displays the authenticated user's home page
 *
 * - setupPageBody() Implemented child method
 */
-var AAA={}
 enyo.ready(function() {
   enyo.kind({
     name: 'Bootplate.BetaSiteManagementPage'
@@ -15,25 +15,25 @@ enyo.ready(function() {
       , onUpdateBetaStatusResult: 'updateBetaStatusResult'
     }
     , components:[
-        { tag: "br", kind: 'enyo.Control'}
-        , {name: 'betaStatus', kind: "onyx.RadioGroup", onActivate:"tabActivated", style: "margin-left:5%; ", controlClasses: "onyx-tabbutton", components: [
+        { tag: "br", kind: 'enyo.Control'},
+          {name: 'betaStatus', kind: "onyx.RadioGroup", onActivate:"tabActivated", style: "margin-left:5%; ", controlClasses: "onyx-tabbutton", components: [
           {name:'openSignupButton', content: "Open Signup"},
-			    {name:'betaSignupButton', content: "Beta Invite Only Signup"}
-		    ]}
-        , { tag: "br", kind: 'enyo.Control'}
-        , { name: "email"
-            , kind: "onyx.Input"
-            , classes:"form-input-box "
-            , placeholder: "Email Address"
-            , style: "width:50%; margin-left:5%; "
-        }
-        , { tag: "br", kind: 'enyo.Control'}
-        , { kind: "onyx.Button"
-            , content: "Send Beta Invite"
-            , name: "SendBeta"
-            , classes: "onyx-blue "
-            , ontap: 'sendBeta'
-            , style: "margin-left:5%; "
+          {name:'betaSignupButton', content: "Beta Invite Only Signup" }
+        ]},
+        { tag: "br", kind: 'enyo.Control'},
+        { name: "email",
+          kind: "onyx.Input",
+          classes:"form-input-box ",
+          placeholder: "Email Address",
+          style: "width:50%; margin-left:5%; "
+        },
+        { tag: "br", kind: 'enyo.Control'},
+        { kind: "onyx.Button",
+          content: "Send Beta Invite",
+          name: "SendBeta",
+          classes: "onyx-blue ",
+          ontap: 'sendBeta',
+          style: "margin-left:5%; "
         }
     ]
     // This checks to see if the user is allowed on this page
@@ -83,4 +83,5 @@ enyo.ready(function() {
 
 
 
-
+
+

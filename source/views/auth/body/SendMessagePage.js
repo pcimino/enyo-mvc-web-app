@@ -1,3 +1,4 @@
+
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
@@ -91,7 +92,7 @@ enyo.ready(function() {
     , loadUserScreen: function(inSender, inEvent) {
         var itemArr = [];
         for (var i = 0; i < inEvent.users.length; i++) {
-          if (inEvent.users[i].username != mvcApp.data.user.username) itemArr.push(inEvent.users[i]);
+          if (inEvent.users[i].username != mvcApp.data.user.username) { itemArr.push(inEvent.users[i]); }
         }
         this.$.userList.setItems(itemArr);
         return true;
@@ -125,4 +126,5 @@ enyo.ready(function() {
 
 
 
-
+
+

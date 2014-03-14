@@ -1,3 +1,4 @@
+
 /**
 * This is the UserSignupPage kind
 */
@@ -7,6 +8,7 @@ enyo.ready(function() {
     name: 'Bootplate.UserSignupPage'
     , kind: 'Bootplate.PublicPage'
     , id: 'userSignupPage'
+    , captcha: {}
     , handlers: {
        onUsernameStatus: 'usernameStatus'
       , onEmailStatus: 'emailStatus'
@@ -23,8 +25,7 @@ enyo.ready(function() {
     , rendered: function() {
         this.inherited(arguments);
         gUserSignupPage = this;
-      this.bubble('onPuzzleResetController');
-      console.log(22)
+        this.bubble('onPuzzleResetController');
     }
     , usernameStatus: function(inSender, inEvent) {
         // more kludging
@@ -32,7 +33,7 @@ enyo.ready(function() {
           this.usernameRef.removeClass("text-input-confirm-box");
           this.usernameRef.removeClass("text-input-error-box");
         } else {
-          if (inEvent.exists == true) {
+          if (inEvent.exists === true) {
             this.usernameRef.addClass("text-input-error-box");
           } else {
             this.usernameRef.addClass("text-input-confirm-box");
@@ -46,7 +47,7 @@ enyo.ready(function() {
           this.emailRef.removeClass("text-input-confirm-box");
           this.emailRef.removeClass("text-input-error-box");
         } else {
-          if (inEvent.exists == true) {
+          if (inEvent.exists === true) {
             this.emailRef.addClass("text-input-error-box");
           } else {
             this.emailRef.addClass("text-input-confirm-box");
@@ -62,7 +63,7 @@ enyo.ready(function() {
         // TODO need to refactor this properly
         mvcApp.controllers.publicController.puzzleReset();
 
-        owner.createComponent({name: 'enyoCaptcha'
+        this.captcha = owner.createComponent({name: 'enyoCaptcha'
                              , kind: 'tld.EnyoCaptcha'
                              , successDisplayText: 'Captcha solved!'
                              , width:lWidth, height:250
@@ -258,8 +259,7 @@ enyo.ready(function() {
     }
     // Captch puzzle solved
     , puzzleSolved: function(inSender, inEvent) {
-        // TODO having issues with dynamically created components firing events
-
+      // TODO having issues with dynamically created components firing events
       gUserSignupPage.formChildren.forEach(function(a) {a.show();});
       gUserSignupPage.showBetaSignup();
       //mvcApp.waterfallDown('onPuzzleSolvedController');

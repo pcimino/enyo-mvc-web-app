@@ -40,14 +40,14 @@ enyo.ready(function() {
     ]
     , startTimer: function() {
         this.timeRemaining = mvcApp.sessionTimeRemaining;
-        if (this.intervalKey) clearInterval(this.intervalKey);
+      if (this.intervalKey) { clearInterval(this.intervalKey); }
         this.intervalKey = setInterval(function(){ mvcApp.authView.waterfall('onCheckRemainingSessionTime'); }, this.checkInterval );
     }
     , checkRemainingSessionTime: function(inSender, inEvent) {
         this.timeRemaining -= this.checkInterval;
         var remainingSec =
-        this.$.countDownText.setContent("Your session will end in " + (this.timeRemaining/1000) + " seconds.")
-        if (this.timeRemaining <= 00000) {
+        this.$.countDownText.setContent("Your session will end in " + (this.timeRemaining/1000) + " seconds.");
+        if (this.timeRemaining <= 0) {
             clearInterval(this.intervalKey);
             mvcApp.controllers.authController.logout();
             this.hide();
@@ -63,10 +63,11 @@ enyo.ready(function() {
         mvcApp.authView.waterfall('onGetSessionTimeout');
         this.hide();
     }
-  })
+  });
 });
 
 
 
 
-
+
+

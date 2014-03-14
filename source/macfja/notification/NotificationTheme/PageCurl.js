@@ -1,3 +1,4 @@
+
 /**
  * Notification theme
  * @see http://enyojs.com
@@ -78,7 +79,7 @@ enyo.kind({
 	 * @name notification.PageCurl#cornerVisible
 	 */
 	cornerVisible: false,
-	
+
 	/**
 	 * Is the message bar visible
 	 * @field
@@ -105,7 +106,7 @@ enyo.kind({
 		{kind: "enyo.Animator", duration: 1000, startValue: 0, endValue: 80, onStep: "stepBarHide", onEnd: "animationEnd", name: "hideBarAnimation"},
 		{kind: "enyo.Animator", duration: 1000, startValue: 0, endValue: 1, onStep: "stepLiveShow", onEnd: "animationEnd", name: "showLiveAnimation"},
 		{kind: "enyo.Animator", duration: 1000, startValue: 1, endValue: 0, onStep: "stepLiveHide", onEnd: "animationEnd", name: "hideLiveAnimation"},
-		
+
 		{kind: "enyo.Control", name: "curl", classes: "notification-pagecurl-curl", ontap: "curlTap", components: [
 			{kind: "enyo.Control", name: "count", content: "0", classes: "notification-pagecurl-curl-count"}
 		]},
@@ -162,9 +163,9 @@ enyo.kind({
 	getStayCount: function() {
 		var count = 0;
 		for (var tour=0; tour < this.pending.length; tour++) {
-			if(this.pending[tour].notification.stay) count++;
-		};
-		
+      if(this.pending[tour].notification.stay) { count++; }
+		}
+
 		return count;
 	},
 
@@ -178,13 +179,13 @@ enyo.kind({
 		//Update badge count
 		var count = this.getStayCount();
 		this.$.count.setContent(count);
-		
+
 		//Display corner?
 		if(count > 0 && !this.cornerVisible && !this.barVisible) {
 			this.$.showCornerAnimation.play();
 		}
 	},
-	
+
 	/**
 	 * Add a new stay notification to the bar
 	 * @function
@@ -206,7 +207,7 @@ enyo.kind({
 			]
 		}, {owner: this});
 		this.$.scroller.render();
-		
+
 		this.showCorner();
 	},
 
@@ -217,26 +218,26 @@ enyo.kind({
 	 * @name notification.PageCurl#newLiveNotif
 	 */
 	newLiveNotif: function() {
-		if(this.inShow != null) return;
-		
+    if(this.inShow !== null) { return; }
+
 		for (var tour=0; tour < this.pending.length; tour++) {
-			if(this.inShow == null && !this.pending[tour].notification.stay)
+			if(this.inShow === null && !this.pending[tour].notification.stay)
 				{ this.inShow = this.pending[tour]; }
-		};
-		if(this.inShow == null) return;
-		
+		}
+    if(this.inShow === null) { return; }
+
 		this.$.title.setContent(this.inShow.notification.title);
 		this.$.text.setContent(this.inShow.notification.message);
 		this.$.icon.setAttribute("src", this.inShow.notification.icon);
-		
+
 		this.$.message.applyStyle("opacity", 0);
 		this.$.message.applyStyle("display", "block");
 		this.$.message.applyStyle("top", this.barVisible?"80px":"0px");
 
 		this.$.showLiveAnimation.play();
-		
+
 	},
-	
+
 	/**
 	 * Hide a live notification
 	 * @private
@@ -251,7 +252,7 @@ enyo.kind({
 		this.$.showLiveAnimation.stop();//Stop animation
 		this.$.hideLiveAnimation.play();//Start the animation
 	},
-	
+
 	/**
 	 * Handler for "onStep" event of showCornerAnimation
 	 * @private
@@ -259,11 +260,11 @@ enyo.kind({
 	stepCornerShow: function(inSender) {
 		var from = {x: -150, y: -120},
 			delta = {x: 115, y: 120};
-		
+
 		this.$.curl.applyStyle("right", from.x+delta.x*inSender.value+"px");
 		this.$.curl.applyStyle("top", from.y+delta.y*inSender.value+"px");
 	},
-	
+
 	/**
 	 * Handler for "onStep" event of hideCornerAnimation
 	 * @private
@@ -271,11 +272,11 @@ enyo.kind({
 	stepCornerHide: function(inSender) {
 		var from = {x: -35, y: 0},
 			delta = {x: -115, y: -120};
-		
+
 		this.$.curl.applyStyle("right", from.x+delta.x*inSender.value+"px");
 		this.$.curl.applyStyle("top", from.y+delta.y*inSender.value+"px");
 	},
-	
+
 	/**
 	 * Handler for "onStep" event of allCornerAnimation
 	 * @private
@@ -283,10 +284,10 @@ enyo.kind({
 	stepCornerAll: function(inSender) {
 		var from = -35,
 			delta = 35;
-		
+
 		this.$.curl.applyStyle("right", from+delta*inSender.value+"px");
 	},
-	
+
 	/**
 	 * Handler for "onStep" event of showBarAnimation
 	 * @private
@@ -295,7 +296,7 @@ enyo.kind({
 		this.$.curl.applyStyle("right", inSender.value+"%");
 		this.$.bar.applyStyle("left", (100-inSender.value)+"%");
 	},
-	
+
 	/**
 	 * Handler for "onStep" event of hideBarAnimation
 	 * @private
@@ -303,7 +304,7 @@ enyo.kind({
 	stepBarHide: function(inSender) {
 		this.$.bar.applyStyle("top", -inSender.value+"px");
 	},
-	
+
 	/**
 	 * Handler for "onStep" event of showLiveAnimation
 	 * @private
@@ -311,7 +312,7 @@ enyo.kind({
 	stepLiveShow: function(inSender) {
 		this.$.message.applyStyle("opacity", inSender.value.toFixed(8));
 	},
-	
+
 	/**
 	 * Handler for "onStep" event of hideLiveAnimation
 	 * @private
@@ -319,7 +320,7 @@ enyo.kind({
 	stepLiveHide: function(inSender) {
 		this.$.message.applyStyle("opacity", inSender.value.toFixed(8));
 	},
-	
+
 	/**
 	 * Handler for "onEnd" event of all animator
 	 * @private
@@ -370,10 +371,10 @@ enyo.kind({
 			this.$.showCornerAnimation.stop();
 			this.$.curl.applyStyle("top", "0px");
 		}
-		
+
 		this.$.showBarAnimation.play();
 	},
-	
+
 	/**
 	 * Handler for "onTap" event of message
 	 * @private
@@ -381,10 +382,10 @@ enyo.kind({
 	liveClose: function() {
 		this.doTap({notification: this.inShow.notification, uid: this.inShow.uid});
 		this.hideNotification(true, this.inShow);
-		
+
 		return true;
 	},
-	
+
 	/**
 	 * Handler for "onTap" event of a stay message
 	 * @private
@@ -395,11 +396,11 @@ enyo.kind({
 		enyo.remove(n, this.pending);
 		inSender.destroy();
 
-		if(this.getStayCount() == 0) this.barCloseTap();
+    if(this.getStayCount() === 0) { this.barCloseTap(); }
 
 		return true;
 	},
-	
+
 	/**
 	 * Handler for "onTap" event of close
 	 * @private
@@ -408,7 +409,7 @@ enyo.kind({
 		this.$.allCornerAnimation.stop();
 		this.$.hideBarAnimation.play();
 	},
-	
+
 	/**
 	 * Remove a notification
 	 * @function
@@ -427,17 +428,17 @@ enyo.kind({
 			notif.node.destroy();
 		}
 		enyo.remove(notif, this.pending);
-		
+
 		this.showCorner();
 		if(this.barVisible) {
-			if(this.getStayCount() == 0) this.barCloseTap();
+      if(this.getStayCount() === 0) { this.barCloseTap(); }
 		}
 		else {
-			if(this.getStayCount() == 0 && this.cornerVisible) this.$.hideCornerAnimation.play();
+      if(this.getStayCount() === 0 && this.cornerVisible) { this.$.hideCornerAnimation.play(); }
 		}
-		
+
 	},
-	
+
 	/**
 	 * Return a notification by a its Uid
 	 * @function
@@ -449,9 +450,9 @@ enyo.kind({
 	getNotificationFromUid: function(uid) {
 		var lap = 0,
 			total = this.pending.length;
-			
+
 		for(;lap<total;lap++) {
-			if(this.pending[lap].uid == uid) return this.pending[lap];
+      if(this.pending[lap].uid == uid) { return this.pending[lap]; }
 		}
 	}
 });

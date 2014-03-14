@@ -1,3 +1,4 @@
+
 /**
  * Notification theme
  * @see http://enyojs.com
@@ -143,7 +144,7 @@ enyo.kind({
 	 * @name notification.Pop#displayNotification
 	 */
 	displayNotification: function() {
-		if(this.pending.length == 0) return;
+    if(this.pending.length === 0) { return; }
 
 		//Build the notification
 		var notif = this.pending[0].notification;
@@ -193,7 +194,7 @@ enyo.kind({
 		this.$.bubble.applyStyle("opacity", 1-value);
 
 		var masterValue = 1-value*2;
-			if(masterValue < 0) masterValue = 0;
+    if(masterValue < 0) { masterValue = 0; }
 		this.$.master.applyStyle("opacity", masterValue.toFixed(8));
 
 	},
@@ -204,7 +205,7 @@ enyo.kind({
 	 * @private
 	 */
 	notifTap: function() {
-		this.doTap({notification: this.pending[0].notification, uid: this.pending[0].uid})
+		this.doTap({notification: this.pending[0].notification, uid: this.pending[0].uid});
 		this.hideNotification();
 	},
 
@@ -230,7 +231,7 @@ enyo.kind({
 		else {
 			this.pending.shift();//Remove the first pending element (FIFO)
 			this.$.master.applyStyle("opacity", 1);
-			if(this.pending.length == 0) {
+			if(this.pending.length === 0) {
 				this.$.bubble.hide();//No more notification
 			}
 			else {
@@ -266,7 +267,7 @@ enyo.kind({
 			total = this.pending.length;
 
 		for(;lap<total;lap++) {
-			if(this.pending[lap].uid == uid) return this.pending[lap];
+      if(this.pending[lap].uid == uid) { return this.pending[lap]; }
 		}
 	}
 });

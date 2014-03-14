@@ -52,8 +52,6 @@ enyo.ready(function() {
         });
 
 
-
-
         owner.render();
     } // end setupPageBody
   });

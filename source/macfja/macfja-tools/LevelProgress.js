@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -33,35 +34,35 @@ enyo.kind({
 		 * @default 3
 		 */
 		critical: 3,
-		
+
 		/**
 		 * The maximum value of the progression (use getter/setter)
 		 * @type Number
 		 * @default 10
 		 */
 		maximum: 10,
-		
+
 		/**
 		 * The minimum value of the progression (use getter/setter)
 		 * @type Number
 		 * @default 0
 		 */
 		minimum: 0,
-		
+
 		/**
 		 * The value of the progression (use getter/setter)
 		 * @type Number
 		 * @default 5
 		 */
 		value: 5,
-		
+
 		/**
 		 * Define is user can change value (use getter/setter)
 		 * @type Boolean
 		 * @default true
 		 */
 		editable: true,
-		
+
 		/**
 		 * Display the value of each level (use getter/setter)
 		 * @type Boolean
@@ -98,12 +99,12 @@ enyo.kind({
 		 */
 		onChanging: ""
 	},
-	
+
 	margin: 4,//Left + Right
 	dragging: false,//is the drag occurs?
-	
+
 	/** @lends onyx.LevelProgress# */
-	
+
 	/**
 	 * create function, init the object
 	 * @private
@@ -119,21 +120,21 @@ enyo.kind({
 	 * Handler for <q>warning</q> value change
 	 * @private
 	 */
-	  warningChanged: function() {
+    warningChanged: function() {
 		this.redraw();
 	},
 	/**
 	 * Handler for <q>critical</q> value change
 	 * @private
 	 */
-	 criticalChanged: function() {
-		this.redraw();
+  criticalChanged: function() {
+    this.redraw();
 	},
 	/**
 	 * Handler for <q>maximum</q> value change
 	 * @private
 	 */
-	  maximumChanged: function() {
+  maximumChanged: function() {
 		if(this.maximum <= this.minimum) {
 			this.maximum = this.minimum+1;
 		}
@@ -144,7 +145,7 @@ enyo.kind({
 	 * Handler for <q>minimum</q> value change
 	 * @private
 	 */
-	  minimumChanged: function() {
+  minimumChanged: function() {
 		if(this.minimum >= this.maximum) {
 			this.minimum = this.maximum-1;
 		}
@@ -155,7 +156,7 @@ enyo.kind({
 	 * Handler for <q>value</q> value change
 	 * @private
 	 */
-	    valueChanged: function() {
+  valueChanged: function() {
 		if(this.value < this.minimum) { this.value = this.minimum; }
 		if(this.value > this.maximum) { this.value = this.maximum; }
 		this.redraw();
@@ -171,10 +172,10 @@ enyo.kind({
 	 * Handler for <q>editable</q> value change
 	 * @private
 	 */
-	 editableChanged: function() {
+  editableChanged: function() {
 		this.addRemoveClass("onyx-level-editable", this.editable);
 	},
-	
+
 
 	/**
 	 * Function that destroy all level and recreate them
@@ -227,7 +228,7 @@ enyo.kind({
 			elements[tour].addRemoveClass("off", !isOn);
 		}
 	},
-	
+
 	/**
 	 * Handler for <q>onResize</q> event
 	 * @private

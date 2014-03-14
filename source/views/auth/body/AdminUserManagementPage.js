@@ -1,3 +1,4 @@
+
 /**
 * AdminUserManagementPage
 *
@@ -26,7 +27,7 @@ enyo.ready(function () {
         if (!mvcApp.adminFlag) {
           mvcApp.controllers.routes.trigger({location:'/home'});
         }
-        mvcApp.adminUserDetails = {}
+        mvcApp.adminUserDetails = {};
     }
     , setupPageBody: function(owner) {
         this.createComponent({name: 'confirmationPopup'
@@ -172,7 +173,7 @@ enyo.ready(function () {
             {content: "User", name: "userButton", active: true, owner: this},
             {content: "Subscriber", name: "subscriberButton", owner: this},
             {content: "Admin", name: "adminButton", owner: this}
-		      ]});
+        ]});
         this.insertBreak(this);
 
         this.bindDetailData(this.$.email);
@@ -287,7 +288,7 @@ enyo.ready(function () {
           this.usernameRef.removeClass("text-input-confirm-box");
           this.usernameRef.removeClass("text-input-error-box");
         } else {
-          if (inEvent.exists == true) {
+          if (inEvent.exists === true) {
             this.usernameRef.addClass("text-input-error-box");
           } else {
             this.usernameRef.addClass("text-input-confirm-box");
@@ -301,7 +302,7 @@ enyo.ready(function () {
           this.emailRef.removeClass("text-input-confirm-box");
           this.emailRef.removeClass("text-input-error-box");
         } else {
-          if (inEvent.exists == true) {
+          if (inEvent.exists === true) {
             this.emailRef.addClass("text-input-error-box");
           } else {
             this.emailRef.addClass("text-input-confirm-box");
@@ -313,12 +314,12 @@ enyo.ready(function () {
         var ajaxUserUpdate = new AJAX.AdminUserUpdate({owner:this, fireEvent:'onAdminUserUpdateResult'});
 
         var data = {id:mvcApp.adminUserDetails._id};
-        if (mvcApp.adminUserDetails.name) data.name = mvcApp.adminUserDetails.name;
-        if (mvcApp.adminUserDetails.username) data.username = mvcApp.adminUserDetails.username;
-        if (mvcApp.adminUserDetails.email) data.email = mvcApp.adminUserDetails.email;
-        if (mvcApp.adminUserDetails.password) data.password = mvcApp.adminUserDetails.password;
-        if (mvcApp.adminUserDetails.vPassword) data.vPassword = mvcApp.adminUserDetails.vPassword;
-        if (mvcApp.adminUserDetails.role) data.role = mvcApp.adminUserDetails.role;
+        if (mvcApp.adminUserDetails.name) { data.name = mvcApp.adminUserDetails.name; }
+        if (mvcApp.adminUserDetails.username) { data.username = mvcApp.adminUserDetails.username; }
+        if (mvcApp.adminUserDetails.email) { data.email = mvcApp.adminUserDetails.email; }
+        if (mvcApp.adminUserDetails.password) { data.password = mvcApp.adminUserDetails.password; }
+        if (mvcApp.adminUserDetails.vPassword) { data.vPassword = mvcApp.adminUserDetails.vPassword; }
+        if (mvcApp.adminUserDetails.role) { data.role = mvcApp.adminUserDetails.role; }
 
         ajaxUserUpdate.makeRequest(data);
     }
@@ -401,4 +402,5 @@ enyo.ready(function () {
 
 
 
-
+
+

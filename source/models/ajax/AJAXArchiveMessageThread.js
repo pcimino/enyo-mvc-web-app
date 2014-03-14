@@ -1,3 +1,4 @@
+
 /**
 * ArchiveMessageThread AJAX requests: mark a system message as archived
 * takes parameter messageThreadId
@@ -6,10 +7,10 @@
 * - processError()
 */
 enyo.kind({
-  name: 'AJAX.ArchiveMessageThread'
-  , kind: 'AJAX.Parent'
-  , method:'DELETE'
-  , rest:'/api/v1/messageThread'
+  name: 'AJAX.ArchiveMessageThread',
+  kind: 'AJAX.Parent',
+  method:'DELETE',
+  rest:'/api/v1/messageThread'
 });
 
 

@@ -1,3 +1,4 @@
+
 /**
 * ArchiveTermsAndConditions AJAX requests: mark a T&C message as archived
 * takes parameter termsAndConditionsId
@@ -6,10 +7,10 @@
 * - processError()
 */
 enyo.kind({
-  name: 'AJAX.ArchiveTermsAndConditions'
-  , kind: 'AJAX.Parent'
-  , method:'DELETE'
-  , rest:'/api/v1/terms'
+  name: 'AJAX.ArchiveTermsAndConditions',
+  kind: 'AJAX.Parent',
+  method:'DELETE',
+  rest:'/api/v1/terms'
 });
 
 

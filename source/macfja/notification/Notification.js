@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -185,7 +186,7 @@ enyo.kind({
 	removeAllNotifications: function(onlyStay) {
 		for(var tour=this.pending.length-1;tour>=0;tour--) {
 			if(!onlyStay || onlyStay && this.pending[tour].notification.stay) {
-				this.removeNotification(this.pending[tour].uid)
+				this.removeNotification(this.pending[tour].uid);
 			}
 		}
 	},

@@ -1,3 +1,4 @@
+
 /**
 * Build the authenticated header. Displays the Gravatar icon. If the user has an email registered with Gravatar, displays their avatar
 *
@@ -17,7 +18,7 @@ enyo.kind({
          , components: [
              {name:'headerLeftPage', kind: "enyo.Image", src: "assets/img/translunar.png", classes: "header-left"}
              , {name:'headerCenterPage', content: "auth header-center", fit: true, classes: "header-center"}
-             , {name:'headerRightPage', name: 'gravatarDisplay', classes: "header-right", kind: "tld.Gravatar", email: '', imageSize: 75}
+             , {name: 'gravatarDisplay', classes: "header-right", kind: "tld.Gravatar", email: '', imageSize: 75}
       ]}
     ]
   , handlers: {
@@ -41,4 +42,5 @@ enyo.kind({
 
 
 
-
+
+

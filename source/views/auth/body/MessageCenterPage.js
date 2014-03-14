@@ -1,3 +1,4 @@
+
 // http://macfja.github.io/enyo2-lib/onyx/dynamiclist.html
 
 /**
@@ -107,7 +108,7 @@ enyo.ready(function() {
       // build the rows of messages
       var messagePage = "";
       for (var i = 0; i < inEvent.context.messages.length; i++) {
-        if (i > 0) messagePage = messagePage + ',';
+        if (i > 0) { messagePage = messagePage + ','; }
         messagePage = messagePage + '{"kind":"FittableColumns","components": [';
         messagePage = messagePage + '{"content":"From: ","classes":"list-item-margin bold-text"}';
         messagePage = messagePage + ',{"content":"' + inEvent.context.messages[i].from + '"}';
@@ -132,7 +133,7 @@ enyo.ready(function() {
       jsonStr = jsonStr + ']}';
       jsonStr = jsonStr + ',{"kind":"FittableRows","components": [';
       jsonStr = jsonStr + messagePage;
-      jsonStr = jsonStr + ']}'
+      jsonStr = jsonStr + ']}';
 
       // have to present an action modal on click
       // 'this' doesn't work with the JSON string manipulation

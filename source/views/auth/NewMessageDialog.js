@@ -1,4 +1,3 @@
-
 /**
 * MessagingDialog kind,
 * used to display a dialog for the user to archive, unarchive, reply to a message thread
@@ -85,9 +84,10 @@ enyo.ready(function() {
     , cancel: function() {
         this.hide();
     }
-  })
+  });
 });
 
 
 
-
+
+

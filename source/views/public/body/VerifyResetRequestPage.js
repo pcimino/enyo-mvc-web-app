@@ -1,3 +1,4 @@
+
 /**
 * This is the VerifyResetRequestPage kind used for when the user forgets their password,
 *    or needs a verification email resend
@@ -78,4 +79,5 @@ enyo.ready(function() {
 
 
 
-
+
+

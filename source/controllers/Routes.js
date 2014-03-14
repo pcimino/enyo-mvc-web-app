@@ -1,3 +1,4 @@
+
 /**
 * Router kind
 * Takes events form the URL hashtag, e.g. #/login path gets routed to the login handler
@@ -32,86 +33,86 @@
 * - demoAbout()
 */
 enyo.kind({
-    kind: 'enyo.Router'
-  , name: 'Bootplate.Routes'
-  , routes: [
-    { path: '/'
-      , 'default': true
-      , handler: 'checkLogin'
-      , change:'true'
+  kind: 'enyo.Router',
+  name: 'Bootplate.Routes',
+  routes: [
+    { path: '/',
+      'default': true,
+      handler: 'checkLogin',
+      change:'true'
+    },
+    { path: '/login',
+        handler: 'login',
+        change:'true'
+    },
+    { path: '/loginEvent',
+        handler: 'loginEvent',
+        change:'true'
+    },
+    { path: '/authenticate',
+        handler: 'authenticate',
+        change:'true'
+    },
+    { path: '/publicBroadcastMessage',
+        handler: 'publicBroadcastMessage'
+    },
+    { path: '/userSignup',
+        handler: 'userSignup'
+    },
+    { path: '/forgotPassword',
+        handler: 'forgotPassword'
+    },
+    { path: '/resendEmail',
+        handler: 'resendEmail'
+    },
+    { path: '/logout',
+        handler: 'logout',
+        change:'true'
+    },
+    { path: '/message',
+        handler: 'message'
+    },
+    { path: '/sendMessage',
+        handler: 'sendMessage'
+    },
+    { path: '/adminSystemMessage',
+        handler: 'adminSystemMessage'
+    },
+    { path: '/adminTermsAndConditions',
+        handler: 'adminTermsAndConditions'
+    },
+    { path: '/termsAndConditions',
+        handler: 'termsAndConditions'
+    },
+    { path: '/home',
+        handler: 'home'
+    },
+    { path: '/homeEvent',
+        handler: 'homeEvent'
+    },
+    { path: '/adminUserManagementInfo',
+        handler: 'adminUserManagementInfo'
+    },
+    { path: '/updateMyUserInfo',
+        handler: 'updateMyUserInfo'
+    },
+    { path: '/updateMyPassword',
+        handler: 'updateMyPassword'
+    },
+    { path: '/contactPublic',
+        handler: 'contactPublic'
+    },
+    { path: '/developer',
+        handler: 'developer'
+    },
+    { path: '/betaSiteManagement',
+        handler: 'betaSiteManagement'
+    },
+    { path: '/demoAbout',
+        handler: 'demoAbout'
     }
-    , { path: '/login'
-        , handler: 'login'
-        , change:'true'
-    }
-    , { path: '/loginEvent'
-        , handler: 'loginEvent'
-        , change:'true'
-    }
-    , { path: '/authenticate'
-        , handler: 'authenticate'
-        , change:'true'
-    }
-    , { path: '/publicBroadcastMessage'
-        , handler: 'publicBroadcastMessage'
-    }
-    , { path: '/userSignup'
-        , handler: 'userSignup'
-    }
-    , { path: '/forgotPassword'
-        , handler: 'forgotPassword'
-    }
-    , { path: '/resendEmail'
-        , handler: 'resendEmail'
-    }
-    , { path: '/logout'
-        , handler: 'logout'
-        , change:'true'
-    }
-    , { path: '/message'
-        , handler: 'message'
-    }
-    , { path: '/sendMessage'
-        , handler: 'sendMessage'
-    }
-    , { path: '/adminSystemMessage'
-        , handler: 'adminSystemMessage'
-    }
-    , { path: '/adminTermsAndConditions'
-        , handler: 'adminTermsAndConditions'
-    }
-    , { path: '/termsAndConditions'
-        , handler: 'termsAndConditions'
-    }
-    , { path: '/home'
-        , handler: 'home'
-    }
-    , { path: '/homeEvent'
-        , handler: 'homeEvent'
-    }
-    , { path: '/adminUserManagementInfo'
-        , handler: 'adminUserManagementInfo'
-    }
-    , { path: '/updateMyUserInfo'
-        , handler: 'updateMyUserInfo'
-    }
-    , { path: '/updateMyPassword'
-        , handler: 'updateMyPassword'
-    }
-    , { path: '/contactPublic'
-        , handler: 'contactPublic'
-    }
-    , { path: '/developer'
-        , handler: 'developer'
-    }
-    , { path: '/betaSiteManagement'
-        , handler: 'betaSiteManagement'
-    }
-    , { path: '/demoAbout'
-        , handler: 'demoAbout'
-    }
-  ]
-  , loadBodyPage: function (kindByName, skipWaterfallFlag) {
+  ],
+  loadBodyPage: function (kindByName, skipWaterfallFlag) {
       if (mvcApp.view && mvcApp.view.$ && mvcApp.view.$.bodyContainer) {
         var owner = mvcApp.view.$.bodyContainer;
         owner.destroyClientControls();
@@ -132,83 +133,83 @@ enyo.kind({
         mvcApp.waterfall('onLoadTermsAndConditions');
       }
     }
-  }
-  , logout: function () {
+  },
+  logout: function () {
       mvcApp.data = {};
       mvcApp.waterfall('onLogout');
       return true;
-  }
-  , adminSystemMessage: function () {
+  },
+  adminSystemMessage: function () {
       this.loadBodyPage('Bootplate.AdminSystemMessagePage');
-  }
-  , adminTermsAndConditions: function () {
+  },
+  adminTermsAndConditions: function () {
       this.loadBodyPage('Bootplate.AdminTermsAndConditionsPage');
-  }
-  , termsAndConditions: function () {
+  },
+  termsAndConditions: function () {
       this.loadBodyPage('Bootplate.TermsAndConditionsPage');
-  }
-  , adminUserManagementInfo: function () {
+  },
+  adminUserManagementInfo: function () {
       this.loadBodyPage('Bootplate.AdminUserManagementPage');
-  }
-  , message: function () {
+  },
+  message: function () {
       this.loadBodyPage('Bootplate.MessageCenterPage');
-  }
-  , sendMessage: function () {
+  },
+  sendMessage: function () {
       this.loadBodyPage('Bootplate.SendMessagePage');
-  }
-  , updateMyUserInfo: function () {
+  },
+  updateMyUserInfo: function () {
       this.loadBodyPage('Bootplate.UpdateMyUserInfoPage');
-  }
-  , updateMyPassword: function () {
+  },
+  updateMyPassword: function () {
       this.loadBodyPage('Bootplate.UpdateMyPasswordPage');
-  }
-  , home: function () {
+  },
+  home: function () {
       this.loadBodyPage('Bootplate.HomePage');
-  }
+  },
   // this is triggered by the isUserValidated event, purpose is to avoid loops
-  , homeEvent: function () {
+  homeEvent: function () {
       this.loadBodyPage('Bootplate.HomePage', true);
-  }
-  , checkLogin: function () {
+  },
+  checkLogin: function () {
       this.loadBodyPage('Bootplate.LoginPage');
-  }
-  , login: function () {
+  },
+  login: function () {
       this.loadBodyPage('Bootplate.LoginPage');
-  }
+  },
   // this is triggered by the isUserValidated event, purpose is to avoid loops
-  , loginEvent: function () {
+  loginEvent: function () {
       this.loadBodyPage('Bootplate.LoginPage', true);
-  }
-  , userSignup: function () {
+  },
+  userSignup: function () {
       this.loadBodyPage('Bootplate.UserSignupPage');
 
       setTimeout(function() {
             // Kludgey: Timing issue
               mvcApp.view.waterfall('onShowBetaSignup');
-		    }, 300);
-  }
-  , forgotPassword: function () {
+      }, 300);
+  },
+  forgotPassword: function () {
       this.loadBodyPage('Bootplate.VerifyResetRequestPage');
-  }
-  , resendEmail: function () {
+  },
+  resendEmail: function () {
       this.loadBodyPage('Bootplate.VerifyResetRequestPage');
-  }
-  , publicBroadcastMessage: function () {
+  },
+  publicBroadcastMessage: function () {
       this.loadBodyPage('Bootplate.PublicMessageDisplayPage');
-  }
-  , authenticate: function () {
+  },
+  authenticate: function () {
       this.loadBodyPage('Bootplate.HomePage');
-  }
-  , contactPublic: function () {
+  },
+  contactPublic: function () {
       this.loadBodyPage('Bootplate.ContactPage');
-  }
-  , developer: function () {
+  },
+  developer: function () {
       this.loadBodyPage('Bootplate.DeveloperPage');
-  }
-  , betaSiteManagement: function () {
+  },
+  betaSiteManagement: function () {
       this.loadBodyPage('Bootplate.BetaSiteManagementPage');
-  }
-  , demoAbout: function () {
+  },
+  demoAbout: function () {
       this.loadBodyPage('Bootplate.DemoAboutPage');
   }
 

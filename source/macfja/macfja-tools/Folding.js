@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -27,14 +28,14 @@ enyo.kind({
 		 * @default 350
 		 */
 		duration: 350,
-		
+
 		/**
 		 * The label to display went is folding
 		 * @type String
 		 * @default ""
 		 */
 		label: "",
-		
+
 		/**
 		 * The folding value. Use getter/setter or fold() and unfold().
 		 * if set to <tt>true</tt> the content of the control is folding.
@@ -43,7 +44,7 @@ enyo.kind({
 		 */
 		folding: false
 	},
-	
+
 	events: {
 		/** @lends onyx.Folding# */
 		/**
@@ -55,7 +56,7 @@ enyo.kind({
 		 */
 		onLabelTap: ""
 	},
-	
+
 	/**
 	 * Components of the control
 	 * @ignore
@@ -69,7 +70,7 @@ enyo.kind({
 		{kind: "Animator", startValue: 0, endValue: 1, onStep: "foldStep", name: "foldAnimator",   onEnd: "animatorEnd"},
 		{kind: "Animator", startValue: 1, endValue: 0, onStep: "foldStep", name: "unfoldAnimator", onEnd: "animatorEnd"}
 	],
-	
+
 	/** @lends onyx.Folding# */
 
 	/**
@@ -87,7 +88,7 @@ enyo.kind({
 	 * @private
 	 */
 	labelChanged: function() {
-		this.$.label.setShowing(!(this.label == ""));
+		this.$.label.setShowing(!(this.label === ""));
 		this.$.label.setContent(this.label);
 	},
 	/**
@@ -97,7 +98,7 @@ enyo.kind({
 	 */
 	foldingChanged: function() {
 		if(this.folding) {
-			this.makeFold()
+			this.makeFold();
 		} else {
 			this.makeUnfold();
 		}
@@ -165,13 +166,13 @@ enyo.kind({
 	 * @name onyx.Folding#fold
 	 */
 	fold: function(animated) {
-		if(animated != undefined && animated == false) {
+		if(animated !== undefined && animated === false) {
 			this.folding = true;
 			this.unAnimatedFolding();
 		}
 		this.setFolding(true);
 	},
-	
+
 	/**
 	 * Alias of setFolding(false)
 	 * @function
@@ -179,7 +180,7 @@ enyo.kind({
 	 * @name onyx.Folding#unfold
 	 */
 	unfold: function(animated) {
-		if(animated != undefined && animated == false) {
+		if(animated !== undefined && animated === false) {
 			this.folding = false;
 			this.unAnimatedFolding();
 		}
@@ -190,7 +191,7 @@ enyo.kind({
 	 * Execute the folding (setup and launch animation)
 	 * @private
 	 */
-	makeFold: function() {		
+	makeFold: function() {
 		this.$.unfoldAnimator.stop();
 		this.$.folding.show();
 		this.$.left.show();
@@ -201,11 +202,11 @@ enyo.kind({
 	 * Execute the unfolding (setup and launch animation)
 	 * @private
 	 */
-	makeUnfold: function() {	
+	makeUnfold: function() {
 		this.$.foldAnimator.stop();
 		this.$.unfoldAnimator.play();
 	},
-	
+
 	/**
 	 * Reverse the actual value of folding
 	 * @function
@@ -214,8 +215,8 @@ enyo.kind({
 	 */
 	toogleFold: function(animated) {
 		var newFoldingValue = !this.folding;
-		
-		if(animated != undefined && animated == false) {
+
+		if(animated !== undefined && animated === false) {
 			this.folding = newFoldingValue;
 			this.unAnimatedFolding();
 		}
@@ -232,7 +233,7 @@ enyo.kind({
 			value = inSender.value.toFixed(8),
 			reverseValue = 1-inSender.value,
 			borderValue = 10*inSender.value;
-		
+
 			heightValue = heightValue.toFixed(8);
 			reverseValue = reverseValue.toFixed(8);
 			borderValue = borderValue.toFixed(8);
@@ -243,7 +244,7 @@ enyo.kind({
 		this.$.left.applyStyle("width",  borderValue+"px");
 		this.$.right.applyStyle("width", borderValue+"px");
 	},
-	
+
 	/**
 	 * Handler for <q>onEnd</q> of the animator
 	 * @private

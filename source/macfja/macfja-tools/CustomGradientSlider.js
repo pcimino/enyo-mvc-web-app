@@ -1,3 +1,4 @@
+
 /**
  * Enyo UI
  * @see http://enyojs.com
@@ -17,7 +18,7 @@ enyo.kind({
 	/** @lends onyx.CustomGradientSlider */
 	name: "onyx.CustomGradientSlider",
 	kind: "onyx.Slider",
-	
+
 	published: {
 		/** @lends onyx.CustomGradientSlider# */
 
@@ -28,7 +29,7 @@ enyo.kind({
 		 */
 		gradientPath: "",
 	},
-	
+
 	/**
 	 * Creator of the object
 	 * @private
@@ -38,7 +39,7 @@ enyo.kind({
 		this.applyStyle("background-size", "100% 100%");
 		enyo.asyncMethod(this, "gradientPathChanged");
 	},
-	
+
 	/**
 	 * Override PrograssBar.updateBarPosition, remove display
 	 * @private
@@ -46,7 +47,7 @@ enyo.kind({
 	updateBarPosition: function(inPercent) {
 		this.$.bar.applyStyle("width", "0%");
 	},
-	
+
 	/**
 	 * Handler for <q>gradientPath</q> value change
 	 * @private

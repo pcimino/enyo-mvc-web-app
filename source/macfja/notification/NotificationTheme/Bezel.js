@@ -1,3 +1,4 @@
+
 /**
  * Notification theme
  * @see http://enyojs.com
@@ -126,7 +127,7 @@ enyo.kind({
 	 * @name notification.Bezel#displayNotification
 	 */
 	displayNotification: function() {
-		if(this.pending.length == 0){
+		if(this.pending.length === 0){
 			//Nothing to display!
 			this.$.bubble.hide();//Hide the "bubble"
 			return;//Stop function
@@ -165,7 +166,7 @@ enyo.kind({
 	 * @private
 	 */
 	notifTap: function() {
-		this.doTap({notification: this.pending[0].notification, uid: this.pending[0].uid})
+		this.doTap({notification: this.pending[0].notification, uid: this.pending[0].uid});
 		this.hideNotification();
 	},
 
@@ -238,7 +239,7 @@ enyo.kind({
 			total = this.pending.length;
 
 		for(;lap<total;lap++) {
-			if(this.pending[lap].uid == uid) return this.pending[lap];
+      if(this.pending[lap].uid == uid) {return this.pending[lap];}
 		}
 	}
 });

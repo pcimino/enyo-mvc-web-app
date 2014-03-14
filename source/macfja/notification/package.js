@@ -1,4 +1,5 @@
+
 enyo.depends(
-	"Notification.js"
-  , "NotificationTheme"
+	"Notification.js",
+  "NotificationTheme"
 );

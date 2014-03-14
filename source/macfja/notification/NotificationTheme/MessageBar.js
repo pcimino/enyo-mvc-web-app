@@ -1,3 +1,4 @@
+
 /**
  * Notification theme
  * @see http://enyojs.com
@@ -141,7 +142,7 @@ enyo.kind({
 	 * @name notification.MessageBar#displayNotification
 	 */
 	displayNotification: function() {
-		if(this.pending.length == 0) return;
+    if(this.pending.length === 0) { return; }
 
 		//Build the notification
 		var n = this.inShow.notification;
@@ -194,7 +195,7 @@ enyo.kind({
 	 * @private
 	 */
 	notifTap: function() {
-		this.doTap({notification: this.pending[0].notification, uid: this.pending[0].uid})
+		this.doTap({notification: this.pending[0].notification, uid: this.pending[0].uid});
 		this.hideNotification();
 	},
 
@@ -234,7 +235,7 @@ enyo.kind({
 		var value,
 			node;
 
-		if(this.pending.length == 0)//From 0 to -30px
+		if(this.pending.length === 0)//From 0 to -30px
 			{ value = -inSender.value; }
 		else//From -30px to 0
 			{ value = -30+inSender.value; }
@@ -257,7 +258,7 @@ enyo.kind({
 			this.inHide.node.destroy();//Destroy the node
 			this.pending.shift();//Remove the first notification (FIFO)
 			this.inHide = null;//Set inHide to null
-			if(this.pending.length == 0) {
+			if(this.pending.length === 0) {
 				this.$.barAnimator.play();//If no more notification, hide the bar
 			}
 			else if(!this.hasDisplayedNotif) {
@@ -283,7 +284,7 @@ enyo.kind({
 			}
 		}
 	},
-	
+
 	/**
 	 * Remove a notification
 	 * @function
@@ -294,10 +295,10 @@ enyo.kind({
 		if(uid == this.pending[0].uid) {
 			this.hideNotification(true);
 		}
-		
+
 		enyo.remove(this.getNotificationFromUid(uid), this.pending);
 	},
-	
+
 	/**
 	 * Return a notification by a its Uid
 	 * @function
@@ -309,9 +310,9 @@ enyo.kind({
 	getNotificationFromUid: function(uid) {
 		var lap = 0,
 			total = this.pending.length;
-			
+
 		for(;lap<total;lap++) {
-			if(this.pending[lap].uid == uid) return this.pending[lap];
+      if(this.pending[lap].uid == uid) { return this.pending[lap];}
 		}
 	}
 });
