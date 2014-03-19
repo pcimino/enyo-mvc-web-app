@@ -1,4 +1,3 @@
-
 /**
 * Public Controller kind
 * Common handlers for the public (unauth) pages
@@ -50,6 +49,9 @@ enyo.kind({
       if (inEvent.authenticated) {
         mvcApp.data.user = inEvent.userdata;
         mvcApp.username = mvcApp.data.username;
+        if (0 === mvcApp.gravatarEmail.length) {
+          mvcApp.setGravatarEmail(mvcApp.data.user.email);
+        }
         mvcApp.data.username = '';
         mvcApp.data.password = '';
         // display the authenticated home page

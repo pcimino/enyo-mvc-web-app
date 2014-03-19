@@ -1,4 +1,3 @@
-
 /**
 * Home Controller
 * Common handlers for the authenticated pages
@@ -36,6 +35,8 @@ enyo.ready(function() {
     logout: function() {
         // clear out the session data
         mvcApp.data = {};
+        mvcApp.gravatarEmail = '';
+        mvcApp.adminFlag = '';
         var ajaxLogout = new AJAX.Logout({owner:this, fireEvent:'onIsUserValidated'});
         ajaxLogout.makeRequest({});
         setTimeout(function() {

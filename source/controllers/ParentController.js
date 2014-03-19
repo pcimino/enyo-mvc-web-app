@@ -1,4 +1,3 @@
-
 // Put common navigation methods in here
 //
 // Enyo 2.x has a Routes class, which is really the way to go, still need to figure that out
@@ -98,8 +97,7 @@ enyo.kind({
 
         mvcApp.authView.waterfall('onSetupGravatar');
         // reload admin rights
-        var checkAdmin = new JSONP.CheckAdmin({owner:this, fireEvent:'onCheckAdminResult'});
-        checkAdmin.makeRequest({});
+        this.checkAdmin(inSender, inEvent);
       }
   },
   // check database connection
