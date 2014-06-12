@@ -1,16 +1,15 @@
 {
-    "name": "enyo-mvc-web-app"
-  , "description": "An Enyo front end for the Restify demo:  https://github.com/pcimino/nodejs-restify-mongodb"
-  , "version": "1.0.3"
-  , "private": false
-  , "author": "Paul Cimino(https://github.com/pcimino)"
-  , "engines": {
-        "node": "0.10.13"
-      , "npm": "1.3.2"
-    }
-  , "dependencies": {
-      "express": "latest"
-  }
-  , "license": "Apache"
+  "name": "enyo-mvc-web-app",
+  "description": "An Enyo front end for the Restify demo:  https://github.com/pcimino/nodejs-restify-mongodb",
+  "version": "1.0.3",
+  "private": false,
+  "author": "Paul Cimino(https://github.com/pcimino)",
+  "engines": {
+    "node": "0.10.13",
+    "npm": "1.3.2"
+  },
+  "dependencies": {
+    "express": "^4.4.1"
+  },
+  "license": "Apache"
 }
-
