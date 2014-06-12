@@ -8,13 +8,7 @@ enyo.ready(function() {
     name: 'Bootplate.VerifyResetRequestPage'
     , kind: 'Bootplate.PublicPage'
     , id: 'forgotPasswordPage'
-    , bindings: [
-      {
-        from: '.$.username.value',
-        to: '.mvcApp.data',
-        kind: 'enyo.InputBinding'
-      }
-    ]
+
     // This checks to see if the user is allowed on this page
     , rendered: function() {
         this.inherited(arguments);
@@ -67,6 +61,7 @@ enyo.ready(function() {
     } // end setupPageBody
   });
 });
+
 
 
 
